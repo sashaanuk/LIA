@@ -345,6 +345,81 @@ html.js .msg{animation:msg-in .5s cubic-bezier(.19,1,.22,1) both}
 @media (hover:hover) and (pointer:fine){html.has-cursor,html.has-cursor *{cursor:none !important}}
 /* ===== Шапка: въезд сверху при загрузке, как у Jitter (только на десктопе) ===== */
 @media (min-width:1025px) and (prefers-reduced-motion:no-preference){html.js .jh:not(.animate-in){transform:translateY(-100%)}}
+/* ===== Мобильная версия (≤980px). Десктоп выше этой ширины не меняется ===== */
+.ben-tabs,.m-quote,.m-more,.m-ring,.pains-dots{display:none}
+.m-letter{display:flex;flex-direction:column;gap:20px}
+@media (max-width:980px){
+#top{min-height:0 !important}
+/* Цепочки: вертикальная линия слева, шаги справа от точек */
+.chain{grid-template-columns:1fr !important;gap:0 !important;padding:6px 0 0 !important}
+.chain-step{position:relative;display:grid !important;grid-template-columns:15px minmax(0,1fr);column-gap:18px;row-gap:6px !important;padding:0 0 30px !important}
+.chain-step:last-child{padding-bottom:0 !important}
+.chain-step > span:not([class]){position:absolute !important;left:0;top:0;bottom:0;width:15px;height:auto !important}
+.chain-line{left:6.5px !important;right:auto !important;top:15px !important;bottom:-30px;width:2px !important;height:auto !important;transform:scaleY(var(--chain,1)) !important;transform-origin:top center !important}
+.chain-step:last-child .chain-line{display:none}
+.chain-real .chain-cut{background:repeating-linear-gradient(180deg,#000 0 7px,transparent 7px 13px) !important}
+.chain-step svg{display:none}
+.chain-label,.chain-sub,.chain-note{grid-column:2}
+.chain-note{position:static !important;margin:0 0 2px}
+.chain-sub{margin-top:0 !important}
+/* Боли: лента карточек со свайпом */
+.pains{flex-direction:row !important;gap:12px !important;overflow-x:auto;scroll-snap-type:x mandatory;margin:0 calc(-1 * var(--pad-x));padding:4px var(--pad-x) 12px !important;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+.pains::-webkit-scrollbar{display:none}
+.pain{position:relative !important;top:auto !important;flex:0 0 min(80vw,340px);scroll-snap-align:start;box-shadow:0 10px 28px rgba(0,0,0,0.06)}
+.pains-dots{display:flex;gap:6px;justify-content:center;margin-top:-28px;width:100%}
+.pains-dots i{width:6px;height:6px;border-radius:50%;background:#C4C4C0;transition:background .3s,transform .3s}
+.pains-dots i.on{background:#000;transform:scale(1.3)}
+/* «Что изменится»: табы вместо двух списков */
+.ben-tabs{display:inline-flex;align-self:flex-start;gap:4px;padding:4px;border:1px solid #000;border-radius:999px;background:rgba(255,255,255,0.7)}
+.ben-tab{padding:10px 18px;border-radius:999px;border:0;background:none;font:inherit;font-size:15px;font-weight:500;color:#4A4A48;cursor:pointer;transition:background .25s,color .25s}
+.ben-tab[aria-selected="true"]{background:#000;color:#fff}
+.ben-tab:focus-visible{outline:2px solid #000;outline-offset:3px}
+.ben-grid{gap:0 !important;margin-top:-12px}
+.ben-col:not(.is-on){display:none !important}
+.ben-col .ben-h{display:none}
+/* «Кто мы»: фото шире, письмо свёрнуто до ключевой фразы */
+.duo{aspect-ratio:4/3}
+#kto article{padding:24px !important;gap:18px !important;font-size:17px !important}
+.m-quote{display:block;margin:0;font-weight:300;font-size:clamp(28px,7.6vw,36px);line-height:1.08;letter-spacing:-0.03em;color:#000}
+.m-letter{display:none;gap:16px}
+.m-letter.is-open{display:flex}
+.m-more{display:inline-flex;align-self:flex-start;margin:0;padding:0;border:0;background:none;font:inherit;font-size:16px;color:#000;text-decoration:underline;text-underline-offset:4px;cursor:pointer}
+.m-more:focus-visible{outline:2px solid #000;outline-offset:3px}
+/* «Как LIA ведёт гостя»: кольцо из пяти шагов вместо рельса */
+#kak{gap:var(--gap-lg) !important}
+#kak > div:first-child > div > div[aria-hidden]{display:none}
+.zsteps > li > span[aria-hidden] > span:last-child{background:rgba(255,255,255,0.55) !important}
+.rail{display:none}
+.rail-wrap{position:relative;justify-content:center;align-items:center;padding:8px 0}
+.m-ring{position:relative;display:block;flex:none;width:min(250px,64vw);aspect-ratio:1}
+.m-ring-svg{position:absolute;left:0;top:0;width:100%;height:100%;display:block;transform:rotate(0deg)}
+.m-seg{fill:none;stroke:#D6D6D3;stroke-width:12;cursor:pointer;transition:stroke .35s ease}
+.m-seg.done{stroke:#74746F}
+.m-seg.on{stroke:#C4C4C0}
+.m-prog{fill:none;stroke:#000;stroke-width:12;stroke-dasharray:100;stroke-dashoffset:100;pointer-events:none}
+.m-ring-c{position:absolute;left:0;top:0;right:0;bottom:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;pointer-events:none}
+.m-ring-n{font-size:64px;font-weight:300;line-height:1;letter-spacing:-0.04em;font-variant-numeric:tabular-nums}
+.m-ring-m{font-size:13px;color:#74746F}
+.step-toggle{position:absolute;right:0;top:0;margin:0 !important}
+.step-now{display:block;margin:0 !important;text-align:center;font-size:22px;line-height:1.2;font-weight:400;letter-spacing:-0.01em;text-wrap:balance}
+.panels h3{display:none !important}
+/* «Почему не подведёт»: аккордеон */
+#pochemu{gap:var(--gap) !important}
+.why-card{position:static !important;min-height:0 !important;margin:0 0 12px !important;padding:22px 24px !important;border-radius:22px !important;box-shadow:none !important;grid-template-columns:minmax(0,1fr) !important;gap:16px !important;align-items:start !important}
+.why-card h3{position:relative;padding-right:36px;cursor:pointer;font-size:22px !important}
+.why-card h3::after{content:"";position:absolute;right:6px;top:.35em;width:10px;height:10px;border-right:1.5px solid currentColor;border-bottom:1.5px solid currentColor;transform:rotate(45deg);transition:transform .35s ease}
+.why-card.is-open h3::after{transform:rotate(225deg) translate(-3px,-3px)}
+.why-card:not(.is-open) p,.why-card:not(.is-open) .why-vis{display:none !important}
+html.js .why-card.is-open .why-vis{opacity:1;transform:none}
+/* «Как подключить»: вертикальная линия с точками */
+.zsteps{grid-template-columns:1fr !important;gap:0 !important}
+.zsteps > li{position:relative;display:grid !important;grid-template-columns:13px minmax(0,1fr);column-gap:18px;row-gap:8px !important;padding-bottom:32px}
+.zsteps > li:last-child{padding-bottom:0}
+.zsteps > li > span[aria-hidden]{position:absolute;left:0;top:4px;bottom:0;width:13px;flex-direction:column;align-items:center}
+.zsteps > li > span[aria-hidden] > span:last-child{width:1px !important;height:auto !important;flex:1 !important}
+.zsteps > li:last-child > span[aria-hidden] > span:last-child{display:none}
+.zsteps > li > :not([aria-hidden]){grid-column:2}
+}
 </style>
 </head>
 <body>
@@ -567,6 +642,7 @@ html.js .msg{animation:msg-in .5s cubic-bezier(.19,1,.22,1) both}
 <li class="pain" style="--i:6; z-index:7; font-size:clamp(20px,1.8vw,25px); line-height:1.32; letter-spacing:-0.01em"><span class="pain-lead">Хотите больше записей</span><span class="pain-rest">, но не знаете, сколько обращений теряете и как отвечают вашим гостям?</span></li>
 <li class="pain" style="--i:0; z-index:1; font-size:clamp(20px,1.8vw,25px); line-height:1.32; letter-spacing:-0.01em"><span class="pain-lead">Ставили бота</span><span class="pain-rest">, гости просили позвать человека, через месяц его отключили?</span></li>
 </ul>
+<div class="pains-dots" aria-hidden="true"></div>
 
 <figure id="prob" class="sticky-spec" style="flex:1 1 420px; min-width:0; margin:0; position:relative; border:1px solid #C4C4C0; padding:clamp(24px,3vw,36px); display:flex; flex-direction:column; gap:14px">
 <span aria-hidden="true" style="position:absolute; top:-4px; left:-4px; width:7px; height:7px; border-radius:50%; background:#000000"></span>
@@ -617,8 +693,9 @@ html.js .msg{animation:msg-in .5s cubic-bezier(.19,1,.22,1) both}
 
 <section style="max-width:1280px; margin:0 auto; padding:var(--sec) var(--pad-x) 0; display:flex; flex-direction:column; gap:var(--gap)">
 <h2 style="margin:0; font-weight:300; font-size:clamp(34px,4.2vw,60px); line-height:1.04; letter-spacing:-0.03em">Что изменится с LIA</h2>
-<div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(min(440px,100%),1fr)); gap:clamp(56px,6vw,72px) clamp(40px,5vw,80px); align-items:start">
-<div style="display:flex; flex-direction:column">
+<div class="ben-tabs" role="tablist" aria-label="Для кого"><button type="button" class="ben-tab" role="tab" aria-selected="true" data-ben="0">Владельцу</button><button type="button" class="ben-tab" role="tab" aria-selected="false" data-ben="1">Администратору</button></div>
+<div class="ben-grid" style="display:grid; grid-template-columns:repeat(auto-fit,minmax(min(440px,100%),1fr)); gap:clamp(56px,6vw,72px) clamp(40px,5vw,80px); align-items:start">
+<div class="ben-col is-on" style="display:flex; flex-direction:column">
 <h3 class="ben-h" style="margin:0; padding-bottom:clamp(16px,1.8vw,24px); border-bottom:2px solid #000000; font-size:clamp(26px,2.6vw,38px); font-weight:300; line-height:1.1; letter-spacing:-0.02em; text-wrap:balance">Владельцу</h3>
 <ul style="list-style:none; margin:0; padding:0; font-size:clamp(19px,1.6vw,22px); line-height:1.4">
 <li style="padding:22px 0; border-bottom:1px solid #C4C4C0"><span style="font-weight:500">Реклама окупается:</span><span style="color:#4A4A48"> из тех же обращений — больше записей.</span></li>
@@ -626,7 +703,7 @@ html.js .msg{animation:msg-in .5s cubic-bezier(.19,1,.22,1) both}
 <li style="padding:22px 0; border-bottom:1px solid #C4C4C0"><span style="font-weight:500">Стандарт общения не уходит</span><span style="color:#4A4A48"> вместе с администратором.</span></li>
 </ul>
 </div>
-<div style="display:flex; flex-direction:column">
+<div class="ben-col" style="display:flex; flex-direction:column">
 <h3 class="ben-h" style="margin:0; padding-bottom:clamp(16px,1.8vw,24px); border-bottom:2px solid #000000; font-size:clamp(26px,2.6vw,38px); font-weight:300; line-height:1.1; letter-spacing:-0.02em; text-wrap:balance">Администратору</h3>
 <ul style="list-style:none; margin:0; padding:0; font-size:clamp(19px,1.6vw,22px); line-height:1.4">
 <li style="padding:22px 0; border-bottom:1px solid #C4C4C0"><span style="font-weight:500">До вас доходит только то, где нужен человек.</span><span style="color:#4A4A48"> Типовые вопросы закрыты.</span></li>
@@ -706,9 +783,13 @@ html.js .msg{animation:msg-in .5s cubic-bezier(.19,1,.22,1) both}
 </div>
 </div>
 <article style="flex:1.3 1 460px; min-width:0; background:#FFFFFF; padding:clamp(28px,4vw,60px); border-radius:2px; display:flex; flex-direction:column; gap:20px; font-size:19px; line-height:1.65; color:#363636">
+<p class="m-quote" aria-hidden="true">За 8 месяцев <span data-count="84">84</span>% обращений стали записями.</p>
+<div class="m-letter">
 <p style="margin:0">Меня зовут Эстер Гомельская. Вместе с Ариной Чоботовой мы управляем EST.EPIL — сетью из трёх клиник лазерной эпиляции в Москве: [N] лет в нише, [N] гостей в год, [4,9] на Яндекс Картах по [N] отзывам.</p>
 <p style="margin:0">Я сама слежу за тоном каждого диалога с гостем, поэтому <strong style="font-weight:500; color:#000000">готовые боты нам не подошли</strong>: приходилось выбирать между оптимизацией и лояльностью — они отвечали шаблоном, и гости просили позвать человека. <span class="m-para"></span>Тогда мы <strong style="font-weight:500; color:#000000">собрали своего</strong>: обучили на переписках наших лучших администраторов и регламентах сети. <strong class="mark" style="font-weight:500">За 8 месяцев <span data-count="84">84</span>% обращений стали записями.</strong> Коллеги из других студий уже увидели его в работе и попросили такой же.</p>
 <p style="margin:0">LIA — наш живой опыт общения с гостями, переведённый в технологию. <strong style="font-weight:500; color:#000000">Мы передаём вашей студии то, что у нас уже работает</strong>, чтобы вы не теряли гостей на ошибках, которые мы уже прошли. Наша цель — чтобы у вас получилось.</p>
+</div>
+<button type="button" class="m-more" aria-expanded="false">Читать письмо целиком</button>
 <div class="sign"><span class="sign-hand">Эстер</span><span class="sign-name">Эстер Гомельская, EST.EPIL</span></div>
 </article>
 </div>
@@ -840,6 +921,7 @@ html.js .msg{animation:msg-in .5s cubic-bezier(.19,1,.22,1) both}
 КОНЕЦ СХЕМЫ -->
 
 <div class="rail-wrap">
+<div class="m-ring" aria-hidden="true"></div>
 <div class="rail">
 <div class="rail-track" aria-hidden="true"><span class="rail-fill"></span></div>
 <ol id="step-tabs" aria-label="Шаги">
@@ -986,7 +1068,7 @@ html.js .msg{animation:msg-in .5s cubic-bezier(.19,1,.22,1) both}
 
 <div aria-hidden="true" style="height:1px; background:#C4C4C0"><div style="max-width:1280px; margin:0 auto; padding:0 clamp(20px,5vw,64px)"><span style="display:block; width:7px; height:7px; margin:-3px 0 0 -3px; border-radius:50%; background:#000000"></span></div></div>
 
-<section style="max-width:1280px; margin:0 auto; padding:var(--sec) var(--pad-x); display:flex; flex-direction:column; gap:clamp(56px,6vw,88px)">
+<section id="pochemu" style="max-width:1280px; margin:0 auto; padding:var(--sec) var(--pad-x); display:flex; flex-direction:column; gap:clamp(56px,6vw,88px)">
 <h2 style="margin:0; font-weight:300; font-size:clamp(34px,4.2vw,60px); line-height:1.04; letter-spacing:-0.03em">Почему LIA не подведёт</h2>
 
 <div class="why-card" style="position:sticky; top:140px; display:grid; grid-template-columns:repeat(auto-fit,minmax(min(440px,100%),1fr)); gap:32px clamp(40px,5vw,80px); align-items:center; padding:clamp(28px,4vw,56px); border-radius:32px; background:#FFFFFF; color:#000000; min-height:440px; margin-bottom:40px; box-shadow:none">
@@ -1067,7 +1149,7 @@ html.js .msg{animation:msg-in .5s cubic-bezier(.19,1,.22,1) both}
 <h2 style="flex:1 1 420px; margin:0; font-weight:300; font-size:clamp(40px,5.6vw,84px); line-height:1; letter-spacing:-0.045em">Как подключить LIA</h2>
 <p style="flex:1 1 380px; margin:0; display:flex; flex-direction:column; gap:10px; font-size:19px; color:#D6D6D3"><span>Сейчас подключаем первые студии.</span><strong style="font-weight:400; color:#FFFFFF; font-size:clamp(26px,2.4vw,34px); line-height:1.15; letter-spacing:-0.015em">Первым десяти — пилот бесплатно.</strong></p>
 </div>
-<ol style="list-style:none; margin:0; padding:0; display:grid; grid-template-columns:repeat(auto-fit,minmax(min(280px,100%),1fr)); gap:40px 32px">
+<ol class="zsteps" style="list-style:none; margin:0; padding:0; display:grid; grid-template-columns:repeat(auto-fit,minmax(min(280px,100%),1fr)); gap:40px 32px">
 <li style="display:flex; flex-direction:column; gap:14px">
 <span aria-hidden="true" style="display:flex; align-items:center"><span style="flex:none; width:13px; height:13px; border-radius:50%; background:#FFFFFF"></span><span style="flex:1; height:1px; background:rgba(255,255,255,0.5)"></span></span>
 <span style="font-size:13px; color:#D6D6D3">Шаг 1</span>
@@ -1462,6 +1544,75 @@ html.js .msg{animation:msg-in .5s cubic-bezier(.19,1,.22,1) both}
   window.addEventListener('resize', trackPains);
   trackPains();
 
+  // ===== Телефон: лента болей листается сама, пока её не тронут =====
+  const painsUl = document.querySelector('.pains');
+  const painsDots = document.querySelector('.pains-dots');
+  if (painsUl && pains.length) {
+    const di = [];
+    if (painsDots) pains.forEach(() => di.push(painsDots.appendChild(document.createElement('i'))));
+    const cardW = () => pains[0].offsetWidth + 12;
+    const idxNow = () => Math.min(pains.length - 1, Math.round(painsUl.scrollLeft / cardW()));
+    const mark = () => { const k = idxNow(); di.forEach((d, j) => d.classList.toggle('on', j === k)); };
+    painsUl.addEventListener('scroll', mark, { passive: true });
+    mark();
+    let hold = false, timer = 0;
+    const stop = () => { hold = true; clearInterval(timer); };
+    ['pointerdown', 'touchstart', 'wheel'].forEach((ev) => painsUl.addEventListener(ev, stop, { passive: true }));
+    if (!reduce && hasIO) {
+      let seen = false;
+      new IntersectionObserver((es) => {
+        if (!es[0].isIntersecting || seen || !narrow()) return;
+        seen = true;
+        timer = setInterval(() => {
+          if (hold || !narrow()) return;
+          const next = (idxNow() + 1) % pains.length;
+          painsUl.scrollTo({ left: next * cardW(), behavior: 'smooth' });
+        }, 4000);
+      }, { threshold: 0.5 }).observe(painsUl);
+    }
+  }
+
+  // ===== Телефон: «Что изменится» — табы Владельцу / Администратору =====
+  const benTabs = Array.from(document.querySelectorAll('.ben-tab'));
+  const benCols = Array.from(document.querySelectorAll('.ben-col'));
+  benTabs.forEach((b) => b.addEventListener('click', () => {
+    const k = +b.dataset.ben;
+    benTabs.forEach((t, j) => t.setAttribute('aria-selected', j === k ? 'true' : 'false'));
+    benCols.forEach((c, j) => c.classList.toggle('is-on', j === k));
+  }));
+
+  // ===== Телефон: письмо основательницы свёрнуто до ключевой фразы =====
+  const more = document.querySelector('.m-more');
+  const letter = document.querySelector('.m-letter');
+  if (more && letter) more.addEventListener('click', () => {
+    const open = letter.classList.toggle('is-open');
+    more.setAttribute('aria-expanded', open ? 'true' : 'false');
+    more.textContent = open ? 'Свернуть письмо' : 'Читать письмо целиком';
+  });
+
+  // ===== Телефон: «Почему LIA не подведёт» — аккордеон =====
+  const whyCards = Array.from(document.querySelectorAll('.why-card'));
+  if (whyCards.length) {
+    whyCards[0].classList.add('is-open');
+    whyCards.forEach((c) => {
+      const h = c.querySelector('h3');
+      if (!h) return;
+      if (narrow()) { h.setAttribute('role', 'button'); h.setAttribute('tabindex', '0'); h.setAttribute('aria-expanded', c.classList.contains('is-open') ? 'true' : 'false'); }
+      const open = () => {
+        if (!narrow()) return;
+        whyCards.forEach((o) => {
+          const on = o === c;
+          o.classList.toggle('is-open', on);
+          if (on) o.classList.add('in');
+          const hh = o.querySelector('h3');
+          if (hh) hh.setAttribute('aria-expanded', on ? 'true' : 'false');
+        });
+      };
+      h.addEventListener('click', open);
+      h.addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); open(); } });
+    });
+  }
+
   // ===== Путь гостя: шаги листаются сами, как карусель =====
   const tabs = Array.from(document.querySelectorAll('.step-btn'));
   const panels = Array.from(document.querySelectorAll('[data-panel]'));
@@ -1537,9 +1688,36 @@ html.js .msg{animation:msg-in .5s cubic-bezier(.19,1,.22,1) both}
     });
   }
 
+  // Кольцо шагов на телефоне: пять дуг, активная заливается по мере проигрывания
+  const mring = document.querySelector('.m-ring');
+  let ringSegs = [], ringProg = null, ringNum = null, ringMeta = null;
+  if (mring && tabs.length) {
+    const N = tabs.length, R = 86, C = 100, GAP = 7, span = 360 / N;
+    const pt = (a) => { const r = (a - 90) * Math.PI / 180; return [C + R * Math.cos(r), C + R * Math.sin(r)]; };
+    const arc = (a0, a1) => { const [x0, y0] = pt(a0), [x1, y1] = pt(a1); return 'M' + x0.toFixed(2) + ' ' + y0.toFixed(2) + 'A' + R + ' ' + R + ' 0 ' + (a1 - a0 > 180 ? 1 : 0) + ' 1 ' + x1.toFixed(2) + ' ' + y1.toFixed(2); };
+    let svg = '<svg class="m-ring-svg" viewBox="0 0 200 200">';
+    for (let i = 0; i < N; i++) svg += '<path class="m-seg" data-i="' + i + '" d="' + arc(i * span + GAP / 2, (i + 1) * span - GAP / 2) + '" pathLength="100"></path>';
+    svg += '<path class="m-prog" d="" pathLength="100"></path></svg><div class="m-ring-c"><span class="m-ring-n"></span><span class="m-ring-m"></span></div>';
+    mring.innerHTML = svg;
+    ringSegs = Array.from(mring.querySelectorAll('.m-seg'));
+    ringProg = mring.querySelector('.m-prog');
+    ringNum = mring.querySelector('.m-ring-n');
+    ringMeta = mring.querySelector('.m-ring-m');
+    ringSegs.forEach((sg) => sg.addEventListener('click', () => selectStep(+sg.dataset.i)));
+  }
+  function ringSelect(i) {
+    if (!ringSegs.length) return;
+    ringSegs.forEach((sg, j) => { sg.classList.toggle('on', j === i); sg.classList.toggle('done', j < i); });
+    ringProg.setAttribute('d', ringSegs[i].getAttribute('d'));
+    ringNum.textContent = i + 1;
+    const meta = tabs[i].querySelector('.step-meta');
+    ringMeta.textContent = meta ? meta.textContent : '';
+  }
+
   function paint() {
     const S = sched[current];
     const p = Math.min(1, elapsed / S.total);
+    if (ringProg) ringProg.style.strokeDashoffset = (100 * (1 - p)).toFixed(2);
     if (fill) fill.style.transform = 'scaleX(' + Math.min(1, (current + (reduce || userPaused ? 0 : p)) / Math.max(1, tabs.length - 1)).toFixed(4) + ')';
     if (ring) ring.style.strokeDashoffset = (RING * (1 - p)).toFixed(2);
   }
@@ -1568,6 +1746,7 @@ html.js .msg{animation:msg-in .5s cubic-bezier(.19,1,.22,1) both}
     sched[i].items.forEach((it) => { it.m.hidden = true; if (it.who === 'lia') it.n = -1; });
     if (stageLabel) stageLabel.textContent = sched[i].channel;
     if (stepNow) stepNow.textContent = tabs[i].querySelector('.step-title').textContent;
+    ringSelect(i);
     renderChat(i, elapsed);
     paint();
   }
@@ -1750,7 +1929,8 @@ html.js .msg{animation:msg-in .5s cubic-bezier(.19,1,.22,1) both}
 
     const frame = (now) => {
       sw.raf = 0;
-      const busy = step(now);
+      if (coarse && !sw.ptr.down) { sw.ptr.x = sw.W * (0.5 + 0.38 * Math.sin(now / 4200)); sw.ptr.y = sw.H * (0.45 + 0.3 * Math.sin(now / 3100 + 1.7)); sw.ptr.on = true; }
+      const busy = step(now) || coarse;
       draw(now);
       if (busy && sw.visible && !document.hidden) sw.raf = requestAnimationFrame(frame);
     };
@@ -1955,6 +2135,7 @@ html.js .msg{animation:msg-in .5s cubic-bezier(.19,1,.22,1) both}
     F.mx += (F.tx - F.mx) * 0.08;
     F.my += (F.ty - F.my) * 0.08;
     F.energy *= 0.975;
+    if (COARSE && !F.hover) F.energy = Math.max(F.energy, F.dark ? 0.32 : 0.48); // на телефоне свечение дрейфует само
     const u = F.u;
     gl.useProgram(F.prog);
     gl.uniform2f(u.u_res, w, h);
@@ -1982,6 +2163,7 @@ html.js .msg{animation:msg-in .5s cubic-bezier(.19,1,.22,1) both}
     F.hover = true;
   }
 
+  const COARSE = window.matchMedia('(pointer: coarse)').matches;
   const fields = [];
   document.querySelectorAll('canvas[data-grain]').forEach((cv) => {
     const F = makeField(cv, cv.dataset.grain === 'dark', parseFloat(cv.dataset.x) || 0.5, parseFloat(cv.dataset.y) || 0.5);
