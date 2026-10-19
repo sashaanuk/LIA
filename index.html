@@ -310,7 +310,7 @@ html.js .why-card.in .why-vis{opacity:1;transform:none}
 .chain .chain-note{transform:translateY(6px);transition:opacity .4s ease 1.9s,transform .6s var(--spring) 1.9s}
 .chain.in .chain-note{opacity:1;transform:none}
 .chain-real .chain-cut{background:repeating-linear-gradient(90deg,#000 0 7px,transparent 7px 13px) !important}
-.chain-real .chain-late .chain-line{background:repeating-linear-gradient(90deg,#AFAFAB 0 7px,transparent 7px 13px) !important}
+.chain-real .chain-late .chain-line{display:none}
 .chain-real .chain-late .chain-dot{background:#EDEDEB !important;border-color:#AFAFAB !important}
 .chain-real .chain-late .chain-label{color:#AFAFAB}
 /* ===== Боли: карточки-стопка, каждая следующая наезжает на предыдущую ===== */
@@ -536,7 +536,7 @@ html.js .msg{animation:msg-in .5s cubic-bezier(.19,1,.22,1) both}
 <span class="chain-sub" style="margin-top:-8px; font-size:13px; color:#4A4A48">19:12</span>
 </li>
 <li class="chain-step" style="position:relative; display:flex; flex-direction:column; gap:18px; padding-right:24px">
-<span class="chain-note" style="position:absolute; left:0; top:-30px; display:flex; align-items:center; gap:8px; font-size:13px; font-weight:500; white-space:nowrap"><span style="width:20px; height:1px; background:#000000"></span>через 3 часа 28 минут</span>
+<span class="chain-note" style="position:absolute; left:0; top:-48px; display:flex; align-items:center; gap:8px; font-size:13px; font-weight:500; white-space:nowrap"><span style="width:20px; height:1px; background:#000000"></span>через 3 часа 28 минут</span>
 <span style="position:relative; display:block; height:15px">
 <span class="chain-line chain-cut" style="position:absolute; left:0; right:0; top:6px; height:2px; background:#000000; transform:scaleX(var(--chain,1)); transform-origin:left center; transition:transform 1.1s cubic-bezier(.6,0,.2,1) .9s"></span>
 <span class="chain-dot" style="position:absolute; left:0; top:0; width:15px; height:15px; border-radius:50%; border:1.5px solid #000000; background:var(--chain-dot,#000000); transition:background .3s ease .9s, border-color .3s ease .9s"></span>
