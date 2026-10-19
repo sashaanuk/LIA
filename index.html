@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<script>document.documentElement.classList.add('js')</script>
+<script>document.documentElement.classList.add('js');if(/[?&]orange\b/.test(location.search))document.documentElement.classList.add('exp-orange')</script>
 <title>LIA — AI-администратор для студий лазерной эпиляции на YCLIENTS</title>
 <!-- ===== SEO. Домен: при переезде на корп-домен замените https://lia-ai.ru во всём файле, в sitemap.xml и robots.txt ===== -->
 <meta name="description" content="AI-администратор отвечает гостям студии за секунды, круглосуточно и в тоне вашего бренда: цены, сомнения, запись в YCLIENTS. Первым десяти студиям — специальные условия.">
@@ -83,6 +83,19 @@
 -->
 <link href="https://fonts.googleapis.com/css2?family=Onest:wght@300;400;500;600&family=Bad+Script&display=swap" rel="stylesheet">
 <style>
+/* ===== Эксперимент: блок «Подключить LIA» в тёплой оранжевой гамме (включается ссылкой с ?orange) ===== */
+html.exp-orange #zayavka{--og:#FF8A00;background:#140A04 !important;background-image:radial-gradient(130% 85% at 70% 115%,#FF7A00 0%,#B84300 26%,#4A1A06 52%,#140A04 80%) !important}
+html.exp-orange #zayavka::before{content:"";position:absolute;left:0;top:0;right:0;bottom:0;pointer-events:none;background-image:radial-gradient(rgba(255,150,40,0.28) 1px,transparent 1.5px);background-size:6px 6px;-webkit-mask-image:linear-gradient(to top,#000 0%,rgba(0,0,0,.55) 45%,transparent 85%);mask-image:linear-gradient(to top,#000 0%,rgba(0,0,0,.55) 45%,transparent 85%)}
+html.exp-orange #zayavka canvas[data-grain]{display:none !important}
+html.exp-orange #zayavka .z-title{color:var(--og)}
+html.exp-orange #zayavka .zsteps > li > span[aria-hidden] > span:first-child{background:var(--og) !important;border-color:var(--og) !important}
+html.exp-orange #zayavka .zsteps > li:not(:first-child) > span[aria-hidden] > span:first-child{background:transparent !important}
+html.exp-orange #zayavka .zsteps > li > span[aria-hidden] > span:last-child{background:rgba(255,138,0,0.45) !important}
+html.exp-orange #zayavka [style*="border-top:1px solid rgba(255,255,255,0.22)"]{border-top-color:rgba(255,138,0,0.35) !important}
+html.exp-orange #zayavka .btn-light{background:var(--og) !important;color:#1A0B03 !important;border-radius:16px !important}
+html.exp-orange #zayavka .btn-light svg path{stroke:#1A0B03 !important}
+html.exp-orange #zayavka .btn-light:hover{background:#FFA033 !important}
+html.exp-orange #zayavka p span[style*="font-weight:500"]{color:var(--og) !important}
 /* Шкала шрифтов: 8 ступеней, вес тонкий (300) у крупных, 400–500 у текста. Меняйте размер здесь, а не в элементах */
 :root{--fs-display:clamp(40px,5vw,72px);--fs-h2:clamp(32px,3.8vw,52px);--fs-h3:clamp(24px,2.4vw,34px);--fs-lead:clamp(20px,1.7vw,24px);--fs-intro:clamp(18px,1.4vw,20px);--fs-body:17px;--fs-small:14px;--fs-micro:12px}
 @media (max-width:980px){:root{--fs-display:clamp(30px,8.4vw,40px);--fs-h2:clamp(28px,7.6vw,34px);--fs-h3:22px;--fs-lead:19px;--fs-intro:17px;--fs-body:16px;--fs-small:13px;--fs-micro:12px}}
