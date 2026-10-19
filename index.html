@@ -295,14 +295,20 @@ a{color:#000}a:hover{color:#4A4A48}
 #voprosy > h2,#voprosy .faq-list{flex:none !important;width:100%}
 .faq-list{border-top:1px solid #C4C4C0}
 .faq{border-bottom:1px solid #C4C4C0}
-.faq summary{margin:0 -14px;padding:12px 56px 12px 14px;border-radius:4px;color:#8E8E8A;transition:background-color .15s ease,color .15s ease}
-.faq summary::before{display:none}
-.faq summary::after{content:"+";position:absolute;right:14px;top:50%;transform:translateY(-50%);font-size:var(--fs-intro);font-weight:300;line-height:1;transition:transform .25s ease}
-.faq[open] summary::after{transform:translateY(-50%) rotate(45deg)}
-.faq summary:hover,.faq summary:focus-visible{background-color:#436DEE;color:#FFFFFF;outline:none}
+.faq-list{position:relative}
+.faq summary{margin:0 -14px;padding:12px 14px;border-radius:4px;color:#8E8E8A;background:none !important;transition:color .18s ease}
+.faq summary::before,.faq summary::after{display:none !important}
+.faq summary h3{position:relative;z-index:1}
 .faq[open] summary{color:#000000}
-.faq[open] summary:hover{color:#FFFFFF}
-.faq-a p{padding:2px 56px 22px 0 !important;max-width:46em}
+.faq summary.is-lit{color:#FFFFFF}
+.faq summary:focus-visible{background:#436DEE !important;color:#FFFFFF;outline:none}
+.faq-a p{padding:2px 14px 22px 0 !important;max-width:46em}
+/* Подсветка: одна плашка скользит между строками за курсором; ярче там, где курсор, к краям гаснет */
+.faq-lit{position:absolute;left:-14px;right:-14px;top:0;height:0;z-index:0;border-radius:4px;pointer-events:none;opacity:0;
+  background:radial-gradient(70% 220% at var(--mx,50%) 50%,#436DEE 0%,rgba(67,109,238,.82) 38%,rgba(67,109,238,.38) 100%);
+  transition:top .22s cubic-bezier(.2,.8,.2,1),height .22s cubic-bezier(.2,.8,.2,1),opacity .2s ease}
+.faq-lit.on{opacity:1}
+@media (prefers-reduced-motion:reduce){.faq-lit{transition:opacity .15s ease}}
 
 
 /* ===== Моушн в духе Jitter (работает только при включённом JS и без «уменьшения движения») ===== */
@@ -1257,7 +1263,7 @@ html.js .msg{animation:msg-in .5s cubic-bezier(.19,1,.22,1) both}
 </ul>
 </nav>
 </div>
-<div style="display:flex; flex-wrap:wrap; gap:8px 28px; padding-top:20px; border-top:1px solid #C4C4C0; font-size:var(--fs-small); line-height:1.5; color:#74746F">
+<div style="display:flex; flex-wrap:wrap; gap:8px 28px; padding-top:20px; border-top:1px solid #C4C4C0; font-size:var(--fs-body); line-height:1.5; color:#74746F">
 <a href="#privacy" style="color:inherit; text-underline-offset:4px">Политика конфиденциальности</a>
 <a href="#terms" style="color:inherit; text-underline-offset:4px">Пользовательское соглашение</a>
 <span style="flex:1 1 280px">* Instagram принадлежит компании Meta, признанной экстремистской организацией и запрещённой на территории РФ.</span>
@@ -1962,6 +1968,36 @@ html.js .msg{animation:msg-in .5s cubic-bezier(.19,1,.22,1) both}
     }
     layout();
     if (!hasIO) reveal();
+  })();
+
+
+  // ===== FAQ: одна синяя плашка скользит между строками за курсором (только мышь) =====
+  (() => {
+    const list = document.querySelector('.faq-list');
+    if (!list || !window.matchMedia('(hover: hover) and (pointer: fine)').matches) return;
+    const lit = document.createElement('span');
+    lit.className = 'faq-lit';
+    lit.setAttribute('aria-hidden', 'true');
+    list.prepend(lit);
+    let cur = null;
+    const place = (sum, e) => {
+      const lr = list.getBoundingClientRect(), r = sum.getBoundingClientRect();
+      lit.style.top = (r.top - lr.top) + 'px';
+      lit.style.height = r.height + 'px';
+      if (e) lit.style.setProperty('--mx', (((e.clientX - lr.left + 14) / (lr.width + 28)) * 100).toFixed(1) + '%');
+    };
+    list.addEventListener('pointermove', (e) => {
+      const sum = e.target.closest && e.target.closest('summary');
+      if (sum && list.contains(sum)) {
+        if (sum !== cur) { if (cur) cur.classList.remove('is-lit'); cur = sum; sum.classList.add('is-lit'); }
+        place(sum, e);
+        lit.classList.add('on');
+      } else if (cur) {
+        cur.classList.remove('is-lit'); cur = null; lit.classList.remove('on');
+      }
+    });
+    list.addEventListener('pointerleave', () => { if (cur) cur.classList.remove('is-lit'); cur = null; lit.classList.remove('on'); });
+    list.addEventListener('toggle', () => { if (cur) place(cur); }, true);
   })();
 
   // ===== Кнопки ведут в Telegram-бот: у каждой своя метка (start=site_<место> и utm_content=<место>).
