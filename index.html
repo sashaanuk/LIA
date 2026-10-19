@@ -303,6 +303,20 @@ a{color:#000;text-decoration-color:#436DEE;text-decoration-thickness:1.5px}a:hov
 @media (max-width:760px){.faq summary{padding:10px 14px}}
 .faq-a{overflow:hidden}
 .faq-a p{margin:0;padding:4px 48px 18px 0;max-width:42em;color:#4A4A48}
+/* ===== FAQ как список: строки на всю ширину, серый текст, при наведении строка заливается синим ===== */
+#voprosy{flex-direction:column !important;align-items:stretch !important;gap:var(--gap) !important}
+#voprosy > h2,#voprosy .faq-list{flex:none !important;width:100%}
+.faq-list{border-top:1px solid #C4C4C0}
+.faq{border-bottom:1px solid #C4C4C0}
+.faq summary{margin:0 -14px;padding:12px 56px 12px 14px;border-radius:4px;color:#8E8E8A;transition:background-color .15s ease,color .15s ease}
+.faq summary::before{display:none}
+.faq summary::after{content:"+";position:absolute;right:14px;top:50%;transform:translateY(-50%);font-size:var(--fs-intro);font-weight:300;line-height:1;transition:transform .25s ease}
+.faq[open] summary::after{transform:translateY(-50%) rotate(45deg)}
+.faq summary:hover,.faq summary:focus-visible{background-color:#436DEE;color:#FFFFFF;outline:none}
+.faq[open] summary{color:#000000}
+.faq[open] summary:hover{color:#FFFFFF}
+.faq-a p{padding:2px 56px 22px 0 !important;max-width:46em}
+
 
 /* ===== Моушн в духе Jitter (работает только при включённом JS и без «уменьшения движения») ===== */
 @media (prefers-reduced-motion:no-preference){
