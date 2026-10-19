@@ -380,11 +380,7 @@ html.js .msg{animation:msg-in .5s cubic-bezier(.19,1,.22,1) both}
 /* «Кто мы»: фото шире, письмо свёрнуто до ключевой фразы */
 .duo{aspect-ratio:4/3}
 #kto article{padding:24px !important;gap:18px !important;font-size:17px !important}
-.m-quote{display:block;margin:0;font-weight:300;font-size:clamp(28px,7.6vw,36px);line-height:1.08;letter-spacing:-0.03em;color:#000}
-.m-letter{display:none;gap:16px}
-.m-letter.is-open{display:flex}
-.m-more{display:inline-flex;align-self:flex-start;margin:0;padding:0;border:0;background:none;font:inherit;font-size:16px;color:#000;text-decoration:underline;text-underline-offset:4px;cursor:pointer}
-.m-more:focus-visible{outline:2px solid #000;outline-offset:3px}
+.m-letter{gap:16px}
 /* «Как LIA ведёт гостя»: кольцо из пяти шагов вместо рельса */
 #kak{gap:var(--gap-lg) !important}
 #kak > div:first-child > div > div[aria-hidden]{display:none}
@@ -406,11 +402,7 @@ html.js .msg{animation:msg-in .5s cubic-bezier(.19,1,.22,1) both}
 /* «Почему не подведёт»: аккордеон */
 #pochemu{gap:var(--gap) !important}
 .why-card{position:static !important;min-height:0 !important;margin:0 0 12px !important;padding:22px 24px !important;border-radius:22px !important;box-shadow:none !important;grid-template-columns:minmax(0,1fr) !important;gap:16px !important;align-items:start !important}
-.why-card h3{position:relative;padding-right:36px;cursor:pointer;font-size:22px !important}
-.why-card h3::after{content:"";position:absolute;right:6px;top:.35em;width:10px;height:10px;border-right:1.5px solid currentColor;border-bottom:1.5px solid currentColor;transform:rotate(45deg);transition:transform .35s ease}
-.why-card.is-open h3::after{transform:rotate(225deg) translate(-3px,-3px)}
-.why-card:not(.is-open) p,.why-card:not(.is-open) .why-vis{display:none !important}
-html.js .why-card.is-open .why-vis{opacity:1;transform:none}
+.why-card h3{font-size:22px !important}
 /* «Как подключить»: вертикальная линия с точками */
 .zsteps{grid-template-columns:1fr !important;gap:0 !important}
 .zsteps > li{position:relative;display:grid !important;grid-template-columns:13px minmax(0,1fr);column-gap:18px;row-gap:8px !important;padding-bottom:32px}
@@ -1589,29 +1581,6 @@ html.js .why-card.is-open .why-vis{opacity:1;transform:none}
     more.setAttribute('aria-expanded', open ? 'true' : 'false');
     more.textContent = open ? 'Свернуть письмо' : 'Читать письмо целиком';
   });
-
-  // ===== Телефон: «Почему LIA не подведёт» — аккордеон =====
-  const whyCards = Array.from(document.querySelectorAll('.why-card'));
-  if (whyCards.length) {
-    whyCards[0].classList.add('is-open');
-    whyCards.forEach((c) => {
-      const h = c.querySelector('h3');
-      if (!h) return;
-      if (narrow()) { h.setAttribute('role', 'button'); h.setAttribute('tabindex', '0'); h.setAttribute('aria-expanded', c.classList.contains('is-open') ? 'true' : 'false'); }
-      const open = () => {
-        if (!narrow()) return;
-        whyCards.forEach((o) => {
-          const on = o === c;
-          o.classList.toggle('is-open', on);
-          if (on) o.classList.add('in');
-          const hh = o.querySelector('h3');
-          if (hh) hh.setAttribute('aria-expanded', on ? 'true' : 'false');
-        });
-      };
-      h.addEventListener('click', open);
-      h.addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); open(); } });
-    });
-  }
 
   // ===== Путь гостя: шаги листаются сами, как карусель =====
   const tabs = Array.from(document.querySelectorAll('.step-btn'));
