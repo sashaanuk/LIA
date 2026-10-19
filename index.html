@@ -352,6 +352,12 @@ html.js .msg{animation:msg-in .5s cubic-bezier(.19,1,.22,1) both}
 .m-letter{display:flex;flex-direction:column;gap:20px}
 @media (max-width:980px){
 #top{min-height:0 !important}
+/* Тег на первом экране: компактнее, голубое свечение и блик */
+.intro-tag{position:relative;overflow:hidden;font-size:13px !important;line-height:1.3 !important;gap:8px !important;min-height:34px !important;padding:4px 14px 4px 4px !important;border-color:rgba(67,109,238,0.6) !important;box-shadow:0 0 0 3px rgba(67,109,238,0.10),0 10px 32px rgba(67,109,238,0.30)}
+.intro-tag > span:first-child{height:24px !important;padding:0 8px 0 11px !important;font-size:11px !important}
+.intro-tag::after{content:"";position:absolute;left:0;top:0;right:0;bottom:0;pointer-events:none;background:linear-gradient(100deg,rgba(255,255,255,0) 32%,rgba(190,210,255,0.55) 47%,rgba(255,255,255,0.95) 50%,rgba(190,210,255,0.55) 53%,rgba(255,255,255,0) 68%) no-repeat;background-size:260% 100%;background-position:130% 0;animation:tag-shine 5.5s ease-in-out 1.8s infinite}
+@keyframes tag-shine{0%{background-position:130% 0}28%{background-position:-70% 0}100%{background-position:-70% 0}}
+@media (prefers-reduced-motion:reduce){.intro-tag::after{animation:none}}
 /* Большие кнопки-пилюли на телефоне: во всю ширину, текст переносится */
 #zayavka .btn-light,#top .btn-dark{width:100%;justify-content:center;text-align:center;white-space:normal;min-height:56px !important;padding:14px 22px !important;font-size:16px !important;line-height:1.3}
 /* Цепочки: вертикальная линия слева, шаги справа от точек */
@@ -423,7 +429,7 @@ h2{font-size:clamp(28px,7.6vw,34px) !important}
 .panels h3{display:none !important}
 /* «Почему не подведёт»: аккордеон */
 #pochemu{gap:var(--gap) !important}
-.why-card{top:84px !important;min-height:calc(100svh - 110px) !important;margin:0 0 16px !important;padding:24px !important;border-radius:24px !important;box-shadow:0 -10px 30px rgba(0,0,0,0.08) !important;grid-template-columns:minmax(0,1fr) !important;gap:16px !important;align-items:start !important;align-content:start}
+.why-card{position:sticky !important;top:84px !important;min-height:calc(100svh - 110px) !important;margin:0 0 16px !important;padding:24px !important;border-radius:24px !important;box-shadow:0 -10px 30px rgba(0,0,0,0.08) !important;grid-template-columns:minmax(0,1fr) !important;gap:16px !important;align-items:start !important;align-content:start}
 .why-card h3{font-size:24px !important}
 .why-vis{margin-top:auto}
 /* «Как подключить»: вертикальная линия с точками */
@@ -955,7 +961,7 @@ h2{font-size:clamp(28px,7.6vw,34px) !important}
 <li style="display:flex"><button type="button" class="step-btn" data-step="1" aria-pressed="false"><span class="stop" aria-hidden="true">2</span><span class="step-meta">Четверг</span><span class="step-title">Консультирует</span></button></li>
 <li style="display:flex"><button type="button" class="step-btn" data-step="2" aria-pressed="false"><span class="stop" aria-hidden="true">3</span><span class="step-meta">Понедельник</span><span class="step-title">Называет цену так, что гость записывается</span></button></li>
 <li style="display:flex"><button type="button" class="step-btn" data-step="3" aria-pressed="false"><span class="stop" aria-hidden="true">4</span><span class="step-meta">Среда</span><span class="step-title">Записывает в YCLIENTS, пока гость не остыл</span></button></li>
-<li style="display:flex"><button type="button" class="step-btn" data-step="4" aria-pressed="false"><span class="stop" aria-hidden="true">5</span><span class="step-meta">Через [N] недель</span><span class="step-title">Возвращает на следующий сеанс</span></button></li>
+<li style="display:flex"><button type="button" class="step-btn" data-step="4" aria-pressed="false"><span class="stop" aria-hidden="true">5</span><span class="step-meta">Через несколько недель</span><span class="step-title">Возвращает на следующий сеанс</span></button></li>
 </ol>
 </div>
 <button type="button" id="step-toggle" class="step-toggle" aria-label="Пауза" hidden><svg class="ring" aria-hidden="true" width="48" height="48" viewBox="0 0 48 48"><circle cx="24" cy="24" r="23" style="fill:none; stroke:#000000; stroke-width:1.5; stroke-dasharray:144.51; stroke-dashoffset:144.51"></circle></svg><svg class="i-pause" aria-hidden="true" width="16" height="16" viewBox="0 0 16 16"><path d="M5 3v10M11 3v10" style="fill:none; stroke:#000000; stroke-width:2.2"></path></svg><svg class="i-play" aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" style="display:none"><path d="M5 3l8 5-8 5z" style="fill:#000000"></path></svg></button>
