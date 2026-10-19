@@ -317,6 +317,9 @@ html.js .why-card.in .why-vis{opacity:1;transform:none}
 .pain{position:relative;background:#FFFFFF;border:1px solid rgba(0,0,0,0.08);border-radius:22px 22px 22px 6px;padding:clamp(22px,2.6vw,32px) clamp(24px,3vw,36px);box-shadow:0 14px 36px rgba(0,0,0,0.06)}
 @media (min-width:981px){.pain{position:sticky;top:calc(140px + var(--i,0) * 14px)}}
 @media (max-width:980px){.pains{gap:12px !important}}
+/* Письмо основательницы: на телефоне длинный абзац разбиваем перед «Тогда мы…» */
+@media (max-width:980px){.m-para{display:block;height:1em}}
+@media (max-width:860px){.ft-grid{grid-template-columns:repeat(2,minmax(0,1fr)) !important}.ft-grid > :first-child{grid-column:1 / -1}}
 /* ===== Путь гостя: смена шага и появление реплик ===== */
 .step-toggle:hover{background:#D6D6D3}
 @media (prefers-reduced-motion:no-preference){
@@ -654,7 +657,7 @@ html.js .msg{animation:msg-in .5s cubic-bezier(.19,1,.22,1) both}
 
 <div aria-hidden="true" style="height:1px; background:#C4C4C0"><div style="max-width:1280px; margin:0 auto; padding:0 clamp(20px,5vw,64px)"><span style="display:block; width:7px; height:7px; margin:-3px 0 0 -3px; border-radius:50%; background:#000000"></span></div></div>
 
-<section style="max-width:1280px; margin:0 auto; padding:var(--sec) var(--pad-x)">
+<section id="komu" style="max-width:1280px; margin:0 auto; padding:var(--sec) var(--pad-x)">
 <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(min(440px,100%),1fr)); gap:24px">
 <div style="background:#FFFFFF; padding:clamp(28px,4vw,52px); display:flex; flex-direction:column; gap:22px">
 <h2 style="margin:0; display:flex; align-items:center; gap:16px; font-weight:300; font-size:clamp(30px,2.8vw,40px); line-height:1.1; letter-spacing:-0.02em"><svg aria-hidden="true" width="34" height="34" viewBox="0 0 34 34" style="flex:none"><circle cx="17" cy="17" r="17" style="fill:#000000"></circle><path d="M10.5 17.5l4.5 4.5 8.5-9.5" style="fill:none; stroke:#FFFFFF; stroke-width:1.8"></path></svg>Подойдёт</h2>
@@ -704,7 +707,7 @@ html.js .msg{animation:msg-in .5s cubic-bezier(.19,1,.22,1) both}
 </div>
 <article style="flex:1.3 1 460px; min-width:0; background:#FFFFFF; padding:clamp(28px,4vw,60px); border-radius:2px; display:flex; flex-direction:column; gap:20px; font-size:19px; line-height:1.65; color:#363636">
 <p style="margin:0">Меня зовут Эстер Гомельская. Вместе с Ариной Чоботовой мы управляем EST.EPIL — сетью из трёх клиник лазерной эпиляции в Москве: [N] лет в нише, [N] гостей в год, [4,9] на Яндекс Картах по [N] отзывам.</p>
-<p style="margin:0">Я сама слежу за тоном каждого диалога с гостем, поэтому <strong style="font-weight:500; color:#000000">готовые боты нам не подошли</strong>: приходилось выбирать между оптимизацией и лояльностью — они отвечали шаблоном, и гости просили позвать человека. Тогда мы <strong style="font-weight:500; color:#000000">собрали своего</strong>: обучили на переписках наших лучших администраторов и регламентах сети. <strong class="mark" style="font-weight:500">За 8 месяцев <span data-count="84">84</span>% обращений стали записями.</strong> Коллеги из других студий уже увидели его в работе и попросили такой же.</p>
+<p style="margin:0">Я сама слежу за тоном каждого диалога с гостем, поэтому <strong style="font-weight:500; color:#000000">готовые боты нам не подошли</strong>: приходилось выбирать между оптимизацией и лояльностью — они отвечали шаблоном, и гости просили позвать человека. <span class="m-para"></span>Тогда мы <strong style="font-weight:500; color:#000000">собрали своего</strong>: обучили на переписках наших лучших администраторов и регламентах сети. <strong class="mark" style="font-weight:500">За 8 месяцев <span data-count="84">84</span>% обращений стали записями.</strong> Коллеги из других студий уже увидели его в работе и попросили такой же.</p>
 <p style="margin:0">LIA — наш живой опыт общения с гостями, переведённый в технологию. <strong style="font-weight:500; color:#000000">Мы передаём вашей студии то, что у нас уже работает</strong>, чтобы вы не теряли гостей на ошибках, которые мы уже прошли. Наша цель — чтобы у вас получилось.</p>
 <div class="sign"><span class="sign-hand">Эстер</span><span class="sign-name">Эстер Гомельская, EST.EPIL</span></div>
 </article>
@@ -1107,16 +1110,51 @@ html.js .msg{animation:msg-in .5s cubic-bezier(.19,1,.22,1) both}
 </section>
 
 <footer style="border-top:1px solid #C4C4C0">
-<div style="max-width:1280px; margin:0 auto; padding:48px clamp(20px,5vw,64px); display:flex; flex-wrap:wrap; gap:24px 48px; align-items:center; justify-content:space-between">
-<div style="display:flex; flex-direction:column; gap:8px">
+<div style="max-width:1280px; margin:0 auto; padding:var(--gap-lg) var(--pad-x) 40px; display:flex; flex-direction:column; gap:var(--gap-lg)">
+<div class="ft-grid" style="display:grid; grid-template-columns:1.3fr repeat(4,minmax(0,1fr)); gap:40px clamp(20px,3vw,48px)">
+<div style="display:flex; flex-direction:column; gap:16px; align-items:flex-start">
 <span style="font-weight:500; font-size:18px; letter-spacing:0.5em">LIA</span>
-<span style="font-size:14px; color:#4A4A48">AI-администратор с опытом лучших сервисных студий</span>
-</div>
-<nav aria-label="Ссылки" style="display:flex; flex-wrap:wrap; gap:12px 28px; font-size:15px">
-<a href="#instagram-lia" style="text-underline-offset:4px">Instagram LIA</a>
-<a href="#instagram-est-epil" style="text-underline-offset:4px">Instagram EST.EPIL</a>
-</nav>
+<span style="font-size:15px; line-height:1.5; color:#4A4A48; max-width:22em">AI-администратор с опытом лучших сервисных студий</span>
 <a href="https://t.me/lia_ai_team_bot?start=site_footer&amp;utm_source=lia_landing&amp;utm_medium=button&amp;utm_campaign=pilot&amp;utm_content=footer" target="_blank" rel="noopener" data-bot="footer" class="btn-dark" style="display:inline-flex; align-items:center; min-height:48px; padding:0 24px; border-radius:999px; background:#000000; color:#FFFFFF; text-decoration:none; font-size:15px; font-weight:500; transition:background .2s">Оставить заявку</a>
+</div>
+<nav aria-label="Контакты">
+<h3 style="margin:0 0 18px; font-size:13px; font-weight:500; letter-spacing:0.08em; text-transform:uppercase; color:#000000">Контакты</h3>
+<ul style="list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:12px; font-size:16px; color:#4A4A48">
+<li><a href="https://t.me/lia_ai_team_bot" target="_blank" rel="noopener" style="text-underline-offset:4px">Telegram: @lia_ai_team_bot</a></li>
+<li><a href="#instagram-lia" style="text-underline-offset:4px">Instagram LIA*</a></li>
+<li><a href="#instagram-est-epil" style="text-underline-offset:4px">Instagram EST.EPIL*</a></li>
+</ul>
+</nav>
+<nav aria-label="Продукт">
+<h3 style="margin:0 0 18px; font-size:13px; font-weight:500; letter-spacing:0.08em; text-transform:uppercase; color:#000000">Продукт</h3>
+<ul style="list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:12px; font-size:16px; color:#4A4A48">
+<li><a href="#kak" style="text-underline-offset:4px">Как работает</a></li>
+<li><a href="#kto" style="text-underline-offset:4px">Кто мы</a></li>
+<li><a href="#komu" style="text-underline-offset:4px">Кому подойдёт</a></li>
+<li><a href="#zayavka" style="text-underline-offset:4px">Как подключить</a></li>
+<li><a href="#voprosy" style="text-underline-offset:4px">Вопросы</a></li>
+</ul>
+</nav>
+<div>
+<h3 style="margin:0 0 18px; font-size:13px; font-weight:500; letter-spacing:0.08em; text-transform:uppercase; color:#000000">Каналы</h3>
+<ul style="list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:12px; font-size:16px; color:#4A4A48">
+<li>Telegram</li>
+<li>WhatsApp*</li>
+<li>Instagram*</li>
+<li>Виджет на сайте</li>
+</ul>
+</div>
+<nav aria-label="Компания">
+<h3 style="margin:0 0 18px; font-size:13px; font-weight:500; letter-spacing:0.08em; text-transform:uppercase; color:#000000">Компания</h3>
+<ul style="list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:12px; font-size:16px; color:#4A4A48">
+<li><a href="#kto" style="text-underline-offset:4px">О нас</a></li>
+<li><a href="#yclients-marketplace" style="text-underline-offset:4px">YCLIENTS маркетплейс</a></li>
+<li><a href="#privacy" style="text-underline-offset:4px">Политика конфиденциальности</a></li>
+<li><a href="#terms" style="text-underline-offset:4px">Пользовательское соглашение</a></li>
+</ul>
+</nav>
+</div>
+<p style="margin:0; padding-top:24px; border-top:1px solid #C4C4C0; font-size:13px; line-height:1.5; color:#74746F">* Instagram и WhatsApp принадлежат компании Meta, признанной экстремистской организацией и запрещённой на территории РФ.</p>
 </div>
 </footer>
 

@@ -35,7 +35,7 @@ npx -y serve@14 -l 8787 .
    grep -rl 'lia-ai.ru' index.html sitemap.xml robots.txt | xargs sed -i '' 's#https://lia-ai.ru#https://ДОМЕН#g'
    ```
 2. Положить `og.png` (1200×630) в корень: это превью при шаринге ссылки в Telegram и соцсетях. Пока файла нет, превью будет без картинки.
-3. Заполнить плейсхолдеры `[N]`, `[4,9]` в блоке «Кто мы» и ссылки-заглушки `#instagram-lia`, `#instagram-est-epil`, `#est-epil`.
+3. Заполнить плейсхолдеры `[N]`, `[4,9]` в блоке «Кто мы» и ссылки-заглушки: `#instagram-lia`, `#instagram-est-epil`, `#est-epil`, а в подвале — `#privacy` (политика конфиденциальности), `#terms` (пользовательское соглашение), `#yclients-marketplace`. Эти страницы ещё не написаны.
 4. После выкладки добавить сайт в Яндекс Вебмастер и Google Search Console, отправить `sitemap.xml`.
 
 ### Что уже сделано для SEO
