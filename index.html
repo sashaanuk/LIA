@@ -81,7 +81,7 @@
   • Заявка и «напишите нам» ведут в Telegram-бот https://t.me/lia_ai_team_bot.
   • Ссылки вида #instagram-lia, #instagram-est-epil, #est-epil — заглушки: замените на настоящие адреса.
 -->
-<link href="https://fonts.googleapis.com/css2?family=Onest:wght@300;400;500;600&family=Bad+Script&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Onest:wght@300;400;500;600&family=Caveat:wght@600;700&display=swap" rel="stylesheet">
 <style>
 /* Шкала шрифтов: 8 ступеней, вес тонкий (300) у крупных, 400–500 у текста. Меняйте размер здесь, а не в элементах */
 :root{--fs-display:clamp(40px,5vw,72px);--fs-h2:clamp(32px,3.8vw,52px);--fs-h3:clamp(24px,2.4vw,34px);--fs-lead:clamp(20px,1.7vw,24px);--fs-intro:clamp(18px,1.4vw,20px);--fs-body:17px;--fs-small:14px;--fs-micro:12px}
@@ -260,11 +260,11 @@ a{color:#000}a:hover{color:#4A4A48}
 .duo::before{background:#16245E;mix-blend-mode:lighten}
 .duo::after{background:#B4C6FF;mix-blend-mode:multiply}
 .duo-cap{position:absolute;z-index:2;left:clamp(18px,2.4vw,28px);right:clamp(18px,2.4vw,28px);bottom:clamp(16px,2.2vw,26px);display:flex;flex-direction:column;gap:6px}
-.duo-name{font-size:var(--fs-lead);line-height:1.2;font-weight:400;letter-spacing:-0.01em;color:#FFFFFF}
+.duo-name{font-family:'Caveat',cursive;font-size:clamp(30px,3vw,42px);line-height:1;font-weight:700;letter-spacing:0;color:#FFFFFF;transform:rotate(-3deg);transform-origin:left bottom;text-shadow:0 1px 12px rgba(0,0,0,.35)}
 .duo-role{font-size:var(--fs-small);line-height:1.35;color:rgba(255,255,255,0.72)}
 /* ===== Подпись под письмом ===== */
 .sign{margin-top:12px;display:flex;flex-direction:column;gap:4px}
-.sign-hand{font-family:'Bad Script','Segoe Script',cursive;font-size:40px;line-height:1;color:#000000;transform:rotate(-4deg);transform-origin:left bottom;width:max-content}
+.sign-hand{font-family:'Caveat',cursive;font-weight:700;font-size:46px;line-height:1;color:#000000;transform:rotate(-4deg);transform-origin:left bottom;width:max-content}
 .sign-name{font-size:var(--fs-small);line-height:1.4;color:#74746F}
 /* Заголовки колонок «Что изменится»: на десктопе линии под ними на одном уровне, даже если один заголовок в две строки */
 @media (min-width:1000px){.ben-h{min-height:calc(2.2em + clamp(16px,1.8vw,24px) + 2px);display:flex;align-items:flex-end}}
@@ -806,7 +806,7 @@ html.js .msg{animation:msg-in .5s cubic-bezier(.19,1,.22,1) both}
 <!-- ФОТО ОСНОВАТЕЛЬНИЦ. Сейчас здесь заглушка: мягкие световые кольца. Чтобы поставить настоящее фото, замените блок <div class="duo-fake">…</div> на <img src="ссылка-на-фото" alt="">: синий дуотон наложится сам.
 Фото ведёт в Instagram студии: ссылку поменяйте в href. Над фото курсор становится плашкой со стрелкой, её текст — в data-cursor. -->
 <a href="#instagram-est-epil" class="duo" data-cursor="Instagram EST.EPIL" aria-label="Эстер Гомельская и Арина Чоботова, Instagram EST.EPIL">
-<img src="founders.webp" alt="Эстер Гомельская и Арина Чоботова, основательницы EST.EPIL" width="1122" height="1402" loading="lazy" decoding="async">
+<img src="founders-studio.webp" alt="Эстер Гомельская и Арина Чоботова, основательницы EST.EPIL" width="1122" height="1402" loading="lazy" decoding="async">
 <span class="duo-cap"><span class="duo-name">Эстер&nbsp;Гомельская и&nbsp;Арина&nbsp;Чоботова</span><span class="duo-role">EST.EPIL, три клиники лазерной эпиляции в Москве</span></span>
 </a>
 <div style="display:flex; flex-wrap:wrap; gap:8px 24px; font-size:var(--fs-small)">
