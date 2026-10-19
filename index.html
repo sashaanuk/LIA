@@ -352,6 +352,8 @@ html.js .msg{animation:msg-in .5s cubic-bezier(.19,1,.22,1) both}
 .m-letter{display:flex;flex-direction:column;gap:20px}
 @media (max-width:980px){
 #top{min-height:0 !important}
+/* Большие кнопки-пилюли на телефоне: во всю ширину, текст переносится */
+#zayavka .btn-light,#top .btn-dark{width:100%;justify-content:center;text-align:center;white-space:normal;min-height:56px !important;padding:14px 22px !important;font-size:16px !important;line-height:1.3}
 /* Цепочки: вертикальная линия слева, шаги справа от точек */
 h1{font-size:clamp(30px,8.4vw,40px) !important}
 h2{font-size:clamp(28px,7.6vw,34px) !important}
