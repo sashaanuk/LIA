@@ -94,8 +94,9 @@ a{color:#000}a:hover{color:#4A4A48}
 .on-dark a{color:#fff}.on-dark a:hover{color:#D6D6D3}
 .nav-links{display:flex}
 @media (max-width:860px){.nav-links{display:none}}
-.lia-row{display:grid;grid-template-columns:minmax(0,1fr) 230px;align-items:start}
-.lia-bg{position:absolute;top:0;bottom:0;left:0;right:230px;background:#363636;border-radius:22px 22px 22px 6px}
+.lia-row{display:grid;grid-template-columns:minmax(0,1fr) 196px;align-items:start}
+.lia-bg{position:absolute;top:0;bottom:0;left:0;right:196px;background:#363636;border-radius:22px 22px 22px 6px}
+.lia-anno{gap:6px !important}.lia-anno > span:nth-child(2){width:16px !important}.lia-anno > span:last-child{font-size:12.5px !important;line-height:1.25 !important}
 @media (max-width:760px){.lia-row{grid-template-columns:minmax(0,1fr)}.lia-anno{display:none !important}.lia-bg{right:0}}
 .sticky-spec{position:sticky !important;top:140px}
 @media (max-width:980px){.sticky-spec{position:relative !important;top:auto !important}}
@@ -1224,51 +1225,34 @@ h2{font-size:clamp(28px,7.6vw,34px) !important}
 </section>
 
 <footer style="border-top:1px solid #C4C4C0">
-<div style="max-width:1280px; margin:0 auto; padding:var(--gap-lg) var(--pad-x) 40px; display:flex; flex-direction:column; gap:var(--gap-lg)">
-<div class="ft-grid" style="display:grid; grid-template-columns:1.3fr repeat(4,minmax(0,1fr)); gap:40px clamp(20px,3vw,48px)">
+<div style="max-width:1280px; margin:0 auto; padding:var(--gap-lg) var(--pad-x) 32px; display:flex; flex-direction:column; gap:var(--gap)">
+<div class="ft-grid" style="display:grid; grid-template-columns:1.4fr 1fr 1fr; gap:36px clamp(24px,4vw,64px)">
 <div style="display:flex; flex-direction:column; gap:16px; align-items:flex-start">
 <span style="font-weight:500; font-size:18px; letter-spacing:0.5em">LIA</span>
 <span style="font-size:15px; line-height:1.5; color:#4A4A48; max-width:22em">AI-администратор с опытом лучших сервисных студий</span>
 <a href="https://t.me/lia_ai_team_bot?start=site_footer&amp;utm_source=lia_landing&amp;utm_medium=button&amp;utm_campaign=pilot&amp;utm_content=footer" target="_blank" rel="noopener" data-bot="footer" class="btn-dark" style="display:inline-flex; align-items:center; min-height:48px; padding:0 24px; border-radius:999px; background:#000000; color:#FFFFFF; text-decoration:none; font-size:15px; font-weight:500; transition:background .2s">Оставить заявку</a>
 </div>
-<nav aria-label="Контакты">
-<h3 style="margin:0 0 18px; font-size:13px; font-weight:500; letter-spacing:0.08em; text-transform:uppercase; color:#000000">Контакты</h3>
-<ul style="list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:12px; font-size:16px; color:#4A4A48">
-<li><a href="https://t.me/lia_ai_team_bot" target="_blank" rel="noopener" style="text-underline-offset:4px">Telegram: @lia_ai_team_bot</a></li>
-<li><a href="#instagram-lia" style="text-underline-offset:4px">Instagram LIA*</a></li>
-<li><a href="#instagram-est-epil" style="text-underline-offset:4px">Instagram EST.EPIL*</a></li>
-</ul>
-</nav>
-<nav aria-label="Продукт">
-<h3 style="margin:0 0 18px; font-size:13px; font-weight:500; letter-spacing:0.08em; text-transform:uppercase; color:#000000">Продукт</h3>
-<ul style="list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:12px; font-size:16px; color:#4A4A48">
+<nav aria-label="Разделы">
+<h3 style="margin:0 0 16px; font-size:13px; font-weight:500; letter-spacing:0.08em; text-transform:uppercase; color:#000000">Разделы</h3>
+<ul style="list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:10px; font-size:16px; color:#4A4A48">
 <li><a href="#kak" style="text-underline-offset:4px">Как работает</a></li>
 <li><a href="#kto" style="text-underline-offset:4px">Кто мы</a></li>
-<li><a href="#komu" style="text-underline-offset:4px">Кому подойдёт</a></li>
-<li><a href="#zayavka" style="text-underline-offset:4px">Как подключить</a></li>
 <li><a href="#voprosy" style="text-underline-offset:4px">Вопросы</a></li>
 </ul>
 </nav>
-<div>
-<h3 style="margin:0 0 18px; font-size:13px; font-weight:500; letter-spacing:0.08em; text-transform:uppercase; color:#000000">Каналы</h3>
-<ul style="list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:12px; font-size:16px; color:#4A4A48">
-<li>Telegram</li>
-<li>WhatsApp*</li>
-<li>Instagram*</li>
-<li>Виджет на сайте</li>
-</ul>
-</div>
-<nav aria-label="Компания">
-<h3 style="margin:0 0 18px; font-size:13px; font-weight:500; letter-spacing:0.08em; text-transform:uppercase; color:#000000">Компания</h3>
-<ul style="list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:12px; font-size:16px; color:#4A4A48">
-<li><a href="#kto" style="text-underline-offset:4px">О нас</a></li>
-<li><a href="#yclients-marketplace" style="text-underline-offset:4px">YCLIENTS маркетплейс</a></li>
-<li><a href="#privacy" style="text-underline-offset:4px">Политика конфиденциальности</a></li>
-<li><a href="#terms" style="text-underline-offset:4px">Пользовательское соглашение</a></li>
+<nav aria-label="Контакты">
+<h3 style="margin:0 0 16px; font-size:13px; font-weight:500; letter-spacing:0.08em; text-transform:uppercase; color:#000000">Контакты</h3>
+<ul style="list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:10px; font-size:16px; color:#4A4A48">
+<li><a href="https://t.me/lia_ai_team_bot" target="_blank" rel="noopener" style="text-underline-offset:4px">Telegram</a></li>
+<li><a href="#instagram-lia" style="text-underline-offset:4px">Instagram*</a></li>
 </ul>
 </nav>
 </div>
-<p style="margin:0; padding-top:24px; border-top:1px solid #C4C4C0; font-size:13px; line-height:1.5; color:#74746F">* Instagram и WhatsApp принадлежат компании Meta, признанной экстремистской организацией и запрещённой на территории РФ.</p>
+<div style="display:flex; flex-wrap:wrap; gap:8px 28px; padding-top:20px; border-top:1px solid #C4C4C0; font-size:13px; line-height:1.5; color:#74746F">
+<a href="#privacy" style="color:inherit; text-underline-offset:4px">Политика конфиденциальности</a>
+<a href="#terms" style="color:inherit; text-underline-offset:4px">Пользовательское соглашение</a>
+<span style="flex:1 1 280px">* Instagram принадлежит компании Meta, признанной экстремистской организацией и запрещённой на территории РФ.</span>
+</div>
 </div>
 </footer>
 
