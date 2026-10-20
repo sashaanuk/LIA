@@ -322,14 +322,14 @@ a{color:#000}a:hover{color:#4A4A48}
 .faq summary::before{z-index:0}
 .faq summary h3{position:relative;z-index:1}
 .faq[open] summary{color:#000000}
-.faq summary.is-lit{color:#FFFFFF}
-.faq summary:focus-visible{background:#436DEE !important;color:#FFFFFF;outline:none}
+.faq summary.is-lit,.faq summary:hover{color:#000000}
+.faq summary:focus-visible{outline:2px solid #000;outline-offset:2px;color:#000}
 .faq-a p{padding:2px 14px 22px 0 !important;max-width:46em}
 /* Подсветка: одна плашка скользит между строками за курсором; ярче там, где курсор, к краям гаснет */
 .faq-lit{position:absolute;left:-14px;right:-14px;top:0;height:0;z-index:0;border-radius:4px;pointer-events:none;opacity:0;
   background:radial-gradient(70% 220% at var(--mx,50%) 50%,#436DEE 0%,rgba(67,109,238,.82) 38%,rgba(67,109,238,.38) 100%);
   transition:top .22s cubic-bezier(.2,.8,.2,1),height .22s cubic-bezier(.2,.8,.2,1),opacity .2s ease}
-.faq-lit.on{opacity:1}
+.faq-lit,.faq-lit.on{display:none}
 @media (prefers-reduced-motion:reduce){.faq-lit{transition:opacity .15s ease}}
 
 
