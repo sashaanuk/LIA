@@ -448,22 +448,34 @@ html.js .msg{animation:msg-in .5s cubic-bezier(.19,1,.22,1) both}
 #kak{gap:var(--gap-lg) !important}
 #kak > div:first-child > div > div[aria-hidden]{display:none !important}
 .zsteps > li > span[aria-hidden] > span:last-child{background:rgba(255,255,255,0.55) !important}
-.m-scheme{position:relative;display:flex;flex-direction:column;margin:0;padding:22px 18px 18px;border:1px solid #C4C4C0;background:radial-gradient(circle at 50% 58%,rgba(67,109,238,0.12),rgba(67,109,238,0) 55%)}
+.m-scheme{position:relative;display:flex;flex-direction:column;margin:0;padding:22px 16px 18px;border:1px solid #C4C4C0;background:#F2F2F0 radial-gradient(rgba(0,0,0,0.12) 1px,transparent 1.3px) 0 0/18px 18px}
 .ms-c{position:absolute;width:7px;height:7px;border-radius:50%;background:#000}
-.ms-row + .ms-row{margin-top:16px}
-.ms-lbl{display:block;margin-bottom:8px;font-size:var(--fs-micro);letter-spacing:0.08em;text-transform:uppercase;color:#74746F}
-.ms-chips{display:flex;flex-wrap:wrap;gap:6px}
-.ms-chips span{display:inline-flex;align-items:center;min-height:32px;padding:0 13px;border:1px solid #C4C4C0;border-radius:999px;background:#FFFFFF;font-size:var(--fs-small)}
-.ms-know span{background:#E2E2DF;border-color:#E2E2DF}
-.ms-link{position:relative;display:block;width:1px;height:26px;margin:10px auto 6px;background:#000}
-.ms-link::after{content:"";position:absolute;left:-3px;bottom:-3px;width:7px;height:7px;border-radius:50%;background:#000}
-.ms-core{display:flex;flex-direction:column;align-items:center;gap:4px;padding:18px 20px;border-radius:22px 22px 22px 6px;background:#000;color:#FFFFFF;text-align:center}
-.ms-logo{font-size:var(--fs-small);font-weight:500;letter-spacing:0.36em;padding-left:0.36em}
-.ms-sub{font-size:var(--fs-small);color:#D6D6D3}
-.ms-out{list-style:none;margin:0;padding:0;display:flex;flex-direction:column}
-.ms-out li{padding:9px 0;border-top:1px solid #C4C4C0;font-size:var(--fs-small);color:#4A4A48}
-.ms-out li b{font-weight:500;color:#000}
-.ms-note{margin-top:16px;padding-top:12px;border-top:1px dashed #C4C4C0;font-size:var(--fs-small);line-height:1.45;color:#4A4A48}
+.mc-top{display:grid;grid-template-columns:1fr 1fr;gap:10px;align-items:stretch}
+.mc-col{display:flex;flex-direction:column;gap:8px}
+.mc-col::after{content:"";flex:1;align-self:center;border-left:1px dashed #9A9A96;margin-top:-8px}
+.mc-lbl{font-size:var(--fs-micro);color:#8E8E8A;margin-bottom:2px}
+.mc-card{display:flex;align-items:center;justify-content:center;min-height:42px;padding:8px 10px;text-align:center;border-radius:12px;background:#FFFFFF;border:1px solid #D6D6D3;box-shadow:0 6px 16px rgba(0,0,0,.04);font-size:var(--fs-small);line-height:1.2}
+.mc-know{background:#E2E2DF;border-color:#E2E2DF;box-shadow:none}
+.mc-join{display:block;width:100%;height:40px;overflow:visible}
+.mc-join-s{height:24px}
+.mc-join line{stroke:#9A9A96;stroke-width:1;stroke-dasharray:4 4;vector-effect:non-scaling-stroke}
+.mc-core{position:relative;display:flex;flex-direction:column;align-items:center;gap:4px;padding:18px 20px;border-radius:22px 22px 22px 6px;background:#000;color:#fff;box-shadow:0 16px 44px rgba(0,0,0,.22)}
+.mc-glow{position:absolute;left:50%;top:50%;width:150%;aspect-ratio:1;transform:translate(-50%,-50%);border-radius:50%;background:radial-gradient(closest-side,rgba(67,109,238,.28),rgba(67,109,238,.08) 55%,rgba(67,109,238,0));z-index:-1;pointer-events:none}
+.mc-dot{position:absolute;width:7px;height:7px;border-radius:50%;background:#000}
+.mc-dot-top{left:50%;top:-4px;transform:translateX(-50%)}
+.mc-logo{font-size:var(--fs-body);font-weight:500;letter-spacing:.36em;padding-left:.36em}
+.mc-sub{font-size:var(--fs-small);color:#D6D6D3}
+.mc-outwrap{position:relative;padding-top:34px}
+.mc-outwrap::before{content:"";position:absolute;left:50%;top:0;height:34px;border-left:1px dashed #9A9A96}
+.mc-outwrap::after{content:"";position:absolute;left:9px;right:50%;top:34px;border-top:1px dashed #9A9A96}
+.mc-lbl-out{position:absolute;left:0;top:8px}
+.mc-out{position:relative;list-style:none;margin:0;padding:12px 0 0 28px;display:flex;flex-direction:column;gap:8px}
+.mc-out::before{content:"";position:absolute;left:9px;top:0;bottom:21px;border-left:1px dashed #9A9A96}
+.mc-out li{position:relative;padding:12px 14px;border-radius:12px;background:#FFFFFF;border:1px solid #D6D6D3;font-size:var(--fs-small);line-height:1.2;color:#4A4A48}
+.mc-out li b{font-weight:500;color:#000}
+.mc-out li::before{content:"";position:absolute;left:-19px;top:50%;width:19px;border-top:1px dashed #9A9A96}
+.mc-out li::after{content:"";position:absolute;left:-4px;top:50%;width:7px;height:7px;margin-top:-3.5px;border-radius:50%;background:#000}
+.mc-note{margin-top:16px;padding-top:12px;border-top:1px dashed #C4C4C0;font-size:var(--fs-small);line-height:1.45;color:#4A4A48}
 .step-now{display:block;font-size:var(--fs-intro);line-height:1.25;font-weight:400;letter-spacing:-0.01em;text-wrap:balance}
 .panels h3{display:none !important}
 /* «Почему не подведёт»: аккордеон */
@@ -978,31 +990,6 @@ html.js .msg{animation:msg-in .5s cubic-bezier(.19,1,.22,1) both}
 
 
 
-<figure class="m-scheme" aria-hidden="true">
-<span class="ms-c" style="top:-4px; left:-4px"></span><span class="ms-c" style="top:-4px; right:-4px"></span><span class="ms-c" style="bottom:-4px; left:-4px"></span><span class="ms-c" style="bottom:-4px; right:-4px"></span>
-<div class="ms-row"><span class="ms-lbl">LIA знает</span><div class="ms-chips ms-know"><span>Тон студии</span><span>Аппараты и противопоказания</span><span>История гостя</span></div></div>
-<div class="ms-row"><span class="ms-lbl">Гость пишет</span><div class="ms-chips"><span>WhatsApp</span><span>Telegram</span><span>Instagram</span><span>Сайт</span></div></div>
-<span class="ms-link"></span>
-<div class="ms-core"><span class="ms-logo">LIA</span><span class="ms-sub">отвечает и записывает</span></div>
-<span class="ms-link"></span>
-<div class="ms-row"><span class="ms-lbl">LIA делает</span><ul class="ms-out"><li><b>Запись</b> в YCLIENTS</li><li><b>Сложное</b> — администратору</li><li><b>Отчёт</b> владельцу</li></ul></div>
-<figcaption class="ms-note">Если LIA не знает ответа — не придумывает, а зовёт человека. Это правило не отключается.</figcaption>
-</figure>
-
-<div class="rail-wrap">
-<div class="m-ring" aria-hidden="true"></div>
-<div class="rail">
-<div class="rail-track" aria-hidden="true"><span class="rail-fill"></span></div>
-<ol id="step-tabs" aria-label="Шаги">
-<li style="display:flex"><button type="button" class="step-btn" data-step="0" aria-pressed="true"><span class="stop" aria-hidden="true">1</span><span class="step-meta">Всегда</span><span class="step-title">Отвечает на всё, что пишет гость</span></button></li>
-<li style="display:flex"><button type="button" class="step-btn" data-step="1" aria-pressed="false"><span class="stop" aria-hidden="true">2</span><span class="step-meta">Чётко</span><span class="step-title">Консультирует</span></button></li>
-<li style="display:flex"><button type="button" class="step-btn" data-step="2" aria-pressed="false"><span class="stop" aria-hidden="true">3</span><span class="step-meta">Прозрачно</span><span class="step-title">Называет цену так, что гость записывается</span></button></li>
-<li style="display:flex"><button type="button" class="step-btn" data-step="3" aria-pressed="false"><span class="stop" aria-hidden="true">4</span><span class="step-meta">Удобно</span><span class="step-title">Записывает в YCLIENTS, пока гость не остыл</span></button></li>
-<li style="display:flex"><button type="button" class="step-btn" data-step="4" aria-pressed="false"><span class="stop" aria-hidden="true">5</span><span class="step-meta">Через несколько недель</span><span class="step-title">Возвращает на следующий сеанс</span></button></li>
-</ol>
-</div>
-<button type="button" id="step-toggle" class="step-toggle" aria-label="Пауза" hidden><svg class="ring" aria-hidden="true" width="48" height="48" viewBox="0 0 48 48"><circle cx="24" cy="24" r="23" style="fill:none; stroke:#000000; stroke-width:1.5; stroke-dasharray:144.51; stroke-dashoffset:144.51"></circle></svg><svg class="i-pause" aria-hidden="true" width="16" height="16" viewBox="0 0 16 16"><path d="M5 3v10M11 3v10" style="fill:none; stroke:#000000; stroke-width:2.2"></path></svg><svg class="i-play" aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" style="display:none"><path d="M5 3l8 5-8 5z" style="fill:#000000"></path></svg></button>
-</div>
 <figure class="dscheme" aria-hidden="true">
 <span class="ds-c" style="top:-4px; left:-4px"></span><span class="ds-c" style="top:-4px; right:-4px"></span><span class="ds-c" style="bottom:-4px; left:-4px"></span><span class="ds-c" style="bottom:-4px; right:-4px"></span>
 <svg class="ds-lines" viewBox="0 0 100 100" preserveAspectRatio="none"><ellipse cx="50" cy="53" rx="19" ry="37" class="ds-ring"></ellipse><line x1="27" y1="20.0" x2="27" y2="26.5"></line><line x1="50" y1="20.0" x2="50" y2="26.5"></line><line x1="73" y1="20.0" x2="73" y2="26.5"></line><line x1="27" y1="26.5" x2="73" y2="26.5"></line><line x1="50" y1="26.5" x2="50" y2="44.5"></line><line x1="23.0" y1="35" x2="31.5" y2="35"></line><line x1="23.0" y1="47" x2="31.5" y2="47"></line><line x1="23.0" y1="59" x2="31.5" y2="59"></line><line x1="23.0" y1="71" x2="31.5" y2="71"></line><line x1="31.5" y1="35" x2="31.5" y2="71"></line><line x1="31.5" y1="52" x2="40.5" y2="52"></line><line x1="59.5" y1="52" x2="67.5" y2="52"></line><line x1="67.5" y1="37" x2="67.5" y2="67"></line><line x1="67.5" y1="37" x2="74.75" y2="37"></line><line x1="67.5" y1="52" x2="74.75" y2="52"></line><line x1="67.5" y1="67" x2="74.75" y2="67"></line></svg>
@@ -1028,6 +1015,35 @@ html.js .msg{animation:msg-in .5s cubic-bezier(.19,1,.22,1) both}
 <span class="ds-dot" style="left:74.75%; top:67%"></span>
 <figcaption class="ds-note">Если LIA не знает ответа — не придумывает, а зовёт человека. Это правило не отключается.</figcaption>
 </figure>
+
+<figure class="m-scheme" aria-hidden="true">
+<span class="ms-c" style="top:-4px; left:-4px"></span><span class="ms-c" style="top:-4px; right:-4px"></span><span class="ms-c" style="bottom:-4px; left:-4px"></span><span class="ms-c" style="bottom:-4px; right:-4px"></span>
+<div class="mc-top">
+<div class="mc-col"><span class="mc-lbl">Гость пишет</span><span class="mc-card">WhatsApp</span><span class="mc-card">Telegram</span><span class="mc-card">Instagram</span><span class="mc-card">Сайт</span></div>
+<div class="mc-col"><span class="mc-lbl">LIA знает</span><span class="mc-card mc-know">Тон студии</span><span class="mc-card mc-know">Аппараты и противопоказания</span><span class="mc-card mc-know">История гостя</span></div>
+</div>
+<svg class="mc-join" viewBox="0 0 100 40" preserveAspectRatio="none"><line x1="25" y1="0" x2="25" y2="18"></line><line x1="75" y1="0" x2="75" y2="18"></line><line x1="25" y1="18" x2="75" y2="18"></line><line x1="50" y1="18" x2="50" y2="40"></line></svg>
+<div class="mc-core"><span class="mc-glow"></span><span class="mc-dot mc-dot-top"></span><span class="mc-logo">LIA</span><span class="mc-sub">отвечает и записывает</span></div>
+<div class="mc-outwrap"><span class="mc-lbl mc-lbl-out">LIA делает</span>
+<ul class="mc-out"><li><b>Запись</b> в YCLIENTS</li><li><b>Сложное</b> — администратору</li><li><b>Отчёт</b> владельцу</li></ul></div>
+<figcaption class="mc-note">Если LIA не знает ответа — не придумывает, а зовёт человека. Это правило не отключается.</figcaption>
+</figure>
+
+<div class="rail-wrap">
+<div class="m-ring" aria-hidden="true"></div>
+<div class="rail">
+<div class="rail-track" aria-hidden="true"><span class="rail-fill"></span></div>
+<ol id="step-tabs" aria-label="Шаги">
+<li style="display:flex"><button type="button" class="step-btn" data-step="0" aria-pressed="true"><span class="stop" aria-hidden="true">1</span><span class="step-meta">Всегда</span><span class="step-title">Отвечает на всё, что пишет гость</span></button></li>
+<li style="display:flex"><button type="button" class="step-btn" data-step="1" aria-pressed="false"><span class="stop" aria-hidden="true">2</span><span class="step-meta">Чётко</span><span class="step-title">Консультирует</span></button></li>
+<li style="display:flex"><button type="button" class="step-btn" data-step="2" aria-pressed="false"><span class="stop" aria-hidden="true">3</span><span class="step-meta">Прозрачно</span><span class="step-title">Называет цену так, что гость записывается</span></button></li>
+<li style="display:flex"><button type="button" class="step-btn" data-step="3" aria-pressed="false"><span class="stop" aria-hidden="true">4</span><span class="step-meta">Удобно</span><span class="step-title">Записывает в YCLIENTS, пока гость не остыл</span></button></li>
+<li style="display:flex"><button type="button" class="step-btn" data-step="4" aria-pressed="false"><span class="stop" aria-hidden="true">5</span><span class="step-meta">Через несколько недель</span><span class="step-title">Возвращает на следующий сеанс</span></button></li>
+</ol>
+</div>
+<button type="button" id="step-toggle" class="step-toggle" aria-label="Пауза" hidden><svg class="ring" aria-hidden="true" width="48" height="48" viewBox="0 0 48 48"><circle cx="24" cy="24" r="23" style="fill:none; stroke:#000000; stroke-width:1.5; stroke-dasharray:144.51; stroke-dashoffset:144.51"></circle></svg><svg class="i-pause" aria-hidden="true" width="16" height="16" viewBox="0 0 16 16"><path d="M5 3v10M11 3v10" style="fill:none; stroke:#000000; stroke-width:2.2"></path></svg><svg class="i-play" aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" style="display:none"><path d="M5 3l8 5-8 5z" style="fill:#000000"></path></svg></button>
+</div>
+
 <p class="step-now" id="step-now" aria-hidden="true">Отвечает на всё, что пишет гость</p>
 
 <div style="display:flex; flex-wrap:wrap; gap:48px clamp(40px,5vw,80px); align-items:flex-start">
