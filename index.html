@@ -102,7 +102,7 @@
 .ds-note{position:absolute;left:0;right:0;bottom:5%;text-align:center;font-size:var(--fs-small);color:#4A4A48}
 /* на десктопе схема заменяет строку плашек каналов */
 @media (min-width:981px){#kak > div:first-child > div > div[aria-hidden]{display:none !important}}
-@media (max-width:980px){.dscheme{display:none}}
+@media (max-width:980px){.dscheme{display:none}.kak-sub{display:none}}
 /* Шкала шрифтов: 8 ступеней, вес тонкий (300) у крупных, 400–500 у текста. Меняйте размер здесь, а не в элементах */
 :root{--fs-display:clamp(40px,5vw,72px);--fs-h2:clamp(32px,3.8vw,52px);--fs-h3:clamp(24px,2.4vw,34px);--fs-lead:clamp(20px,1.7vw,24px);--fs-intro:clamp(18px,1.4vw,20px);--fs-body:17px;--fs-small:14px;--fs-micro:12px}
 @media (max-width:980px){:root{--fs-display:clamp(30px,8.4vw,40px);--fs-h2:clamp(28px,7.6vw,34px);--fs-h3:22px;--fs-lead:19px;--fs-intro:17px;--fs-body:16px;--fs-small:13px;--fs-micro:12px}}
@@ -917,7 +917,7 @@ html.js .msg{animation:msg-in .5s cubic-bezier(.19,1,.22,1) both}
 <div style="display:flex; flex-direction:column; gap:24px">
 <h2 style="margin:0; font-weight:300; font-size:var(--fs-h2); line-height:1.04; letter-spacing:-0.03em">Как LIA ведёт гостя</h2>
 <div style="display:flex; flex-wrap:wrap; gap:20px clamp(40px,5vw,80px); align-items:center">
-<p style="flex:1 1 300px; margin:0; font-size:var(--fs-intro); color:#4A4A48">Отвечает в WhatsApp, Telegram, Instagram и на сайте.</p>
+<p class="kak-sub" style="flex:1 1 300px; margin:0; font-size:var(--fs-intro); color:#4A4A48">Отвечает в WhatsApp, Telegram, Instagram и на сайте.</p>
 <div aria-hidden="true" style="flex:1 1 680px; min-width:0; display:flex; flex-wrap:wrap; align-items:center; gap:10px 0">
 <div style="display:flex; flex-wrap:wrap; gap:8px">
 <span style="display:inline-flex; align-items:center; min-height:38px; padding:0 16px; border:1px solid #C4C4C0; border-radius:999px; background:#FFFFFF; font-size:var(--fs-small)">WhatsApp</span>
