@@ -318,7 +318,8 @@ a{color:#000}a:hover{color:#4A4A48}
 .faq{border-bottom:1px solid #C4C4C0}
 .faq-list{position:relative}
 .faq summary{margin:0 -14px;padding:12px 14px;border-radius:4px;color:#8E8E8A;background:none !important;transition:color .18s ease}
-.faq summary::before,.faq summary::after{display:none !important}
+.faq summary::after{display:none !important}
+.faq summary::before{z-index:0}
 .faq summary h3{position:relative;z-index:1}
 .faq[open] summary{color:#000000}
 .faq summary.is-lit{color:#FFFFFF}
@@ -448,7 +449,7 @@ html.js .msg{animation:msg-in .5s cubic-bezier(.19,1,.22,1) both}
 #kak{gap:var(--gap-lg) !important}
 #kak > div:first-child > div > div[aria-hidden]{display:none !important}
 .zsteps > li > span[aria-hidden] > span:last-child{background:rgba(255,255,255,0.55) !important}
-.m-scheme{position:relative;display:flex;flex-direction:column;margin:0;padding:22px 16px 18px;border:1px solid #C4C4C0;background:#F2F2F0 radial-gradient(rgba(0,0,0,0.12) 1px,transparent 1.3px) 0 0/18px 18px}
+.m-scheme{position:relative;display:flex;flex-direction:column;margin:0;padding:22px 16px 18px;border:1px solid #C4C4C0;background:radial-gradient(70% 34% at 50% 54%,rgba(67,109,238,0.20),rgba(67,109,238,0.06) 60%,rgba(67,109,238,0) 100%),radial-gradient(rgba(0,0,0,0.12) 1px,transparent 1.3px) 0 0/18px 18px,#F2F2F0}
 .ms-c{position:absolute;width:7px;height:7px;border-radius:50%;background:#000}
 .mc-top{display:grid;grid-template-columns:1fr 1fr;gap:10px;align-items:stretch}
 .mc-col{display:flex;flex-direction:column;gap:8px}
@@ -460,7 +461,7 @@ html.js .msg{animation:msg-in .5s cubic-bezier(.19,1,.22,1) both}
 .mc-join-s{height:24px}
 .mc-join line{stroke:#9A9A96;stroke-width:1;stroke-dasharray:4 4;vector-effect:non-scaling-stroke}
 .mc-core{position:relative;display:flex;flex-direction:column;align-items:center;gap:4px;padding:18px 20px;border-radius:22px 22px 22px 6px;background:#000;color:#fff;box-shadow:0 16px 44px rgba(0,0,0,.22)}
-.mc-glow{position:absolute;left:50%;top:50%;width:150%;aspect-ratio:1;transform:translate(-50%,-50%);border-radius:50%;background:radial-gradient(closest-side,rgba(67,109,238,.28),rgba(67,109,238,.08) 55%,rgba(67,109,238,0));z-index:-1;pointer-events:none}
+.mc-glow{display:none;position:absolute;left:50%;top:50%;width:150%;aspect-ratio:1;transform:translate(-50%,-50%);border-radius:50%;background:radial-gradient(closest-side,rgba(67,109,238,.28),rgba(67,109,238,.08) 55%,rgba(67,109,238,0));z-index:-1;pointer-events:none}
 .mc-dot{position:absolute;width:7px;height:7px;border-radius:50%;background:#000}
 .mc-dot-top{left:50%;top:-4px;transform:translateX(-50%)}
 .mc-logo{font-size:var(--fs-body);font-weight:500;letter-spacing:.36em;padding-left:.36em}
