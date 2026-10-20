@@ -83,6 +83,26 @@
 -->
 <link href="https://fonts.googleapis.com/css2?family=Onest:wght@300;400;500&family=Comforter&display=swap" rel="stylesheet">
 <style>
+/* ===== «Как LIA ведёт гостя»: схема для десктопа (на телефоне — вертикальная .m-scheme) ===== */
+.dscheme{position:relative;margin:0;aspect-ratio:1.95/1;border:1px solid #C4C4C0;background:#F2F2F0 radial-gradient(rgba(0,0,0,0.12) 1px,transparent 1.3px) 0 0/20px 20px}
+.ds-c{position:absolute;width:7px;height:7px;border-radius:50%;background:#000}
+.ds-lines{position:absolute;left:0;top:0;width:100%;height:100%;overflow:visible}
+.ds-lines line{stroke:#9A9A96;stroke-width:1;stroke-dasharray:4 4;vector-effect:non-scaling-stroke}
+.ds-ring{fill:none;stroke:#C4C4C0;stroke-width:1;stroke-dasharray:3 4;vector-effect:non-scaling-stroke}
+.ds-glow{position:absolute;width:34%;aspect-ratio:1;border-radius:50%;transform:translate(-50%,-50%);background:radial-gradient(closest-side,rgba(67,109,238,0.30),rgba(67,109,238,0.10) 55%,rgba(67,109,238,0) 100%);pointer-events:none}
+.ds-lbl{position:absolute;transform:translateY(-50%);font-size:var(--fs-micro);color:#8E8E8A;white-space:nowrap}
+.ds-card{position:absolute;transform:translate(-50%,-50%);display:flex;align-items:center;justify-content:center;padding:0 12px;text-align:center;border-radius:14px;background:#FFFFFF;border:1px solid #D6D6D3;box-shadow:0 1px 0 rgba(0,0,0,.03),0 8px 20px rgba(0,0,0,.04);font-size:var(--fs-small);line-height:1.25;color:#000}
+.ds-know{background:#E2E2DF;border-color:#E2E2DF;box-shadow:none}
+.ds-out{color:#4A4A48}
+.ds-out b{font-weight:500;color:#000}
+.ds-core{position:absolute;transform:translate(-50%,-50%);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;border-radius:22px 22px 22px 6px;background:#000;color:#fff;box-shadow:0 18px 50px rgba(0,0,0,.22)}
+.ds-logo{font-size:var(--fs-body);font-weight:500;letter-spacing:.36em;padding-left:.36em}
+.ds-sub{font-size:var(--fs-small);color:#D6D6D3}
+.ds-dot{position:absolute;width:7px;height:7px;border-radius:50%;background:#000;transform:translate(-50%,-50%)}
+.ds-note{position:absolute;left:0;right:0;bottom:5%;text-align:center;font-size:var(--fs-small);color:#4A4A48}
+/* на десктопе схема заменяет строку плашек каналов */
+@media (min-width:981px){#kak > div:first-child > div > div[aria-hidden]{display:none !important}}
+@media (max-width:980px){.dscheme{display:none}}
 /* Шкала шрифтов: 8 ступеней, вес тонкий (300) у крупных, 400–500 у текста. Меняйте размер здесь, а не в элементах */
 :root{--fs-display:clamp(40px,5vw,72px);--fs-h2:clamp(32px,3.8vw,52px);--fs-h3:clamp(24px,2.4vw,34px);--fs-lead:clamp(20px,1.7vw,24px);--fs-intro:clamp(18px,1.4vw,20px);--fs-body:17px;--fs-small:14px;--fs-micro:12px}
 @media (max-width:980px){:root{--fs-display:clamp(30px,8.4vw,40px);--fs-h2:clamp(28px,7.6vw,34px);--fs-h3:22px;--fs-lead:19px;--fs-intro:17px;--fs-body:16px;--fs-small:13px;--fs-micro:12px}}
@@ -810,7 +830,7 @@ html.js .msg{animation:msg-in .5s cubic-bezier(.19,1,.22,1) both}
 Фото ведёт в Instagram студии: ссылку поменяйте в href. Над фото курсор становится плашкой со стрелкой, её текст — в data-cursor. -->
 <a href="#instagram-est-epil" class="duo" data-cursor="Instagram EST.EPIL" data-cursor-left="Арина Чоботова" data-cursor-right="Эстер Гомельская" aria-label="Эстер Гомельская и Арина Чоботова, Instagram EST.EPIL">
 <img src="founders-studio.webp" alt="Эстер Гомельская и Арина Чоботова, основательницы EST.EPIL" width="1122" height="1402" loading="lazy" decoding="async">
-<span class="duo-cap"><span class="duo-name">Эстер&nbsp;Гомельская и&nbsp;Арина&nbsp;Чоботова</span><span class="duo-role">EST.EPIL — три студии лазерной эпиляции в Москве, более 10&nbsp;лет предпринимательства</span></span>
+<span class="duo-cap"><span class="duo-name">Эстер&nbsp;Гомельская и&nbsp;Арина&nbsp;Чоботова</span><span class="duo-role">EST.EPIL — три студии лазерной эпиляции в Москве, 10+ лет в&nbsp;бизнесе</span></span>
 </a>
 <div style="display:flex; flex-wrap:wrap; gap:8px 24px; font-size:var(--fs-small)">
 <a href="#est-epil" style="text-underline-offset:4px">EST.EPIL</a>
@@ -955,6 +975,32 @@ html.js .msg{animation:msg-in .5s cubic-bezier(.19,1,.22,1) both}
 </div>
 </figure>
 КОНЕЦ СХЕМЫ -->
+
+<figure class="dscheme" aria-hidden="true">
+<span class="ds-c" style="top:-4px; left:-4px"></span><span class="ds-c" style="top:-4px; right:-4px"></span><span class="ds-c" style="bottom:-4px; left:-4px"></span><span class="ds-c" style="bottom:-4px; right:-4px"></span>
+<svg class="ds-lines" viewBox="0 0 100 100" preserveAspectRatio="none"><ellipse cx="50" cy="53" rx="19" ry="37" class="ds-ring"></ellipse><line x1="27" y1="20.0" x2="27" y2="26.5"></line><line x1="50" y1="20.0" x2="50" y2="26.5"></line><line x1="73" y1="20.0" x2="73" y2="26.5"></line><line x1="27" y1="26.5" x2="73" y2="26.5"></line><line x1="50" y1="26.5" x2="50" y2="44.5"></line><line x1="23.0" y1="35" x2="31.5" y2="35"></line><line x1="23.0" y1="47" x2="31.5" y2="47"></line><line x1="23.0" y1="59" x2="31.5" y2="59"></line><line x1="23.0" y1="71" x2="31.5" y2="71"></line><line x1="31.5" y1="35" x2="31.5" y2="71"></line><line x1="31.5" y1="52" x2="40.5" y2="52"></line><line x1="59.5" y1="52" x2="67.5" y2="52"></line><line x1="67.5" y1="37" x2="67.5" y2="67"></line><line x1="67.5" y1="37" x2="74.75" y2="37"></line><line x1="67.5" y1="52" x2="74.75" y2="52"></line><line x1="67.5" y1="67" x2="74.75" y2="67"></line></svg>
+<span class="ds-glow" style="left:50%; top:52%"></span>
+<span class="ds-lbl" style="left:6.5%; top:15%">LIA знает</span>
+<span class="ds-lbl" style="left:6.5%; top:28.5%">Гость пишет</span>
+<span class="ds-lbl" style="left:74.75%; top:29.5%">LIA делает</span>
+<span class="ds-card ds-know" style="left:27%; top:15%; width:18%; height:10%"><span>Тон студии</span></span>
+<span class="ds-card ds-know" style="left:50%; top:15%; width:18%; height:10%"><span>Аппараты и противопоказания</span></span>
+<span class="ds-card ds-know" style="left:73%; top:15%; width:18%; height:10%"><span>История гостя</span></span>
+<span class="ds-card" style="left:15%; top:35%; width:16%; height:8.6%"><span>WhatsApp</span></span>
+<span class="ds-card" style="left:15%; top:47%; width:16%; height:8.6%"><span>Telegram</span></span>
+<span class="ds-card" style="left:15%; top:59%; width:16%; height:8.6%"><span>Instagram</span></span>
+<span class="ds-card" style="left:15%; top:71%; width:16%; height:8.6%"><span>Сайт</span></span>
+<span class="ds-card ds-out" style="left:84%; top:37%; width:18.5%; height:10.5%"><span><b>Запись</b> в YCLIENTS</span></span>
+<span class="ds-card ds-out" style="left:84%; top:52%; width:18.5%; height:10.5%"><span><b>Сложное</b> — администратору</span></span>
+<span class="ds-card ds-out" style="left:84%; top:67%; width:18.5%; height:10.5%"><span><b>Отчёт</b> владельцу</span></span>
+<span class="ds-core" style="left:50%; top:52%; width:19%; height:15%"><span class="ds-logo">LIA</span><span class="ds-sub">отвечает и записывает</span></span>
+<span class="ds-dot" style="left:50%; top:44.5%"></span>
+<span class="ds-dot" style="left:40.5%; top:52%"></span>
+<span class="ds-dot" style="left:74.75%; top:37%"></span>
+<span class="ds-dot" style="left:74.75%; top:52%"></span>
+<span class="ds-dot" style="left:74.75%; top:67%"></span>
+<figcaption class="ds-note">Если LIA не знает ответа — не придумывает, а зовёт человека. Это правило не отключается.</figcaption>
+</figure>
 
 <figure class="m-scheme" aria-hidden="true">
 <span class="ms-c" style="top:-4px; left:-4px"></span><span class="ms-c" style="top:-4px; right:-4px"></span><span class="ms-c" style="bottom:-4px; left:-4px"></span><span class="ms-c" style="bottom:-4px; right:-4px"></span>
