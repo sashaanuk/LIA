@@ -83,6 +83,55 @@
 -->
 <link href="https://fonts.googleapis.com/css2?family=Onest:wght@300;400;500;600&family=Caveat:wght@600;700&display=swap" rel="stylesheet">
 <style>
+
+/* ===== «Как LIA ведёт гостя»: карта слева, диалог со строками этапов справа ===== */
+.k-sr{position:absolute !important;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.rail-wrap,.step-now{display:none !important}
+#kak > div:first-child > div > div[aria-hidden]{display:none !important}
+.kwrap{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:clamp(24px,3vw,48px);align-items:start}
+.kmap{position:sticky;top:120px;margin:0;aspect-ratio:1/0.95;border:1px solid #E2E2DF;border-radius:28px;background:#F6F6F4 radial-gradient(rgba(0,0,0,0.10) 1px,transparent 1.2px) 0 0/18px 18px;overflow:hidden}
+.kmap-lines{position:absolute;left:0;top:0;width:100%;height:100%}
+.kmap-ring{fill:none;stroke:#D6D6D3;stroke-width:1;stroke-dasharray:3 5;vector-effect:non-scaling-stroke}
+.kl{stroke:#C4C4C0;stroke-width:1;stroke-dasharray:3 5;vector-effect:non-scaling-stroke;transition:stroke .3s ease}
+.kl.on{stroke:#436DEE;stroke-width:1.6;stroke-dasharray:5 7;animation:k-flow 1.1s linear infinite}
+@keyframes k-flow{to{stroke-dashoffset:-24}}
+.kg{position:absolute;transform:translate(-50%,-50%);font-size:var(--fs-micro);color:#8E8E8A;white-space:nowrap}
+.kn{position:absolute;transform:translate(-50%,-50%);padding:10px 14px;border-radius:12px;background:#FFFFFF;border:1px solid #E2E2DF;box-shadow:0 1px 0 rgba(0,0,0,.03),0 8px 22px rgba(0,0,0,.05);font-size:var(--fs-small);line-height:1.2;white-space:nowrap;color:#4A4A48;transition:border-color .3s ease,color .3s ease,box-shadow .3s ease}
+.kn.on{border-color:#436DEE;color:#000000;box-shadow:0 0 0 3px rgba(67,109,238,.12),0 10px 26px rgba(67,109,238,.18)}
+.kcore{position:absolute;transform:translate(-50%,-50%);padding:16px 26px 16px 30px;border-radius:18px;background:#000000;color:#FFFFFF;font-size:var(--fs-body);font-weight:500;letter-spacing:.36em;box-shadow:0 14px 40px rgba(0,0,0,.25)}
+.kcore-ring{position:absolute;width:110px;height:110px;border-radius:50%;border:1px solid #436DEE;transform:translate(-50%,-50%);animation:k-pulse 2.6s ease-out infinite}
+@keyframes k-pulse{from{transform:translate(-50%,-50%) scale(.6);opacity:.55}to{transform:translate(-50%,-50%) scale(1.9);opacity:0}}
+@media (prefers-reduced-motion:reduce){.kl.on,.kcore-ring{animation:none}}
+.kright{display:flex;flex-direction:column;gap:14px;min-width:0}
+.kright .chat-stage{flex:none;width:100%}
+.kstages{display:flex;flex-direction:column;gap:8px}
+.ks-head{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:6px}
+.ks-head span{font-size:var(--fs-small);color:#74746F}
+.ks-head .step-toggle{margin:0 !important;width:40px;height:40px}
+.ks-head .step-toggle .ring{width:40px;height:40px}
+.ks{position:relative;display:block;width:100%;padding:12px 14px;border:1px solid #E2E2DF;border-radius:14px;background:#FFFFFF;font:inherit;color:#000;text-align:left;cursor:pointer;overflow:hidden;transition:border-color .25s ease}
+.ks:hover{border-color:#C4C4C0}
+.ks:focus-visible{outline:2px solid #000;outline-offset:2px}
+.ks-row{display:grid;grid-template-columns:18px minmax(0,1fr) auto;align-items:center;gap:12px}
+.ks-ic{width:12px;height:12px;border-radius:50%;background:#C4C4C0;justify-self:center}
+.ks.done .ks-ic{background:#000}
+.ks.on .ks-ic{background:none;border:2px solid #436DEE;border-right-color:transparent;animation:k-spin .9s linear infinite}
+@keyframes k-spin{to{transform:rotate(360deg)}}
+.ks-t{font-size:var(--fs-body);font-weight:500;line-height:1.3}
+.ks-m{display:block;margin-top:2px;font-size:var(--fs-small);font-weight:400;color:#8E8E8A}
+.ks-b{padding:4px 10px;border-radius:8px;font-size:var(--fs-micro);font-weight:500;white-space:nowrap;background:#F0F0EE;color:#74746F}
+.ks.on .ks-b{background:#E8EEFF;color:#436DEE}
+.ks.queued .ks-t{color:#4A4A48}
+.ks-d{display:none;margin:10px 0 2px 30px}
+.ks.on .ks-d{display:block}
+.ks-d ul{margin:0 !important}
+.ks-d li{padding:9px 0 !important;font-size:var(--fs-small)}
+.ks-bar{position:absolute;left:0;bottom:0;height:2px;width:100%;background:#436DEE;transform-origin:left center;transform:scaleX(var(--kp,0));opacity:0}
+.ks.on .ks-bar{opacity:1}
+@media (max-width:980px){
+.kwrap{grid-template-columns:minmax(0,1fr)}
+.kmap{display:none}
+}
 /* Шкала шрифтов: 8 ступеней, вес тонкий (300) у крупных, 400–500 у текста. Меняйте размер здесь, а не в элементах */
 :root{--fs-display:clamp(40px,5vw,72px);--fs-h2:clamp(32px,3.8vw,52px);--fs-h3:clamp(24px,2.4vw,34px);--fs-lead:clamp(20px,1.7vw,24px);--fs-intro:clamp(18px,1.4vw,20px);--fs-body:17px;--fs-small:14px;--fs-micro:12px}
 @media (max-width:980px){:root{--fs-display:clamp(30px,8.4vw,40px);--fs-h2:clamp(28px,7.6vw,34px);--fs-h3:22px;--fs-lead:19px;--fs-intro:17px;--fs-body:16px;--fs-small:13px;--fs-micro:12px}}
@@ -980,8 +1029,94 @@ html.js .msg{animation:msg-in .5s cubic-bezier(.19,1,.22,1) both}
 </div>
 <p class="step-now" id="step-now" aria-hidden="true">Отвечает на всё, что пишет гость</p>
 
-<div style="display:flex; flex-wrap:wrap; gap:48px clamp(40px,5vw,80px); align-items:flex-start">
-<div class="panels" style="flex:1 1 380px; min-width:0">
+<div class="kwrap">
+<figure class="kmap" aria-hidden="true">
+<svg class="kmap-lines" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
+<ellipse cx="50" cy="51" rx="34" ry="36" class="kmap-ring"></ellipse>
+<line class="kl" data-node="wa" x1="17" y1="32" x2="50" y2="51"></line>
+<line class="kl" data-node="tg" x1="13" y1="47" x2="50" y2="51"></line>
+<line class="kl" data-node="ig" x1="13" y1="62" x2="50" y2="51"></line>
+<line class="kl" data-node="site" x1="17" y1="77" x2="50" y2="51"></line>
+<line class="kl" data-node="base" x1="27" y1="17" x2="50" y2="51"></line>
+<line class="kl" data-node="rules" x1="50" y1="12" x2="50" y2="51"></line>
+<line class="kl" data-node="hist" x1="73" y1="17" x2="50" y2="51"></line>
+<line class="kl" data-node="yc" x1="50" y1="51" x2="83" y2="34"></line>
+<line class="kl" data-node="adm" x1="50" y1="51" x2="87" y2="51"></line>
+<line class="kl" data-node="rep" x1="50" y1="51" x2="83" y2="68"></line>
+<line class="kl" data-node="back" x1="50" y1="51" x2="50" y2="90"></line>
+</svg>
+<span class="kg" style="left:16%; top:22%">Гость пишет</span>
+<span class="kg" style="left:50%; top:4%">LIA знает</span>
+<span class="kg" style="left:84%; top:24%">LIA делает</span>
+<span class="kn kn-in" data-node="wa" data-steps="0" style="left:17%; top:32%">WhatsApp</span>
+<span class="kn kn-in" data-node="tg" data-steps="0" style="left:13%; top:47%">Telegram</span>
+<span class="kn kn-in" data-node="ig" data-steps="0" style="left:13%; top:62%">Instagram</span>
+<span class="kn kn-in" data-node="site" data-steps="0" style="left:17%; top:77%">Сайт</span>
+<span class="kn kn-in" data-node="base" data-steps="1 2" style="left:27%; top:17%">База практиков</span>
+<span class="kn kn-in" data-node="rules" data-steps="0 2" style="left:50%; top:12%">Правила студии</span>
+<span class="kn kn-in" data-node="hist" data-steps="1 4" style="left:73%; top:17%">История гостя</span>
+<span class="kn kn-out" data-node="yc" data-steps="3" style="left:83%; top:34%">Запись в YCLIENTS</span>
+<span class="kn kn-out" data-node="adm" data-steps="3" style="left:87%; top:51%">Администратор</span>
+<span class="kn kn-out" data-node="rep" data-steps="4" style="left:83%; top:68%">Отчёт владельцу</span>
+<span class="kn kn-out" data-node="back" data-steps="4" style="left:50%; top:90%">Повторный визит</span>
+<span class="kcore-ring" style="left:50%; top:51%"></span>
+<span class="kcore" style="left:50%; top:51%">LIA</span>
+</figure>
+<div class="kright">
+<figure class="chat-stage">
+<span aria-hidden="true" class="corner" style="top:-4px; left:-4px"></span>
+<span aria-hidden="true" class="corner" style="top:-4px; right:-4px"></span>
+<span aria-hidden="true" class="corner" style="bottom:-4px; left:-4px"></span>
+<span aria-hidden="true" class="corner" style="bottom:-4px; right:-4px"></span>
+<figcaption class="sr">Пример переписки LIA с гостем на выбранном шаге</figcaption>
+<div class="stage-label" id="stage-label" aria-hidden="true">Instagram, суббота</div>
+<!-- Примеры переписок к шагам 1–5. Реплики LIA (class="b-lia") проявляются анимацией из этого текста. -->
+<div class="thread">
+<div class="chat" data-chat="0" data-channel="Instagram, суббота">
+<div class="msg" data-who="guest"><span class="msg-time">Гость, 11:02</span><div class="b-guest"><span class="voice"><svg width="22" height="22" viewBox="0 0 22 22"><circle cx="11" cy="11" r="10.5" style="fill:#000000"></circle><path d="M9 7l6 4-6 4z" style="fill:#FFFFFF"></path></svg><svg width="132" height="22" viewBox="0 0 132 22"><path d="M1 9v4M7 6v10M13 3v16M19 7v8M25 4v14M31 8v6M37 2v18M43 6v10M49 9v4M55 5v12M61 3v16M67 8v6M73 6v10M79 9v4M85 4v14M91 7v8M97 10v2M103 6v10M109 8v6M115 9v4M121 10v2M127 10v2" style="fill:none; stroke:#000000; stroke-width:2; stroke-linecap:round"></path></svg><span>Голосовое, 0:24</span></span></div></div>
+<div class="msg" data-who="guest"><div class="b-guest">И ещё: сколько стоит бикини? Это больно? Есть окна сегодня?</div></div>
+<div class="msg" data-who="note"><div class="b-note"><span class="d"></span><span class="l"></span><span>LIA разобрала голосовое: гостья спрашивает про подмышки</span></div></div>
+<div class="msg" data-who="typing" hidden><div class="b-typing"><span class="dots"><i></i><i></i><i></i></span></div></div>
+<div class="msg" data-who="lia"><span class="msg-time">LIA, 11:02</span><div class="b-lia">Здравствуйте! Да, конечно, сейчас отвечу по порядку. Подмышки — 1&nbsp;900&nbsp;₽, бикини — 3&nbsp;200&nbsp;₽ за сеанс. Ощущается как лёгкое тепло: у аппарата охлаждение. Сегодня свободно в 14:00 и 17:30 — когда удобнее?</div></div>
+</div>
+<div class="chat" data-chat="1" data-channel="WhatsApp, четверг" hidden>
+<div class="msg" data-who="typing" hidden><div class="b-typing"><span class="dots"><i></i><i></i><i></i></span></div></div>
+<div class="msg" data-who="lia"><span class="msg-time">LIA, 15:20</span><div class="b-lia">Подскажите, вы уже делали лазерную эпиляцию? И какие зоны хотите?</div></div>
+<div class="msg" data-who="guest"><span class="msg-time">Гость, 15:22</span><div class="b-guest">Первый раз. Хочу ноги полностью, вот фото<span class="photo"></span></div></div>
+<div class="msg" data-who="typing" hidden><div class="b-typing"><span class="dots"><i></i><i></i><i></i></span></div></div>
+<div class="msg" data-who="lia"><div class="b-lia">Спасибо, фото вижу. Вам подойдёт [аппарат], обычно это [N] сеансов. Пришлю памятку: как подготовиться и какие есть противопоказания.</div></div>
+<div class="msg" data-who="note"><div class="b-note"><span class="d"></span><span class="l"></span><span>Гость придёт подготовленным</span></div></div>
+</div>
+<div class="chat" data-chat="2" data-channel="Telegram, понедельник" hidden>
+<div class="msg" data-who="guest"><span class="msg-time">Гость, 21:05</span><div class="b-guest">А сколько это будет стоить?</div></div>
+<div class="msg" data-who="typing" hidden><div class="b-typing"><span class="dots"><i></i><i></i><i></i></span></div></div>
+<div class="msg" data-who="lia"><span class="msg-time">LIA, 21:05</span><div class="b-lia">Ноги полностью — 6&nbsp;500&nbsp;₽ за сеанс. Чтобы волосы не возвращались, нужен курс из [N] сеансов — курсом выйдет на 10% выгоднее.</div></div>
+<div class="msg" data-who="guest"><div class="b-guest">Дороговато, я подумаю</div></div>
+<div class="msg" data-who="typing" hidden><div class="b-typing"><span class="dots"><i></i><i></i><i></i></span></div></div>
+<div class="msg" data-who="lia"><div class="b-lia">Понимаю. Подскажите, что смущает — сумма сразу или количество сеансов? Курс можно оплачивать по одному сеансу. А если добавить подмышки, вместе выйдет быстрее и дешевле.</div></div>
+</div>
+<div class="chat" data-chat="3" data-channel="Instagram, среда" hidden>
+<div class="msg" data-who="guest"><span class="msg-time">Гость, 22:14</span><div class="b-guest">Хорошо, давайте попробуем</div></div>
+<div class="msg" data-who="typing" hidden><div class="b-typing"><span class="dots"><i></i><i></i><i></i></span></div></div>
+<div class="msg" data-who="lia"><span class="msg-time">LIA, 22:14</span><div class="b-lia">В студии на [адрес] у Марины есть четверг, 19:30 и пятница, 11:00. Как вам удобнее?</div></div>
+<div class="msg" data-who="guest"><div class="b-guest">Четверг</div></div>
+<div class="msg" data-who="typing" hidden><div class="b-typing"><span class="dots"><i></i><i></i><i></i></span></div></div>
+<div class="msg" data-who="lia"><div class="b-lia">Записала вас на четверг, 19:30. Накануне пришлю напоминание и памятку.</div></div>
+<div class="msg" data-who="note"><div class="b-note"><span class="d"></span><span class="l"></span><span>Запись в YCLIENTS ждёт подтверждения администратора</span></div></div>
+</div>
+<div class="chat" data-chat="4" data-channel="WhatsApp, через несколько недель" hidden>
+<div class="msg" data-who="note"><div class="b-note"><span class="d"></span><span class="l"></span><span>Подошёл срок второго сеанса</span></div></div>
+<div class="msg" data-who="typing" hidden><div class="b-typing"><span class="dots"><i></i><i></i><i></i></span></div></div>
+<div class="msg" data-who="lia"><span class="msg-time">LIA, 12:00</span><div class="b-lia">Анна, добрый день! Подошёл срок второго сеанса. У Марины свободно во вторник в 18:00 — записать вас, как в прошлый раз, на ноги и подмышки?</div></div>
+<div class="msg" data-who="guest"><span class="msg-time">Гость, 12:07</span><div class="b-guest">Да, давайте!</div></div>
+<div class="msg" data-who="note"><div class="b-note"><span class="d"></span><span class="l"></span><span>Запись в YCLIENTS ждёт подтверждения администратора</span></div></div>
+</div>
+</div>
+</figure>
+<div class="kstages" aria-label="Этапы диалога"></div>
+</div>
+</div>
+<div class="panels k-sr">
 <div data-panel="0" class="is-on">
 <div class="rise" style="display:flex; flex-direction:column; gap:24px">
 <h3 style="margin:0; display:flex; gap:20px; align-items:baseline; font-weight:300; font-size:var(--fs-h3); line-height:1.08; letter-spacing:-0.025em"><span aria-hidden="true" style="color:#74746F">1</span><span>Отвечает на всё, что пишет гость</span></h3>
@@ -1031,58 +1166,6 @@ html.js .msg{animation:msg-in .5s cubic-bezier(.19,1,.22,1) both}
 </ul>
 </div>
 </div>
-</div>
-
-<figure class="chat-stage">
-<span aria-hidden="true" class="corner" style="top:-4px; left:-4px"></span>
-<span aria-hidden="true" class="corner" style="top:-4px; right:-4px"></span>
-<span aria-hidden="true" class="corner" style="bottom:-4px; left:-4px"></span>
-<span aria-hidden="true" class="corner" style="bottom:-4px; right:-4px"></span>
-<figcaption class="sr">Пример переписки LIA с гостем на выбранном шаге</figcaption>
-<div class="stage-label" id="stage-label" aria-hidden="true">Instagram, суббота</div>
-<!-- Примеры переписок к шагам 1–5. Реплики LIA (class="b-lia") проявляются анимацией из этого текста. -->
-<div class="thread">
-<div class="chat" data-chat="0" data-channel="Instagram, суббота">
-<div class="msg" data-who="guest"><span class="msg-time">Гость, 11:02</span><div class="b-guest"><span class="voice"><svg width="22" height="22" viewBox="0 0 22 22"><circle cx="11" cy="11" r="10.5" style="fill:#000000"></circle><path d="M9 7l6 4-6 4z" style="fill:#FFFFFF"></path></svg><svg width="132" height="22" viewBox="0 0 132 22"><path d="M1 9v4M7 6v10M13 3v16M19 7v8M25 4v14M31 8v6M37 2v18M43 6v10M49 9v4M55 5v12M61 3v16M67 8v6M73 6v10M79 9v4M85 4v14M91 7v8M97 10v2M103 6v10M109 8v6M115 9v4M121 10v2M127 10v2" style="fill:none; stroke:#000000; stroke-width:2; stroke-linecap:round"></path></svg><span>Голосовое, 0:24</span></span></div></div>
-<div class="msg" data-who="guest"><div class="b-guest">И ещё: сколько стоит бикини? Это больно? Есть окна сегодня?</div></div>
-<div class="msg" data-who="note"><div class="b-note"><span class="d"></span><span class="l"></span><span>LIA разобрала голосовое: гостья спрашивает про подмышки</span></div></div>
-<div class="msg" data-who="typing" hidden><div class="b-typing"><span class="dots"><i></i><i></i><i></i></span></div></div>
-<div class="msg" data-who="lia"><span class="msg-time">LIA, 11:02</span><div class="b-lia">Здравствуйте! Да, конечно, сейчас отвечу по порядку. Подмышки — 1&nbsp;900&nbsp;₽, бикини — 3&nbsp;200&nbsp;₽ за сеанс. Ощущается как лёгкое тепло: у аппарата охлаждение. Сегодня свободно в 14:00 и 17:30 — когда удобнее?</div></div>
-</div>
-<div class="chat" data-chat="1" data-channel="WhatsApp, четверг" hidden>
-<div class="msg" data-who="typing" hidden><div class="b-typing"><span class="dots"><i></i><i></i><i></i></span></div></div>
-<div class="msg" data-who="lia"><span class="msg-time">LIA, 15:20</span><div class="b-lia">Подскажите, вы уже делали лазерную эпиляцию? И какие зоны хотите?</div></div>
-<div class="msg" data-who="guest"><span class="msg-time">Гость, 15:22</span><div class="b-guest">Первый раз. Хочу ноги полностью, вот фото<span class="photo"></span></div></div>
-<div class="msg" data-who="typing" hidden><div class="b-typing"><span class="dots"><i></i><i></i><i></i></span></div></div>
-<div class="msg" data-who="lia"><div class="b-lia">Спасибо, фото вижу. Вам подойдёт [аппарат], обычно это [N] сеансов. Пришлю памятку: как подготовиться и какие есть противопоказания.</div></div>
-<div class="msg" data-who="note"><div class="b-note"><span class="d"></span><span class="l"></span><span>Гость придёт подготовленным</span></div></div>
-</div>
-<div class="chat" data-chat="2" data-channel="Telegram, понедельник" hidden>
-<div class="msg" data-who="guest"><span class="msg-time">Гость, 21:05</span><div class="b-guest">А сколько это будет стоить?</div></div>
-<div class="msg" data-who="typing" hidden><div class="b-typing"><span class="dots"><i></i><i></i><i></i></span></div></div>
-<div class="msg" data-who="lia"><span class="msg-time">LIA, 21:05</span><div class="b-lia">Ноги полностью — 6&nbsp;500&nbsp;₽ за сеанс. Чтобы волосы не возвращались, нужен курс из [N] сеансов — курсом выйдет на 10% выгоднее.</div></div>
-<div class="msg" data-who="guest"><div class="b-guest">Дороговато, я подумаю</div></div>
-<div class="msg" data-who="typing" hidden><div class="b-typing"><span class="dots"><i></i><i></i><i></i></span></div></div>
-<div class="msg" data-who="lia"><div class="b-lia">Понимаю. Подскажите, что смущает — сумма сразу или количество сеансов? Курс можно оплачивать по одному сеансу. А если добавить подмышки, вместе выйдет быстрее и дешевле.</div></div>
-</div>
-<div class="chat" data-chat="3" data-channel="Instagram, среда" hidden>
-<div class="msg" data-who="guest"><span class="msg-time">Гость, 22:14</span><div class="b-guest">Хорошо, давайте попробуем</div></div>
-<div class="msg" data-who="typing" hidden><div class="b-typing"><span class="dots"><i></i><i></i><i></i></span></div></div>
-<div class="msg" data-who="lia"><span class="msg-time">LIA, 22:14</span><div class="b-lia">В студии на [адрес] у Марины есть четверг, 19:30 и пятница, 11:00. Как вам удобнее?</div></div>
-<div class="msg" data-who="guest"><div class="b-guest">Четверг</div></div>
-<div class="msg" data-who="typing" hidden><div class="b-typing"><span class="dots"><i></i><i></i><i></i></span></div></div>
-<div class="msg" data-who="lia"><div class="b-lia">Записала вас на четверг, 19:30. Накануне пришлю напоминание и памятку.</div></div>
-<div class="msg" data-who="note"><div class="b-note"><span class="d"></span><span class="l"></span><span>Запись в YCLIENTS ждёт подтверждения администратора</span></div></div>
-</div>
-<div class="chat" data-chat="4" data-channel="WhatsApp, через [N] недель" hidden>
-<div class="msg" data-who="note"><div class="b-note"><span class="d"></span><span class="l"></span><span>Подошёл срок второго сеанса</span></div></div>
-<div class="msg" data-who="typing" hidden><div class="b-typing"><span class="dots"><i></i><i></i><i></i></span></div></div>
-<div class="msg" data-who="lia"><span class="msg-time">LIA, 12:00</span><div class="b-lia">Анна, добрый день! Подошёл срок второго сеанса. У Марины свободно во вторник в 18:00 — записать вас, как в прошлый раз, на ноги и подмышки?</div></div>
-<div class="msg" data-who="guest"><span class="msg-time">Гость, 12:07</span><div class="b-guest">Да, давайте!</div></div>
-<div class="msg" data-who="note"><div class="b-note"><span class="d"></span><span class="l"></span><span>Запись в YCLIENTS ждёт подтверждения администратора</span></div></div>
-</div>
-</div>
-</figure>
 </div>
 
 <div style="margin-top:clamp(16px,3vw,40px); display:flex; flex-wrap:wrap; gap:40px clamp(40px,5vw,80px); align-items:center; padding-top:clamp(40px,5vw,56px); border-top:1px solid #000000">
@@ -1718,9 +1801,57 @@ html.js .msg{animation:msg-in .5s cubic-bezier(.19,1,.22,1) both}
     ringMeta.textContent = meta ? meta.textContent : '';
   }
 
+  // Строки этапов под перепиской и подсветка узлов на карте
+  const kBox = document.querySelector('.kstages');
+  const kRows = [];
+  const kNodes = Array.from(document.querySelectorAll('.kn'));
+  const kLines = Array.from(document.querySelectorAll('.kl'));
+  if (kBox && tabs.length) {
+    const head = document.createElement('div');
+    head.className = 'ks-head';
+    head.innerHTML = '<span>Этапы диалога</span>';
+    if (toggle) head.appendChild(toggle);
+    kBox.appendChild(head);
+    tabs.forEach((t, i) => {
+      const b = document.createElement('button');
+      b.type = 'button';
+      b.className = 'ks';
+      const title = t.querySelector('.step-title').textContent;
+      const meta = (t.querySelector('.step-meta') || {}).textContent || '';
+      b.innerHTML = '<span class="ks-row"><span class="ks-ic" aria-hidden="true"></span><span><span class="ks-t"></span><span class="ks-m"></span></span><span class="ks-b"></span></span><span class="ks-d" aria-hidden="true"></span><span class="ks-bar" aria-hidden="true"></span>';
+      b.querySelector('.ks-t').textContent = title;
+      b.querySelector('.ks-m').textContent = meta;
+      const ul = panels[i] && panels[i].querySelector('ul');
+      if (ul) b.querySelector('.ks-d').appendChild(ul.cloneNode(true));
+      b.addEventListener('click', () => selectStep(i));
+      kBox.appendChild(b);
+      kRows.push(b);
+    });
+  }
+  function kSelect(i) {
+    kRows.forEach((r, j) => {
+      r.classList.toggle('done', j < i);
+      r.classList.toggle('on', j === i);
+      r.classList.toggle('queued', j > i);
+      r.setAttribute('aria-current', j === i ? 'step' : 'false');
+      r.querySelector('.ks-b').textContent = j < i ? 'Готово' : j === i ? 'Идёт' : 'В очереди';
+      r.style.setProperty('--kp', 0);
+    });
+    const ch = ((sched[i] && sched[i].channel) || '').split(',')[0].trim().toLowerCase();
+    const lit = new Set();
+    kNodes.forEach((n) => {
+      const isChannel = ['wa','tg','ig','site'].includes(n.dataset.node);
+      const on = isChannel ? n.textContent.trim().toLowerCase() === ch : n.dataset.steps.split(' ').includes(String(i));
+      n.classList.toggle('on', on);
+      if (on) lit.add(n.dataset.node);
+    });
+    kLines.forEach((l) => l.classList.toggle('on', lit.has(l.dataset.node)));
+  }
+
   function paint() {
     const S = sched[current];
     const p = Math.min(1, elapsed / S.total);
+    if (kRows[current]) kRows[current].style.setProperty('--kp', p.toFixed(3));
     if (ringProg) ringProg.style.strokeDashoffset = (100 * (1 - p)).toFixed(2);
     if (fill) fill.style.transform = 'scaleX(' + Math.min(1, (current + (reduce || userPaused ? 0 : p)) / Math.max(1, tabs.length - 1)).toFixed(4) + ')';
     if (ring) ring.style.strokeDashoffset = (RING * (1 - p)).toFixed(2);
@@ -1751,6 +1882,7 @@ html.js .msg{animation:msg-in .5s cubic-bezier(.19,1,.22,1) both}
     if (stageLabel) stageLabel.textContent = sched[i].channel;
     if (stepNow) stepNow.textContent = tabs[i].querySelector('.step-title').textContent;
     ringSelect(i);
+    kSelect(i);
     renderChat(i, elapsed);
     paint();
   }
