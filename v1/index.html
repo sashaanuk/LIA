@@ -1,0 +1,2297 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script>document.documentElement.classList.add('js')</script>
+<title>[v1.0] LIA — AI-администратор для студий лазерной эпиляции на YCLIENTS</title>
+<!-- ===== SEO. Домен: при переезде на корп-домен замените https://lia-ai.ru во всём файле, в sitemap.xml и robots.txt ===== -->
+<meta name="description" content="AI-администратор отвечает гостям студии за секунды, круглосуточно и в тоне вашего бренда: цены, сомнения, запись в YCLIENTS. Первым десяти студиям — специальные условия.">
+<meta name="robots" content="noindex, nofollow">
+<link rel="canonical" href="https://lia-ai.ru/">
+<meta name="theme-color" content="#EDEDEB">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<!-- Превью при шаринге в Telegram, WhatsApp, соцсетях -->
+<meta property="og:type" content="website">
+<meta property="og:locale" content="ru_RU">
+<meta property="og:site_name" content="LIA">
+<meta property="og:url" content="https://lia-ai.ru/">
+<meta property="og:title" content="LIA — AI-администратор для бьюти-студий">
+<meta property="og:description" content="Отвечает гостям вовремя и правильно — голосом вашего бренда. Ведёт записи в YCLIENTS.">
+<meta property="og:image" content="https://lia-ai.ru/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="LIA — AI-администратор для бьюти-студий">
+<meta name="twitter:description" content="Отвечает гостям вовремя и правильно — голосом вашего бренда. Ведёт записи в YCLIENTS.">
+<meta name="twitter:image" content="https://lia-ai.ru/og.png">
+<!-- Шрифты: preconnect ускоряет первый рендер текста -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<!-- Структурированные данные для поисковиков: кто мы + FAQ (дублирует блок «Частые вопросы» ниже; правьте оба места) -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://lia-ai.ru/#org",
+      "name": "LIA",
+      "url": "https://lia-ai.ru/",
+      "description": "AI-администратор для студий лазерной эпиляции на YCLIENTS",
+      "founder": [
+        {"@type": "Person", "name": "Эстер Гомельская"},
+        {"@type": "Person", "name": "Арина Чоботова"}
+      ],
+      "contactPoint": {"@type": "ContactPoint", "contactType": "sales", "url": "https://t.me/lia_ai_team_bot"}
+    },
+    {
+      "@type": "SoftwareApplication",
+      "name": "LIA",
+      "applicationCategory": "BusinessApplication",
+      "operatingSystem": "Web",
+      "description": "AI-администратор: отвечает гостям студии лазерной эпиляции в мессенджерах и соцсетях, консультирует по ценам и аппаратам, записывает в YCLIENTS.",
+      "url": "https://lia-ai.ru/",
+      "provider": {"@id": "https://lia-ai.ru/#org"},
+      "offers": {"@type": "Offer", "description": "Первым десяти студиям — специальные условия", "url": "https://t.me/lia_ai_team_bot?start=site_cta"}
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {"@type": "Question", "name": "Гости поймут, что это не человек?", "acceptedAnswer": {"@type": "Answer", "text": "LIA пишет как живой администратор вашей студии и не называет себя ботом. На прямой вопрос отвечает: «Я цифровой ассистент студии X»."}},
+        {"@type": "Question", "name": "Как проверить, что LIA отвечает правильно?", "acceptedAnswer": {"@type": "Answer", "text": "Все диалоги — в кабинете, сложное уходит сотруднику, каждую запись подтверждает администратор. Раз в неделю присылаем отчёт."}},
+        {"@type": "Question", "name": "А если LIA не знает ответа?", "acceptedAnswer": {"@type": "Answer", "text": "Не придумывает. Пишет гостю: «Мне нужно уточнить этот момент, вернусь к вам» — и передаёт диалог сотруднику."}},
+        {"@type": "Question", "name": "Гость может прислать фото?", "acceptedAnswer": {"@type": "Answer", "text": "Да. LIA консультирует по фото, где может, остальное передаёт сотруднику."}},
+        {"@type": "Question", "name": "Кто подтверждает запись?", "acceptedAnswer": {"@type": "Answer", "text": "Администратор — в кабинете LIA или в YCLIENTS."}},
+        {"@type": "Question", "name": "LIA заменит администратора?", "acceptedAnswer": {"@type": "Answer", "text": "Нет. LIA снимает с команды вечерние, выходные и пиковые переписки. Спорное по-прежнему решает администратор."}},
+        {"@type": "Question", "name": "Нужен ли программист?", "acceptedAnswer": {"@type": "Answer", "text": "Нет. Достаточно брифа в диалоге с LIA и звонка-знакомства — на нём подскажем, как всё настроить."}},
+        {"@type": "Question", "name": "Сколько стоит LIA?", "acceptedAnswer": {"@type": "Answer", "text": "Тариф зависит от числа диалогов. Присоединяйтесь, чтобы получить доступ в числе первых."}}
+      ]
+    }
+  ]
+}
+</script>
+<!--
+  Лендинг LIA. Как редактировать:
+  • Тексты — обычный HTML ниже: правьте прямо внутри тегов.
+  • Примеры переписок (первый экран, «Переписка студии», чаты к шагам 1–5) тоже лежат в разметке.
+    Реплики LIA печатаются анимацией из того текста, что написан в HTML.
+  • Второй вариант заголовка лежит в комментарии на первом экране.
+  • Цвет свечения под курсором и зернистость фона — в начале скрипта внизу файла (NICHE, GRAIN).
+  • Заявка и «напишите нам» ведут в Telegram-бот https://t.me/lia_ai_team_bot.
+  • Ссылки вида #instagram-lia, #instagram-est-epil, #est-epil — заглушки: замените на настоящие адреса.
+-->
+<link href="https://fonts.googleapis.com/css2?family=Onest:wght@300;400;500&family=Comforter&display=swap" rel="stylesheet">
+<style>
+/* ===== «Как LIA ведёт гостя»: схема для десктопа (на телефоне — вертикальная .m-scheme) ===== */
+.dscheme{position:relative;margin:0;aspect-ratio:1.95/1;border:1px solid #C4C4C0;background:#F2F2F0 radial-gradient(rgba(0,0,0,0.12) 1px,transparent 1.3px) 0 0/20px 20px}
+.ds-c{position:absolute;width:7px;height:7px;border-radius:50%;background:#000}
+.ds-lines{position:absolute;left:0;top:0;width:100%;height:100%;overflow:visible}
+.ds-lines line{stroke:#9A9A96;stroke-width:1;stroke-dasharray:4 4;vector-effect:non-scaling-stroke}
+.ds-ring{fill:none;stroke:#C4C4C0;stroke-width:1;stroke-dasharray:3 4;vector-effect:non-scaling-stroke}
+.ds-glow{position:absolute;width:34%;aspect-ratio:1;border-radius:50%;transform:translate(-50%,-50%);background:radial-gradient(closest-side,rgba(67,109,238,0.30),rgba(67,109,238,0.10) 55%,rgba(67,109,238,0) 100%);pointer-events:none}
+.ds-lbl{position:absolute;transform:translateY(-50%);font-size:var(--fs-micro);color:#8E8E8A;white-space:nowrap}
+.ds-card{position:absolute;transform:translate(-50%,-50%);display:flex;align-items:center;justify-content:center;padding:0 12px;text-align:center;border-radius:14px;background:#FFFFFF;border:1px solid #D6D6D3;box-shadow:0 1px 0 rgba(0,0,0,.03),0 8px 20px rgba(0,0,0,.04);font-size:var(--fs-small);line-height:1.25;color:#000}
+.ds-know{background:#E2E2DF;border-color:#E2E2DF;box-shadow:none}
+.ds-out{color:#4A4A48}
+.ds-out b{font-weight:500;color:#000}
+.ds-core{position:absolute;transform:translate(-50%,-50%);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;border-radius:22px 22px 22px 6px;background:#000;color:#fff;box-shadow:0 18px 50px rgba(0,0,0,.22)}
+.ds-logo{font-size:var(--fs-body);font-weight:500;letter-spacing:.36em;padding-left:.36em}
+.ds-sub{font-size:var(--fs-small);color:#D6D6D3}
+.ds-dot{position:absolute;width:7px;height:7px;border-radius:50%;background:#000;transform:translate(-50%,-50%)}
+.ds-note{position:absolute;left:0;right:0;bottom:5%;text-align:center;font-size:var(--fs-small);color:#4A4A48}
+/* на десктопе схема заменяет строку плашек каналов */
+@media (min-width:981px){#kak > div:first-child > div > div[aria-hidden]{display:none !important}}
+@media (max-width:980px){.dscheme{display:none}.kak-sub{display:none}}
+/* Шкала шрифтов: 8 ступеней, вес тонкий (300) у крупных, 400–500 у текста. Меняйте размер здесь, а не в элементах */
+:root{--fs-display:clamp(40px,5vw,72px);--fs-h2:clamp(32px,3.8vw,52px);--fs-h3:clamp(24px,2.4vw,34px);--fs-lead:clamp(20px,1.7vw,24px);--fs-intro:clamp(18px,1.4vw,20px);--fs-body:17px;--fs-small:14px;--fs-micro:12px}
+@media (max-width:980px){:root{--fs-display:clamp(30px,8.4vw,40px);--fs-h2:clamp(28px,7.6vw,34px);--fs-h3:22px;--fs-lead:19px;--fs-intro:17px;--fs-body:16px;--fs-small:13px;--fs-micro:12px}}
+/* Единая сетка отступов: --sec — вертикальный паддинг секций, --pad-x — боковой, --gap — заголовок→контент */
+:root{--sec:clamp(80px,9vw,140px);--pad-x:clamp(20px,5vw,64px);--gap:clamp(40px,5vw,64px);--gap-lg:clamp(48px,6vw,80px)}
+body{margin:0;background:#EDEDEB}
+*{box-sizing:border-box}
+a{color:#000}a:hover{color:#4A4A48}
+::selection{background:#436DEE;color:#fff}
+:focus-visible{outline:2px solid #000;outline-offset:3px}
+.on-dark :focus-visible{outline-color:#fff}
+.on-dark a{color:#fff}.on-dark a:hover{color:#D6D6D3}
+.nav-links{display:flex}
+@media (max-width:860px){.nav-links{display:none}}
+.lia-row{display:grid;grid-template-columns:minmax(0,1fr) 196px;align-items:start}
+.lia-bg{position:absolute;top:0;bottom:0;left:0;right:196px;background:#363636;border-radius:22px 22px 22px 6px}
+.lia-anno{gap:6px !important}.lia-anno > span:nth-child(2){width:16px !important}.lia-anno > span:last-child{font-size:var(--fs-micro) !important;line-height:1.25 !important}
+@media (max-width:760px){.lia-row{grid-template-columns:minmax(0,1fr)}.lia-anno{display:none !important}.lia-bg{right:0}}
+.sticky-spec{position:sticky !important;top:140px}
+@media (max-width:980px){.sticky-spec{position:relative !important;top:auto !important}}
+.caret{display:inline-block;width:2px;height:1.05em;background:currentColor;vertical-align:-0.18em;margin-left:2px;animation:lia-blink 1s steps(1) infinite}
+@keyframes lia-blink{50%{opacity:0}}
+.dots{display:inline-flex;gap:4px}
+.dots i{display:block;width:6px;height:6px;border-radius:50%;background:#000;animation:lia-dot 1.1s infinite ease-in-out}
+.dots i:nth-child(2){animation-delay:.15s}.dots i:nth-child(3){animation-delay:.3s}
+@keyframes lia-dot{0%,80%,100%{opacity:.2}40%{opacity:1}}
+.rise{animation:lia-rise .55s cubic-bezier(.2,.7,.2,1) both}
+@keyframes lia-rise{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.btn-dark:hover{background:#363636 !important;color:#FFFFFF !important}
+.btn-light:hover{background:#E2E2DF !important;color:#000000 !important}
+.mark{background:#000;color:#fff;padding:.04em .28em;-webkit-box-decoration-break:clone;box-decoration-break:clone}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+:root{--spring:cubic-bezier(.33,1.42,.05,.96);--expo:cubic-bezier(.19,1,.22,1);--bounce:linear(0,.009,.035 2.1%,.141,.281 6.7%,.723 12.9%,.938 16.7%,1.017,1.077,1.121,1.149 24.3%,1.159,1.163,1.161,1.154 29.9%,1.129 32.8%,1.051 39.6%,1.017 43.1%,.991,.977 51%,.974 53.8%,.975 57.1%,.997 69.8%,1.003 76.9%,1.004 83.8%,1)}
+[hidden]{display:none !important}
+[data-count]{font-variant-numeric:tabular-nums}
+.pain-lead{font-weight:500}.pain-rest{color:#4A4A48}
+.chain-label{transition:color .5s ease}.chain-dot{transition:background .3s ease,border-color .5s ease !important}
+.chain-note{opacity:0}
+.btn-dark,.btn-light{transition:background .2s ease,transform .5s var(--bounce) !important}
+.btn-dark:hover,.btn-light:hover{transform:scale(1.04)}
+.btn-dark:active,.btn-light:active{transform:scale(.97)}
+@media (max-width:760px),(max-height:700px){.why-card{position:relative !important;top:auto !important}}
+@media (prefers-reduced-motion:reduce){.btn-dark,.btn-light{transition:none !important}}
+/* ===== Шапка 1:1 с jitter.video: размеры и поведение ===== */
+:root{--quad:cubic-bezier(.25,.46,.45,.94);--overshoot:cubic-bezier(.33,1.42,.05,.96);--jbounce:linear(0 0%, 0.255 1%, 0.4449 2%, 0.6018 3%, 0.7355 4%, 0.8513 5%, 0.9525 6%, 1.0413 7%, 1.1195 8%, 1.1881 9%, 1.2484 10%, 1.3011 11%, 1.3468 12%, 1.3862 13%, 1.4198 14%, 1.4479 15%, 1.4709 16%, 1.4892 17%, 1.503 18%, 1.5126 19%, 1.5182 20%, 1.52 21%, 1.5189 22%, 1.5156 23%, 1.5101 24%, 1.5025 25%, 1.4929 26%, 1.4817 27%, 1.469 28%, 1.4552 29%, 1.4406 30%, 1.4254 31%, 1.4099 32%, 1.3943 33%, 1.3787 34%, 1.3633 35%, 1.3481 36%, 1.3333 37%, 1.3188 38%, 1.3048 39%, 1.2912 40%, 1.278 41%, 1.2653 42%, 1.253 43%, 1.2412 44%, 1.2298 45%, 1.2188 46%, 1.2083 47%, 1.1981 48%, 1.1883 49%, 1.1789 50%, 1.1698 51%, 1.1611 52%, 1.1528 53%, 1.1447 54%, 1.137 55%, 1.1296 56%, 1.1225 57%, 1.1156 58%, 1.1091 59%, 1.1028 60%, 1.0967 61%, 1.0909 62%, 1.0854 63%, 1.0801 64%, 1.075 65%, 1.0701 66%, 1.0654 67%, 1.061 68%, 1.0567 69%, 1.0526 70%, 1.0488 71%, 1.0451 72%, 1.0415 73%, 1.0382 74%, 1.035 75%, 1.032 76%, 1.0292 77%, 1.0265 78%, 1.0239 79%, 1.0215 80%, 1.0193 81%, 1.0172 82%, 1.0152 83%, 1.0134 84%, 1.0117 85%, 1.0101 86%, 1.0086 87%, 1.0073 88%, 1.0061 89%, 1.005 90%, 1.004 91%, 1.0032 92%, 1.0024 93%, 1.0018 94%, 1.0012 95%, 1.0008 96%, 1.0004 97%, 1.0002 98%, 1 99%, 1 100%)}
+.jh{position:fixed;top:0;left:0;right:0;z-index:50;pointer-events:none;letter-spacing:-0.396px;transition:transform 1.2s var(--expo)}
+.jh-wrap{position:relative;width:calc(min(1280px,100%) - 2*clamp(20px,5vw,64px));margin:0 auto;padding-top:39px}
+.jh-plate{position:absolute;z-index:0;top:39px;left:50%;width:calc(100% + 60px);height:90px;background:#FFFFFF;border-bottom:1px solid #F2F1F3;border-radius:20px;box-shadow:rgba(0,0,0,0) 0 62px 17px,rgba(0,0,0,.01) 0 40px 16px,rgba(0,0,0,.02) 0 22px 13px,rgba(0,0,0,.04) 0 10px 10px,rgba(0,0,0,.04) 0 2px 5px;opacity:0;transform:translate(-50%,-34.5px);will-change:transform;transition:opacity .2s var(--quad),transform .5s var(--expo) .2s,box-shadow .5s var(--quad),border-radius .5s var(--quad)}
+.jh-row{position:relative;z-index:1;display:flex;align-items:center;justify-content:space-between;height:90px}
+.jh-left{display:flex;align-items:center;gap:24px;pointer-events:auto}
+.jh-logo{position:relative;top:-2px;display:block;font-size:22px;font-weight:500;line-height:28px;letter-spacing:.5em;margin-right:-.5em;color:#000000;text-decoration:none}
+.jh-logo:hover{color:#19171C}
+.jh-links{display:flex}
+.jh-link{display:flex;align-items:center;height:90px;padding:0 20px;font-size:var(--fs-body);font-weight:500;line-height:24px;letter-spacing:-0.2px;color:#000000;text-decoration:none}
+.jh-link:first-child{padding-left:0}
+.jh-link:hover{color:#19171C}
+.jh-links:hover .jh-link:not(:hover){opacity:.35}
+.jh-logo,.jh-link{transition:transform .8s var(--overshoot),opacity .3s var(--quad)}
+.jh-right{position:relative;display:flex;align-items:center;gap:30px;pointer-events:auto}
+.jh-cta{position:relative;z-index:2;transition:transform .8s var(--overshoot)}
+.jh-btn{display:inline-flex;padding:0;border:0;background:none;font:inherit;color:#FFFFFF;text-decoration:none;cursor:pointer;-webkit-tap-highlight-color:transparent}
+.jh-btn:hover{color:#FFFFFF}
+.jh-btn-in{display:inline-flex;align-items:center;justify-content:center;gap:10px;height:52px;padding:8px 32px;border-radius:50px;background:#000000;color:#FFFFFF;font-size:var(--fs-body);font-weight:500;line-height:18px;letter-spacing:-0.36px;white-space:nowrap;transition:transform .3s var(--jbounce),background-color .3s var(--quad),color .3s var(--quad)}
+.jh-btn:hover .jh-btn-in{transform:scale(1.05);transition:transform .6s var(--jbounce),background-color .3s var(--quad),color .3s var(--quad)}
+.jh-btn:active .jh-btn-in{transform:scale(.9);transition:transform .1s linear}
+.jh-burger{position:absolute;right:0;top:50%;transform:translateY(-50%) scale(0);transition:transform .8s var(--overshoot)}
+.jh-burger .jh-btn-in{width:52px;padding:0}
+.jh-burger .i-close{display:none}
+.jh.menu-open .jh-burger .i-close{display:block}
+.jh.menu-open .jh-burger .i-burger{display:none}
+.jh-menu{display:none}
+.jh.is-sticky .jh-plate{opacity:1;transform:translate(-50%,-140px);transition:opacity .3s var(--quad),transform .75s var(--expo),box-shadow .5s var(--quad),border-radius .5s var(--quad)}
+.jh.is-sticky.is-min .jh-plate{box-shadow:none !important}
+.jh.is-sticky.is-min:not(.was-sticky) .jh-plate{opacity:0 !important}
+.jh.show-bg .jh-plate{transform:translate(-50%,0);transition:opacity .3s var(--quad),transform .75s var(--overshoot),box-shadow .5s var(--quad),border-radius .5s var(--quad)}
+.jh.is-sticky.is-min .jh-logo,.jh.is-sticky.is-min .jh-link{transform:translateY(-130px)}
+.jh.is-sticky.is-min .jh-left{pointer-events:none}
+@media (min-width:1025px){
+.jh.is-sticky.is-min .jh-cta{transform:translateX(-67px)}
+.jh.is-sticky.is-min .jh-burger{transform:translateY(-50%) scale(1)}
+}
+@media (min-width:1441px){
+.jh{letter-spacing:-0.4px}
+.jh-wrap{width:calc(min(1280px,100%) - 2*clamp(20px,5vw,64px))}
+.jh-plate{top:34.5px;width:calc(100% + 80px);height:100px}
+.jh-wrap{padding-top:34.5px}
+.jh-row{height:100px}
+.jh-left{gap:40px}
+.jh-link{height:100px;padding:0 24px}
+}
+@media (max-width:1024px){
+.jh-wrap{width:calc(100% - 2*clamp(20px,5vw,64px) - 20px)}
+.jh-plate{top:15px;width:calc(100% + 20px);height:70px;border-radius:10px;transition:border-radius .5s var(--quad),box-shadow .1s var(--quad),opacity .2s var(--quad),transform .5s var(--expo) .2s}
+.jh-wrap{padding-top:15px}
+.jh-row{height:70px}
+.jh-links,.jh-cta{display:none}
+.jh-logo{font-size:var(--fs-intro);line-height:24px}
+.jh-burger{position:static;transform:none;transition:none}
+.jh-burger .jh-btn-in{background:#FFFFFF;color:#19171C}
+.jh:not(.show-bg):not(.menu-open) .jh-burger .jh-btn-in{background:#F2F1F3}
+.jh.menu-open .jh-burger .jh-btn-in{background:#19171C;color:#FFFFFF}
+.jh-menu{position:fixed;inset:0;z-index:-1;display:flex;flex-direction:column;padding:110px 20px 32px;background:#FFFFFF;pointer-events:auto;opacity:0;visibility:hidden;transition:opacity .3s var(--quad),visibility 0s linear .3s}
+.jh.menu-open .jh-menu{opacity:1;visibility:visible;transition:opacity .3s var(--quad)}
+.jh.menu-open .jh-plate{box-shadow:none !important;background:transparent}
+.jh-menu a.jh-mlink{padding:14px 0;border-bottom:1px solid #F2F1F3;font-size:var(--fs-lead);font-weight:500;line-height:1.2;letter-spacing:-0.02em;color:#19171C;text-decoration:none}
+.jh-menu .jh-btn{margin-top:28px;align-self:flex-start}
+}
+@media (prefers-reduced-motion:reduce){.jh,.jh *{transition:none !important}}
+.t-track{scrollbar-width:none}.t-track::-webkit-scrollbar{display:none}
+.t-nav:hover{background:rgba(255,255,255,0.12) !important}
+@media (max-width:640px){.t-card{grid-template-columns:minmax(0,1fr) !important}.t-card .t-photo{grid-column:1 !important;grid-row:auto !important;width:120px !important}}
+@media (prefers-reduced-motion:reduce){.caret,.dots i,.rise{animation:none}}
+/* ===== Путь гостя: рельс шагов и сцена переписки ===== */
+.rail-wrap{display:flex;align-items:flex-start;gap:20px}
+.rail{position:relative;flex:1;min-width:0}
+.rail-track{position:absolute;left:13.5px;top:13px;width:80%;height:1px;background:#C4C4C0}
+.rail-fill{position:absolute;left:0;top:0;width:100%;height:2px;margin-top:-.5px;background:#000000;transform-origin:left center;transform:scaleX(0);transition:transform .5s cubic-bezier(.19,1,.22,1)}
+.rail ol{position:relative;list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(5,minmax(0,1fr))}
+.step-btn{display:flex;flex-direction:column;align-items:flex-start;width:100%;padding:0 24px 6px 0;background:none;border:0;font:inherit;color:#000000;text-align:left;cursor:pointer}
+.step-btn:focus-visible{outline:2px solid #000000;outline-offset:6px;border-radius:4px}
+.stop{position:relative;display:flex;align-items:center;justify-content:center;width:27px;height:27px;box-sizing:border-box;border-radius:50%;border:1px solid #000000;background:#EDEDEB;font-size:var(--fs-micro);font-weight:500;line-height:1;font-variant-numeric:tabular-nums;transition:background .35s ease,color .35s ease}
+.stop::after{content:"";position:absolute;left:-7px;top:-7px;right:-7px;bottom:-7px;border-radius:50%;border:1px solid #000000;opacity:0;transform:scale(.55);transition:opacity .25s ease,transform .55s cubic-bezier(.33,1.42,.05,.96)}
+.step-btn[data-done="true"] .stop,.step-btn.done .stop,.step-btn[aria-pressed="true"] .stop{background:#000000;color:#FFFFFF}
+.step-btn[aria-pressed="true"] .stop::after{opacity:1;transform:none}
+.step-meta{margin-top:20px;font-size:var(--fs-small);line-height:1.35;color:#74746F}
+.step-title{margin-top:6px;font-size:var(--fs-body);line-height:1.3;text-wrap:balance}
+.step-btn[aria-pressed="true"] .step-title{font-weight:500}
+.step-btn:hover .step-title{text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:4px}
+.step-toggle{position:relative;flex:none;width:48px;height:48px;margin-top:-10px;padding:0;border-radius:50%;border:0;background:#E2E2DF;color:#000000;display:flex;align-items:center;justify-content:center;cursor:pointer}
+.step-toggle:focus-visible{outline:2px solid #000000;outline-offset:4px}
+.step-toggle .ring{position:absolute;left:0;top:0;transform:rotate(-90deg)}
+.panels{display:grid}
+.panels > *{grid-area:1/1;min-width:0}
+.panels > .is-off{visibility:hidden}
+.chat-stage{position:relative;flex:1.15 1 460px;min-width:0;margin:0;border:1px solid #C4C4C0;height:clamp(470px,42vw,580px)}
+.chat-stage .corner{position:absolute;width:7px;height:7px;border-radius:50%;background:#000000}
+.stage-label{position:absolute;z-index:1;left:clamp(20px,3vw,36px);top:20px;font-size:var(--fs-small);color:#4A4A48}
+.thread{position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;padding:28px clamp(20px,3vw,36px);display:flex;flex-direction:column;justify-content:flex-end;-webkit-mask-image:linear-gradient(to bottom,transparent 0,transparent 44px,#000000 104px);mask-image:linear-gradient(to bottom,transparent 0,transparent 44px,#000000 104px)}
+.chat{display:flex;flex-direction:column;gap:14px}
+.msg{display:flex;flex-direction:column;gap:6px;align-items:flex-start}
+.msg[data-who="lia"],.msg[data-who="note"],.msg[data-who="typing"]{margin-left:32px}
+.msg-time{font-size:var(--fs-small);color:#4A4A48}
+.b-guest{max-width:400px;background:#FFFFFF;border:1px solid rgba(0,0,0,0.08);border-radius:20px 20px 20px 6px;padding:12px 18px;font-size:var(--fs-body);line-height:1.5}
+.b-lia{max-width:430px;background:#363636;color:#FFFFFF;border-radius:20px 20px 20px 6px;padding:12px 18px;font-size:var(--fs-body);line-height:1.5}
+.b-lia .ghost{color:rgba(255,255,255,0.16)}
+.b-typing{display:flex;align-items:center;height:48px;padding:0 20px;background:#363636;border-radius:20px 20px 20px 6px}
+.b-typing .dots i{background:#FFFFFF}
+.b-note{display:flex;align-items:center;gap:10px;font-size:var(--fs-small);font-weight:500}
+.b-note .d{flex:none;width:7px;height:7px;border-radius:50%;background:#000000}
+.b-note .l{flex:none;width:24px;height:1px;background:#000000}
+.voice{display:flex;align-items:center;gap:12px}
+.voice span{font-size:var(--fs-small);color:#4A4A48}
+.photo{display:block;margin-top:10px;width:168px;height:112px;border-radius:12px;background:linear-gradient(160deg,#C9C9C6,#8E8E8B)}
+.step-now{display:none}
+@media (max-width:760px){
+.step-now{display:block;margin:-24px 0 0;font-size:var(--fs-intro);line-height:1.2;font-weight:400;letter-spacing:-0.01em}
+.chat-stage{order:-1}
+.panels h3{display:none !important}
+.rail ol{grid-template-columns:repeat(4,minmax(0,1fr)) 27px}
+.rail-track{width:calc(100% - 27px)}
+.step-btn{padding:0 0 4px}
+.step-meta,.step-title{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.step-toggle{margin-top:-11px}
+.chat-stage{height:470px}
+.b-guest,.b-lia{font-size:var(--fs-small)}
+}
+@media (prefers-reduced-motion:reduce){.rail-fill,.stop,.stop::after{transition:none}}
+/* ===== Фото основательниц: мягкий синий дуотон (тени #16245E, света #B4C6FF) ===== */
+.duo{position:relative;display:block;overflow:hidden;aspect-ratio:4/5;border-radius:4px;background:#BDBDBD;color:#FFFFFF;text-decoration:none;isolation:isolate}
+.duo > img{position:absolute;left:0;top:0;width:100%;height:100%;object-fit:cover;object-position:50% 18%;filter:grayscale(1) contrast(1.12)}
+.duo-fake{position:absolute;left:0;top:0;right:0;bottom:0;background:linear-gradient(180deg,#F4F4F4 0%,#D2D2D2 48%,#8C8C8C 78%,#3A3A3A 100%)}
+.duo-fake .ring{position:absolute;aspect-ratio:1;border-radius:50%;border:clamp(14px,2vw,26px) solid #FFFFFF;filter:blur(clamp(8px,1.2vw,16px));opacity:.9}
+.duo-fake .glow{position:absolute;border-radius:50%;background:radial-gradient(closest-side,#FFFFFF,rgba(255,255,255,0));filter:blur(10px)}
+.duo::before,.duo::after{content:"";position:absolute;left:0;top:0;right:0;bottom:0;pointer-events:none;z-index:1}
+.duo::before{display:none}
+.duo::after{background:linear-gradient(180deg,rgba(0,0,0,0) 55%,rgba(0,0,0,0.5) 100%)}
+.duo-cap{position:absolute;z-index:2;left:clamp(18px,2.4vw,28px);right:clamp(18px,2.4vw,28px);bottom:clamp(16px,2.2vw,26px);display:flex;flex-direction:column;gap:6px}
+.duo-name{font-size:var(--fs-lead);line-height:1.2;font-weight:400;letter-spacing:-0.01em;color:#FFFFFF}
+@media (hover:hover) and (pointer:fine){.duo-name{display:none}}
+.duo-role{font-size:var(--fs-small);line-height:1.35;color:rgba(255,255,255,0.72)}
+/* ===== Подпись под письмом ===== */
+.sign{margin-top:12px;display:flex;flex-direction:column;gap:4px}
+.sign-hand{font-family:'Comforter',cursive;font-weight:400;font-size:58px;line-height:1;color:#000000;transform:rotate(-4deg);transform-origin:left bottom;width:max-content}
+.sign-name{font-size:var(--fs-small);line-height:1.4;color:#74746F}
+/* Заголовки колонок «Что изменится»: на десктопе линии под ними на одном уровне, даже если один заголовок в две строки */
+@media (min-width:1000px){.ben-h{min-height:calc(2.2em + clamp(16px,1.8vw,24px) + 2px);display:flex;align-items:flex-end}}
+
+[hidden]{display:none !important}
+@media (prefers-reduced-motion:no-preference){html{scroll-behavior:smooth}}
+/* Вопросы: узкие строки без линий и плюсов, как список наград на wearestokt.com.
+   При наведении по строке проходит «молния» — светлый синий блик слева направо, — и остаётся лёгкий синий тон.
+   Текст остаётся тёмным, контраст не страдает. По клику ответ плавно раскрывается. */
+.faq summary{position:relative;overflow:hidden;list-style:none;display:block;margin:0 -14px;padding:7px 14px;border-radius:6px;color:#363636;cursor:pointer;transition:background-color .8s ease,color .3s ease}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary h3{position:relative;z-index:1;margin:0;font-size:var(--fs-intro);font-weight:400;line-height:1.4}
+.faq summary::before{content:"";position:absolute;left:0;top:0;right:0;bottom:0;pointer-events:none;opacity:0;background:linear-gradient(100deg,rgba(67,109,238,0) 30%,rgba(67,109,238,.22) 44%,rgba(190,210,255,.95) 49.5%,rgba(255,255,255,1) 50%,rgba(190,210,255,.95) 50.5%,rgba(67,109,238,.22) 56%,rgba(67,109,238,0) 70%) no-repeat;background-size:260% 100%;background-position:100% 0}
+.faq[open] summary{color:#000000}
+.faq[open] summary h3{font-weight:500}
+.faq summary:focus-visible{outline:2px solid #000000;outline-offset:2px}
+@media (hover:hover) and (pointer:fine){
+.faq summary:hover{background-color:rgba(67,109,238,.1);color:#000000;transition-duration:.25s,.2s}
+.faq summary:hover::before{animation:faq-bolt .8s cubic-bezier(.3,.7,.2,1) both}
+}
+@keyframes faq-bolt{0%{opacity:1;background-position:100% 0}80%{opacity:1}100%{opacity:0;background-position:0% 0}}
+@media (prefers-reduced-motion:reduce){.faq summary:hover::before{animation:none}}
+@media (max-width:760px){.faq summary{padding:10px 14px}}
+.faq-a{overflow:hidden}
+.faq-a p{margin:0;padding:4px 48px 18px 0;max-width:42em;color:#4A4A48}
+/* ===== FAQ как список: строки на всю ширину, серый текст, при наведении строка заливается синим ===== */
+#voprosy{flex-direction:column !important;align-items:stretch !important;gap:var(--gap) !important}
+#voprosy > h2,#voprosy .faq-list{flex:none !important;width:100%}
+.faq-list{border-top:1px solid #C4C4C0}
+.faq{border-bottom:1px solid #C4C4C0}
+.faq-list{position:relative}
+.faq summary{margin:0 -14px;padding:12px 14px;border-radius:4px;color:#8E8E8A;background:none !important;transition:color .18s ease}
+.faq summary::after{display:none !important}
+.faq summary::before{z-index:0}
+.faq summary h3{position:relative;z-index:1}
+.faq[open] summary{color:#000000}
+.faq summary.is-lit,.faq summary:hover{color:#000000}
+.faq summary:focus-visible{outline:2px solid #000;outline-offset:2px;color:#000}
+.faq-a p{padding:2px 14px 22px 0 !important;max-width:46em}
+/* Подсветка: одна плашка скользит между строками за курсором; ярче там, где курсор, к краям гаснет */
+.faq-lit{position:absolute;left:-14px;right:-14px;top:0;height:0;z-index:0;border-radius:4px;pointer-events:none;opacity:0;
+  background:radial-gradient(70% 220% at var(--mx,50%) 50%,#436DEE 0%,rgba(67,109,238,.82) 38%,rgba(67,109,238,.38) 100%);
+  transition:top .22s cubic-bezier(.2,.8,.2,1),height .22s cubic-bezier(.2,.8,.2,1),opacity .2s ease}
+.faq-lit,.faq-lit.on{display:none}
+@media (prefers-reduced-motion:reduce){.faq-lit{transition:opacity .15s ease}}
+
+
+/* ===== Моушн в духе Jitter (работает только при включённом JS и без «уменьшения движения») ===== */
+@media (prefers-reduced-motion:no-preference){
+html.js [data-split] .w{display:inline-block;overflow:hidden;vertical-align:top;padding-bottom:.12em;margin-bottom:-.12em}
+html.js [data-split] .w>span{display:inline-block;transform:translateY(110%) rotate(6deg);transition:transform 1s var(--spring)}
+html.js.ready [data-split] .w>span{transform:none}
+html.js .intro-tag{opacity:0;transform:translateY(16px) scale(.96);transition:opacity .3s ease .05s,transform .8s var(--spring) .05s}
+html.js .intro-line{transform:scaleY(0);transform-origin:top;transition:transform .5s var(--expo) .55s}
+html.js .intro-dot{transform:scale(0);transition:transform .5s var(--spring) .85s}
+html.js .intro-rest{opacity:0;transform:translateY(30px);transition:opacity .4s ease .8s,transform .9s var(--spring) .8s}
+html.js.ready .intro-tag,html.js.ready .intro-rest,html.js.ready .intro-line,html.js.ready .intro-dot{opacity:1;transform:none}
+html.js [data-scrub] .sw{color:#C4C4C0;transition:color .25s ease}
+html.js [data-scrub] .sw.on{color:inherit}
+html.js .pop{opacity:0;transform:scale(.6);transform-origin:left bottom;transition:opacity .2s ease,transform .8s var(--spring)}
+html.js .pop.in{opacity:1;transform:none}
+html.js .pop-late{opacity:0;transform:translateY(40px) scale(.97);transform-origin:left top;transition:opacity .4s ease,transform 1s var(--spring)}
+html.js .pop-late.in{opacity:1;transform:none}
+html.js .why-vis{opacity:0;transform:translateY(40px) scale(.94);transition:transform .9s var(--spring),opacity .4s ease}
+html.js .why-card.in .why-vis{opacity:1;transform:none}
+}
+/* ===== Блок проблем: идеальная цепочка и та же цепочка «в жизни» ===== */
+.chain .chain-note{transform:translateY(6px);transition:opacity .4s ease 1.9s,transform .6s var(--spring) 1.9s}
+.chain.in .chain-note{opacity:1;transform:none}
+.chain-real .chain-cut{background:repeating-linear-gradient(90deg,#000 0 7px,transparent 7px 13px) !important}
+.chain-real .chain-late .chain-line{display:none}
+.chain-real .chain-late .chain-dot{background:#EDEDEB !important;border-color:#AFAFAB !important}
+.chain-real .chain-late .chain-label{color:#AFAFAB}
+/* ===== Боли: карточки-стопка, каждая следующая наезжает на предыдущую ===== */
+.pain{position:relative;background:#FFFFFF;border:1px solid rgba(0,0,0,0.08);border-radius:22px 22px 22px 6px;padding:clamp(22px,2.6vw,32px) clamp(24px,3vw,36px);box-shadow:0 14px 36px rgba(0,0,0,0.06)}
+@media (min-width:981px){.pain{position:sticky;top:calc(140px + var(--i,0) * 14px)}}
+@media (max-width:980px){.pains{gap:12px !important}}
+/* Письмо основательницы: на телефоне длинный абзац разбиваем перед «Тогда мы…» */
+@media (max-width:980px){.m-para{display:block;height:1em}}
+@media (max-width:860px){.ft-grid{grid-template-columns:repeat(2,minmax(0,1fr)) !important}.ft-grid > :first-child{grid-column:1 / -1}}
+/* ===== Путь гостя: смена шага и появление реплик ===== */
+.step-toggle:hover{background:#D6D6D3}
+@media (prefers-reduced-motion:no-preference){
+html.js .panels > .is-on.enter > .rise{animation:step-in .6s var(--spring) both}
+html.js .chat{animation:chat-in .45s cubic-bezier(.19,1,.22,1) both}
+html.js .msg{animation:msg-in .5s cubic-bezier(.19,1,.22,1) both}
+@keyframes step-in{from{opacity:0;transform:translateX(24px)}to{opacity:1;transform:none}}
+@keyframes chat-in{from{opacity:0}to{opacity:1}}
+@keyframes msg-in{from{opacity:0;transform:translateY(14px) scale(.98)}to{opacity:1;transform:none}}
+}
+/* ===== Курсор-квадратик ===== */
+/* Курсор: квадрат 12px со скруглением 4px, как на wearestokt.com, всегда одного размера.
+   Цвет — кобальт из мудборда (размытые кольца, #436DEE). Единственное исключение — элемент с data-cursor:
+   над ним курсор становится плашкой с текстом и стрелкой и инвертирует цвета под собой. */
+.cursor-sq{position:fixed;left:0;top:0;z-index:9999;pointer-events:none;font-family:Onest,'Helvetica Neue',Helvetica,Arial,sans-serif;opacity:0;transition:opacity .2s ease;will-change:transform}
+.cursor-sq.on{opacity:1}
+.cursor-sq .cs-in{position:absolute;left:0;top:0;display:flex;align-items:center;justify-content:center;gap:10px;box-sizing:border-box;width:12px;height:12px;padding:0;border-radius:4px;background:#436DEE;color:#0A0A0A;transform:translate(-50%,-50%);overflow:hidden;white-space:nowrap;transition:width .4s cubic-bezier(.22,1,.36,1),height .4s cubic-bezier(.22,1,.36,1),border-radius .4s cubic-bezier(.22,1,.36,1),padding .4s cubic-bezier(.22,1,.36,1)}
+.cursor-sq .cs-txt,.cursor-sq .cs-arr{flex:none;opacity:0;transition:opacity .2s ease}
+.cursor-sq .cs-txt{font-size:var(--fs-micro);line-height:15px;font-weight:500;letter-spacing:-0.01em}
+.cursor-sq.label{mix-blend-mode:difference}
+.cursor-sq.label .cs-in{padding:9px 12px;border-radius:999px;background:#B6FF3B;animation:cs-neon 3.2s linear infinite}
+@keyframes cs-neon{0%{background:#B6FF3B}33%{background:#2BF6FF}66%{background:#FF2BD6}100%{background:#B6FF3B}}
+@media (prefers-reduced-motion:reduce){.cursor-sq.label .cs-in{animation:none}}
+.cursor-sq.label .cs-txt,.cursor-sq.label .cs-arr{opacity:1;transition-delay:.08s}
+@media (hover:hover) and (pointer:fine){html.has-cursor,html.has-cursor *{cursor:none !important}}
+/* ===== Шапка: въезд сверху при загрузке, как у Jitter (только на десктопе) ===== */
+@media (min-width:1025px) and (prefers-reduced-motion:no-preference){html.js .jh:not(.animate-in){transform:translateY(-100%)}}
+/* ===== Мобильная версия (≤980px). Десктоп выше этой ширины не меняется ===== */
+.ben-tabs,.m-quote,.m-more,.m-ring,.pains-dots,.m-scheme{display:none}
+@media (min-width:981px){.z-title{flex:0 0 auto !important;white-space:nowrap}}
+/* Десктоп: больше воздуха между шапкой и первым экраном */
+@media (min-width:1025px){#top{padding-top:136px !important}}
+/* Финал идеальной цепочки — синяя точка, проявляется после линии */
+.chain.in:not(.chain-real) .chain-step:last-child .chain-dot{background:#436DEE !important;border-color:#436DEE !important}
+.m-letter{display:flex;flex-direction:column;gap:20px}
+@media (max-width:980px){
+#top{min-height:0 !important}
+/* Тег на первом экране (телефон): плашка LIA слева, текст в две строки справа, выровнен по верху плашки */
+.intro-tag{display:grid !important;grid-template-columns:auto minmax(0,1fr);align-items:start;gap:10px !important;min-height:0 !important;padding:5px 14px 7px 5px !important;border-radius:18px !important;font-size:var(--fs-small) !important;line-height:1.35 !important}
+.intro-tag > span:first-child{height:24px !important;margin-top:1px;padding:0 8px 0 11px !important;font-size:var(--fs-micro) !important}
+/* Большие кнопки-пилюли на телефоне: во всю ширину, текст переносится */
+#zayavka .btn-light,#top .btn-dark{width:100%;justify-content:center;text-align:center;white-space:normal;min-height:56px !important;padding:14px 22px !important;font-size:var(--fs-body) !important;line-height:1.3}
+/* Цепочки: вертикальная линия слева, шаги справа от точек */
+#chain,#chain-real{gap:14px !important}
+.chain{grid-template-columns:1fr !important;gap:0 !important;padding:4px 0 0 !important}
+.chain-step{position:relative;display:grid !important;grid-template-columns:15px minmax(0,1fr);column-gap:18px;row-gap:4px !important;padding:0 0 22px !important}
+.chain-step:first-child{display:none !important}
+.chain-step:last-child{padding-bottom:0 !important}
+.chain-label{font-size:var(--fs-lead) !important}
+.chain:not(.chain-real) .chain-step:last-child{padding-bottom:30px !important}
+.chain:not(.chain-real) .chain-step:last-child .chain-line{display:block;bottom:-4px}
+.chain:not(.chain-real) .chain-step:last-child svg{display:block !important;left:0;right:auto !important;top:auto !important;bottom:-10px;width:15px;height:15px;transform:rotate(90deg)}
+.chain-step > span:not([class]){position:absolute !important;left:0;top:0;bottom:0;width:15px;height:auto !important}
+.chain-line{left:6.5px !important;right:auto !important;top:15px !important;bottom:-22px;width:2px !important;height:auto !important;transform:scaleY(var(--chain,1)) !important;transform-origin:top center !important}
+.chain-step:last-child .chain-line{display:none}
+.chain-real .chain-cut{background:repeating-linear-gradient(180deg,#000 0 7px,transparent 7px 13px) !important}
+.chain-step svg{display:none}
+.chain-label,.chain-sub,.chain-note{grid-column:2}
+.chain-note{position:static !important;margin:0 0 2px}
+.chain-sub{margin-top:0 !important}
+/* Боли: лента карточек со свайпом */
+.pains{flex-direction:row !important;gap:12px !important;overflow-x:auto;scroll-snap-type:x mandatory;margin:0 calc(-1 * var(--pad-x));padding:4px var(--pad-x) 12px !important;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+.pains::-webkit-scrollbar{display:none}
+.pain{position:relative !important;top:auto !important;flex:0 0 min(80vw,340px);scroll-snap-align:start;box-shadow:none !important}
+.pains-dots{display:flex;gap:6px;justify-content:center;margin-top:-28px;width:100%}
+.pains-dots i{width:6px;height:6px;border-radius:50%;background:#C4C4C0;transition:background .3s,transform .3s}
+.pains-dots i.on{background:#000;transform:scale(1.3)}
+/* «Что изменится»: табы вместо двух списков */
+.ben-tabs{display:inline-flex;align-self:flex-start;gap:4px;padding:4px;border:1px solid #000;border-radius:999px;background:rgba(255,255,255,0.7)}
+.ben-tab{padding:10px 18px;border-radius:999px;border:0;background:none;font:inherit;font-size:var(--fs-small);font-weight:500;color:#4A4A48;cursor:pointer;transition:background .25s,color .25s}
+.ben-tab[aria-selected="true"]{background:#000;color:#fff}
+.ben-tab:focus-visible{outline:2px solid #000;outline-offset:3px}
+.ben-grid{gap:0 !important;margin-top:-12px}
+.ben-col:not(.is-on){display:none !important}
+.ben-col .ben-h{display:none}
+/* «Кто мы»: фото шире, письмо свёрнуто до ключевой фразы */
+.duo{aspect-ratio:4/3}
+#kto article{padding:24px !important;gap:18px !important}
+.m-letter{gap:16px}
+/* «Как LIA ведёт гостя»: кольцо из пяти шагов вместо рельса */
+#kak{gap:var(--gap-lg) !important}
+#kak > div:first-child > div > div[aria-hidden]{display:none !important}
+.zsteps > li > span[aria-hidden] > span:last-child{background:rgba(255,255,255,0.55) !important}
+.m-scheme{position:relative;display:flex;flex-direction:column;margin:0;padding:22px 16px 18px;border:1px solid #C4C4C0;background:radial-gradient(70% 34% at 50% 54%,rgba(67,109,238,0.20),rgba(67,109,238,0.06) 60%,rgba(67,109,238,0) 100%),radial-gradient(rgba(0,0,0,0.12) 1px,transparent 1.3px) 0 0/18px 18px,#F2F2F0}
+.ms-c{position:absolute;width:7px;height:7px;border-radius:50%;background:#000}
+.mc-top{display:grid;grid-template-columns:1fr 1fr;gap:10px;align-items:stretch}
+.mc-col{display:flex;flex-direction:column;gap:8px}
+.mc-col::after{content:"";flex:1;align-self:center;border-left:1px dashed #9A9A96;margin-top:-8px}
+.mc-lbl{font-size:var(--fs-micro);color:#8E8E8A;margin-bottom:2px}
+.mc-card{display:flex;align-items:center;justify-content:center;min-height:42px;padding:8px 10px;text-align:center;border-radius:12px;background:#FFFFFF;border:1px solid #D6D6D3;box-shadow:0 6px 16px rgba(0,0,0,.04);font-size:var(--fs-small);line-height:1.2}
+.mc-know{background:#E2E2DF;border-color:#E2E2DF;box-shadow:none}
+.mc-join{display:block;width:100%;height:40px;overflow:visible}
+.mc-join-s{height:24px}
+.mc-join line{stroke:#9A9A96;stroke-width:1;stroke-dasharray:4 4;vector-effect:non-scaling-stroke}
+.mc-core{position:relative;display:flex;flex-direction:column;align-items:center;gap:4px;padding:18px 20px;border-radius:22px 22px 22px 6px;background:#000;color:#fff;box-shadow:0 16px 44px rgba(0,0,0,.22)}
+.mc-glow{display:none;position:absolute;left:50%;top:50%;width:150%;aspect-ratio:1;transform:translate(-50%,-50%);border-radius:50%;background:radial-gradient(closest-side,rgba(67,109,238,.28),rgba(67,109,238,.08) 55%,rgba(67,109,238,0));z-index:-1;pointer-events:none}
+.mc-dot{position:absolute;width:7px;height:7px;border-radius:50%;background:#000}
+.mc-dot-top{left:50%;top:-4px;transform:translateX(-50%)}
+.mc-logo{font-size:var(--fs-body);font-weight:500;letter-spacing:.36em;padding-left:.36em}
+.mc-sub{font-size:var(--fs-small);color:#D6D6D3}
+.mc-outwrap{position:relative;padding-top:34px}
+.mc-outwrap::before{content:"";position:absolute;left:50%;top:0;height:34px;border-left:1px dashed #9A9A96}
+.mc-outwrap::after{content:"";position:absolute;left:9px;right:50%;top:34px;border-top:1px dashed #9A9A96}
+.mc-lbl-out{position:absolute;left:0;top:8px}
+.mc-out{position:relative;list-style:none;margin:0;padding:12px 0 0 28px;display:flex;flex-direction:column;gap:8px}
+.mc-out::before{content:"";position:absolute;left:9px;top:0;bottom:21px;border-left:1px dashed #9A9A96}
+.mc-out li{position:relative;padding:12px 14px;border-radius:12px;background:#FFFFFF;border:1px solid #D6D6D3;font-size:var(--fs-small);line-height:1.2;color:#4A4A48}
+.mc-out li b{font-weight:500;color:#000}
+.mc-out li::before{content:"";position:absolute;left:-19px;top:50%;width:19px;border-top:1px dashed #9A9A96}
+.mc-out li::after{content:"";position:absolute;left:-4px;top:50%;width:7px;height:7px;margin-top:-3.5px;border-radius:50%;background:#000}
+.mc-note{margin-top:16px;padding-top:12px;border-top:1px dashed #C4C4C0;font-size:var(--fs-small);line-height:1.45;color:#4A4A48}
+.step-now{display:block;font-size:var(--fs-intro);line-height:1.25;font-weight:400;letter-spacing:-0.01em;text-wrap:balance}
+.panels h3{display:none !important}
+/* «Почему не подведёт»: аккордеон */
+#pochemu{gap:var(--gap) !important}
+.why-card{position:sticky !important;top:84px !important;min-height:calc(100svh - 110px) !important;margin:0 0 16px !important;padding:24px !important;border-radius:24px !important;box-shadow:0 -10px 30px rgba(0,0,0,0.08) !important;grid-template-columns:minmax(0,1fr) !important;gap:16px !important;align-items:start !important;align-content:start}
+.why-card h3{font-size:var(--fs-h3) !important}
+.why-vis{margin-top:auto}
+/* «Как подключить»: вертикальная линия с точками */
+.zsteps{grid-template-columns:1fr !important;gap:0 !important}
+.zsteps > li{position:relative;display:grid !important;grid-template-columns:13px minmax(0,1fr);column-gap:18px;row-gap:8px !important;padding-bottom:32px}
+.zsteps > li:last-child{padding-bottom:0}
+.zsteps > li > span[aria-hidden]{position:absolute;left:0;top:4px;bottom:0;width:13px;flex-direction:column;align-items:center}
+.zsteps > li > span[aria-hidden] > span:last-child{width:1px !important;height:auto !important;flex:1 !important}
+.zsteps > li:last-child > span[aria-hidden] > span:last-child{display:none}
+.zsteps > li > :not([aria-hidden]){grid-column:2}
+}
+</style>
+</head>
+<body>
+<div style="font-family:Onest, 'Helvetica Neue', Helvetica, Arial, sans-serif; color:#000000; background:#EDEDEB; font-size:var(--fs-body); line-height:1.55; -webkit-font-smoothing:antialiased">
+
+<header id="hdr" class="jh">
+<div class="jh-wrap">
+<div class="jh-plate" aria-hidden="true"></div>
+<div class="jh-row">
+<div class="jh-left">
+<a href="#top" class="jh-logo" aria-label="LIA, в начало страницы">LIA</a>
+<nav class="jh-links" aria-label="Разделы">
+<a class="jh-link" href="#kak">Как работает</a>
+<a class="jh-link" href="#kto">Кто мы</a>
+<a class="jh-link" href="#voprosy">Вопросы</a>
+</nav>
+</div>
+<div class="jh-right">
+<div class="jh-cta"><a href="https://t.me/lia_ai_team_bot?start=site_header&amp;utm_source=lia_landing&amp;utm_medium=button&amp;utm_campaign=pilot&amp;utm_content=header" target="_blank" rel="noopener" data-bot="header" class="jh-btn"><span class="jh-btn-in">Оставить заявку</span></a></div>
+<div class="jh-burger"><button type="button" class="jh-btn jh-burger-btn" aria-label="Открыть меню" aria-expanded="false"><span class="jh-btn-in"><svg class="i-burger" width="16" height="10" viewBox="0 0 16 10" aria-hidden="true"><path d="M0.5 10H15.5V8.33333H0.5V10ZM0.5 5.83333H15.5V4.16667H0.5V5.83333ZM0.5 0V1.66667H15.5V0H0.5Z" style="fill:currentColor"></path></svg><svg class="i-close" width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><path d="M1.5 1.5l11 11M12.5 1.5l-11 11" style="fill:none; stroke:currentColor; stroke-width:1.8"></path></svg></span></button></div>
+</div>
+</div>
+</div>
+<nav class="jh-menu" aria-label="Меню">
+<a class="jh-mlink" href="#kak">Как работает</a>
+<a class="jh-mlink" href="#kto">Кто мы</a>
+<a class="jh-mlink" href="#voprosy">Вопросы</a>
+<a href="https://t.me/lia_ai_team_bot?start=site_menu&amp;utm_source=lia_landing&amp;utm_medium=button&amp;utm_campaign=pilot&amp;utm_content=menu" target="_blank" rel="noopener" data-bot="menu" class="jh-btn"><span class="jh-btn-in">Оставить заявку</span></a>
+</nav>
+</header>
+
+<section id="top" style="position:relative; overflow:hidden; margin-top:0; padding-top:100px; min-height:900px">
+<canvas data-grain="light" data-x="0.72" data-y="0.55" aria-hidden="true" style="position:absolute; top:0; left:0; width:100%; height:100%; display:block"></canvas>
+<div style="position:relative; max-width:1280px; margin:0 auto; padding:clamp(40px,5vw,72px) clamp(20px,5vw,64px) clamp(64px,8vw,96px); display:flex; flex-direction:column; gap:clamp(28px,3.5vw,44px)">
+
+<!-- Заголовок: вариант 1 (основной) -->
+<div style="display:flex; flex-direction:column; align-items:flex-start">
+<p class="intro-tag" style="margin:0; display:inline-flex; flex-wrap:wrap; align-items:center; gap:10px; min-height:40px; padding:5px 18px 5px 5px; border:1px solid #000000; border-radius:22px; background:rgba(255,255,255,0.7); font-size:var(--fs-small); line-height:1.35">
+<span style="display:inline-flex; align-items:center; height:28px; padding:0 10px 0 14px; border-radius:999px; background:#000000; color:#FFFFFF; font-size:var(--fs-micro); font-weight:500; letter-spacing:0.36em">LIA</span>
+<span>AI-администратор для студий лазерной эпиляции на YCLIENTS</span>
+</p>
+<span class="intro-line" aria-hidden="true" style="display:block; width:1px; height:26px; margin-left:22px; background:#000000"></span>
+<span class="intro-dot" aria-hidden="true" style="display:block; width:7px; height:7px; margin:-3px 0 14px 19px; border-radius:50%; background:#000000"></span>
+<h1 data-split style="margin:0; font-weight:300; font-size:var(--fs-display); line-height:1.04; letter-spacing:-0.03em">
+<span style="display:block">Опыт лидеров ниши.</span>
+<span style="display:block">Голос вашего бренда.</span>
+</h1>
+</div>
+<!-- Заголовок: вариант 2, «как у Granola». Чтобы включить: удалите блок варианта 1 выше и уберите эту строку и строку с закрывающим комментарием.
+<div style="display:flex; flex-direction:column; gap:18px">
+<h1 data-split style="margin:0; font-weight:300; font-size:var(--fs-display); line-height:1.04; letter-spacing:-0.03em; max-width:15em; text-wrap:balance">AI-администратор для студий лазерной эпиляции.</h1>
+<p style="margin:0; font-weight:300; font-size:var(--fs-h3); line-height:1.15; letter-spacing:-0.02em; color:#4A4A48">Опыт лидеров ниши. Голос вашего бренда</p>
+</div>
+-->
+
+
+<div style="display:flex; flex-wrap:wrap; gap:48px clamp(48px,6vw,88px); align-items:flex-start">
+<div class="intro-rest" style="flex:1 1 400px; min-width:0; display:flex; flex-direction:column; gap:28px; padding-top:6px">
+<p style="margin:0; font-size:var(--fs-intro); line-height:1.55; color:#4A4A48; max-width:31em">В LIA заложен опыт владельцев студий лазерной эпиляции: что спрашивают гости, как правильно ответить и как довести каждое обращение до записи. Бизнес с первого дня общается на уровне лидеров ниши — в вашем стиле, круглосуточно.</p>
+<div style="display:flex; flex-wrap:wrap; gap:14px 28px; align-items:center">
+<a href="https://t.me/lia_ai_team_bot?start=site_hero&amp;utm_source=lia_landing&amp;utm_medium=button&amp;utm_campaign=pilot&amp;utm_content=hero" target="_blank" rel="noopener" data-bot="hero" class="btn-dark" style="display:inline-flex; align-items:center; gap:12px; min-height:56px; padding:0 28px 0 30px; border-radius:999px; background:#000000; color:#FFFFFF; text-decoration:none; font-size:var(--fs-body); font-weight:500; transition:background .2s">Оставить заявку<svg aria-hidden="true" width="18" height="18" viewBox="0 0 18 18"><path d="M3 9h11M10 4.5L14.5 9 10 13.5" style="fill:none; stroke:#FFFFFF; stroke-width:1.5"></path></svg></a>
+<a href="#kak" style="font-size:var(--fs-body); text-underline-offset:5px">Как LIA ведёт гостя</a>
+</div>
+</div>
+
+<figure id="hero-chat" style="flex:1.4 1 540px; min-width:0; margin:0; min-height:520px; display:flex; flex-direction:column; justify-content:flex-start; gap:14px">
+<figcaption class="sr">Пример переписки. Гость в 23:47: Добрый вечер! Сколько стоит глубокое бикини? И это очень больно? LIA в 23:47: Добрый вечер, Анна! Глубокое бикини — 3&nbsp;200&nbsp;₽ за сеанс, курсом из шести выйдет на 10% выгоднее. Больно почти не бывает: в аппарате охлаждение, большинство гостей чувствуют лёгкое тепло. Если захотите, добавим подмышки — вместе выходит быстрее и дешевле. В четверг у Марины свободно: Четверг, 19:30 или 20:15.</figcaption>
+<!-- Пример переписки на первом экране. Реплики LIA печатаются анимацией из этого текста. -->
+<div aria-hidden="true" style="display:flex; flex-direction:column; gap:14px">
+<div style="display:flex; gap:12px; font-size:var(--fs-small); color:#4A4A48"><span>Гость, Instagram</span><span>23:47</span></div>
+<div data-hero="guest" class="rise" style="align-self:flex-start; max-width:400px; background:#FFFFFF; border:1px solid rgba(0,0,0,0.08); border-radius:22px 22px 22px 6px; padding:14px 20px; font-size:var(--fs-body); line-height:1.5">Добрый вечер! Сколько стоит глубокое бикини? И это очень больно?</div>
+<div data-hero="typing" class="rise" hidden style="margin-left:32px; display:flex; gap:12px; align-items:center; font-size:var(--fs-small); color:#4A4A48"><span class="dots"><i></i><i></i><i></i></span><span>LIA печатает</span></div>
+<div data-hero="reply" style="margin-left:32px; display:flex; flex-direction:column; gap:10px">
+<div style="font-size:var(--fs-small); color:#4A4A48">LIA, 23:47</div>
+<div style="position:relative; padding:14px 0">
+<div class="lia-bg"></div>
+<div class="lia-row" data-seg style="position:relative">
+<div class="lia-text" style="padding:3px 22px; color:#FFFFFF; font-size:var(--fs-body); line-height:1.5">Добрый вечер, Анна!</div>
+<div class="lia-anno" style="height:30px; display:flex; align-items:center; gap:10px; transition:opacity .5s ease, transform .5s ease">
+<span style="flex:none; width:7px; height:7px; margin-left:-3.5px; border-radius:50%; background:#000000"></span>
+<span style="flex:none; width:28px; height:1px; background:#000000"></span>
+<span style="font-size:var(--fs-small); line-height:1.3; font-weight:500">Тон вашей студии</span>
+</div>
+</div>
+<div class="lia-row" data-seg style="position:relative">
+<div class="lia-text" style="padding:3px 22px; color:#FFFFFF; font-size:var(--fs-body); line-height:1.5">Глубокое бикини — 3&nbsp;200&nbsp;₽ за сеанс, курсом из шести выйдет на 10% выгоднее.</div>
+<div class="lia-anno" style="height:30px; display:flex; align-items:center; gap:10px; transition:opacity .5s ease, transform .5s ease">
+<span style="flex:none; width:7px; height:7px; margin-left:-3.5px; border-radius:50%; background:#000000"></span>
+<span style="flex:none; width:28px; height:1px; background:#000000"></span>
+<span style="font-size:var(--fs-small); line-height:1.3; font-weight:500">Цена и курс из CRM</span>
+</div>
+</div>
+<div class="lia-row" data-seg style="position:relative">
+<div class="lia-text" style="padding:3px 22px; color:#FFFFFF; font-size:var(--fs-body); line-height:1.5">Больно почти не бывает: в аппарате охлаждение, большинство гостей чувствуют лёгкое тепло.</div>
+<div class="lia-anno" style="height:30px; display:flex; align-items:center; gap:10px; transition:opacity .5s ease, transform .5s ease">
+<span style="flex:none; width:7px; height:7px; margin-left:-3.5px; border-radius:50%; background:#000000"></span>
+<span style="flex:none; width:28px; height:1px; background:#000000"></span>
+<span style="font-size:var(--fs-small); line-height:1.3; font-weight:500">Нешаблонный ответ на сомнение гостя</span>
+</div>
+</div>
+<div class="lia-row" data-seg style="position:relative">
+<div class="lia-text" style="padding:3px 22px; color:#FFFFFF; font-size:var(--fs-body); line-height:1.5">Если захотите, добавим подмышки — вместе выходит быстрее и дешевле.</div>
+<div class="lia-anno" style="height:30px; display:flex; align-items:center; gap:10px; transition:opacity .5s ease, transform .5s ease">
+<span style="flex:none; width:7px; height:7px; margin-left:-3.5px; border-radius:50%; background:#000000"></span>
+<span style="flex:none; width:28px; height:1px; background:#000000"></span>
+<span style="font-size:var(--fs-small); line-height:1.3; font-weight:500">Вторая зона, когда уместно</span>
+</div>
+</div>
+<div class="lia-row" data-seg style="position:relative">
+<div class="lia-text" style="padding:3px 22px; color:#FFFFFF; font-size:var(--fs-body); line-height:1.5">В четверг у Марины свободно:</div>
+<div></div>
+</div>
+</div>
+<div data-hero="slots" class="lia-row rise" style="position:relative">
+<div style="display:flex; flex-wrap:wrap; gap:8px">
+<span style="display:inline-flex; align-items:center; min-height:38px; padding:0 16px; border:1px solid #000000; border-radius:999px; background:#FFFFFF; font-size:var(--fs-small)">Чт, 19:30</span>
+<span style="display:inline-flex; align-items:center; min-height:38px; padding:0 16px; border:1px solid #000000; border-radius:999px; background:#FFFFFF; font-size:var(--fs-small)">Чт, 20:15</span>
+<span style="display:inline-flex; align-items:center; min-height:38px; padding:0 16px; border:1px solid #C4C4C0; border-radius:999px; background:#FFFFFF; font-size:var(--fs-small); color:#4A4A48">Другое время</span>
+</div>
+<div class="lia-anno" style="height:38px; display:flex; align-items:center; gap:10px">
+<span style="flex:none; width:7px; height:7px; margin-left:-3.5px; border-radius:50%; background:#000000"></span>
+<span style="flex:none; width:28px; height:1px; background:#000000"></span>
+<span style="font-size:var(--fs-small); line-height:1.3; font-weight:500">Окна из YCLIENTS</span>
+</div>
+</div>
+</div>
+</div>
+<button type="button" data-hero="replay" class="rise" hidden style="align-self:flex-start; margin-left:32px; min-height:44px; padding:0; background:none; border:0; font:inherit; font-size:var(--fs-small); color:#000000; text-decoration:underline; text-underline-offset:4px; cursor:pointer">Показать ещё раз</button>
+</figure>
+</div>
+</div>
+</section>
+
+<div aria-hidden="true" style="height:1px; background:#C4C4C0"><div style="max-width:1280px; margin:0 auto; padding:0 clamp(20px,5vw,64px)"><span style="display:block; width:7px; height:7px; margin:-3px 0 0 -3px; border-radius:50%; background:#000000"></span></div></div>
+
+<section style="max-width:1280px; margin:0 auto; padding:var(--sec) var(--pad-x); display:flex; flex-direction:column; gap:var(--gap)">
+<h2 style="margin:0; font-weight:300; font-size:var(--fs-h2); line-height:1.04; letter-spacing:-0.03em">Что мешает бизнесу расти?</h2>
+
+<div id="chain" data-chain style="display:flex; flex-direction:column; gap:clamp(28px,3.4vw,44px)">
+<p style="margin:0; font-weight:300; font-size:var(--fs-lead); line-height:1.2; letter-spacing:-0.015em; color:#4A4A48">Кажется, что всё просто:</p>
+<p class="sr">запустил рекламу → гость написал → администратор ответил → гость записался.</p>
+<ol class="chain" aria-hidden="true" style="list-style:none; margin:0; padding:36px 0 0; display:grid; grid-template-columns:repeat(auto-fit,minmax(min(220px,100%),1fr)); gap:44px 0">
+<li class="chain-step" style="position:relative; display:flex; flex-direction:column; gap:18px; padding-right:24px">
+<span style="position:relative; display:block; height:15px">
+<span class="chain-line" style="position:absolute; left:0; right:0; top:6px; height:2px; background:#000000; transform:scaleX(var(--chain,1)); transform-origin:left center; transition:transform .55s cubic-bezier(.6,0,.2,1) 0s"></span>
+<span class="chain-dot" style="position:absolute; left:0; top:0; width:15px; height:15px; border-radius:50%; border:1.5px solid #000000; background:var(--chain-dot,#000000); transition:background .3s ease 0s, border-color .3s ease 0s"></span>
+</span>
+<span class="chain-label" style="font-size:var(--fs-h3); font-weight:300; line-height:1.15; letter-spacing:-0.02em">запустил рекламу</span>
+</li>
+<li class="chain-step" style="position:relative; display:flex; flex-direction:column; gap:18px; padding-right:24px">
+<span style="position:relative; display:block; height:15px">
+<span class="chain-line" style="position:absolute; left:0; right:0; top:6px; height:2px; background:#000000; transform:scaleX(var(--chain,1)); transform-origin:left center; transition:transform .55s cubic-bezier(.6,0,.2,1) .45s"></span>
+<span class="chain-dot" style="position:absolute; left:0; top:0; width:15px; height:15px; border-radius:50%; border:1.5px solid #000000; background:var(--chain-dot,#000000); transition:background .3s ease .45s, border-color .3s ease .45s"></span>
+</span>
+<span class="chain-label" style="font-size:var(--fs-h3); font-weight:300; line-height:1.15; letter-spacing:-0.02em">гость написал</span>
+</li>
+<li class="chain-step" style="position:relative; display:flex; flex-direction:column; gap:18px; padding-right:24px">
+<span style="position:relative; display:block; height:15px">
+<span class="chain-line" style="position:absolute; left:0; right:0; top:6px; height:2px; background:#000000; transform:scaleX(var(--chain,1)); transform-origin:left center; transition:transform .55s cubic-bezier(.6,0,.2,1) .9s"></span>
+<span class="chain-dot" style="position:absolute; left:0; top:0; width:15px; height:15px; border-radius:50%; border:1.5px solid #000000; background:var(--chain-dot,#000000); transition:background .3s ease .9s, border-color .3s ease .9s"></span>
+</span>
+<span class="chain-label" style="font-size:var(--fs-h3); font-weight:300; line-height:1.15; letter-spacing:-0.02em">администратор ответил</span>
+</li>
+<li class="chain-step" style="position:relative; display:flex; flex-direction:column; gap:18px; padding-right:24px">
+<span style="position:relative; display:block; height:15px">
+<span class="chain-line" style="position:absolute; left:0; right:0; top:6px; height:2px; background:#000000; transform:scaleX(var(--chain,1)); transform-origin:left center; transition:transform .55s cubic-bezier(.6,0,.2,1) 1.35s"></span>
+<span class="chain-dot" style="position:absolute; left:0; top:0; width:15px; height:15px; border-radius:50%; border:1.5px solid #000000; background:var(--chain-dot,#000000); transition:background .3s ease 1.35s, border-color .3s ease 1.35s"></span>
+<svg width="14" height="15" viewBox="0 0 14 15" style="position:absolute; right:-1px; top:0; opacity:var(--chain,1); transition:opacity .3s ease 1.8s"><path d="M4 2l6 5.5-6 5.5" style="fill:none; stroke:#000000; stroke-width:1.5"></path></svg>
+</span>
+<span class="chain-label" style="font-size:var(--fs-h3); font-weight:300; line-height:1.15; letter-spacing:-0.02em">гость записался</span>
+</li>
+</ol>
+</div>
+
+<div id="chain-real" data-chain style="display:flex; flex-direction:column; gap:clamp(28px,3.4vw,44px)">
+<p id="chain-but" style="margin:0; font-weight:300; font-size:var(--fs-lead); line-height:1.2; letter-spacing:-0.015em">Но в жизни это выглядит так:</p>
+<p class="sr">запустил рекламу → гость написал в 19:12 → администратор ответил в 22:40, через 3 часа 28 минут → гость: «я подумаю».</p>
+<ol class="chain chain-real" aria-hidden="true" style="list-style:none; margin:0; padding:36px 0 0; display:grid; grid-template-columns:repeat(auto-fit,minmax(min(220px,100%),1fr)); gap:44px 0">
+<li class="chain-step" style="position:relative; display:flex; flex-direction:column; gap:18px; padding-right:24px">
+<span style="position:relative; display:block; height:15px">
+<span class="chain-line" style="position:absolute; left:0; right:0; top:6px; height:2px; background:#000000; transform:scaleX(var(--chain,1)); transform-origin:left center; transition:transform .55s cubic-bezier(.6,0,.2,1) 0s"></span>
+<span class="chain-dot" style="position:absolute; left:0; top:0; width:15px; height:15px; border-radius:50%; border:1.5px solid #000000; background:var(--chain-dot,#000000); transition:background .3s ease 0s, border-color .3s ease 0s"></span>
+</span>
+<span class="chain-label" style="font-size:var(--fs-h3); font-weight:300; line-height:1.15; letter-spacing:-0.02em">запустил рекламу</span>
+</li>
+<li class="chain-step" style="position:relative; display:flex; flex-direction:column; gap:18px; padding-right:24px">
+<span style="position:relative; display:block; height:15px">
+<span class="chain-line" style="position:absolute; left:0; right:0; top:6px; height:2px; background:#000000; transform:scaleX(var(--chain,1)); transform-origin:left center; transition:transform .55s cubic-bezier(.6,0,.2,1) .45s"></span>
+<span class="chain-dot" style="position:absolute; left:0; top:0; width:15px; height:15px; border-radius:50%; border:1.5px solid #000000; background:var(--chain-dot,#000000); transition:background .3s ease .45s, border-color .3s ease .45s"></span>
+</span>
+<span class="chain-label" style="font-size:var(--fs-h3); font-weight:300; line-height:1.15; letter-spacing:-0.02em">гость написал</span>
+<span class="chain-sub" style="margin-top:-8px; font-size:var(--fs-small); color:#4A4A48">19:12</span>
+</li>
+<li class="chain-step" style="position:relative; display:flex; flex-direction:column; gap:18px; padding-right:24px">
+<span class="chain-note" style="position:absolute; left:0; top:-48px; display:flex; align-items:center; gap:8px; font-size:var(--fs-small); font-weight:500; white-space:nowrap"><span style="width:20px; height:1px; background:#000000"></span>через 3 часа 28 минут</span>
+<span style="position:relative; display:block; height:15px">
+<span class="chain-line chain-cut" style="position:absolute; left:0; right:0; top:6px; height:2px; background:#000000; transform:scaleX(var(--chain,1)); transform-origin:left center; transition:transform 1.1s cubic-bezier(.6,0,.2,1) .9s"></span>
+<span class="chain-dot" style="position:absolute; left:0; top:0; width:15px; height:15px; border-radius:50%; border:1.5px solid #000000; background:var(--chain-dot,#000000); transition:background .3s ease .9s, border-color .3s ease .9s"></span>
+</span>
+<span class="chain-label" style="font-size:var(--fs-h3); font-weight:300; line-height:1.15; letter-spacing:-0.02em">администратор ответил</span>
+<span class="chain-sub" style="margin-top:-8px; font-size:var(--fs-small); color:#4A4A48">22:40</span>
+</li>
+<li class="chain-step chain-late" style="position:relative; display:flex; flex-direction:column; gap:18px; padding-right:24px">
+<span style="position:relative; display:block; height:15px">
+<span class="chain-line" style="position:absolute; left:0; right:0; top:6px; height:2px; background:#000000; transform:scaleX(var(--chain,1)); transform-origin:left center; transition:transform .55s cubic-bezier(.6,0,.2,1) 2.1s"></span>
+<span class="chain-dot" style="position:absolute; left:0; top:0; width:15px; height:15px; border-radius:50%; border:1.5px solid #000000; background:var(--chain-dot,#000000); transition:background .3s ease 2.1s, border-color .3s ease 2.1s"></span>
+</span>
+<span class="chain-label" style="font-size:var(--fs-h3); font-weight:300; line-height:1.15; letter-spacing:-0.02em">«я подумаю»</span>
+</li>
+</ol>
+</div>
+
+<div style="display:flex; flex-wrap:wrap; gap:48px clamp(48px,6vw,96px); align-items:flex-start">
+<ul class="pains" style="flex:1.2 1 480px; min-width:0; list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:16px">
+<li class="pain" style="--i:1; z-index:2; font-size:var(--fs-lead); line-height:1.32; letter-spacing:-0.01em"><span class="pain-lead">Платите за рекламу</span><span class="pain-rest">, обращений 30 в день, а отвечаете через три часа?</span></li>
+<li class="pain" style="--i:2; z-index:3; font-size:var(--fs-lead); line-height:1.32; letter-spacing:-0.01em"><span class="pain-lead">Не хватает рук</span><span class="pain-rest">, чтобы отвечать в пик и обзванивать базу?</span></li>
+<li class="pain" style="--i:3; z-index:4; font-size:var(--fs-lead); line-height:1.32; letter-spacing:-0.01em"><span class="pain-lead">Гостю сухо называют цену</span><span class="pain-rest"> — и он пропадает после «я подумаю»?</span></li>
+<li class="pain" style="--i:4; z-index:5; font-size:var(--fs-lead); line-height:1.32; letter-spacing:-0.01em"><span class="pain-lead">Администратор путает аппараты или стоимость</span><span class="pain-rest">, а вы узнаёте об этом из жалобы гостя?</span></li>
+<li class="pain" style="--i:5; z-index:6; font-size:var(--fs-lead); line-height:1.32; letter-spacing:-0.01em"><span class="pain-lead">Потерь не видно,</span><span class="pain-rest"> пока не откроете переписки. А там брошенные диалоги и ответы, за которые стыдно.</span></li>
+<li class="pain" style="--i:6; z-index:7; font-size:var(--fs-lead); line-height:1.32; letter-spacing:-0.01em"><span class="pain-lead">Хотите больше записей</span><span class="pain-rest">, но не знаете, сколько обращений теряете и как отвечают вашим гостям?</span></li>
+<li class="pain" style="--i:0; z-index:1; font-size:var(--fs-lead); line-height:1.32; letter-spacing:-0.01em"><span class="pain-lead">Ставили бота</span><span class="pain-rest">, гости просили позвать человека, через месяц его отключили?</span></li>
+</ul>
+<div class="pains-dots" aria-hidden="true"></div>
+
+<figure id="prob" class="sticky-spec" style="flex:1 1 420px; min-width:0; margin:0; position:relative; border:1px solid #C4C4C0; padding:clamp(24px,3vw,36px); display:flex; flex-direction:column; gap:14px">
+<span aria-hidden="true" style="position:absolute; top:-4px; left:-4px; width:7px; height:7px; border-radius:50%; background:#000000"></span>
+<span aria-hidden="true" style="position:absolute; top:-4px; right:-4px; width:7px; height:7px; border-radius:50%; background:#000000"></span>
+<span aria-hidden="true" style="position:absolute; bottom:-4px; left:-4px; width:7px; height:7px; border-radius:50%; background:#000000"></span>
+<span aria-hidden="true" style="position:absolute; bottom:-4px; right:-4px; width:7px; height:7px; border-radius:50%; background:#000000"></span>
+<figcaption class="sr">Пример переписки. Гость в 19:12: Здравствуйте! Сколько стоит лазер на ноги полностью? Администратор в 22:40: 6500. Гость в 22:41: Я подумаю. Так ответила бы LIA в 19:12: Здравствуйте! Ноги полностью — 6&nbsp;500&nbsp;₽ за сеанс, курсом из шести на 10% выгоднее. Подскажите, делали лазер раньше? Подберу аппарат и окно: сегодня свободно в 20:30.</figcaption>
+<div aria-hidden="true" style="display:flex; flex-direction:column; gap:14px">
+<div style="font-size:var(--fs-small); color:#4A4A48">Переписка студии, вторник</div>
+<div style="display:flex; flex-direction:column; gap:6px; align-items:flex-start">
+<span style="font-size:var(--fs-small); color:#4A4A48">Гость, 19:12</span>
+<div style="max-width:360px; background:#FFFFFF; border:1px solid rgba(0,0,0,0.08); border-radius:20px 20px 20px 6px; padding:12px 18px; font-size:var(--fs-body); line-height:1.5">Здравствуйте! Сколько стоит лазер на ноги полностью?</div>
+</div>
+<div style="margin-left:32px; display:flex; flex-wrap:wrap; gap:8px 16px; align-items:flex-end">
+<div style="display:flex; flex-direction:column; gap:6px; align-items:flex-start">
+<span style="font-size:var(--fs-small); color:#4A4A48">Администратор, 22:40</span>
+<div style="position:relative; background:#E2E2DF; border-radius:20px 20px 20px 6px; padding:12px 22px; font-size:var(--fs-body); line-height:1.5">6500<span style="position:absolute; left:14px; right:14px; top:50%; height:2px; background:#000000; transform:scaleX(var(--strike,1)); transform-origin:left center; transition:transform .7s cubic-bezier(.6,0,.2,1)"></span></div>
+</div>
+<div style="height:48px; display:flex; align-items:center; gap:10px; opacity:var(--anno1,1); transition:opacity .5s ease">
+<span style="flex:none; width:24px; height:1px; background:#000000"></span>
+<span style="font-size:var(--fs-small); font-weight:500">Ответ через 3 часа 28 минут</span>
+</div>
+</div>
+<div style="display:flex; flex-direction:column; gap:6px; align-items:flex-start; opacity:var(--fade,0.4); transition:opacity .6s ease">
+<span style="font-size:var(--fs-small); color:#4A4A48">Гость, 22:41</span>
+<div style="background:#FFFFFF; border:1px solid rgba(0,0,0,0.08); border-radius:20px 20px 20px 6px; padding:12px 18px; font-size:var(--fs-body); line-height:1.5">Я подумаю</div>
+</div>
+<div id="prob-lia" class="rise" style="margin-left:32px; margin-top:10px; padding-top:18px; border-top:1px dashed #C4C4C0; display:flex; flex-direction:column; gap:6px; align-items:flex-start">
+<span style="font-size:var(--fs-small); color:#4A4A48">Так ответила бы LIA, 19:12</span>
+<div id="prob-text" style="max-width:420px; background:#363636; color:#FFFFFF; border-radius:20px 20px 20px 6px; padding:12px 18px; font-size:var(--fs-body); line-height:1.5; min-height:48px">Здравствуйте! Ноги полностью — 6&nbsp;500&nbsp;₽ за сеанс, курсом из шести на 10% выгоднее. Подскажите, делали лазер раньше? Подберу аппарат и окно: сегодня свободно в 20:30.</div>
+<div style="display:flex; align-items:center; gap:10px; margin-top:6px; opacity:var(--anno2,1); transition:opacity .5s ease">
+<span style="flex:none; width:7px; height:7px; border-radius:50%; background:#000000"></span>
+<span style="flex:none; width:24px; height:1px; background:#000000"></span>
+<span style="font-size:var(--fs-small); font-weight:500">Сразу: цена курса, вопрос и следующий шаг</span>
+</div>
+</div>
+</div>
+</figure>
+</div>
+
+<div style="margin-top:clamp(32px,5vw,64px); max-width:1060px; display:flex; flex-direction:column; gap:28px">
+<p data-scrub style="margin:0; font-weight:300; font-size:var(--fs-h2); line-height:1.16; letter-spacing:-0.02em; text-wrap:pretty">Переписка приносит записи, только когда каждому гостю отвечают быстро и правильно — независимо от того, кто сегодня на смене.</p>
+<p style="margin:0; font-size:var(--fs-intro); color:#4A4A48; max-width:34em">Работать с клиентами и повышать их лояльность умеют лидеры ниши, а их опыт — <span class="mark">внутри LIA</span>.</p>
+</div>
+</section>
+
+<div aria-hidden="true" style="height:1px; background:#C4C4C0"><div style="max-width:1280px; margin:0 auto; padding:0 clamp(20px,5vw,64px)"><span style="display:block; width:7px; height:7px; margin:-3px 0 0 -3px; border-radius:50%; background:#000000"></span></div></div>
+
+<section style="max-width:1280px; margin:0 auto; padding:var(--sec) var(--pad-x) 0; display:flex; flex-direction:column; gap:var(--gap)">
+<h2 style="margin:0; font-weight:300; font-size:var(--fs-h2); line-height:1.04; letter-spacing:-0.03em">Что изменится с LIA</h2>
+<div class="ben-tabs" role="tablist" aria-label="Для кого"><button type="button" class="ben-tab" role="tab" aria-selected="true" data-ben="0">Владельцу</button><button type="button" class="ben-tab" role="tab" aria-selected="false" data-ben="1">Администратору</button></div>
+<div class="ben-grid" style="display:grid; grid-template-columns:repeat(auto-fit,minmax(min(440px,100%),1fr)); gap:clamp(56px,6vw,72px) clamp(40px,5vw,80px); align-items:start">
+<div class="ben-col is-on" style="display:flex; flex-direction:column">
+<h3 class="ben-h" style="margin:0; padding-bottom:clamp(16px,1.8vw,24px); border-bottom:2px solid #000000; font-size:var(--fs-h3); font-weight:300; line-height:1.1; letter-spacing:-0.02em; text-wrap:balance">Владельцу</h3>
+<ul style="list-style:none; margin:0; padding:0; font-size:var(--fs-intro); line-height:1.4">
+<li style="padding:22px 0; border-bottom:1px solid #C4C4C0"><span style="font-weight:500">Реклама окупается:</span><span style="color:#4A4A48"> из тех же обращений — больше записей.</span></li>
+<li style="padding:22px 0; border-bottom:1px solid #C4C4C0"><span style="font-weight:500">Гости, которые пишут ночью,</span><span style="color:#4A4A48"> утром уже записаны.</span></li>
+<li style="padding:22px 0; border-bottom:1px solid #C4C4C0"><span style="font-weight:500">Стандарт общения не уходит</span><span style="color:#4A4A48"> вместе с администратором.</span></li>
+</ul>
+</div>
+<div class="ben-col" style="display:flex; flex-direction:column">
+<h3 class="ben-h" style="margin:0; padding-bottom:clamp(16px,1.8vw,24px); border-bottom:2px solid #000000; font-size:var(--fs-h3); font-weight:300; line-height:1.1; letter-spacing:-0.02em; text-wrap:balance">Администратору</h3>
+<ul style="list-style:none; margin:0; padding:0; font-size:var(--fs-intro); line-height:1.4">
+<li style="padding:22px 0; border-bottom:1px solid #C4C4C0"><span style="font-weight:500">До вас доходит только то, где нужен человек.</span><span style="color:#4A4A48"> Типовые вопросы закрыты.</span></li>
+<li style="padding:22px 0; border-bottom:1px solid #C4C4C0"><span style="font-weight:500">Гостю ответят, даже когда вы заняты</span><span style="color:#4A4A48"> с клиентом.</span></li>
+</ul>
+</div>
+</div>
+<p data-scrub style="margin:clamp(16px,3vw,40px) 0 0; max-width:1000px; font-weight:300; font-size:var(--fs-h2); line-height:1.1; letter-spacing:-0.025em; text-wrap:balance">Одним словом — бренд, о котором гости рассказывают подругам!</p>
+<p id="kruto" class="pop" style="margin:0; align-self:flex-start; background:#FFFFFF; border:1px solid rgba(0,0,0,0.08); border-radius:24px 24px 24px 6px; padding:14px 26px; font-size:var(--fs-lead); font-weight:500; line-height:1.3">Круто?</p>
+</section>
+
+<section style="max-width:1280px; margin:0 auto; padding:24px var(--pad-x) var(--sec); display:flex; flex-direction:column; gap:var(--gap)">
+<div style="position:relative">
+<div id="lia-typing" aria-hidden="true" hidden style="position:absolute; top:0; left:clamp(0px,4vw,64px); display:flex; gap:12px; align-items:center; font-size:var(--fs-small); color:#4A4A48"><span class="dots"><i></i><i></i><i></i></span><span>LIA печатает</span></div>
+<div id="lia-answer" class="pop-late" style="margin-left:clamp(0px,4vw,64px); display:flex; flex-direction:column; gap:10px; align-items:flex-start">
+<span aria-hidden="true" style="font-size:var(--fs-small); color:#4A4A48">LIA</span>
+<h2 style="margin:0; max-width:1040px; background:#363636; color:#FFFFFF; border-radius:40px 40px 40px 10px; padding:clamp(28px,4vw,52px) clamp(28px,4.4vw,60px); font-weight:300; font-size:var(--fs-display); line-height:1.06; letter-spacing:-0.035em; text-wrap:balance">Тогда знакомьтесь: LIA&nbsp;— опыт лидеров ниши, настроенный под ваши студии!</h2>
+</div>
+</div>
+<div style="display:flex; flex-wrap:wrap; gap:24px clamp(40px,5vw,80px); align-items:flex-end; padding-top:clamp(40px,5vw,64px); border-top:1px solid #C4C4C0">
+<h3 style="flex:2 1 520px; margin:0; font-weight:300; font-size:var(--fs-display); line-height:1.04; letter-spacing:-0.035em">
+<span style="display:block; color:#74746F">Боты предлагают автоматизацию,</span>
+<span style="display:block">LIA — экспертизу.</span>
+</h3>
+<p style="flex:1 1 320px; margin:0; font-size:var(--fs-intro); color:#4A4A48">LIA обучена предпринимателями в&nbsp;<span class="mark">сфере услуг, эффективных коммуникаций и&nbsp;продаж.</span> Поэтому она ответит как ваш лучший администратор: по делу, без шаблонов и с предложением услуги только в подходящий момент. И больше не придётся выбирать между оптимизацией и лояльностью.</p>
+</div>
+</section>
+
+<div aria-hidden="true" style="height:1px; background:#C4C4C0"><div style="max-width:1280px; margin:0 auto; padding:0 clamp(20px,5vw,64px)"><span style="display:block; width:7px; height:7px; margin:-3px 0 0 -3px; border-radius:50%; background:#000000"></span></div></div>
+
+<section id="komu" style="max-width:1280px; margin:0 auto; padding:var(--sec) var(--pad-x)">
+<div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(min(440px,100%),1fr)); gap:24px">
+<div style="background:#FFFFFF; padding:clamp(28px,4vw,52px); display:flex; flex-direction:column; gap:22px">
+<h2 style="margin:0; display:flex; align-items:center; gap:16px; font-weight:300; font-size:var(--fs-h3); line-height:1.1; letter-spacing:-0.02em"><svg aria-hidden="true" width="34" height="34" viewBox="0 0 34 34" style="flex:none"><circle cx="17" cy="17" r="17" style="fill:#000000"></circle><path d="M10.5 17.5l4.5 4.5 8.5-9.5" style="fill:none; stroke:#FFFFFF; stroke-width:1.8"></path></svg>Подойдёт</h2>
+<p style="margin:0; font-size:var(--fs-intro); line-height:1.45">Студиям и сетям лазерной эпиляции на YCLIENTS, которым гости пишут из рекламы, соцсетей и в нескольких мессенджерах.</p>
+</div>
+<div style="position:relative; border:1px solid #C4C4C0; padding:clamp(28px,4vw,52px); display:flex; flex-direction:column; gap:22px">
+<span aria-hidden="true" style="position:absolute; top:-4px; left:-4px; width:7px; height:7px; border-radius:50%; background:#000000"></span>
+<span aria-hidden="true" style="position:absolute; top:-4px; right:-4px; width:7px; height:7px; border-radius:50%; background:#000000"></span>
+<span aria-hidden="true" style="position:absolute; bottom:-4px; left:-4px; width:7px; height:7px; border-radius:50%; background:#000000"></span>
+<span aria-hidden="true" style="position:absolute; bottom:-4px; right:-4px; width:7px; height:7px; border-radius:50%; background:#000000"></span>
+<h2 style="margin:0; display:flex; align-items:center; gap:16px; font-weight:300; font-size:var(--fs-h3); line-height:1.1; letter-spacing:-0.02em"><svg aria-hidden="true" width="34" height="34" viewBox="0 0 34 34" style="flex:none"><circle cx="17" cy="17" r="16.4" style="fill:none; stroke:#000000; stroke-width:1.2"></circle><path d="M12 12l10 10M22 12L12 22" style="fill:none; stroke:#000000; stroke-width:1.4"></path></svg>Не подойдёт</h2>
+<ul style="list-style:none; margin:0; padding:0; display:flex; flex-direction:column; color:#4A4A48">
+<li style="display:grid; grid-template-columns:28px minmax(0,1fr); padding:14px 0; border-top:1px solid #C4C4C0"><span aria-hidden="true" style="display:block; width:12px; height:1px; margin-top:13px; background:#4A4A48"></span><span>Тем, кому нужен автоответчик за 3 тысячи рублей и всё равно, как отвечают гостям.</span></li>
+<li style="display:grid; grid-template-columns:28px minmax(0,1fr); padding:14px 0; border-top:1px solid #C4C4C0"><span aria-hidden="true" style="display:block; width:12px; height:1px; margin-top:13px; background:#4A4A48"></span><span>Маникюру, массажу и косметологии — пока. Опыт практиков этих ниш мы ещё собираем. Хотите быть первыми — <a href="https://t.me/lia_ai_team_bot?start=site_fit&amp;utm_source=lia_landing&amp;utm_medium=button&amp;utm_campaign=pilot&amp;utm_content=fit" target="_blank" rel="noopener" data-bot="fit" style="text-underline-offset:4px">напишите нашей команде</a>.</span></li>
+</ul>
+</div>
+</div>
+</section>
+
+<div aria-hidden="true" style="height:1px; background:#C4C4C0"><div style="max-width:1280px; margin:0 auto; padding:0 clamp(20px,5vw,64px)"><span style="display:block; width:7px; height:7px; margin:-3px 0 0 -3px; border-radius:50%; background:#000000"></span></div></div>
+
+<div style="position:relative; height:calc(clamp(28px,8.4vw,150px) + 60px + clamp(120px,18vw,260px) + var(--sec)); padding-top:var(--sec)">
+<p style="position:sticky; top:20vh; margin:0; padding:0 16px; text-align:center; white-space:nowrap; font-weight:300; font-size:clamp(28px,8.4vw,150px); line-height:1; letter-spacing:-0.045em; color:#363636">Свой AI-бренда.</p>
+</div>
+
+<section id="kto" class="on-dark" style="position:relative; z-index:1; margin-top:calc(-1 * clamp(28px,8.4vw,150px) - 60px); background:#363636; color:#FFFFFF">
+<canvas data-dust="1" aria-hidden="true" style="position:absolute; left:0; top:0; width:100%; height:100%; display:block; pointer-events:none"></canvas>
+<div style="position:relative; z-index:1; max-width:1280px; margin:0 auto; padding:calc(var(--sec) + 40px) var(--pad-x) var(--sec); display:flex; flex-direction:column; gap:var(--gap)">
+<h2 style="margin:0; font-weight:300; font-size:var(--fs-h2); line-height:1.04; letter-spacing:-0.03em; max-width:14em; text-wrap:balance">Кто мы такие и почему нам можно доверять?</h2>
+<div style="display:flex; flex-wrap:wrap; gap:40px clamp(40px,5vw,80px); align-items:flex-start">
+<div style="flex:1 1 360px; min-width:0; display:flex; flex-direction:column; gap:16px">
+<!-- ФОТО ОСНОВАТЕЛЬНИЦ. Сейчас здесь заглушка: мягкие световые кольца. Чтобы поставить настоящее фото, замените блок <div class="duo-fake">…</div> на <img src="ссылка-на-фото" alt="">: синий дуотон наложится сам.
+Фото ведёт в Instagram студии: ссылку поменяйте в href. Над фото курсор становится плашкой со стрелкой, её текст — в data-cursor. -->
+<a href="#instagram-est-epil" class="duo" data-cursor="Instagram EST.EPIL" data-cursor-left="Арина Чоботова" data-cursor-right="Эстер Гомельская" aria-label="Эстер Гомельская и Арина Чоботова, Instagram EST.EPIL">
+<img src="founders-studio.webp" alt="Эстер Гомельская и Арина Чоботова, основательницы EST.EPIL" width="1122" height="1402" loading="lazy" decoding="async">
+<span class="duo-cap"><span class="duo-name">Эстер&nbsp;Гомельская и&nbsp;Арина&nbsp;Чоботова</span><span class="duo-role">EST.EPIL — три студии лазерной эпиляции в Москве, 10+ лет в&nbsp;бизнесе</span></span>
+</a>
+<div style="display:flex; flex-wrap:wrap; gap:8px 24px; font-size:var(--fs-small)">
+<a href="#est-epil" style="text-underline-offset:4px">EST.EPIL</a>
+<a href="#instagram-est-epil" style="text-underline-offset:4px">Instagram EST.EPIL</a>
+<a href="#instagram-lia" style="text-underline-offset:4px">Instagram LIA</a>
+</div>
+</div>
+<article style="flex:1.3 1 460px; min-width:0; background:#FFFFFF; padding:clamp(28px,4vw,60px); border-radius:2px; display:flex; flex-direction:column; gap:20px; font-size:var(--fs-intro); line-height:1.65; color:#363636">
+<p class="m-quote" aria-hidden="true">За 8 месяцев <span data-count="84">84</span>% обращений стали записями.</p>
+<div class="m-letter">
+<p style="margin:0">Меня зовут Эстер&nbsp;Гомельская. Вместе с Ариной&nbsp;Чоботовой мы управляем EST.EPIL — сетью из трёх клиник лазерной эпиляции в Москве: [N] лет в нише, [N] гостей в год, [4,9] на Яндекс Картах по [N] отзывам.</p>
+<p style="margin:0">Я сама слежу за тоном каждого диалога с гостем, поэтому <strong style="font-weight:500; color:#000000">готовые боты нам не подошли</strong>: приходилось выбирать между оптимизацией и лояльностью — они отвечали шаблоном, и гости просили позвать человека. <span class="m-para"></span>Тогда мы <strong style="font-weight:500; color:#000000">собрали своего</strong>: обучили на переписках наших лучших администраторов и регламентах сети. <strong class="mark" style="font-weight:500">За 8 месяцев <span data-count="84">84</span>% обращений стали записями.</strong> Коллеги из других студий уже увидели его в работе и попросили такой же.</p>
+<p style="margin:0">LIA — наш живой опыт общения с гостями, переведённый в технологию. <strong style="font-weight:500; color:#000000">Мы передаём вашей студии то, что у нас уже работает</strong>, чтобы вы не теряли гостей на ошибках, которые мы уже прошли. Наша цель — чтобы у вас получилось.</p>
+</div>
+<button type="button" class="m-more" aria-expanded="false">Читать письмо целиком</button>
+<div class="sign"><span class="sign-hand">Эстер</span><span class="sign-name">Эстер&nbsp;Гомельская, EST.EPIL</span></div>
+</article>
+</div>
+</div>
+</section>
+
+<section class="on-dark" aria-labelledby="otzyvy-title" style="background:#363636; color:#FFFFFF; padding:clamp(24px,4vw,64px) 0 clamp(72px,9vw,128px); overflow:hidden">
+<div style="max-width:1280px; margin:0 auto; padding:0 clamp(20px,5vw,64px) clamp(40px,5vw,72px)">
+<h2 id="otzyvy-title" style="margin:0 auto; max-width:16em; text-align:center; font-weight:300; font-size:var(--fs-display); line-height:1.04; letter-spacing:-0.04em; text-wrap:balance">[Заголовок блока отзывов]</h2>
+</div>
+<div class="t-track" style="display:flex; gap:clamp(16px,2.2vw,32px); overflow-x:auto; scroll-snap-type:x mandatory; scroll-padding-left:clamp(20px,5vw,64px); padding:0 clamp(20px,5vw,64px)">
+<figure class="t-card" style="flex:0 0 min(920px,86vw); scroll-snap-align:start; margin:0; border:1px solid rgba(255,255,255,0.4); padding:clamp(24px,4.4vw,72px); min-height:clamp(420px,40vw,580px); display:grid; grid-template-columns:minmax(0,1fr) auto; grid-template-rows:auto 1fr auto; gap:24px clamp(24px,4vw,64px)">
+<span style="grid-column:1 / -1; font-size:var(--fs-intro); font-weight:500; letter-spacing:0.02em">[Логотип студии]</span>
+<blockquote style="grid-column:1; align-self:center; margin:0; font-weight:300; font-size:var(--fs-h2); line-height:1.08; letter-spacing:-0.025em; text-indent:-0.42em">«[Цитата владельца студии]»</blockquote>
+<figcaption style="grid-column:1; align-self:end; display:flex; flex-direction:column; gap:2px; font-size:var(--fs-intro); line-height:1.35"><span>[Имя Фамилия]</span><span style="color:#C4C4C0">[Владелица студии, город]</span></figcaption>
+<div class="t-photo" aria-hidden="true" style="grid-column:2; grid-row:2 / span 2; align-self:end; width:clamp(140px,17vw,236px); aspect-ratio:1; background:#D6D6D3 repeating-linear-gradient(0deg, rgba(0,0,0,0.08) 0 1px, transparent 1px 40px); display:flex; align-items:flex-end; padding:12px; font-size:var(--fs-small); color:#363636">[Фото]</div>
+</figure>
+<figure class="t-card" style="flex:0 0 min(920px,86vw); scroll-snap-align:start; margin:0; border:1px solid rgba(255,255,255,0.4); padding:clamp(24px,4.4vw,72px); min-height:clamp(420px,40vw,580px); display:grid; grid-template-columns:minmax(0,1fr) auto; grid-template-rows:auto 1fr auto; gap:24px clamp(24px,4vw,64px)">
+<span style="grid-column:1 / -1; font-size:var(--fs-intro); font-weight:500; letter-spacing:0.02em">[Логотип студии]</span>
+<blockquote style="grid-column:1; align-self:center; margin:0; font-weight:300; font-size:var(--fs-h2); line-height:1.08; letter-spacing:-0.025em; text-indent:-0.42em">«[Цитата владельца студии]»</blockquote>
+<figcaption style="grid-column:1; align-self:end; display:flex; flex-direction:column; gap:2px; font-size:var(--fs-intro); line-height:1.35"><span>[Имя Фамилия]</span><span style="color:#C4C4C0">[Владелица студии, город]</span></figcaption>
+<div class="t-photo" aria-hidden="true" style="grid-column:2; grid-row:2 / span 2; align-self:end; width:clamp(140px,17vw,236px); aspect-ratio:1; background:#D6D6D3 repeating-linear-gradient(0deg, rgba(0,0,0,0.08) 0 1px, transparent 1px 40px); display:flex; align-items:flex-end; padding:12px; font-size:var(--fs-small); color:#363636">[Фото]</div>
+</figure>
+<figure class="t-card" style="flex:0 0 min(920px,86vw); scroll-snap-align:start; margin:0; border:1px solid rgba(255,255,255,0.4); padding:clamp(24px,4.4vw,72px); min-height:clamp(420px,40vw,580px); display:grid; grid-template-columns:minmax(0,1fr) auto; grid-template-rows:auto 1fr auto; gap:24px clamp(24px,4vw,64px)">
+<span style="grid-column:1 / -1; font-size:var(--fs-intro); font-weight:500; letter-spacing:0.02em">[Логотип студии]</span>
+<blockquote style="grid-column:1; align-self:center; margin:0; font-weight:300; font-size:var(--fs-h2); line-height:1.08; letter-spacing:-0.025em; text-indent:-0.42em">«[Цитата владельца студии]»</blockquote>
+<figcaption style="grid-column:1; align-self:end; display:flex; flex-direction:column; gap:2px; font-size:var(--fs-intro); line-height:1.35"><span>[Имя Фамилия]</span><span style="color:#C4C4C0">[Владелица студии, город]</span></figcaption>
+<div class="t-photo" aria-hidden="true" style="grid-column:2; grid-row:2 / span 2; align-self:end; width:clamp(140px,17vw,236px); aspect-ratio:1; background:#D6D6D3 repeating-linear-gradient(0deg, rgba(0,0,0,0.08) 0 1px, transparent 1px 40px); display:flex; align-items:flex-end; padding:12px; font-size:var(--fs-small); color:#363636">[Фото]</div>
+</figure>
+</div>
+<div style="max-width:1280px; margin:0 auto; padding:24px clamp(20px,5vw,64px) 0; display:flex; justify-content:flex-end; gap:8px">
+<button type="button" class="t-nav t-prev" aria-label="Предыдущий отзыв" style="width:48px; height:48px; border-radius:50%; border:1px solid rgba(255,255,255,0.5); background:none; color:#FFFFFF; cursor:pointer; display:flex; align-items:center; justify-content:center"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 18 18"><path d="M15 9H4M8 4.5L3.5 9 8 13.5" style="fill:none; stroke:#FFFFFF; stroke-width:1.5"></path></svg></button>
+<button type="button" class="t-nav t-next" aria-label="Следующий отзыв" style="width:48px; height:48px; border-radius:50%; border:1px solid rgba(255,255,255,0.5); background:none; color:#FFFFFF; cursor:pointer; display:flex; align-items:center; justify-content:center"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 18 18"><path d="M3 9h11M10 4.5L14.5 9 10 13.5" style="fill:none; stroke:#FFFFFF; stroke-width:1.5"></path></svg></button>
+</div>
+<script>
+(() => {
+  const track = document.querySelector('.t-track');
+  if (!track) return;
+  const step = () => { const c = track.querySelector('.t-card'); return c ? c.offsetWidth + 32 : 600; };
+  document.querySelector('.t-prev').addEventListener('click', () => track.scrollBy({ left: -step(), behavior: 'smooth' }));
+  document.querySelector('.t-next').addEventListener('click', () => track.scrollBy({ left: step(), behavior: 'smooth' }));
+  let hold = false;
+  track.addEventListener('pointerenter', () => { hold = true; });
+  track.addEventListener('pointerleave', () => { hold = false; });
+  if (!matchMedia('(prefers-reduced-motion: reduce)').matches) setInterval(() => {
+    if (hold) return;
+    const atEnd = track.scrollLeft + track.clientWidth >= track.scrollWidth - 8;
+    track.scrollTo({ left: atEnd ? 0 : track.scrollLeft + step(), behavior: 'smooth' });
+  }, 6000);
+})();
+</script>
+</section>
+
+<section id="kak" style="max-width:1280px; margin:0 auto; padding:var(--sec) var(--pad-x); display:flex; flex-direction:column; gap:clamp(64px,7vw,112px)">
+<div style="display:flex; flex-direction:column; gap:24px">
+<h2 style="margin:0; font-weight:300; font-size:var(--fs-h2); line-height:1.04; letter-spacing:-0.03em">Как LIA ведёт гостя</h2>
+<div style="display:flex; flex-wrap:wrap; gap:20px clamp(40px,5vw,80px); align-items:center">
+<p class="kak-sub" style="flex:1 1 300px; margin:0; font-size:var(--fs-intro); color:#4A4A48">Отвечает в WhatsApp, Telegram, Instagram и на сайте.</p>
+<div aria-hidden="true" style="flex:1 1 680px; min-width:0; display:flex; flex-wrap:wrap; align-items:center; gap:10px 0">
+<div style="display:flex; flex-wrap:wrap; gap:8px">
+<span style="display:inline-flex; align-items:center; min-height:38px; padding:0 16px; border:1px solid #C4C4C0; border-radius:999px; background:#FFFFFF; font-size:var(--fs-small)">WhatsApp</span>
+<span style="display:inline-flex; align-items:center; min-height:38px; padding:0 16px; border:1px solid #C4C4C0; border-radius:999px; background:#FFFFFF; font-size:var(--fs-small)">Telegram</span>
+<span style="display:inline-flex; align-items:center; min-height:38px; padding:0 16px; border:1px solid #C4C4C0; border-radius:999px; background:#FFFFFF; font-size:var(--fs-small)">Instagram</span>
+<span style="display:inline-flex; align-items:center; min-height:38px; padding:0 16px; border:1px solid #C4C4C0; border-radius:999px; background:#FFFFFF; font-size:var(--fs-small)">Сайт</span>
+</div>
+<span style="display:flex; align-items:center; margin:0 4px 0 8px"><span style="width:32px; height:1px; background:#000000"></span><span style="width:7px; height:7px; border-radius:50%; background:#000000"></span></span>
+<span style="display:inline-flex; align-items:center; min-height:42px; padding:0 18px 0 22px; border-radius:999px; background:#000000; color:#FFFFFF; font-size:var(--fs-small); font-weight:500; letter-spacing:0.36em">LIA</span>
+<span style="display:flex; align-items:center; margin:0 8px 0 4px"><span style="width:7px; height:7px; border-radius:50%; background:#000000"></span><span style="width:32px; height:1px; background:#000000"></span></span>
+<span style="display:inline-flex; align-items:center; min-height:38px; padding:0 16px; border:1px solid #000000; border-radius:999px; background:#FFFFFF; font-size:var(--fs-small); font-weight:500">YCLIENTS</span>
+</div>
+</div>
+</div>
+
+<style>
+@keyframes lia-map-ring{from{transform:translate(-50%,-50%) scale(.7);opacity:.45}to{transform:translate(-50%,-50%) scale(2.1);opacity:0}}
+@keyframes lia-map-spin{to{transform:rotate(360deg)}}
+@media (prefers-reduced-motion:reduce){.lia-map *{animation:none !important}}
+</style>
+<figure class="lia-map" style="margin:0; display:grid; grid-template-columns:repeat(auto-fit,minmax(min(360px,100%),1fr)); gap:14px; padding:14px; background:#E2E2DF; border-radius:28px">
+<figcaption class="sr">Схема: LIA в центре; к ней приходят сообщения из WhatsApp, Telegram, Instagram и с сайта; LIA опирается на базу практиков и правила студии и передаёт результат в YCLIENTS, администратору и в кабинет.</figcaption>
+<div aria-hidden="true" style="position:relative; aspect-ratio:100 / 82; background:#EDEDEB; border-radius:20px; overflow:hidden">
+<svg viewBox="0 0 100 82" style="position:absolute; left:0; top:0; width:100%; height:100%">
+<ellipse cx="50" cy="41" rx="36" ry="30" style="fill:none; stroke:#C4C4C0; stroke-width:1; vector-effect:non-scaling-stroke"></ellipse>
+<line x1="50.00" y1="41.00" x2="50.00" y2="11.00" style="stroke:#AFAFAB; stroke-width:1; stroke-dasharray:3 4; vector-effect:non-scaling-stroke"></line>
+<line x1="50.00" y1="41.00" x2="73.14" y2="18.02" style="stroke:#AFAFAB; stroke-width:1; stroke-dasharray:3 4; vector-effect:non-scaling-stroke"></line>
+<line x1="50.00" y1="41.00" x2="85.45" y2="35.79" style="stroke:#AFAFAB; stroke-width:1; stroke-dasharray:3 4; vector-effect:non-scaling-stroke"></line>
+<line x1="50.00" y1="41.00" x2="81.18" y2="56.00" style="stroke:#AFAFAB; stroke-width:1; stroke-dasharray:3 4; vector-effect:non-scaling-stroke"></line>
+<line x1="50.00" y1="41.00" x2="62.31" y2="69.19" style="stroke:#AFAFAB; stroke-width:1; stroke-dasharray:3 4; vector-effect:non-scaling-stroke"></line>
+<line x1="50.00" y1="41.00" x2="37.69" y2="69.19" style="stroke:#AFAFAB; stroke-width:1; stroke-dasharray:3 4; vector-effect:non-scaling-stroke"></line>
+<line x1="50.00" y1="41.00" x2="18.82" y2="56.00" style="stroke:#AFAFAB; stroke-width:1; stroke-dasharray:3 4; vector-effect:non-scaling-stroke"></line>
+<line x1="50.00" y1="41.00" x2="14.55" y2="35.79" style="stroke:#AFAFAB; stroke-width:1; stroke-dasharray:3 4; vector-effect:non-scaling-stroke"></line>
+<line x1="50.00" y1="41.00" x2="26.86" y2="18.02" style="stroke:#AFAFAB; stroke-width:1; stroke-dasharray:3 4; vector-effect:non-scaling-stroke"></line>
+<circle r="0.9" style="fill:#000000"><animateMotion dur="2.6s" begin="0.9s" repeatCount="indefinite" path="M50.00 41.00 L85.45 35.79"></animateMotion></circle>
+<circle r="0.9" style="fill:#000000"><animateMotion dur="2.6s" begin="1.4s" repeatCount="indefinite" path="M50.00 41.00 L81.18 56.00"></animateMotion></circle>
+<circle r="0.9" style="fill:#000000"><animateMotion dur="2.6s" begin="1.8s" repeatCount="indefinite" path="M50.00 41.00 L62.31 69.19"></animateMotion></circle>
+<circle r="0.9" style="fill:#000000"><animateMotion dur="2.6s" begin="2.2s" repeatCount="indefinite" path="M37.69 69.19 L50.00 41.00"></animateMotion></circle>
+<circle r="0.9" style="fill:#000000"><animateMotion dur="2.6s" begin="2.7s" repeatCount="indefinite" path="M18.82 56.00 L50.00 41.00"></animateMotion></circle>
+<circle r="0.9" style="fill:#000000"><animateMotion dur="2.6s" begin="3.1s" repeatCount="indefinite" path="M14.55 35.79 L50.00 41.00"></animateMotion></circle>
+<circle r="0.9" style="fill:#000000"><animateMotion dur="2.6s" begin="3.6s" repeatCount="indefinite" path="M26.86 18.02 L50.00 41.00"></animateMotion></circle>
+</svg>
+<span style="position:absolute; left:50.00%; top:13.41%; transform:translate(-50%,-50%); padding:9px 14px; border-radius:10px; background:#FFFFFF; font-size:var(--fs-small); line-height:1.2; white-space:nowrap; box-shadow:0 1px 0 rgba(0,0,0,0.04), 0 8px 20px rgba(0,0,0,0.06)">База практиков</span>
+<span style="position:absolute; left:73.14%; top:21.97%; transform:translate(-50%,-50%); padding:9px 14px; border-radius:10px; background:#FFFFFF; font-size:var(--fs-small); line-height:1.2; white-space:nowrap; box-shadow:0 1px 0 rgba(0,0,0,0.04), 0 8px 20px rgba(0,0,0,0.06)">Правила студии</span>
+<span style="position:absolute; left:85.45%; top:43.65%; transform:translate(-50%,-50%); padding:9px 14px; border-radius:10px; background:#FFFFFF; font-size:var(--fs-small); line-height:1.2; white-space:nowrap; box-shadow:0 1px 0 rgba(0,0,0,0.04), 0 8px 20px rgba(0,0,0,0.06)">YCLIENTS</span>
+<span style="position:absolute; left:81.18%; top:68.29%; transform:translate(-50%,-50%); padding:9px 14px; border-radius:10px; background:#FFFFFF; font-size:var(--fs-small); line-height:1.2; white-space:nowrap; box-shadow:0 1px 0 rgba(0,0,0,0.04), 0 8px 20px rgba(0,0,0,0.06)">Кабинет</span>
+<span style="position:absolute; left:62.31%; top:84.38%; transform:translate(-50%,-50%); padding:9px 14px; border-radius:10px; background:#FFFFFF; font-size:var(--fs-small); line-height:1.2; white-space:nowrap; box-shadow:0 1px 0 rgba(0,0,0,0.04), 0 8px 20px rgba(0,0,0,0.06)">Администратор</span>
+<span style="position:absolute; left:37.69%; top:84.38%; transform:translate(-50%,-50%); padding:9px 14px; border-radius:10px; background:#FFFFFF; font-size:var(--fs-small); line-height:1.2; white-space:nowrap; box-shadow:0 1px 0 rgba(0,0,0,0.04), 0 8px 20px rgba(0,0,0,0.06)">Сайт</span>
+<span style="position:absolute; left:18.82%; top:68.29%; transform:translate(-50%,-50%); padding:9px 14px; border-radius:10px; background:#FFFFFF; font-size:var(--fs-small); line-height:1.2; white-space:nowrap; box-shadow:0 1px 0 rgba(0,0,0,0.04), 0 8px 20px rgba(0,0,0,0.06)">Instagram</span>
+<span style="position:absolute; left:14.55%; top:43.65%; transform:translate(-50%,-50%); padding:9px 14px; border-radius:10px; background:#FFFFFF; font-size:var(--fs-small); line-height:1.2; white-space:nowrap; box-shadow:0 1px 0 rgba(0,0,0,0.04), 0 8px 20px rgba(0,0,0,0.06)">Telegram</span>
+<span style="position:absolute; left:26.86%; top:21.97%; transform:translate(-50%,-50%); padding:9px 14px; border-radius:10px; background:#FFFFFF; font-size:var(--fs-small); line-height:1.2; white-space:nowrap; box-shadow:0 1px 0 rgba(0,0,0,0.04), 0 8px 20px rgba(0,0,0,0.06)">WhatsApp</span>
+<span style="position:absolute; left:50%; top:50%; width:96px; height:96px; border-radius:50%; border:1px solid #000000; animation:lia-map-ring 2.6s ease-out infinite"></span>
+<span style="position:absolute; left:50%; top:50%; transform:translate(-50%,-50%); display:flex; align-items:center; gap:10px; padding:14px 22px; border-radius:16px; background:#000000; color:#FFFFFF; font-size:var(--fs-small); font-weight:500; letter-spacing:0.36em">LIA</span>
+</div>
+<div style="display:flex; flex-direction:column; gap:14px; padding:22px; border-radius:20px; background:#FFFFFF; font-size:var(--fs-small); line-height:1.5">
+<div style="align-self:flex-end; max-width:86%; padding:12px 16px; border-radius:16px 16px 4px 16px; background:#EDEDEB">Как прошли выходные?</div>
+<p style="margin:0; color:#363636">Ответила [N] гостям и записала [N] в YCLIENTS. Два вопроса о противопоказаниях передала администратору. <b style="font-weight:500; color:#000000">Записи ждут вашего подтверждения.</b></p>
+<div style="display:flex; flex-direction:column; gap:8px">
+<div style="display:flex; align-items:center; gap:10px; padding:12px 14px; border:1px solid #E2E2DF; border-radius:12px"><span style="flex:none; width:12px; height:12px; border-radius:50%; border:1.5px solid #000000; border-right-color:transparent; animation:lia-map-spin 1s linear infinite"></span><b style="font-weight:500">Ответ гостю</b><span style="flex:1; min-width:0; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; color:#4A4A48">Instagram, вопрос про бикини</span><span style="flex:none; padding:3px 9px; border-radius:999px; background:#000000; color:#FFFFFF; font-size:var(--fs-micro)">Отвечает</span></div>
+<div style="display:flex; align-items:center; gap:10px; padding:12px 14px; border:1px solid #E2E2DF; border-radius:12px"><span style="flex:none; width:8px; height:8px; margin:0 2px; border-radius:50%; background:#000000"></span><b style="font-weight:500">Запись в YCLIENTS</b><span style="flex:1; min-width:0; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; color:#4A4A48">Чт, 19:30, мастер Марина</span><span style="flex:none; padding:3px 9px; border-radius:999px; border:1px solid #000000; font-size:var(--fs-micro)">Ждёт подтверждения</span></div>
+<div style="display:flex; align-items:center; gap:10px; padding:12px 14px; border:1px solid #E2E2DF; border-radius:12px"><span style="flex:none; width:8px; height:8px; margin:0 2px; border-radius:50%; border:1px solid #000000"></span><b style="font-weight:500">Передача человеку</b><span style="flex:1; min-width:0; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; color:#4A4A48">медицинский вопрос</span><span style="flex:none; padding:3px 9px; border-radius:999px; background:#E2E2DF; font-size:var(--fs-micro)">Передано</span></div>
+</div>
+<div style="margin-top:auto; display:flex; align-items:center; gap:10px; padding:10px 10px 10px 16px; border:1px solid #E2E2DF; border-radius:14px; color:#8A8A87">Спросите LIA о студии…<span style="margin-left:auto; display:flex; align-items:center; justify-content:center; width:32px; height:32px; border-radius:9px; background:#000000"><svg width="14" height="14" viewBox="0 0 14 14"><path d="M7 12V2M2.5 6.5L7 2l4.5 4.5" style="fill:none; stroke:#FFFFFF; stroke-width:1.5"></path></svg></span></div>
+</div>
+</figure>
+
+
+
+<figure class="dscheme" aria-hidden="true">
+<span class="ds-c" style="top:-4px; left:-4px"></span><span class="ds-c" style="top:-4px; right:-4px"></span><span class="ds-c" style="bottom:-4px; left:-4px"></span><span class="ds-c" style="bottom:-4px; right:-4px"></span>
+<svg class="ds-lines" viewBox="0 0 100 100" preserveAspectRatio="none"><ellipse cx="50" cy="53" rx="19" ry="37" class="ds-ring"></ellipse><line x1="27" y1="20.0" x2="27" y2="26.5"></line><line x1="50" y1="20.0" x2="50" y2="26.5"></line><line x1="73" y1="20.0" x2="73" y2="26.5"></line><line x1="27" y1="26.5" x2="73" y2="26.5"></line><line x1="50" y1="26.5" x2="50" y2="44.5"></line><line x1="23.0" y1="35" x2="31.5" y2="35"></line><line x1="23.0" y1="47" x2="31.5" y2="47"></line><line x1="23.0" y1="59" x2="31.5" y2="59"></line><line x1="23.0" y1="71" x2="31.5" y2="71"></line><line x1="31.5" y1="35" x2="31.5" y2="71"></line><line x1="31.5" y1="52" x2="40.5" y2="52"></line><line x1="59.5" y1="52" x2="67.5" y2="52"></line><line x1="67.5" y1="37" x2="67.5" y2="67"></line><line x1="67.5" y1="37" x2="74.75" y2="37"></line><line x1="67.5" y1="52" x2="74.75" y2="52"></line><line x1="67.5" y1="67" x2="74.75" y2="67"></line></svg>
+<span class="ds-glow" style="left:50%; top:52%"></span>
+<span class="ds-lbl" style="left:6.5%; top:15%">LIA знает</span>
+<span class="ds-lbl" style="left:6.5%; top:28.5%">Гость пишет</span>
+<span class="ds-lbl" style="left:74.75%; top:29.5%">LIA делает</span>
+<span class="ds-card ds-know" style="left:27%; top:15%; width:18%; height:10%"><span>Тон студии</span></span>
+<span class="ds-card ds-know" style="left:50%; top:15%; width:18%; height:10%"><span>Аппараты и противопоказания</span></span>
+<span class="ds-card ds-know" style="left:73%; top:15%; width:18%; height:10%"><span>История гостя</span></span>
+<span class="ds-card" style="left:15%; top:35%; width:16%; height:8.6%"><span>WhatsApp</span></span>
+<span class="ds-card" style="left:15%; top:47%; width:16%; height:8.6%"><span>Telegram</span></span>
+<span class="ds-card" style="left:15%; top:59%; width:16%; height:8.6%"><span>Instagram</span></span>
+<span class="ds-card" style="left:15%; top:71%; width:16%; height:8.6%"><span>Сайт</span></span>
+<span class="ds-card ds-out" style="left:84%; top:37%; width:18.5%; height:10.5%"><span><b>Запись</b> в YCLIENTS</span></span>
+<span class="ds-card ds-out" style="left:84%; top:52%; width:18.5%; height:10.5%"><span><b>Сложное</b> — администратору</span></span>
+<span class="ds-card ds-out" style="left:84%; top:67%; width:18.5%; height:10.5%"><span><b>Отчёт</b> владельцу</span></span>
+<span class="ds-core" style="left:50%; top:52%; width:19%; height:15%"><span class="ds-logo">LIA</span><span class="ds-sub">отвечает и записывает</span></span>
+<span class="ds-dot" style="left:50%; top:44.5%"></span>
+<span class="ds-dot" style="left:40.5%; top:52%"></span>
+<span class="ds-dot" style="left:74.75%; top:37%"></span>
+<span class="ds-dot" style="left:74.75%; top:52%"></span>
+<span class="ds-dot" style="left:74.75%; top:67%"></span>
+<figcaption class="ds-note">Если LIA не знает ответа — не придумывает, а зовёт человека. Это правило не отключается.</figcaption>
+</figure>
+
+<figure class="m-scheme" aria-hidden="true">
+<span class="ms-c" style="top:-4px; left:-4px"></span><span class="ms-c" style="top:-4px; right:-4px"></span><span class="ms-c" style="bottom:-4px; left:-4px"></span><span class="ms-c" style="bottom:-4px; right:-4px"></span>
+<div class="mc-top">
+<div class="mc-col"><span class="mc-lbl">Гость пишет</span><span class="mc-card">WhatsApp</span><span class="mc-card">Telegram</span><span class="mc-card">Instagram</span><span class="mc-card">Сайт</span></div>
+<div class="mc-col"><span class="mc-lbl">LIA знает</span><span class="mc-card mc-know">Тон студии</span><span class="mc-card mc-know">Аппараты и противопоказания</span><span class="mc-card mc-know">История гостя</span></div>
+</div>
+<svg class="mc-join" viewBox="0 0 100 40" preserveAspectRatio="none"><line x1="25" y1="0" x2="25" y2="18"></line><line x1="75" y1="0" x2="75" y2="18"></line><line x1="25" y1="18" x2="75" y2="18"></line><line x1="50" y1="18" x2="50" y2="40"></line></svg>
+<div class="mc-core"><span class="mc-glow"></span><span class="mc-dot mc-dot-top"></span><span class="mc-logo">LIA</span><span class="mc-sub">отвечает и записывает</span></div>
+<div class="mc-outwrap"><span class="mc-lbl mc-lbl-out">LIA делает</span>
+<ul class="mc-out"><li><b>Запись</b> в YCLIENTS</li><li><b>Сложное</b> — администратору</li><li><b>Отчёт</b> владельцу</li></ul></div>
+<figcaption class="mc-note">Если LIA не знает ответа — не придумывает, а зовёт человека. Это правило не отключается.</figcaption>
+</figure>
+
+<div class="rail-wrap">
+<div class="m-ring" aria-hidden="true"></div>
+<div class="rail">
+<div class="rail-track" aria-hidden="true"><span class="rail-fill"></span></div>
+<ol id="step-tabs" aria-label="Шаги">
+<li style="display:flex"><button type="button" class="step-btn" data-step="0" aria-pressed="true"><span class="stop" aria-hidden="true">1</span><span class="step-meta">Всегда</span><span class="step-title">Отвечает на всё, что пишет гость</span></button></li>
+<li style="display:flex"><button type="button" class="step-btn" data-step="1" aria-pressed="false"><span class="stop" aria-hidden="true">2</span><span class="step-meta">Чётко</span><span class="step-title">Консультирует</span></button></li>
+<li style="display:flex"><button type="button" class="step-btn" data-step="2" aria-pressed="false"><span class="stop" aria-hidden="true">3</span><span class="step-meta">Прозрачно</span><span class="step-title">Называет цену так, что гость записывается</span></button></li>
+<li style="display:flex"><button type="button" class="step-btn" data-step="3" aria-pressed="false"><span class="stop" aria-hidden="true">4</span><span class="step-meta">Удобно</span><span class="step-title">Записывает в YCLIENTS, пока гость не остыл</span></button></li>
+<li style="display:flex"><button type="button" class="step-btn" data-step="4" aria-pressed="false"><span class="stop" aria-hidden="true">5</span><span class="step-meta">Через несколько недель</span><span class="step-title">Возвращает на следующий сеанс</span></button></li>
+</ol>
+</div>
+<button type="button" id="step-toggle" class="step-toggle" aria-label="Пауза" hidden><svg class="ring" aria-hidden="true" width="48" height="48" viewBox="0 0 48 48"><circle cx="24" cy="24" r="23" style="fill:none; stroke:#000000; stroke-width:1.5; stroke-dasharray:144.51; stroke-dashoffset:144.51"></circle></svg><svg class="i-pause" aria-hidden="true" width="16" height="16" viewBox="0 0 16 16"><path d="M5 3v10M11 3v10" style="fill:none; stroke:#000000; stroke-width:2.2"></path></svg><svg class="i-play" aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" style="display:none"><path d="M5 3l8 5-8 5z" style="fill:#000000"></path></svg></button>
+</div>
+
+<p class="step-now" id="step-now" aria-hidden="true">Отвечает на всё, что пишет гость</p>
+
+<div style="display:flex; flex-wrap:wrap; gap:48px clamp(40px,5vw,80px); align-items:flex-start">
+<div class="panels" style="flex:1 1 380px; min-width:0">
+<div data-panel="0" class="is-on">
+<div class="rise" style="display:flex; flex-direction:column; gap:24px">
+<h3 style="margin:0; display:flex; gap:20px; align-items:baseline; font-weight:300; font-size:var(--fs-h3); line-height:1.08; letter-spacing:-0.025em"><span aria-hidden="true" style="color:#74746F">1</span><span>Отвечает на всё, что пишет гость</span></h3>
+<ul style="list-style:none; margin:0; padding:0">
+<li style="display:grid; grid-template-columns:24px minmax(0,1fr); padding:14px 0; border-top:1px solid #C4C4C0"><span aria-hidden="true" style="display:block; width:10px; height:1px; margin-top:13px; background:#000000"></span><span>Понимает голосовые и фото</span></li>
+<li style="display:grid; grid-template-columns:24px minmax(0,1fr); padding:14px 0; border-top:1px solid #C4C4C0"><span aria-hidden="true" style="display:block; width:10px; height:1px; margin-top:13px; background:#000000"></span><span>Отвечает на все вопросы, даже если их пять в одном сообщении</span></li>
+<li style="display:grid; grid-template-columns:24px minmax(0,1fr); padding:14px 0; border-top:1px solid #C4C4C0; border-bottom:1px solid #C4C4C0"><span aria-hidden="true" style="display:block; width:10px; height:1px; margin-top:13px; background:#000000"></span><span>Пишет в тоне студии: обращение, эмодзи и стоп-слова — по вашим правилам</span></li>
+</ul>
+</div>
+</div>
+<div data-panel="1" class="is-off" aria-hidden="true">
+<div class="rise" style="display:flex; flex-direction:column; gap:24px">
+<h3 style="margin:0; display:flex; gap:20px; align-items:baseline; font-weight:300; font-size:var(--fs-h3); line-height:1.08; letter-spacing:-0.025em"><span aria-hidden="true" style="color:#74746F">2</span><span>Консультирует</span></h3>
+<ul style="list-style:none; margin:0; padding:0">
+<li style="display:grid; grid-template-columns:24px minmax(0,1fr); padding:14px 0; border-top:1px solid #C4C4C0"><span aria-hidden="true" style="display:block; width:10px; height:1px; margin-top:13px; background:#000000"></span><span>Выясняет задачу: какие зоны, был ли опыт лазера, что важно гостю</span></li>
+<li style="display:grid; grid-template-columns:24px minmax(0,1fr); padding:14px 0; border-top:1px solid #C4C4C0"><span aria-hidden="true" style="display:block; width:10px; height:1px; margin-top:13px; background:#000000"></span><span>Подбирает аппарат и число сеансов — в том числе по фото</span></li>
+<li style="display:grid; grid-template-columns:24px minmax(0,1fr); padding:14px 0; border-top:1px solid #C4C4C0; border-bottom:1px solid #C4C4C0"><span aria-hidden="true" style="display:block; width:10px; height:1px; margin-top:13px; background:#000000"></span><span>Рассказывает о противопоказаниях и подготовке: гость приходит готовым, окно у мастера не пропадает</span></li>
+</ul>
+</div>
+</div>
+<div data-panel="2" class="is-off" aria-hidden="true">
+<div class="rise" style="display:flex; flex-direction:column; gap:24px">
+<h3 style="margin:0; display:flex; gap:20px; align-items:baseline; font-weight:300; font-size:var(--fs-h3); line-height:1.08; letter-spacing:-0.025em"><span aria-hidden="true" style="color:#74746F">3</span><span>Называет цену так, что гость записывается</span></h3>
+<ul style="list-style:none; margin:0; padding:0">
+<li style="display:grid; grid-template-columns:24px minmax(0,1fr); padding:14px 0; border-top:1px solid #C4C4C0"><span aria-hidden="true" style="display:block; width:10px; height:1px; margin-top:13px; background:#000000"></span><span>Подскажет цену сеанса и курса по вашему прайсу и объяснит, из чего она складывается</span></li>
+<li style="display:grid; grid-template-columns:24px minmax(0,1fr); padding:14px 0; border-top:1px solid #C4C4C0"><span aria-hidden="true" style="display:block; width:10px; height:1px; margin-top:13px; background:#000000"></span><span>Спрашивает, что смущает, и отвечает на сомнения — экспертно и без давления</span></li>
+<li style="display:grid; grid-template-columns:24px minmax(0,1fr); padding:14px 0; border-top:1px solid #C4C4C0; border-bottom:1px solid #C4C4C0"><span aria-hidden="true" style="display:block; width:10px; height:1px; margin-top:13px; background:#000000"></span><span>Предлагает вторую зону или комплекс, когда это уместно, — растёт средний чек</span></li>
+</ul>
+</div>
+</div>
+<div data-panel="3" class="is-off" aria-hidden="true">
+<div class="rise" style="display:flex; flex-direction:column; gap:24px">
+<h3 style="margin:0; display:flex; gap:20px; align-items:baseline; font-weight:300; font-size:var(--fs-h3); line-height:1.08; letter-spacing:-0.025em"><span aria-hidden="true" style="color:#74746F">4</span><span>Записывает в YCLIENTS, пока гость не остыл</span></h3>
+<ul style="list-style:none; margin:0; padding:0">
+<li style="display:grid; grid-template-columns:24px minmax(0,1fr); padding:14px 0; border-top:1px solid #C4C4C0"><span aria-hidden="true" style="display:block; width:10px; height:1px; margin-top:13px; background:#000000"></span><span>Находит окно у нужного мастера в нужном филиале, а если его нет — предлагает другое</span></li>
+<li style="display:grid; grid-template-columns:24px minmax(0,1fr); padding:14px 0; border-top:1px solid #C4C4C0"><span aria-hidden="true" style="display:block; width:10px; height:1px; margin-top:13px; background:#000000"></span><span>Записывает, переносит и отменяет визит, напоминает о нём так часто, как решит студия</span></li>
+<li style="display:grid; grid-template-columns:24px minmax(0,1fr); padding:14px 0; border-top:1px solid #C4C4C0; border-bottom:1px solid #C4C4C0"><span aria-hidden="true" style="display:block; width:10px; height:1px; margin-top:13px; background:#000000"></span><span>Последнее слово за вами: запись подтверждает администратор — в кабинете LIA или в YCLIENTS</span></li>
+</ul>
+</div>
+</div>
+<div data-panel="4" class="is-off" aria-hidden="true">
+<div class="rise" style="display:flex; flex-direction:column; gap:24px">
+<h3 style="margin:0; display:flex; gap:20px; align-items:baseline; font-weight:300; font-size:var(--fs-h3); line-height:1.08; letter-spacing:-0.025em"><span aria-hidden="true" style="color:#74746F">5</span><span>Возвращает на следующий сеанс</span></h3>
+<ul style="list-style:none; margin:0; padding:0">
+<li style="display:grid; grid-template-columns:24px minmax(0,1fr); padding:14px 0; border-top:1px solid #C4C4C0"><span aria-hidden="true" style="display:block; width:10px; height:1px; margin-top:13px; background:#000000"></span><span>Пишет, когда подходит срок, и предлагает удобное окно. Гость проходит курс до конца, а не исчезает после двух сеансов</span></li>
+<li style="display:grid; grid-template-columns:24px minmax(0,1fr); padding:14px 0; border-top:1px solid #C4C4C0; border-bottom:1px solid #C4C4C0"><span aria-hidden="true" style="display:block; width:10px; height:1px; margin-top:13px; background:#000000"></span><span>Узнаёт постоянного гостя и не переспрашивает то, что уже помнит</span></li>
+</ul>
+</div>
+</div>
+</div>
+
+<figure class="chat-stage">
+<span aria-hidden="true" class="corner" style="top:-4px; left:-4px"></span>
+<span aria-hidden="true" class="corner" style="top:-4px; right:-4px"></span>
+<span aria-hidden="true" class="corner" style="bottom:-4px; left:-4px"></span>
+<span aria-hidden="true" class="corner" style="bottom:-4px; right:-4px"></span>
+<figcaption class="sr">Пример переписки LIA с гостем на выбранном шаге</figcaption>
+<div class="stage-label" id="stage-label" aria-hidden="true">Instagram, суббота</div>
+<!-- Примеры переписок к шагам 1–5. Реплики LIA (class="b-lia") проявляются анимацией из этого текста. -->
+<div class="thread">
+<div class="chat" data-chat="0" data-channel="Instagram, суббота">
+<div class="msg" data-who="guest"><span class="msg-time">Гость, 11:02</span><div class="b-guest"><span class="voice"><svg width="22" height="22" viewBox="0 0 22 22"><circle cx="11" cy="11" r="10.5" style="fill:#000000"></circle><path d="M9 7l6 4-6 4z" style="fill:#FFFFFF"></path></svg><svg width="132" height="22" viewBox="0 0 132 22"><path d="M1 9v4M7 6v10M13 3v16M19 7v8M25 4v14M31 8v6M37 2v18M43 6v10M49 9v4M55 5v12M61 3v16M67 8v6M73 6v10M79 9v4M85 4v14M91 7v8M97 10v2M103 6v10M109 8v6M115 9v4M121 10v2M127 10v2" style="fill:none; stroke:#000000; stroke-width:2; stroke-linecap:round"></path></svg><span>Голосовое, 0:24</span></span></div></div>
+<div class="msg" data-who="guest"><div class="b-guest">И ещё: сколько стоит бикини? Это больно? Есть окна сегодня?</div></div>
+<div class="msg" data-who="note"><div class="b-note"><span class="d"></span><span class="l"></span><span>LIA разобрала голосовое: гостья спрашивает про подмышки</span></div></div>
+<div class="msg" data-who="typing" hidden><div class="b-typing"><span class="dots"><i></i><i></i><i></i></span></div></div>
+<div class="msg" data-who="lia"><span class="msg-time">LIA, 11:02</span><div class="b-lia">Здравствуйте! Да, конечно, сейчас отвечу по порядку. Подмышки — 1&nbsp;900&nbsp;₽, бикини — 3&nbsp;200&nbsp;₽ за сеанс. Ощущается как лёгкое тепло: у аппарата охлаждение. Сегодня свободно в 14:00 и 17:30 — когда удобнее?</div></div>
+</div>
+<div class="chat" data-chat="1" data-channel="WhatsApp, четверг" hidden>
+<div class="msg" data-who="typing" hidden><div class="b-typing"><span class="dots"><i></i><i></i><i></i></span></div></div>
+<div class="msg" data-who="lia"><span class="msg-time">LIA, 15:20</span><div class="b-lia">Подскажите, вы уже делали лазерную эпиляцию? И какие зоны хотите?</div></div>
+<div class="msg" data-who="guest"><span class="msg-time">Гость, 15:22</span><div class="b-guest">Первый раз. Хочу ноги полностью, вот фото<span class="photo"></span></div></div>
+<div class="msg" data-who="typing" hidden><div class="b-typing"><span class="dots"><i></i><i></i><i></i></span></div></div>
+<div class="msg" data-who="lia"><div class="b-lia">Спасибо, фото вижу. Вам подойдёт [аппарат], обычно это [N] сеансов. Пришлю памятку: как подготовиться и какие есть противопоказания.</div></div>
+<div class="msg" data-who="note"><div class="b-note"><span class="d"></span><span class="l"></span><span>Гость придёт подготовленным</span></div></div>
+</div>
+<div class="chat" data-chat="2" data-channel="Telegram, понедельник" hidden>
+<div class="msg" data-who="guest"><span class="msg-time">Гость, 21:05</span><div class="b-guest">А сколько это будет стоить?</div></div>
+<div class="msg" data-who="typing" hidden><div class="b-typing"><span class="dots"><i></i><i></i><i></i></span></div></div>
+<div class="msg" data-who="lia"><span class="msg-time">LIA, 21:05</span><div class="b-lia">Ноги полностью — 6&nbsp;500&nbsp;₽ за сеанс. Чтобы волосы не возвращались, нужен курс из [N] сеансов — курсом выйдет на 10% выгоднее.</div></div>
+<div class="msg" data-who="guest"><div class="b-guest">Дороговато, я подумаю</div></div>
+<div class="msg" data-who="typing" hidden><div class="b-typing"><span class="dots"><i></i><i></i><i></i></span></div></div>
+<div class="msg" data-who="lia"><div class="b-lia">Понимаю. Подскажите, что смущает — сумма сразу или количество сеансов? Курс можно оплачивать по одному сеансу. А если добавить подмышки, вместе выйдет быстрее и дешевле.</div></div>
+</div>
+<div class="chat" data-chat="3" data-channel="Instagram, среда" hidden>
+<div class="msg" data-who="guest"><span class="msg-time">Гость, 22:14</span><div class="b-guest">Хорошо, давайте попробуем</div></div>
+<div class="msg" data-who="typing" hidden><div class="b-typing"><span class="dots"><i></i><i></i><i></i></span></div></div>
+<div class="msg" data-who="lia"><span class="msg-time">LIA, 22:14</span><div class="b-lia">В студии на [адрес] у Марины есть четверг, 19:30 и пятница, 11:00. Как вам удобнее?</div></div>
+<div class="msg" data-who="guest"><div class="b-guest">Четверг</div></div>
+<div class="msg" data-who="typing" hidden><div class="b-typing"><span class="dots"><i></i><i></i><i></i></span></div></div>
+<div class="msg" data-who="lia"><div class="b-lia">Записала вас на четверг, 19:30. Накануне пришлю напоминание и памятку.</div></div>
+<div class="msg" data-who="note"><div class="b-note"><span class="d"></span><span class="l"></span><span>Запись в YCLIENTS ждёт подтверждения администратора</span></div></div>
+</div>
+<div class="chat" data-chat="4" data-channel="WhatsApp, через несколько недель" hidden>
+<div class="msg" data-who="note"><div class="b-note"><span class="d"></span><span class="l"></span><span>Подошёл срок второго сеанса</span></div></div>
+<div class="msg" data-who="typing" hidden><div class="b-typing"><span class="dots"><i></i><i></i><i></i></span></div></div>
+<div class="msg" data-who="lia"><span class="msg-time">LIA, 12:00</span><div class="b-lia">Анна, добрый день! Подошёл срок второго сеанса. У Марины свободно во вторник в 18:00 — записать вас, как в прошлый раз, на ноги и подмышки?</div></div>
+<div class="msg" data-who="guest"><span class="msg-time">Гость, 12:07</span><div class="b-guest">Да, давайте!</div></div>
+<div class="msg" data-who="note"><div class="b-note"><span class="d"></span><span class="l"></span><span>Запись в YCLIENTS ждёт подтверждения администратора</span></div></div>
+</div>
+</div>
+</figure>
+</div>
+
+<div style="margin-top:clamp(16px,3vw,40px); display:flex; flex-wrap:wrap; gap:40px clamp(40px,5vw,80px); align-items:center; padding-top:clamp(40px,5vw,56px); border-top:1px solid #000000">
+<div style="flex:1 1 380px; min-width:0; display:flex; flex-direction:column; gap:20px">
+<h3 style="margin:0; font-weight:300; font-size:var(--fs-h3); line-height:1.1; letter-spacing:-0.02em">Вы видите картину целиком:</h3>
+<ul style="list-style:none; margin:0; padding:0">
+<li style="display:grid; grid-template-columns:24px minmax(0,1fr); padding:13px 0; border-top:1px solid #C4C4C0"><span aria-hidden="true" style="display:block; width:10px; height:1px; margin-top:13px; background:#000000"></span><span>Диалоги из всех каналов — в одном окне</span></li>
+<li style="display:grid; grid-template-columns:24px minmax(0,1fr); padding:13px 0; border-top:1px solid #C4C4C0"><span aria-hidden="true" style="display:block; width:10px; height:1px; margin-top:13px; background:#000000"></span><span>Аналитика: сколько обращений стали записями и сколько гостей вернулись</span></li>
+<li style="display:grid; grid-template-columns:24px minmax(0,1fr); padding:13px 0; border-top:1px solid #C4C4C0; border-bottom:1px solid #C4C4C0"><span aria-hidden="true" style="display:block; width:10px; height:1px; margin-top:13px; background:#000000"></span><span>Раз в неделю — отчёт</span></li>
+</ul>
+</div>
+<div aria-hidden="true" style="flex:1.2 1 460px; min-width:0; background:#FFFFFF; border-radius:4px; padding:clamp(20px,2.6vw,32px); display:grid; grid-template-columns:repeat(auto-fit,minmax(min(180px,100%),1fr)); gap:24px 32px">
+<div style="display:flex; flex-direction:column">
+<div style="display:flex; align-items:center; gap:10px; padding:12px 0; border-bottom:1px solid #E2E2DF; font-size:var(--fs-small)"><span style="width:7px; height:7px; border-radius:50%; background:#000000"></span><span style="flex:1">WhatsApp</span><span style="width:36px; height:6px; border-radius:3px; background:#E2E2DF"></span></div>
+<div style="display:flex; align-items:center; gap:10px; padding:12px 0; border-bottom:1px solid #E2E2DF; font-size:var(--fs-small)"><span style="width:7px; height:7px; border-radius:50%; background:#000000"></span><span style="flex:1">Telegram</span><span style="width:24px; height:6px; border-radius:3px; background:#E2E2DF"></span></div>
+<div style="display:flex; align-items:center; gap:10px; padding:12px 0; border-bottom:1px solid #E2E2DF; font-size:var(--fs-small)"><span style="width:7px; height:7px; border-radius:50%; border:1px solid #000000"></span><span style="flex:1">Instagram</span><span style="width:44px; height:6px; border-radius:3px; background:#E2E2DF"></span></div>
+<div style="display:flex; align-items:center; gap:10px; padding:12px 0; font-size:var(--fs-small)"><span style="width:7px; height:7px; border-radius:50%; border:1px solid #000000"></span><span style="flex:1">Сайт</span><span style="width:18px; height:6px; border-radius:3px; background:#E2E2DF"></span></div>
+</div>
+<div style="display:flex; flex-direction:column; justify-content:center; gap:18px">
+<div style="display:flex; flex-direction:column; gap:8px; font-size:var(--fs-small)"><span>Обращения</span><span style="display:flex; align-items:center"><span style="flex:1; height:1px; background:#000000"></span><span style="width:7px; height:7px; border-radius:50%; background:#000000"></span></span></div>
+<div style="display:flex; flex-direction:column; gap:8px; font-size:var(--fs-small)"><span>Записи</span><span style="display:flex; align-items:center; width:90%"><span style="flex:1; height:1px; background:#000000"></span><span style="width:7px; height:7px; border-radius:50%; background:#000000"></span></span></div>
+<div style="display:flex; flex-direction:column; gap:8px; font-size:var(--fs-small)"><span>Вернулись</span><span style="display:flex; align-items:center; width:80%"><span style="flex:1; height:1px; background:#000000"></span><span style="width:7px; height:7px; border-radius:50%; background:#000000"></span></span></div>
+</div>
+</div>
+</div>
+</section>
+
+<div aria-hidden="true" style="height:1px; background:#C4C4C0"><div style="max-width:1280px; margin:0 auto; padding:0 clamp(20px,5vw,64px)"><span style="display:block; width:7px; height:7px; margin:-3px 0 0 -3px; border-radius:50%; background:#000000"></span></div></div>
+
+<section id="pochemu" style="max-width:1280px; margin:0 auto; padding:var(--sec) var(--pad-x); display:flex; flex-direction:column; gap:clamp(56px,6vw,88px)">
+<h2 style="margin:0; font-weight:300; font-size:var(--fs-h2); line-height:1.04; letter-spacing:-0.03em">Почему LIA не подведёт</h2>
+
+<div class="why-card" style="position:sticky; top:140px; display:grid; grid-template-columns:repeat(auto-fit,minmax(min(440px,100%),1fr)); gap:32px clamp(40px,5vw,80px); align-items:center; padding:clamp(28px,4vw,56px); border-radius:32px; background:#FFFFFF; color:#000000; min-height:440px; margin-bottom:40px; box-shadow:none">
+<div style="display:flex; flex-direction:column; gap:16px">
+<h3 style="margin:0; font-weight:300; font-size:var(--fs-h3); line-height:1.12; letter-spacing:-0.02em; text-wrap:balance">Знает ответы на 1000+ вопросов гостей — и учится вашим правилам</h3>
+<p style="margin:0; color:#4A4A48; max-width:32em">LIA знает, что спрашивают в студиях лазерной эпиляции и как на это отвечать. Затем учится на ваших переписках и регламентах. Если ваше правило спорит с отраслевым, уточнит у вас.</p>
+</div>
+<div class="why-vis" aria-hidden="true" style="position:relative; border:1px solid #C4C4C0; padding:clamp(24px,3vw,36px); display:flex; flex-direction:column; gap:18px">
+<span style="position:absolute; top:-4px; left:-4px; width:7px; height:7px; border-radius:50%; background:#000000"></span>
+<span style="position:absolute; top:-4px; right:-4px; width:7px; height:7px; border-radius:50%; background:#000000"></span>
+<span style="position:absolute; bottom:-4px; left:-4px; width:7px; height:7px; border-radius:50%; background:#000000"></span>
+<span style="position:absolute; bottom:-4px; right:-4px; width:7px; height:7px; border-radius:50%; background:#000000"></span>
+<span style="font-size:var(--fs-display); font-weight:300; line-height:0.9; letter-spacing:-0.05em"><span data-count="1000">1000</span>+</span>
+<div style="display:flex; flex-wrap:wrap; gap:8px">
+<span style="display:inline-flex; align-items:center; min-height:36px; padding:0 15px; border:1px solid #C4C4C0; border-radius:18px 18px 18px 5px; background:#FFFFFF; font-size:var(--fs-small)">Это больно?</span>
+<span style="display:inline-flex; align-items:center; min-height:36px; padding:0 15px; border:1px solid #C4C4C0; border-radius:18px 18px 18px 5px; background:#FFFFFF; font-size:var(--fs-small)">Сколько нужно сеансов?</span>
+<span style="display:inline-flex; align-items:center; min-height:36px; padding:0 15px; border:1px solid #C4C4C0; border-radius:18px 18px 18px 5px; background:#FFFFFF; font-size:var(--fs-small)">Можно летом?</span>
+<span style="display:inline-flex; align-items:center; min-height:36px; padding:0 15px; border:1px solid #C4C4C0; border-radius:18px 18px 18px 5px; background:#FFFFFF; font-size:var(--fs-small)">Чем отличаются аппараты?</span>
+<span style="display:inline-flex; align-items:center; min-height:36px; padding:0 15px; border:1px solid #C4C4C0; border-radius:18px 18px 18px 5px; background:#FFFFFF; font-size:var(--fs-small)">Как подготовиться?</span>
+<span style="display:inline-flex; align-items:center; min-height:36px; padding:0 15px; border-radius:18px 18px 18px 5px; background:#000000; color:#FFFFFF; font-size:var(--fs-small); font-weight:500">Ваши правила</span>
+</div>
+</div>
+</div>
+
+<div class="why-card" style="position:sticky; top:164px; display:grid; grid-template-columns:repeat(auto-fit,minmax(min(440px,100%),1fr)); gap:32px clamp(40px,5vw,80px); align-items:center; padding:clamp(28px,4vw,56px); border-radius:32px; background:#E2E2DF; color:#000000; min-height:440px; margin-bottom:24px; box-shadow:0 -10px 30px rgba(0,0,0,0.06), 0 -1px 0 rgba(0,0,0,0.04)">
+<div style="display:flex; flex-direction:column; gap:16px">
+<h3 style="margin:0; font-weight:300; font-size:var(--fs-h3); line-height:1.12; letter-spacing:-0.02em">Не придумывает</h3>
+<p style="margin:0; color:#4A4A48; max-width:32em">Цены и акции берёт из CRM. Чего нет в базе, не сочиняет: пишет гостю «Уточню этот момент и вернусь через несколько минут..!» и передаёт диалог сотруднику. Медицинские вопросы всегда уходят человеку — это правило не отключается. Попросит гость позвать администратора — позовёт. Остальные правила передачи задаёте вы.</p>
+</div>
+<div class="why-vis" aria-hidden="true" style="position:relative; border:1px solid #C4C4C0; padding:clamp(24px,3vw,36px); display:flex; flex-direction:column; gap:14px">
+<span style="position:absolute; top:-4px; left:-4px; width:7px; height:7px; border-radius:50%; background:#000000"></span>
+<span style="position:absolute; top:-4px; right:-4px; width:7px; height:7px; border-radius:50%; background:#000000"></span>
+<span style="position:absolute; bottom:-4px; left:-4px; width:7px; height:7px; border-radius:50%; background:#000000"></span>
+<span style="position:absolute; bottom:-4px; right:-4px; width:7px; height:7px; border-radius:50%; background:#000000"></span>
+<div style="display:flex; flex-direction:column; gap:6px; align-items:flex-start">
+<span style="font-size:var(--fs-small); color:#4A4A48">Гость, 18:40</span>
+<div style="max-width:360px; background:#FFFFFF; border:1px solid rgba(0,0,0,0.08); border-radius:20px 20px 20px 6px; padding:12px 18px; font-size:var(--fs-body); line-height:1.5">А можно делать, если я сейчас пью антибиотики?</div>
+</div>
+<div style="margin-left:32px; display:flex; flex-direction:column; gap:6px; align-items:flex-start">
+<span style="font-size:var(--fs-small); color:#4A4A48">LIA, 18:40</span>
+<div style="max-width:380px; background:#363636; color:#FFFFFF; border-radius:20px 20px 20px 6px; padding:12px 18px; font-size:var(--fs-body); line-height:1.5">Уточню этот момент и вернусь через несколько минут..!</div>
+</div>
+<div style="margin-left:32px; display:flex; align-items:center; gap:10px; font-size:var(--fs-small); font-weight:500"><span style="flex:none; width:7px; height:7px; border-radius:50%; background:#000000"></span><span style="flex:none; width:24px; height:1px; background:#000000"></span><span>Медицинский вопрос — диалог передан сотруднику</span></div>
+</div>
+</div>
+
+<div class="why-card" style="position:sticky; top:188px; display:grid; grid-template-columns:repeat(auto-fit,minmax(min(440px,100%),1fr)); gap:32px clamp(40px,5vw,80px); align-items:center; padding:clamp(28px,4vw,56px); border-radius:32px; background:#363636; color:#FFFFFF; min-height:440px; margin-bottom:0; box-shadow:0 -10px 30px rgba(0,0,0,0.10), 0 -1px 0 rgba(0,0,0,0.06)">
+<div style="display:flex; flex-direction:column; gap:16px">
+<h3 style="margin:0; font-weight:300; font-size:var(--fs-h3); line-height:1.12; letter-spacing:-0.02em">Настройка без программиста</h3>
+<p style="margin:0; color:#D6D6D3; max-width:32em">Достаточно ответить на вопросы LIA при заполнении профиля. Если стандарта общения ещё нет, подсказки практиков помогут вашему бренду выстроить его с нуля.</p>
+</div>
+<div class="why-vis" aria-hidden="true" style="position:relative; border:1px solid rgba(255,255,255,0.3); padding:clamp(24px,3vw,36px); display:flex; flex-direction:column; gap:14px">
+<span style="position:absolute; top:-4px; left:-4px; width:7px; height:7px; border-radius:50%; background:#FFFFFF"></span>
+<span style="position:absolute; top:-4px; right:-4px; width:7px; height:7px; border-radius:50%; background:#FFFFFF"></span>
+<span style="position:absolute; bottom:-4px; left:-4px; width:7px; height:7px; border-radius:50%; background:#FFFFFF"></span>
+<span style="position:absolute; bottom:-4px; right:-4px; width:7px; height:7px; border-radius:50%; background:#FFFFFF"></span>
+<div style="font-size:var(--fs-small); color:#C4C4C0">Профиль студии</div>
+<div style="display:flex; flex-direction:column; gap:6px; align-items:flex-start">
+<span style="font-size:var(--fs-small); color:#C4C4C0">LIA</span>
+<div style="max-width:380px; background:#000000; color:#FFFFFF; border-radius:20px 20px 20px 6px; padding:12px 18px; font-size:var(--fs-body); line-height:1.5">Как вы обращаетесь к гостям: на «вы» или на «ты»?</div>
+</div>
+<div style="margin-left:32px; display:flex; flex-direction:column; gap:6px; align-items:flex-start">
+<span style="font-size:var(--fs-small); color:#C4C4C0">Вы</span>
+<div style="background:#FFFFFF; color:#000000; border-radius:20px 20px 20px 6px; padding:12px 18px; font-size:var(--fs-body); line-height:1.5">На «вы» и по имени</div>
+</div>
+<div style="display:flex; flex-direction:column; gap:6px; align-items:flex-start">
+<div style="max-width:380px; background:#000000; color:#FFFFFF; border-radius:20px 20px 20px 6px; padding:12px 18px; font-size:var(--fs-body); line-height:1.5">Принято. Какие слова в переписке под запретом?</div>
+</div>
+<div style="display:flex; align-items:center; gap:10px; font-size:var(--fs-small); font-weight:500"><span style="flex:none; width:7px; height:7px; border-radius:50%; background:#FFFFFF"></span><span style="flex:none; width:24px; height:1px; background:#FFFFFF"></span><span>Подсказка практиков: стоп-слова лучших студий</span></div>
+</div>
+</div>
+</section>
+
+<section id="zayavka" class="on-dark" style="position:relative; overflow:hidden; background:#363636; color:#FFFFFF">
+<canvas data-grain="dark" data-x="0.3" data-y="0.62" aria-hidden="true" style="position:absolute; top:0; left:0; width:100%; height:100%; display:block"></canvas>
+<div style="position:relative; max-width:1280px; margin:0 auto; padding:var(--sec) var(--pad-x); display:flex; flex-direction:column; gap:clamp(48px,6vw,72px)">
+<div style="display:flex; flex-wrap:wrap; gap:24px clamp(40px,5vw,80px); align-items:flex-end">
+<h2 class="z-title" style="flex:1 1 420px; margin:0; font-weight:300; font-size:var(--fs-display); line-height:1; letter-spacing:-0.045em">Подключить LIA</h2>
+<p style="flex:1 1 380px; margin:0; display:flex; flex-direction:column; gap:10px; font-size:var(--fs-intro); color:#D6D6D3"><strong style="font-weight:400; color:#FFFFFF; font-size:var(--fs-lead); line-height:1.15; letter-spacing:-0.015em">Первым десяти — специальные условия.</strong></p>
+</div>
+<ol class="zsteps" style="list-style:none; margin:0; padding:0; display:grid; grid-template-columns:repeat(auto-fit,minmax(min(280px,100%),1fr)); gap:40px 32px">
+<li style="display:flex; flex-direction:column; gap:14px">
+<span aria-hidden="true" style="display:flex; align-items:center"><span style="flex:none; width:13px; height:13px; border-radius:50%; background:#FFFFFF"></span><span style="flex:1; height:1px; background:rgba(255,255,255,0.5)"></span></span>
+<span style="font-size:var(--fs-small); color:#D6D6D3">Шаг 1</span>
+<h3 style="margin:0; font-size:var(--fs-intro); font-weight:500">Оставьте заявку</h3>
+<p style="margin:0; color:#D6D6D3">Откроется Telegram-бот LIA. Ответьте на 3 вопроса о бизнесе.</p>
+</li>
+<li style="display:flex; flex-direction:column; gap:14px">
+<span aria-hidden="true" style="display:flex; align-items:center"><span style="flex:none; width:13px; height:13px; border-radius:50%; border:1px solid #FFFFFF"></span><span style="flex:1; height:1px; background:rgba(255,255,255,0.5)"></span></span>
+<span style="font-size:var(--fs-small); color:#D6D6D3">Шаг 2</span>
+<h3 style="margin:0; font-size:var(--fs-intro); font-weight:500">Звонок-знакомство</h3>
+<p style="margin:0; color:#D6D6D3">За 20 минут разберём ваш кейс и поймём, закроет ли LIA вашу задачу. Если нет — скажем на встрече, а не после оплаты.</p>
+</li>
+<li style="display:flex; flex-direction:column; gap:14px">
+<span aria-hidden="true" style="display:flex; align-items:center"><span style="flex:none; width:13px; height:13px; border-radius:50%; border:1px solid #FFFFFF"></span><span style="flex:1; height:1px; background:rgba(255,255,255,0.5)"></span></span>
+<span style="font-size:var(--fs-small); color:#D6D6D3">Шаг 3</span>
+<h3 style="margin:0; font-size:var(--fs-intro); font-weight:500">Заполните бриф</h3>
+<p style="margin:0; color:#D6D6D3">Ответьте на вопросы о вашем бизнесе в диалоге с LIA — и через минуту AI уже отвечает вашим гостям.</p>
+</li>
+</ol>
+<div style="display:flex; flex-wrap:wrap; gap:24px clamp(40px,5vw,80px); align-items:center; padding-top:clamp(32px,4vw,48px); border-top:1px solid rgba(255,255,255,0.22)">
+<a href="https://t.me/lia_ai_team_bot?start=site_cta&amp;utm_source=lia_landing&amp;utm_medium=button&amp;utm_campaign=pilot&amp;utm_content=cta" target="_blank" rel="noopener" data-bot="cta" class="btn-light" style="display:inline-flex; align-items:center; gap:12px; min-height:64px; padding:0 30px 0 34px; border-radius:999px; background:#FFFFFF; color:#000000; text-decoration:none; font-size:var(--fs-intro); font-weight:500; transition:background .2s">Оставить заявку и узнать стоимость<svg aria-hidden="true" width="18" height="18" viewBox="0 0 18 18"><path d="M3 9h11M10 4.5L14.5 9 10 13.5" style="fill:none; stroke:#000000; stroke-width:1.5"></path></svg></a>
+<p style="flex:1 1 360px; margin:0; font-size:var(--fs-body); color:#D6D6D3; max-width:34em">Цена зависит от числа диалогов — и это <span style="color:#FFFFFF; font-weight:500">в несколько раз ниже ставки ещё одного администратора</span>. Называем её после знакомства: сначала убедимся, что LIA закроет именно вашу задачу.</p>
+</div>
+</div>
+</section>
+
+<section id="voprosy" style="max-width:1280px; margin:0 auto; padding:var(--sec) var(--pad-x); display:flex; flex-wrap:wrap; gap:40px clamp(40px,5vw,80px); align-items:flex-start">
+<h2 style="flex:1 1 320px; margin:0; font-weight:300; font-size:var(--fs-h2); line-height:1.04; letter-spacing:-0.03em">Частые вопросы</h2>
+<div class="faq-list" style="flex:2 1 560px; min-width:0">
+<details class="faq"><summary><h3>Гости поймут, что это не человек?</h3></summary><div class="faq-a"><p>LIA пишет как живой администратор вашей студии и не называет себя ботом. На прямой вопрос отвечает: «Я цифровой ассистент студии X».</p></div></details>
+<details class="faq"><summary><h3>Как проверить, что LIA отвечает правильно?</h3></summary><div class="faq-a"><p>Все диалоги — в кабинете, сложное уходит сотруднику, каждую запись подтверждает администратор. Раз в неделю присылаем отчёт.</p></div></details>
+<details class="faq"><summary><h3>А если LIA не знает ответа?</h3></summary><div class="faq-a"><p>Не придумывает. Пишет гостю: «Мне нужно уточнить этот момент, вернусь к вам» — и передаёт диалог сотруднику.</p></div></details>
+<details class="faq"><summary><h3>Гость может прислать фото?</h3></summary><div class="faq-a"><p>Да. LIA консультирует по фото, где может, остальное передаёт сотруднику.</p></div></details>
+<details class="faq"><summary><h3>Кто подтверждает запись?</h3></summary><div class="faq-a"><p>Администратор — в кабинете LIA или в YCLIENTS.</p></div></details>
+<details class="faq"><summary><h3>LIA заменит администратора?</h3></summary><div class="faq-a"><p>Нет. LIA снимает с команды вечерние, выходные и пиковые переписки. Спорное по-прежнему решает администратор.</p></div></details>
+<details class="faq"><summary><h3>Нужен ли программист?</h3></summary><div class="faq-a"><p>Нет. Достаточно брифа в диалоге с LIA и звонка-знакомства — на нём подскажем, как всё настроить.</p></div></details>
+<details class="faq"><summary><h3>Сколько стоит LIA?</h3></summary><div class="faq-a"><p>Тариф зависит от числа диалогов. Присоединяйтесь, чтобы получить доступ в числе первых.</p></div></details>
+<details class="faq"><summary><h3>У нас не YCLIENTS или не лазер</h3></summary><div class="faq-a"><p><a href="https://t.me/lia_ai_team_bot?start=site_faq&amp;utm_source=lia_landing&amp;utm_medium=button&amp;utm_campaign=pilot&amp;utm_content=faq" target="_blank" rel="noopener" data-bot="faq" style="text-underline-offset:4px">Напишите нам</a> — подключим вашу CRM или нишу.</p></div></details>
+</div>
+</section>
+
+<footer style="border-top:1px solid #C4C4C0">
+<div style="max-width:1280px; margin:0 auto; padding:var(--gap-lg) var(--pad-x) 32px; display:flex; flex-direction:column; gap:var(--gap)">
+<div class="ft-grid" style="display:grid; grid-template-columns:1.4fr 1fr 1fr; gap:36px clamp(24px,4vw,64px)">
+<div style="display:flex; flex-direction:column; gap:16px; align-items:flex-start">
+<span style="font-weight:500; font-size:var(--fs-intro); letter-spacing:0.5em">LIA</span>
+<span style="font-size:var(--fs-small); line-height:1.5; color:#4A4A48; max-width:22em">AI-администратор с опытом лучших сервисных студий</span>
+<a href="https://t.me/lia_ai_team_bot?start=site_footer&amp;utm_source=lia_landing&amp;utm_medium=button&amp;utm_campaign=pilot&amp;utm_content=footer" target="_blank" rel="noopener" data-bot="footer" class="btn-dark" style="display:inline-flex; align-items:center; min-height:48px; padding:0 24px; border-radius:999px; background:#000000; color:#FFFFFF; text-decoration:none; font-size:var(--fs-small); font-weight:500; transition:background .2s">Оставить заявку</a>
+</div>
+<nav aria-label="Разделы">
+<h3 style="margin:0 0 16px; font-size:var(--fs-small); font-weight:500; letter-spacing:0.08em; text-transform:uppercase; color:#000000">Разделы</h3>
+<ul style="list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:10px; font-size:var(--fs-body); color:#4A4A48">
+<li><a href="#kak" style="text-underline-offset:4px">Как работает</a></li>
+<li><a href="#kto" style="text-underline-offset:4px">Кто мы</a></li>
+<li><a href="#voprosy" style="text-underline-offset:4px">Вопросы</a></li>
+</ul>
+</nav>
+<nav aria-label="Контакты">
+<h3 style="margin:0 0 16px; font-size:var(--fs-small); font-weight:500; letter-spacing:0.08em; text-transform:uppercase; color:#000000">Контакты</h3>
+<ul style="list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:10px; font-size:var(--fs-body); color:#4A4A48">
+<li><a href="https://t.me/lia_ai_team_bot" target="_blank" rel="noopener" style="text-underline-offset:4px">Telegram</a></li>
+<li><a href="#instagram-lia" style="text-underline-offset:4px">Instagram*</a></li>
+</ul>
+</nav>
+</div>
+<div style="display:flex; flex-wrap:wrap; gap:8px 28px; padding-top:20px; border-top:1px solid #C4C4C0; font-size:var(--fs-body); line-height:1.5; color:#74746F">
+<a href="#privacy" style="color:inherit; text-underline-offset:4px">Политика конфиденциальности</a>
+<a href="#terms" style="color:inherit; text-underline-offset:4px">Пользовательское соглашение</a>
+<span style="flex:1 1 280px">* Instagram принадлежит компании Meta, признанной экстремистской организацией и запрещённой на территории РФ.</span>
+</div>
+</div>
+</footer>
+
+</div>
+
+<script>
+(() => {
+  // ===== Настройки =====
+  // Цвет свечения под курсором: 'laser' (кобальт), 'nails' (малина), 'massage' (янтарь), 'cosmetology' (бирюза)
+  const NICHE = 'laser';
+  // Зернистость фона: от 0 до 0.16
+  const GRAIN = 0.08;
+
+  const PALETTES = {
+    laser: { c1: [0.76, 0.84, 0.96], c2: [0.23, 0.38, 0.86] },
+    nails: { c1: [0.95, 0.80, 0.82], c2: [0.76, 0.23, 0.35] },
+    massage: { c1: [0.95, 0.85, 0.67], c2: [0.76, 0.44, 0.16] },
+    cosmetology: { c1: [0.75, 0.89, 0.84], c2: [0.18, 0.54, 0.47] }
+  };
+  const PAL = PALETTES[NICHE] || PALETTES.laser;
+
+  const reduce = !!(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches);
+  const hasIO = 'IntersectionObserver' in window;
+  const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
+
+  async function typeInto(el, text, cps, run) {
+    const t = document.createTextNode('');
+    const c = document.createElement('span');
+    c.className = 'caret';
+    el.replaceChildren(t, c);
+    const start = performance.now();
+    let n = 0;
+    while (n < text.length) {
+      await sleep(30);
+      if (run.dead) return false;
+      n = Math.min(text.length, Math.floor((performance.now() - start) * cps / 1000));
+      t.data = text.slice(0, n);
+    }
+    c.remove();
+    return true;
+  }
+
+  function onceVisible(el, fn, threshold, rootMargin) {
+    const io = new IntersectionObserver((entries) => {
+      if (entries.some((e) => e.isIntersecting)) {
+        io.disconnect();
+        fn();
+      }
+    }, { threshold: threshold || 0.2, rootMargin: rootMargin || '0px' });
+    io.observe(el);
+  }
+
+  const root = document.documentElement;
+
+  // ===== Моушн в духе Jitter =====
+  // 1. Заголовок первого экрана выезжает по словам с пружиной
+  document.querySelectorAll('[data-split]').forEach((h) => {
+    let i = 0;
+    const lines = h.querySelectorAll(':scope > span');
+    const targets = lines.length ? Array.from(lines) : [h];
+    targets.forEach((line) => {
+      const words = line.textContent.trim().split(/\s+/);
+      line.textContent = '';
+      words.forEach((w, k) => {
+        const outer = document.createElement('span');
+        outer.className = 'w';
+        const inner = document.createElement('span');
+        inner.textContent = w;
+        inner.style.transitionDelay = (0.15 + i * 0.07).toFixed(2) + 's';
+        outer.appendChild(inner);
+        line.appendChild(outer);
+        if (k < words.length - 1) line.appendChild(document.createTextNode(' '));
+        i++;
+      });
+    });
+  });
+  requestAnimationFrame(() => requestAnimationFrame(() => root.classList.add('ready')));
+
+  // 2. Шапка как у jitter.video: та же логика состояний, что в их коде
+  //    is-sticky — страница прокручена; is-min — крутим вниз (остаются кнопка и бургер);
+  //    show-bg — крутим вверх (выезжает белая плашка); was-sticky — через 400 мс после смены is-sticky
+  const jh = document.getElementById('hdr');
+  if (jh) {
+    let lastY = window.scrollY;
+    let sticky = null;
+    let wasTimer = null;
+    const isNarrow = () => window.matchMedia('(max-width: 1024px)').matches;
+    const sync = () => jh.classList.toggle('show-bg', jh.classList.contains('is-sticky') && !jh.classList.contains('is-min'));
+    const setSticky = (v) => {
+      if (v === sticky) return;
+      sticky = v;
+      jh.classList.toggle('is-sticky', v);
+      clearTimeout(wasTimer);
+      wasTimer = setTimeout(() => jh.classList.toggle('was-sticky', v), 400);
+    };
+    const setMin = (v) => { jh.classList.toggle('is-min', v); sync(); };
+    const onHdrScroll = () => {
+      if (jh.classList.contains('menu-open')) return;
+      const y = window.scrollY;
+      setSticky(y > 1);
+      if (y > lastY) setMin(true);
+      else if (y < lastY) setMin(false);
+      lastY = y;
+      sync();
+    };
+    window.addEventListener('scroll', onHdrScroll, { passive: true });
+    onHdrScroll();
+    setTimeout(() => jh.classList.add('animate-in'), 500);
+    const burger = jh.querySelector('.jh-burger-btn');
+    const closeMenu = () => {
+      jh.classList.remove('menu-open');
+      root.style.overflow = '';
+      if (burger) { burger.setAttribute('aria-expanded', 'false'); burger.setAttribute('aria-label', 'Открыть меню'); }
+    };
+    if (burger) {
+      burger.addEventListener('click', () => {
+        if (isNarrow()) {
+          const open = !jh.classList.contains('menu-open');
+          if (!open) { closeMenu(); return; }
+          jh.classList.add('menu-open');
+          root.style.overflow = 'hidden';
+          burger.setAttribute('aria-expanded', 'true');
+          burger.setAttribute('aria-label', 'Закрыть меню');
+        } else {
+          setMin(false); // на десктопе бургер разворачивает шапку обратно
+        }
+      });
+    }
+    jh.querySelectorAll('.jh-menu a').forEach((a) => a.addEventListener('click', closeMenu));
+    jh.addEventListener('focusin', () => setMin(false));
+    window.addEventListener('resize', () => { if (!isNarrow()) closeMenu(); });
+  }
+
+  // 3. Крупные фразы: слова темнеют по мере прокрутки
+  const scrubs = Array.from(document.querySelectorAll('[data-scrub]')).map((p) => {
+    const words = p.textContent.trim().split(/\s+/);
+    p.textContent = '';
+    const spans = words.map((w, k) => {
+      const sp = document.createElement('span');
+      sp.className = 'sw';
+      sp.textContent = w;
+      p.appendChild(sp);
+      if (k < words.length - 1) p.appendChild(document.createTextNode(' '));
+      return sp;
+    });
+    return { p, spans };
+  });
+
+  function onScroll() {
+    const vh = window.innerHeight;
+    scrubs.forEach(({ p, spans }) => {
+      const r = p.getBoundingClientRect();
+      let k = (vh * 0.85 - r.top) / (r.height + vh * 0.35);
+      k = Math.max(0, Math.min(1, k));
+      const n = Math.round(k * spans.length);
+      spans.forEach((sp, i) => sp.classList.toggle('on', i < n));
+    });
+  }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  window.addEventListener('resize', onScroll);
+  onScroll();
+
+  // 4. «Круто?» выпрыгивает, LIA печатает и отвечает
+  const kruto = document.getElementById('kruto');
+  const liaAnswer = document.getElementById('lia-answer');
+  const liaTyping = document.getElementById('lia-typing');
+  if (kruto && liaAnswer) {
+    const reveal = async () => {
+      kruto.classList.add('in');
+      if (reduce) { liaAnswer.classList.add('in'); return; }
+      await sleep(650);
+      if (liaTyping) liaTyping.hidden = false;
+      await sleep(1000);
+      if (liaTyping) liaTyping.hidden = true;
+      liaAnswer.classList.add('in');
+    };
+    // «Круто?» всплывает, когда пузырь дошёл до нижней трети экрана, а не когда едва показался снизу
+    if (hasIO) onceVisible(kruto, reveal, 0, '0px 0px -32% 0px'); else reveal();
+  }
+
+  // 5. Стопка карточек «Почему LIA не подведёт»: содержимое пружинит, когда карточка приезжает
+  document.querySelectorAll('.why-card').forEach((card) => {
+    if (hasIO) onceVisible(card, () => card.classList.add('in'), 0.35); else card.classList.add('in');
+  });
+
+  // 6. Счётчики 1000+ и 84%
+  document.querySelectorAll('[data-count]').forEach((el) => {
+    const target = parseInt(el.dataset.count, 10);
+    if (reduce || !hasIO || !target) return;
+    el.textContent = '0';
+    onceVisible(el, () => {
+      const t0 = performance.now();
+      const tick = (now) => {
+        const q = Math.min(1, (now - t0) / 1400);
+        el.textContent = String(Math.round((1 - Math.pow(1 - q, 4)) * target));
+        if (q < 1) requestAnimationFrame(tick);
+      };
+      requestAnimationFrame(tick);
+    }, 0.6);
+  });
+
+  // ===== Первый экран: переписка =====
+  const hero = document.getElementById('hero-chat');
+  if (hero && !reduce) {
+    const q = (n) => hero.querySelector('[data-hero="' + n + '"]');
+    const guest = q('guest'), typing = q('typing'), reply = q('reply'), slots = q('slots'), replay = q('replay');
+    const segs = Array.from(hero.querySelectorAll('[data-seg]')).map((row) => {
+      const el = row.querySelector('.lia-text');
+      return { row, el, anno: row.querySelector('.lia-anno'), text: el.textContent };
+    });
+    let run = null;
+    const play = async () => {
+      if (run) run.dead = true;
+      const me = (run = { dead: false });
+      [guest, typing, reply, slots, replay].forEach((n) => { n.hidden = true; });
+      segs.forEach((s) => {
+        s.row.hidden = true;
+        s.el.textContent = '';
+        if (s.anno) { s.anno.style.opacity = 0; s.anno.style.transform = 'translateX(-10px)'; }
+      });
+      await sleep(300); if (me.dead) return; guest.hidden = false;
+      await sleep(600); if (me.dead) return; typing.hidden = false;
+      await sleep(900); if (me.dead) return; typing.hidden = true; reply.hidden = false;
+      for (const s of segs) {
+        s.row.hidden = false;
+        if (!(await typeInto(s.el, s.text, 40, me))) return;
+        if (s.anno) { s.anno.style.opacity = 1; s.anno.style.transform = 'none'; }
+      }
+      await sleep(250); if (me.dead) return; slots.hidden = false;
+      await sleep(650); if (me.dead) return; replay.hidden = false;
+    };
+    replay.addEventListener('click', play);
+    play();
+  }
+
+  // ===== Цепочки «запустил рекламу → …»: идеальная и «в жизни». Линии прорисовываются при появлении в кадре =====
+  document.querySelectorAll('[data-chain]').forEach((wrap) => {
+    const ol = wrap.querySelector('ol.chain');
+    if (reduce || !hasIO) { ol && ol.classList.add('in'); return; }
+    wrap.style.setProperty('--chain', 0);
+    wrap.style.setProperty('--chain-dot', '#EDEDEB');
+    onceVisible(wrap, () => {
+      requestAnimationFrame(() => {
+        wrap.style.setProperty('--chain', 1);
+        wrap.style.setProperty('--chain-dot', '#000000');
+        ol && ol.classList.add('in');
+      });
+    }, 0.3);
+  });
+
+  // ===== Блок проблем: скролл по карточкам болей запускает переписку справа =====
+
+  const narrow = () => window.matchMedia('(max-width: 980px)').matches;
+  const prob = document.getElementById('prob');
+  let probStage = 0;
+  let setProbStage = () => {};
+  if (prob) {
+    const lia = document.getElementById('prob-lia');
+    const txt = document.getElementById('prob-text');
+    const full = txt.textContent;
+    const set = (k, v) => prob.style.setProperty(k, v);
+    if (!reduce) {
+      set('--strike', 0); set('--anno1', 0); set('--fade', 1); set('--anno2', 0);
+      lia.hidden = true;
+    }
+    setProbStage = async (stage) => {
+      if (reduce || stage <= probStage) return;
+      const from = probStage;
+      probStage = stage;
+      if (from < 1) set('--anno1', 1);
+      if (from < 2 && stage >= 2) {
+        const me = { dead: false };
+        if (from < 1) await sleep(300);
+        set('--strike', 1);
+        await sleep(500); set('--fade', 0.4);
+        await sleep(400); txt.textContent = ''; lia.hidden = false;
+        await sleep(350); await typeInto(txt, full, 46, me);
+        await sleep(300); set('--anno2', 1);
+      }
+    };
+    // на узком экране «переписка» стоит под списком: играем, когда она в кадре
+    if (!reduce && hasIO && narrow()) onceVisible(prob, () => setProbStage(2), 0.4);
+  }
+
+  const pains = Array.from(document.querySelectorAll('.pain'));
+  let activePain = -2;
+  function trackPains() {
+    if (!pains.length) return;
+    const line = window.innerHeight * 0.62; // пункт загорается, когда доходит до нижней трети экрана
+    let idx = -1;
+    pains.forEach((p, i) => { if (p.getBoundingClientRect().top <= line) idx = i; });
+    if (pains[pains.length - 1].getBoundingClientRect().bottom < line - 60) idx = pains.length;
+    if (idx === activePain) return;
+    activePain = idx;
+    pains.forEach((p, i) => {
+      p.classList.toggle('is-active', i === idx);
+      p.classList.toggle('is-past', i < idx);
+    });
+    if (!narrow()) {
+      if (idx >= 0) setProbStage(1);
+      if (idx >= 2) setProbStage(2);
+    }
+  }
+  window.addEventListener('scroll', trackPains, { passive: true });
+  window.addEventListener('resize', trackPains);
+  trackPains();
+
+  // ===== Телефон: лента болей листается сама, пока её не тронут =====
+  const painsUl = document.querySelector('.pains');
+  const painsDots = document.querySelector('.pains-dots');
+  if (painsUl && pains.length) {
+    const di = [];
+    if (painsDots) pains.forEach(() => di.push(painsDots.appendChild(document.createElement('i'))));
+    const cardW = () => pains[0].offsetWidth + 12;
+    const idxNow = () => Math.min(pains.length - 1, Math.round(painsUl.scrollLeft / cardW()));
+    const mark = () => { const k = idxNow(); di.forEach((d, j) => d.classList.toggle('on', j === k)); };
+    painsUl.addEventListener('scroll', mark, { passive: true });
+    mark();
+    let hold = false, timer = 0;
+    const stop = () => { hold = true; clearInterval(timer); };
+    ['pointerdown', 'touchstart', 'wheel'].forEach((ev) => painsUl.addEventListener(ev, stop, { passive: true }));
+    if (!reduce && hasIO) {
+      let seen = false;
+      new IntersectionObserver((es) => {
+        if (!es[0].isIntersecting || seen || !narrow()) return;
+        seen = true;
+        timer = setInterval(() => {
+          if (hold || !narrow()) return;
+          const next = (idxNow() + 1) % pains.length;
+          painsUl.scrollTo({ left: next * cardW(), behavior: 'smooth' });
+        }, 4000);
+      }, { threshold: 0.5 }).observe(painsUl);
+    }
+  }
+
+  // ===== Телефон: «Что изменится» — табы Владельцу / Администратору =====
+  const benTabs = Array.from(document.querySelectorAll('.ben-tab'));
+  const benCols = Array.from(document.querySelectorAll('.ben-col'));
+  benTabs.forEach((b) => b.addEventListener('click', () => {
+    const k = +b.dataset.ben;
+    benTabs.forEach((t, j) => t.setAttribute('aria-selected', j === k ? 'true' : 'false'));
+    benCols.forEach((c, j) => c.classList.toggle('is-on', j === k));
+  }));
+
+  // ===== Телефон: письмо основательницы свёрнуто до ключевой фразы =====
+  const more = document.querySelector('.m-more');
+  const letter = document.querySelector('.m-letter');
+  if (more && letter) more.addEventListener('click', () => {
+    const open = letter.classList.toggle('is-open');
+    more.setAttribute('aria-expanded', open ? 'true' : 'false');
+    more.textContent = open ? 'Свернуть письмо' : 'Читать письмо целиком';
+  });
+
+  // ===== Путь гостя: шаги листаются сами, как карусель =====
+  const tabs = Array.from(document.querySelectorAll('.step-btn'));
+  const panels = Array.from(document.querySelectorAll('[data-panel]'));
+  const chats = Array.from(document.querySelectorAll('.chat'));
+  const toggle = document.getElementById('step-toggle');
+  const fill = document.querySelector('.rail-fill');
+  const ring = toggle && toggle.querySelector('.ring circle');
+  const stageLabel = document.getElementById('stage-label');
+  const stepNow = document.getElementById('step-now');
+  const RING = 144.51; // длина окружности кольца на кнопке паузы
+  // Темп, мс: реплика гостя 600 (голосовое или фото 800), заметка 500, «LIA печатает» 450,
+  // потом ответ LIA проявляется по 8 мс на знак. Готовую переписку держим 2,2 с и листаем дальше.
+  const T = { start: 150, guest: 600, media: 800, note: 500, typing: 450, perChar: 8, after: 300, hold: 2200 };
+  const sched = chats.map((c) => {
+    let cur = T.start;
+    const items = [];
+    Array.from(c.querySelectorAll('.msg')).forEach((m) => {
+      const who = m.dataset.who;
+      if (who === 'typing') {
+        items.push({ m, who, start: cur, end: cur + T.typing });
+        cur += T.typing;
+        return;
+      }
+      if (who === 'lia') {
+        const b = m.querySelector('.b-lia');
+        const text = b.textContent;
+        const on = document.createTextNode(text);
+        const ghost = document.createElement('span');
+        ghost.className = 'ghost';
+        b.textContent = '';
+        b.append(on, ghost);
+        const start = cur;
+        const end = start + text.length * T.perChar;
+        items.push({ m, who, text, on, ghost, start, end, n: text.length });
+        cur = end + T.after;
+        return;
+      }
+      items.push({ m, who, start: cur, end: cur });
+      cur += who === 'guest' ? (m.querySelector('.voice, .photo') ? T.media : T.guest) : T.note;
+    });
+    return { items, total: cur + T.hold, channel: c.dataset.channel || '' };
+  });
+  let current = 0;
+  let elapsed = 0;
+  let userPaused = false;
+  let inView = false;
+  let lastT = 0;
+
+  const visibleAt = (it, t) => (it.who === 'typing' ? t >= it.start && t < it.end : t >= it.start);
+  function renderChat(i, t) {
+    const items = sched[i].items;
+    let changed = false;
+    items.forEach((it) => { if (it.m.hidden === visibleAt(it, t)) changed = true; });
+    // FLIP: верхние реплики плавно уезжают вверх, когда снизу появляется новая
+    const before = new Map();
+    if (changed && !reduce) items.forEach((it) => { if (!it.m.hidden) before.set(it.m, it.m.getBoundingClientRect().top); });
+    items.forEach((it) => {
+      const show = visibleAt(it, t);
+      if (it.m.hidden === show) it.m.hidden = !show;
+      if (it.who === 'lia' && show) {
+        const n = Math.max(0, Math.min(it.text.length, Math.floor((t - it.start) / T.perChar)));
+        if (n !== it.n) {
+          it.n = n;
+          it.on.data = it.text.slice(0, n);
+          it.ghost.textContent = it.text.slice(n);
+        }
+      }
+    });
+    before.forEach((top, el) => {
+      if (el.hidden || !el.animate) return;
+      const d = top - el.getBoundingClientRect().top;
+      if (Math.abs(d) > 0.5) el.animate([{ transform: 'translateY(' + d.toFixed(1) + 'px)' }, { transform: 'none' }], { duration: 520, easing: 'cubic-bezier(.19,1,.22,1)' });
+    });
+  }
+
+  // Кольцо шагов на телефоне: пять дуг, активная заливается по мере проигрывания
+  const mring = document.querySelector('.m-ring');
+  let ringSegs = [], ringProg = null, ringNum = null, ringMeta = null;
+  if (mring && tabs.length) {
+    const N = tabs.length, R = 86, C = 100, GAP = 7, span = 360 / N;
+    const pt = (a) => { const r = (a - 90) * Math.PI / 180; return [C + R * Math.cos(r), C + R * Math.sin(r)]; };
+    const arc = (a0, a1) => { const [x0, y0] = pt(a0), [x1, y1] = pt(a1); return 'M' + x0.toFixed(2) + ' ' + y0.toFixed(2) + 'A' + R + ' ' + R + ' 0 ' + (a1 - a0 > 180 ? 1 : 0) + ' 1 ' + x1.toFixed(2) + ' ' + y1.toFixed(2); };
+    let svg = '<svg class="m-ring-svg" viewBox="0 0 200 200">';
+    for (let i = 0; i < N; i++) svg += '<path class="m-seg" data-i="' + i + '" d="' + arc(i * span + GAP / 2, (i + 1) * span - GAP / 2) + '" pathLength="100"></path>';
+    svg += '<path class="m-prog" d="" pathLength="100"></path></svg><div class="m-ring-c"><span class="m-ring-n"></span><span class="m-ring-m"></span></div>';
+    mring.innerHTML = svg;
+    ringSegs = Array.from(mring.querySelectorAll('.m-seg'));
+    ringProg = mring.querySelector('.m-prog');
+    ringNum = mring.querySelector('.m-ring-n');
+    ringMeta = mring.querySelector('.m-ring-m');
+    ringSegs.forEach((sg) => sg.addEventListener('click', () => selectStep(+sg.dataset.i)));
+  }
+  function ringSelect(i) {
+    if (!ringSegs.length) return;
+    ringSegs.forEach((sg, j) => { sg.classList.toggle('on', j === i); sg.classList.toggle('done', j < i); });
+    ringProg.setAttribute('d', ringSegs[i].getAttribute('d'));
+    ringNum.textContent = i + 1;
+    const meta = tabs[i].querySelector('.step-meta');
+    ringMeta.textContent = meta ? meta.textContent : '';
+  }
+
+  function paint() {
+    const S = sched[current];
+    const p = Math.min(1, elapsed / S.total);
+    if (ringProg) ringProg.style.strokeDashoffset = (100 * (1 - p)).toFixed(2);
+    if (fill) fill.style.transform = 'scaleX(' + Math.min(1, (current + (reduce || userPaused ? 0 : p)) / Math.max(1, tabs.length - 1)).toFixed(4) + ')';
+    if (ring) ring.style.strokeDashoffset = (RING * (1 - p)).toFixed(2);
+  }
+
+  function selectStep(i) {
+    current = i;
+    elapsed = (reduce || userPaused) ? sched[i].total - T.hold : 0;
+    tabs.forEach((t, j) => {
+      t.setAttribute('aria-pressed', j === i ? 'true' : 'false');
+      t.classList.toggle('done', j < i);
+    });
+    panels.forEach((p, j) => {
+      const on = j === i;
+      p.classList.toggle('is-on', on);
+      p.classList.toggle('is-off', !on);
+      if (on) {
+        p.removeAttribute('aria-hidden');
+        p.classList.remove('enter');
+        void p.offsetWidth;
+        p.classList.add('enter');
+      } else {
+        p.setAttribute('aria-hidden', 'true');
+      }
+    });
+    chats.forEach((c, j) => { c.hidden = j !== i; });
+    sched[i].items.forEach((it) => { it.m.hidden = true; if (it.who === 'lia') it.n = -1; });
+    if (stageLabel) stageLabel.textContent = sched[i].channel;
+    if (stepNow) stepNow.textContent = tabs[i].querySelector('.step-title').textContent;
+    ringSelect(i);
+    renderChat(i, elapsed);
+    paint();
+  }
+
+  function setPaused(p) {
+    userPaused = p;
+    if (!toggle) return;
+    toggle.setAttribute('aria-label', p ? 'Продолжить' : 'Пауза');
+    toggle.querySelector('.i-pause').style.display = p ? 'none' : '';
+    toggle.querySelector('.i-play').style.display = p ? '' : 'none';
+  }
+
+  if (tabs.length && chats.length) {
+    tabs.forEach((t, i) => t.addEventListener('click', () => selectStep(i)));
+    selectStep(0);
+    if (!reduce) {
+      if (toggle) {
+        toggle.hidden = false;
+        toggle.addEventListener('click', () => setPaused(!userPaused));
+      }
+      const sec = document.getElementById('kak');
+      if (hasIO && sec) {
+        new IntersectionObserver((es) => { inView = es[0].isIntersecting; }, { threshold: 0.15 }).observe(sec);
+      } else {
+        inView = true;
+      }
+      const frame = (now) => {
+        requestAnimationFrame(frame);
+        const dt = lastT ? Math.min(100, now - lastT) : 0;
+        lastT = now;
+        if (userPaused || !inView) return;
+        const S = sched[current];
+        elapsed = Math.min(elapsed + dt, S.total);
+        renderChat(current, elapsed);
+        paint();
+        if (elapsed >= S.total) selectStep((current + 1) % tabs.length);
+      };
+      requestAnimationFrame(frame);
+    }
+  }
+
+  // ===== «Кто мы»: неравномерное зерно, как во второй версии лендинга (холст «LIA — лендинг») =====
+  // Серые крупинки с синими вкраплениями. Плотность — мягкий градиент к правому верхнему углу × «облака» шума.
+  // Под курсором зерно расступается с лёгким завихрением и подсвечивается.
+  (() => {
+    const canvas = document.querySelector('canvas[data-dust]');
+    if (!canvas || !canvas.getContext) return;
+    const ctx = canvas.getContext('2d');
+    if (!ctx) return;
+    const host = canvas.parentElement;
+    const PAL = { dust: '#A7A7A2', dot: '#86A2FF' }; // серое зерно и синие крупинки (примерно каждая четвёртая)
+    const coarse = window.matchMedia('(pointer: coarse)').matches;
+    const sw = { W: 0, H: 0, dpr: 1, G: null, grid: null, moving: new Set(), near: new Set(), ptr: { x: -1e4, y: -1e4, on: false, down: false }, raf: 0, visible: false, born: 0, shown: false };
+    const rng = (seed) => { let a = seed >>> 0; return () => { a = (a + 0x6D2B79F5) >>> 0; let t = a; t = Math.imul(t ^ (t >>> 15), t | 1); t ^= t + Math.imul(t ^ (t >>> 7), t | 61); return ((t ^ (t >>> 14)) >>> 0) / 4294967296; }; };
+
+    const toLocal = (e) => { const r = canvas.getBoundingClientRect(); sw.ptr.x = e.clientX - r.left; sw.ptr.y = e.clientY - r.top; };
+    host.addEventListener('pointermove', (e) => { if (e.pointerType !== 'mouse' && !sw.ptr.down) return; toLocal(e); sw.ptr.on = true; start(); }, { passive: true });
+    host.addEventListener('pointerdown', (e) => { sw.ptr.down = true; toLocal(e); sw.ptr.on = true; start(); }, { passive: true });
+    host.addEventListener('pointerleave', () => { sw.ptr.on = false; start(); }, { passive: true });
+    const up = (e) => { if (e.pointerType !== 'mouse') { sw.ptr.down = false; sw.ptr.on = false; start(); } };
+    window.addEventListener('pointerup', up, { passive: true });
+    window.addEventListener('pointercancel', up, { passive: true });
+
+    function layout() {
+      const W = host.clientWidth, H = host.clientHeight;
+      if (!W || !H) return;
+      sw.W = W; sw.H = H;
+      sw.dpr = Math.min(window.devicePixelRatio || 1, 2);
+      canvas.width = Math.round(W * sw.dpr);
+      canvas.height = Math.round(H * sw.dpr);
+      ctx.setTransform(sw.dpr, 0, 0, sw.dpr, 0, 0);
+      const rnd = rng(Math.imul(W, 73856093) ^ Math.imul(H, 19349663) ^ 0x51ed27);
+      const GS = 64;
+      const lat = new Float32Array(GS * GS);
+      for (let i = 0; i < lat.length; i++) lat[i] = rnd();
+      const vn = (x, y) => {
+        const xi = Math.floor(x), yi = Math.floor(y), xf = x - xi, yf = y - yi;
+        const u = xf * xf * (3 - 2 * xf), v = yf * yf * (3 - 2 * yf);
+        const ix = ((xi % GS) + GS) % GS, iy = ((yi % GS) + GS) % GS, ix1 = (ix + 1) % GS, iy1 = (iy + 1) % GS;
+        const a = lat[iy * GS + ix], b = lat[iy * GS + ix1], c = lat[iy1 * GS + ix], d = lat[iy1 * GS + ix1];
+        return a + (b - a) * u + (c - a) * v + (a - b - c + d) * u * v;
+      };
+      const fbm = (x, y) => 0.6 * vn(x / 210, y / 210) + 0.28 * vn(x / 84 + 17.3, y / 84 + 5.1) + 0.12 * vn(x / 30 + 3.7, y / 30 + 11.9);
+      const wide = W >= 900;
+      const sm = (a, b, t) => { const k = Math.min(1, Math.max(0, (t - a) / (b - a))); return k * k * (3 - 2 * k); };
+      const dens = (x, y) => {
+        const nx = x / W, ny = y / H;
+        const g = wide ? sm(0.3, 1.02, nx * 0.82 + (1 - ny) * 0.18) : sm(0.02, 1.0, (1 - ny) * 0.85 + nx * 0.15);
+        const n = fbm(x, y);
+        const mod = 0.08 + 2.1 * Math.pow(Math.max(0, n - 0.3) / 0.42, 1.5);
+        return Math.min(1, Math.pow(g, 1.25) * mod);
+      };
+      const target = Math.round(Math.min(coarse ? 7000 : 20000, W * H * 0.019));
+      const G = [];
+      let tries = 0;
+      while (G.length < target && tries++ < target * 40) {
+        const x = rnd() * W, y = rnd() * H;
+        const p = dens(x, y);
+        if (rnd() < p) {
+          const big = rnd() < 0.05;
+          G.push({ x, y, ox: 0, oy: 0, b: 0, s: big ? 1.4 + rnd() * 0.5 : 0.6 + rnd() * 0.8, a: 0.18 + rnd() * 0.55 * (0.4 + 0.6 * p), c: rnd() < 0.24 ? 1 : 0, d: rnd() });
+        }
+      }
+      sw.G = G;
+      const CS = 40, cols = Math.ceil(W / CS) + 1, rows = Math.ceil(H / CS) + 1;
+      const cells = [];
+      for (let i = 0; i < cols * rows; i++) cells.push([]);
+      for (let i = 0; i < G.length; i++) cells[((G[i].y / CS) | 0) * cols + ((G[i].x / CS) | 0)].push(i);
+      sw.grid = { CS, cols, rows, cells };
+      sw.moving.clear();
+      draw(performance.now());
+    }
+
+    function step(now) {
+      const G = sw.G;
+      if (!G) return false;
+      const busy = !!sw.born && now - sw.born < 1900;
+      const R = coarse ? 120 : 165, R2 = R * R;
+      const near = sw.near;
+      near.clear();
+      if (sw.ptr.on) {
+        const gr = sw.grid, px = sw.ptr.x, py = sw.ptr.y;
+        const c0 = Math.max(0, ((px - R) / gr.CS) | 0), c1 = Math.min(gr.cols - 1, ((px + R) / gr.CS) | 0);
+        const r0 = Math.max(0, ((py - R) / gr.CS) | 0), r1 = Math.min(gr.rows - 1, ((py + R) / gr.CS) | 0);
+        for (let r = r0; r <= r1; r++) {
+          for (let c = c0; c <= c1; c++) {
+            const cell = gr.cells[r * gr.cols + c];
+            for (let k = 0; k < cell.length; k++) {
+              const g = G[cell[k]], dx = g.x - px, dy = g.y - py;
+              if (dx * dx + dy * dy < R2) { near.add(cell[k]); sw.moving.add(cell[k]); }
+            }
+          }
+        }
+      }
+      let maxd = 0;
+      for (const i of sw.moving) {
+        const g = G[i];
+        let tx = 0, ty = 0, tb = 0;
+        if (near.has(i)) {
+          const dx = g.x - sw.ptr.x, dy = g.y - sw.ptr.y, d = Math.sqrt(dx * dx + dy * dy) || 1;
+          const f = 1 - d / R, f2 = f * f, push = f2 * 15, swirl = f2 * 7;
+          tx = (dx / d) * push - (dy / d) * swirl;
+          ty = (dy / d) * push + (dx / d) * swirl;
+          tb = f2;
+        }
+        const ex = tx - g.ox, ey = ty - g.oy, eb = tb - g.b;
+        g.ox += ex * 0.13; g.oy += ey * 0.13; g.b += eb * 0.12;
+        const m = Math.abs(ex) + Math.abs(ey) + Math.abs(eb) * 20;
+        if (m > maxd) maxd = m;
+        if (!near.has(i) && Math.abs(g.ox) < 0.04 && Math.abs(g.oy) < 0.04 && g.b < 0.01) { g.ox = 0; g.oy = 0; g.b = 0; sw.moving.delete(i); }
+      }
+      return busy || maxd > 0.05;
+    }
+
+    function draw(now) {
+      const G = sw.G;
+      if (!G) return;
+      ctx.globalAlpha = 1;
+      ctx.clearRect(0, 0, sw.W, sw.H);
+      if (!sw.shown) return; // до первого появления блока на экране зерно не рисуем, чтобы оно проявилось при прокрутке
+      const age = sw.born ? now - sw.born : 1e9;
+      const fading = age < 1900;
+      const tones = [PAL.dust, PAL.dot];
+      for (let k = 0; k < 2; k++) {
+        ctx.fillStyle = tones[k];
+        for (let i = 0; i < G.length; i++) {
+          const g = G[i];
+          if (g.c !== k) continue;
+          let m = 1;
+          if (fading) { m = (age - g.d * 1300) / 550; if (m <= 0) continue; if (m > 1) m = 1; }
+          const a = Math.min(1, g.a + g.b * 0.75) * m;
+          if (a < 0.02) continue;
+          ctx.globalAlpha = a;
+          const z = g.s * (1 + g.b * 0.6);
+          ctx.fillRect(g.x + g.ox - z / 2, g.y + g.oy - z / 2, z, z);
+        }
+      }
+      ctx.globalAlpha = 1;
+    }
+
+    const frame = (now) => {
+      sw.raf = 0;
+      if (coarse && !sw.ptr.down) { sw.ptr.x = sw.W * (0.5 + 0.38 * Math.sin(now / 4200)); sw.ptr.y = sw.H * (0.45 + 0.3 * Math.sin(now / 3100 + 1.7)); sw.ptr.on = true; }
+      const busy = step(now) || coarse;
+      draw(now);
+      if (busy && sw.visible && !document.hidden) sw.raf = requestAnimationFrame(frame);
+    };
+    function start() {
+      if (!sw.G) return;
+      if (reduce) { draw(performance.now()); return; }
+      if (!sw.raf && sw.visible && !document.hidden) sw.raf = requestAnimationFrame(frame);
+    }
+    const reveal = () => {
+      if (sw.shown) return;
+      sw.shown = true;
+      sw.born = reduce ? 0 : performance.now();
+      start();
+    };
+    if (hasIO) {
+      new IntersectionObserver((es) => { sw.visible = es[0].isIntersecting; if (sw.visible) { reveal(); start(); } }, { threshold: 0.05 }).observe(host);
+    } else {
+      sw.visible = true;
+    }
+    document.addEventListener('visibilitychange', () => { if (!document.hidden) start(); });
+    if (typeof ResizeObserver !== 'undefined') {
+      let pend = 0;
+      new ResizeObserver(() => {
+        if (pend) cancelAnimationFrame(pend);
+        pend = requestAnimationFrame(() => { pend = 0; if (host.clientWidth !== sw.W || host.clientHeight !== sw.H) { layout(); start(); } });
+      }).observe(host);
+    }
+    layout();
+    if (!hasIO) reveal();
+  })();
+
+
+  // ===== FAQ: одна синяя плашка скользит между строками за курсором (только мышь) =====
+  (() => {
+    const list = document.querySelector('.faq-list');
+    if (!list || !window.matchMedia('(hover: hover) and (pointer: fine)').matches) return;
+    const lit = document.createElement('span');
+    lit.className = 'faq-lit';
+    lit.setAttribute('aria-hidden', 'true');
+    list.prepend(lit);
+    let cur = null;
+    const place = (sum, e) => {
+      const lr = list.getBoundingClientRect(), r = sum.getBoundingClientRect();
+      lit.style.top = (r.top - lr.top) + 'px';
+      lit.style.height = r.height + 'px';
+      if (e) lit.style.setProperty('--mx', (((e.clientX - lr.left + 14) / (lr.width + 28)) * 100).toFixed(1) + '%');
+    };
+    list.addEventListener('pointermove', (e) => {
+      const sum = e.target.closest && e.target.closest('summary');
+      if (sum && list.contains(sum)) {
+        if (sum !== cur) { if (cur) cur.classList.remove('is-lit'); cur = sum; sum.classList.add('is-lit'); }
+        place(sum, e);
+        lit.classList.add('on');
+      } else if (cur) {
+        cur.classList.remove('is-lit'); cur = null; lit.classList.remove('on');
+      }
+    });
+    list.addEventListener('pointerleave', () => { if (cur) cur.classList.remove('is-lit'); cur = null; lit.classList.remove('on'); });
+    list.addEventListener('toggle', () => { if (cur) place(cur); }, true);
+  })();
+
+  // ===== Кнопки ведут в Telegram-бот: у каждой своя метка (start=site_<место> и utm_content=<место>).
+  // Если посетитель пришёл по рекламе с UTM-метками, источник и кампания дописываются в start:
+  // бот увидит, с какой кнопки и из какой рекламы пришёл гость. Telegram пропускает в бота только start (до 64 знаков). =====
+  (() => {
+    let q;
+    try { q = new URLSearchParams(window.location.search); } catch (e) { return; }
+    const clean = (v) => (v || '').toLowerCase().replace(/[^a-z0-9_-]+/g, '-').replace(/^-+|-+$/g, '').slice(0, 24);
+    const src = clean(q.get('utm_source'));
+    const camp = clean(q.get('utm_campaign'));
+    if (!src && !camp) return;
+    document.querySelectorAll('a[data-bot]').forEach((a) => {
+      try {
+        const u = new URL(a.href);
+        u.searchParams.set('start', ('site_' + a.dataset.bot + '__' + [src, camp].filter(Boolean).join('__')).slice(0, 64));
+        a.href = u.toString();
+      } catch (e) { /* оставляем ссылку как есть */ }
+    });
+  })();
+
+  // ===== Вопросы: ответ раскрывается плавно, открыт всегда один =====
+  const faqs = Array.from(document.querySelectorAll('details.faq'));
+  const EXPO = 'cubic-bezier(.19,1,.22,1)';
+  function closeFaq(d) {
+    const body = d.querySelector('.faq-a');
+    if (!body || !body.animate || reduce) { d.open = false; return; }
+    d.dataset.busy = '1';
+    const an = body.animate([{ height: body.scrollHeight + 'px', opacity: 1 }, { height: '0px', opacity: 0 }], { duration: 320, easing: 'cubic-bezier(.4,0,.2,1)' });
+    an.onfinish = () => { d.open = false; delete d.dataset.busy; };
+  }
+  faqs.forEach((d) => {
+    const sum = d.querySelector('summary');
+    const body = d.querySelector('.faq-a');
+    sum.addEventListener('click', (e) => {
+      e.preventDefault();
+      if (d.dataset.busy) return;
+      if (d.open) { closeFaq(d); return; }
+      faqs.forEach((o) => { if (o !== d && o.open) closeFaq(o); });
+      d.open = true;
+      if (body && body.animate && !reduce) {
+        body.animate([{ height: '0px', opacity: 0 }, { height: body.scrollHeight + 'px', opacity: 1 }], { duration: 480, easing: EXPO });
+      }
+    });
+  });
+
+  // ===== Курсор: синий квадрат 12px, всегда одного размера =====
+  // Исключение одно: над элементом с data-cursor он становится плашкой с текстом и стрелкой.
+  if (window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
+    const sq = document.createElement('div');
+    sq.className = 'cursor-sq';
+    sq.setAttribute('aria-hidden', 'true');
+    sq.innerHTML = '<div class="cs-in"><span class="cs-txt"></span><svg class="cs-arr" width="9" height="12" viewBox="0 0 9 12"><path d="M3.1.7 1.9 1.9a.4.4 0 0 0 0 .6l2.2 2.2c.1.1 0 .2-.1.2H.9a.4.4 0 0 0-.4.4v1.7c0 .2.2.4.4.4H4c.1 0 .2.2.1.2L1.9 9.8a.4.4 0 0 0 0 .6l1.2 1.2c.2.2.4.2.6 0l5.1-5.1a.4.4 0 0 0 0-.6L3.7.7a.4.4 0 0 0-.6 0Z" fill="currentColor"/></svg></div>';
+    document.body.appendChild(sq);
+    const inner = sq.firstChild;
+    const txt = inner.querySelector('.cs-txt');
+    const meter = document.createElement('span');
+    meter.style.cssText = 'position:absolute;visibility:hidden;left:-9999px;top:0;white-space:nowrap;font-family:Onest,"Helvetica Neue",Helvetica,Arial,sans-serif;font-size:12px;line-height:15px;font-weight:500;letter-spacing:-0.01em';
+    meter.setAttribute('aria-hidden', 'true');
+    document.body.appendChild(meter);
+    root.classList.add('has-cursor');
+    let mode = '', label = '', x = -100, y = -100, queued = false;
+    const place = () => { queued = false; sq.style.transform = 'translate3d(' + x + 'px,' + y + 'px,0)'; };
+    const setMode = (m, l) => {
+      if (m === mode && l === label) return;
+      mode = m; label = l;
+      sq.classList.toggle('label', m === 'label');
+      if (m === 'label') {
+        txt.textContent = l;
+        meter.textContent = l;
+        inner.style.width = Math.ceil(meter.getBoundingClientRect().width + 12 * 2 + 10 + 9) + 'px';
+        inner.style.height = '31px';
+      } else {
+        inner.style.width = '';
+        inner.style.height = '';
+      }
+    };
+    window.addEventListener('pointermove', (e) => {
+      if (e.pointerType && e.pointerType !== 'mouse') return;
+      x = e.clientX; y = e.clientY;
+      if (!queued) { queued = true; requestAnimationFrame(place); }
+      sq.classList.add('on');
+      const t = e.target.closest ? e.target : null;
+      const lab = t && t.closest('[data-cursor]');
+      let text = lab ? lab.getAttribute('data-cursor') : '';
+      if (lab && lab.hasAttribute('data-cursor-left')) {
+        const r = lab.getBoundingClientRect();
+        text = lab.getAttribute(e.clientX < r.left + r.width / 2 ? 'data-cursor-left' : 'data-cursor-right');
+      }
+      if (lab) setMode('label', text);
+      else setMode('', '');
+    }, { passive: true });
+    document.documentElement.addEventListener('mouseleave', () => sq.classList.remove('on'));
+  }
+
+  // ===== Зернистый фон, который отвечает на курсор =====
+  function makeField(canvas, dark, ix, iy) {
+    let gl = null;
+    try {
+      gl = canvas.getContext('webgl', { antialias: false, alpha: false, preserveDrawingBuffer: true }) || canvas.getContext('experimental-webgl');
+    } catch (e) { gl = null; }
+    if (!gl) return null;
+    const vs = 'attribute vec2 p;void main(){gl_Position=vec4(p,0.0,1.0);}';
+    const fs = [
+      '#ifdef GL_FRAGMENT_PRECISION_HIGH',
+      'precision highp float;',
+      '#else',
+      'precision mediump float;',
+      '#endif',
+      'uniform vec2 u_res;uniform float u_time;uniform vec2 u_mouse;uniform float u_energy;uniform float u_dark;uniform vec3 u_c1;uniform vec3 u_c2;uniform float u_grain;',
+      'float hs(vec2 p){p=fract(p*vec2(233.34,851.73));p+=dot(p,p+23.45);return fract(p.x*p.y);}',
+      'float ns(vec2 p){vec2 i=floor(p);vec2 f=fract(p);vec2 w=f*f*(3.0-2.0*f);return mix(mix(hs(i),hs(i+vec2(1.0,0.0)),w.x),mix(hs(i+vec2(0.0,1.0)),hs(i+vec2(1.0,1.0)),w.x),w.y);}',
+      'float fb(vec2 p){float v=0.0;float a=0.5;for(int i=0;i<4;i++){v+=a*ns(p);p=p*2.03+vec2(1.7,9.2);a*=0.5;}return v;}',
+      'void main(){',
+      ' float asp=u_res.x/u_res.y;',
+      ' vec2 uv=gl_FragCoord.xy/u_res;',
+      ' vec2 p=vec2(uv.x*asp,uv.y);',
+      ' float t=u_time*0.05;',
+      ' float f=fb(p*1.3+vec2(t,-t*0.6));',
+      ' float g=fb(p*2.4+vec2(-t*1.3,t)+f*1.5);',
+      ' vec2 m=vec2(u_mouse.x*asp,u_mouse.y);',
+      ' vec2 d=p-m+(vec2(f,g)-0.5)*0.22;',
+      ' float r=length(d*vec2(1.0,1.2));',
+      ' float halo=exp(-r*r*6.0);',
+      ' float core=exp(-r*r*40.0);',
+      ' float streak=exp(-abs(d.y)*140.0)*exp(-abs(d.x)*3.0);',
+      ' float lumL=mix(0.935,0.80,smoothstep(0.3,0.8,f))-0.04*g;',
+      ' float lumD=mix(0.17,0.27,smoothstep(0.3,0.8,f))+0.03*g;',
+      ' vec3 col=vec3(mix(lumL,lumD,u_dark));',
+      ' col+=mix(-0.05,0.06,u_dark)*halo;',
+      ' float e=clamp(u_energy,0.0,1.0);',
+      ' float s=smoothstep(0.0,0.6,r);',
+      ' vec3 tint=mix(mix(u_c2,u_c1,s),mix(u_c2,u_c2*0.45,s),u_dark);',
+      ' col=mix(col,tint,halo*e*0.8);',
+      ' col+=vec3(core*e*0.16+streak*e*0.5);',
+      ' float gr=hs(mod(gl_FragCoord.xy,701.0)+floor(u_time*12.0)*1.618)-0.5;',
+      ' col+=gr*u_grain*mix(1.0,1.25,u_dark);',
+      ' gl_FragColor=vec4(clamp(col,0.0,1.0),1.0);',
+      '}'
+    ].join('\n');
+    const mk = (type, src) => {
+      const sh = gl.createShader(type);
+      gl.shaderSource(sh, src);
+      gl.compileShader(sh);
+      return gl.getShaderParameter(sh, gl.COMPILE_STATUS) ? sh : null;
+    };
+    const v = mk(gl.VERTEX_SHADER, vs);
+    const f = mk(gl.FRAGMENT_SHADER, fs);
+    if (!v || !f) return null;
+    const prog = gl.createProgram();
+    gl.attachShader(prog, v);
+    gl.attachShader(prog, f);
+    gl.linkProgram(prog);
+    if (!gl.getProgramParameter(prog, gl.LINK_STATUS)) return null;
+    gl.useProgram(prog);
+    const buf = gl.createBuffer();
+    gl.bindBuffer(gl.ARRAY_BUFFER, buf);
+    gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1, -1, 1, -1, -1, 1, -1, 1, 1, -1, 1, 1]), gl.STATIC_DRAW);
+    const loc = gl.getAttribLocation(prog, 'p');
+    gl.enableVertexAttribArray(loc);
+    gl.vertexAttribPointer(loc, 2, gl.FLOAT, false, 0, 0);
+    const u = {};
+    ['u_res', 'u_time', 'u_mouse', 'u_energy', 'u_dark', 'u_c1', 'u_c2', 'u_grain'].forEach((n) => { u[n] = gl.getUniformLocation(prog, n); });
+    return { gl, prog, u, canvas, dark, ix, iy, mx: ix, my: iy, tx: ix, ty: iy, energy: 0, visible: true, hover: false, lx: null, ly: null };
+  }
+
+  function draw(F, t) {
+    const gl = F.gl;
+    const c = F.canvas;
+    const w = Math.max(2, Math.round(c.clientWidth || 2));
+    const h = Math.max(2, Math.round(c.clientHeight || 2));
+    if (c.width !== w || c.height !== h) { c.width = w; c.height = h; }
+    gl.viewport(0, 0, w, h);
+    if (!F.hover) {
+      F.tx = F.ix + 0.14 * Math.sin(t * 0.23);
+      F.ty = F.iy + 0.16 * Math.sin(t * 0.17 + 1.3);
+    }
+    F.mx += (F.tx - F.mx) * 0.08;
+    F.my += (F.ty - F.my) * 0.08;
+    F.energy *= 0.975;
+    if (COARSE && !F.hover) F.energy = Math.max(F.energy, F.dark ? 0.32 : 0.48); // на телефоне свечение дрейфует само
+    const u = F.u;
+    gl.useProgram(F.prog);
+    gl.uniform2f(u.u_res, w, h);
+    gl.uniform1f(u.u_time, t);
+    gl.uniform2f(u.u_mouse, F.mx, F.my);
+    gl.uniform1f(u.u_energy, F.energy);
+    gl.uniform1f(u.u_dark, F.dark ? 1 : 0);
+    gl.uniform3f(u.u_c1, PAL.c1[0], PAL.c1[1], PAL.c1[2]);
+    gl.uniform3f(u.u_c2, PAL.c2[0], PAL.c2[1], PAL.c2[2]);
+    gl.uniform1f(u.u_grain, GRAIN);
+    gl.drawArrays(gl.TRIANGLES, 0, 6);
+  }
+
+  function pointer(F, e) {
+    const r = F.canvas.getBoundingClientRect();
+    if (!r.width || !r.height) return;
+    F.tx = (e.clientX - r.left) / r.width;
+    F.ty = 1 - (e.clientY - r.top) / r.height;
+    if (F.lx != null) {
+      const d = Math.hypot(e.clientX - F.lx, e.clientY - F.ly);
+      F.energy = Math.min(1, F.energy + d / 240);
+    }
+    F.lx = e.clientX;
+    F.ly = e.clientY;
+    F.hover = true;
+  }
+
+  const COARSE = window.matchMedia('(pointer: coarse)').matches;
+  const fields = [];
+  document.querySelectorAll('canvas[data-grain]').forEach((cv) => {
+    const F = makeField(cv, cv.dataset.grain === 'dark', parseFloat(cv.dataset.x) || 0.5, parseFloat(cv.dataset.y) || 0.5);
+    if (!F) return;
+    if (!F.dark) F.energy = 0.6;
+    fields.push(F);
+    const host = cv.parentElement;
+    host.addEventListener('pointermove', (e) => pointer(F, e));
+    host.addEventListener('pointerleave', () => { F.hover = false; F.lx = null; });
+    if (hasIO) {
+      new IntersectionObserver((entries) => { F.visible = entries[0].isIntersecting; }).observe(cv);
+    }
+  });
+  const t0 = performance.now();
+  if (fields.length) {
+    if (reduce) {
+      fields.forEach((F) => draw(F, 8));
+    } else {
+      const tick = (now) => {
+        requestAnimationFrame(tick);
+        const t = (now - t0) / 1000;
+        fields.forEach((F) => { if (F.visible) draw(F, t); });
+      };
+      requestAnimationFrame(tick);
+    }
+  }
+})();
+
+</script>
+</body>
+</html>
