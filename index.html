@@ -539,10 +539,19 @@ html.js.ready .hero-what{opacity:1;transform:none}
 .ad-q{position:absolute;left:50%;bottom:14px;transform:translateX(-50%);white-space:nowrap;font-size:var(--fs-small);font-weight:500}
 .ad-miss .ad-dot{background:#EDEDEB;border:1.5px solid #AFAFAB}
 .ad-miss .ad-lbl{color:#AFAFAB;text-decoration:line-through;text-decoration-thickness:1.5px}
-html.js .ad-line{transform:scaleX(0);transition:transform 1.4s cubic-bezier(.6,0,.2,1) .2s}
-html.js .ad-q,html.js .ad-miss{opacity:0;transition:opacity .6s ease 1.5s}
+.ad-line{flex:1 1 60px;min-width:56px;max-width:240px}
+@media (min-width:981px){.ad-q{bottom:auto;top:24px}}
+
+/* по очереди: линия → «гость написал» → линия с «ответ через 20 минут» → «гость записался» гаснет и зачёркивается */
+html.js .ad-line{transform:scaleX(0);transition:transform .9s cubic-bezier(.6,0,.2,1) .2s}
+html.js .ad-l2{transition-delay:1.5s}
+html.js .ad-mid{opacity:0;transition:opacity .5s ease 1.05s}
+html.js .ad-q{opacity:0;transition:opacity .5s ease 2.2s}
+html.js .ad-miss{opacity:0;transition:opacity .6s ease 2.6s}
+html.js .ad-miss .ad-lbl{text-decoration-color:transparent;transition:text-decoration-color .4s ease 3.2s}
 html.js .adchain.in .ad-line{transform:none}
-html.js .adchain.in .ad-q,html.js .adchain.in .ad-miss{opacity:1}
+html.js .adchain.in .ad-q,html.js .adchain.in .ad-mid,html.js .adchain.in .ad-miss{opacity:1}
+html.js .adchain.in .ad-miss .ad-lbl{text-decoration-color:currentColor}
 /* боль → ответ LIA */
 .pain-q{display:block}
 .pain-a{display:flex;align-items:flex-start;gap:10px;margin-top:16px;padding-top:14px;border-top:1px dashed #C4C4C0;font-size:var(--fs-body);line-height:1.4;letter-spacing:0;color:#000}
@@ -779,60 +788,24 @@ html.js .ad-line{transform:scaleY(0)}
 <h2 style="margin:0; font-weight:300; font-size:var(--fs-h2); line-height:1.04; letter-spacing:-0.03em">Что мешает бизнесу расти?</h2>
 
 <div class="adchain" data-adchain>
-<p class="sr">Запустили рекламу, но гость так и не записался.</p>
+<p class="sr">Запустили рекламу, гость написал, ответ пришёл через 20 минут — и гость так и не записался.</p>
 <div class="ad-step" aria-hidden="true"><span class="ad-dot"></span><span class="ad-lbl">запустили рекламу</span></div>
-<span class="ad-line" aria-hidden="true"><span class="ad-q">ответ через 3 часа</span></span>
+<span class="ad-line ad-l1" aria-hidden="true"></span>
+<div class="ad-step ad-mid" aria-hidden="true"><span class="ad-dot"></span><span class="ad-lbl">гость написал</span></div>
+<span class="ad-line ad-l2" aria-hidden="true"><span class="ad-q">ответ через 20 минут</span></span>
 <div class="ad-step ad-miss" aria-hidden="true"><span class="ad-dot"></span><span class="ad-lbl">гость записался</span></div>
 </div>
 
 <div style="display:flex; flex-wrap:wrap; gap:48px clamp(48px,6vw,96px); align-items:flex-start">
-<ul class="pains" style="flex:1.2 1 480px; min-width:0; list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:16px">
-<li class="pain" style="--i:0; z-index:1; font-size:var(--fs-lead); line-height:1.32; letter-spacing:-0.01em"><span class="pain-q"><span class="pain-lead">Гостю сухо называют цену</span><span class="pain-rest"> — и он пропадает после «я подумаю»?</span></span><span class="pain-a"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 18 18"><path d="M3 9h11M10 4.5L14.5 9 10 13.5" style="fill:none; stroke:#000000; stroke-width:1.5"></path></svg><span class="pa-logo">LIA</span><span>объяснит, из чего складывается цена, и ответит на сомнение</span></span></li>
-<li class="pain" style="--i:1; z-index:2; font-size:var(--fs-lead); line-height:1.32; letter-spacing:-0.01em"><span class="pain-q"><span class="pain-lead">Администратор разрывается</span><span class="pain-rest"> между ресепшен и телефоном. Чтобы отвечать в пик и обзванивать базу, не хватает времени.</span></span><span class="pain-a"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 18 18"><path d="M3 9h11M10 4.5L14.5 9 10 13.5" style="fill:none; stroke:#000000; stroke-width:1.5"></path></svg><span class="pa-logo">LIA</span><span>ответит всем сразу и сама напомнит гостям о следующем сеансе</span></span></li>
-<li class="pain" style="--i:2; z-index:3; font-size:var(--fs-lead); line-height:1.32; letter-spacing:-0.01em"><span class="pain-q"><span class="pain-lead">Администратор путает аппараты или стоимость</span><span class="pain-rest">, а вы узнаёте об этом из жалобы гостя?</span></span><span class="pain-a"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 18 18"><path d="M3 9h11M10 4.5L14.5 9 10 13.5" style="fill:none; stroke:#000000; stroke-width:1.5"></path></svg><span class="pa-logo">LIA</span><span>берёт цены из CRM и знает каждый ваш аппарат</span></span></li>
-<li class="pain" style="--i:3; z-index:4; font-size:var(--fs-lead); line-height:1.32; letter-spacing:-0.01em"><span class="pain-q"><span class="pain-lead">Платите за рекламу</span><span class="pain-rest">, а гостям отвечают через три часа?</span></span><span class="pain-a"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 18 18"><path d="M3 9h11M10 4.5L14.5 9 10 13.5" style="fill:none; stroke:#000000; stroke-width:1.5"></path></svg><span class="pa-logo">LIA</span><span>ответит за 20 секунд — днём и ночью</span></span></li>
-<li class="pain" style="--i:4; z-index:5; font-size:var(--fs-lead); line-height:1.32; letter-spacing:-0.01em"><span class="pain-q"><span class="pain-lead">Потерь не видно,</span><span class="pain-rest"> пока не откроете переписки. А там брошенные диалоги и ответы, за которые стыдно.</span></span><span class="pain-a"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 18 18"><path d="M3 9h11M10 4.5L14.5 9 10 13.5" style="fill:none; stroke:#000000; stroke-width:1.5"></path></svg><span class="pa-logo">LIA</span><span>все диалоги в одном окне, раз в неделю — отчёт</span></span></li>
-<li class="pain" style="--i:5; z-index:6; font-size:var(--fs-lead); line-height:1.32; letter-spacing:-0.01em"><span class="pain-q"><span class="pain-lead">Ставили бота</span><span class="pain-rest">, гости просили позвать человека, через месяц его отключили?</span></span><span class="pain-a"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 18 18"><path d="M3 9h11M10 4.5L14.5 9 10 13.5" style="fill:none; stroke:#000000; stroke-width:1.5"></path></svg><span class="pa-logo">LIA</span><span>пишет как живой администратор и зовёт человека, только когда он правда нужен</span></span></li>
+<ul class="pains" style="flex:0 1 760px; min-width:0; list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:16px">
+<li class="pain" style="--i:0; z-index:1; font-size:var(--fs-lead); line-height:1.32; letter-spacing:-0.01em"><span class="pain-q"><span class="pain-lead">Гостю сухо называют цену</span><span class="pain-rest"> — и он пропадает после «я подумаю»?</span></span></li>
+<li class="pain" style="--i:1; z-index:2; font-size:var(--fs-lead); line-height:1.32; letter-spacing:-0.01em"><span class="pain-q"><span class="pain-lead">Администратор разрывается</span><span class="pain-rest"> между ресепшен и телефоном. Чтобы отвечать в пик и обзванивать базу, не хватает времени.</span></span></li>
+<li class="pain" style="--i:2; z-index:3; font-size:var(--fs-lead); line-height:1.32; letter-spacing:-0.01em"><span class="pain-q"><span class="pain-lead">Администратор путает аппараты или стоимость</span><span class="pain-rest">, а вы узнаёте об этом из жалобы гостя?</span></span></li>
+<li class="pain" style="--i:3; z-index:4; font-size:var(--fs-lead); line-height:1.32; letter-spacing:-0.01em"><span class="pain-q"><span class="pain-lead">Платите за рекламу</span><span class="pain-rest">, а гостям отвечают через три часа?</span></span></li>
+<li class="pain" style="--i:4; z-index:5; font-size:var(--fs-lead); line-height:1.32; letter-spacing:-0.01em"><span class="pain-q"><span class="pain-lead">Потерь не видно,</span><span class="pain-rest"> пока не откроете переписки. А там брошенные диалоги и ответы, за которые стыдно.</span></span></li>
+<li class="pain" style="--i:5; z-index:6; font-size:var(--fs-lead); line-height:1.32; letter-spacing:-0.01em"><span class="pain-q"><span class="pain-lead">Ставили бота</span><span class="pain-rest">, гости просили позвать человека, через месяц его отключили?</span></span></li>
 </ul>
 <div class="pains-dots" aria-hidden="true"></div>
-
-<figure id="prob" class="sticky-spec" style="flex:1 1 420px; min-width:0; margin:0; position:relative; border:1px solid #C4C4C0; padding:clamp(24px,3vw,36px); display:flex; flex-direction:column; gap:14px">
-<span aria-hidden="true" style="position:absolute; top:-4px; left:-4px; width:7px; height:7px; border-radius:50%; background:#000000"></span>
-<span aria-hidden="true" style="position:absolute; top:-4px; right:-4px; width:7px; height:7px; border-radius:50%; background:#000000"></span>
-<span aria-hidden="true" style="position:absolute; bottom:-4px; left:-4px; width:7px; height:7px; border-radius:50%; background:#000000"></span>
-<span aria-hidden="true" style="position:absolute; bottom:-4px; right:-4px; width:7px; height:7px; border-radius:50%; background:#000000"></span>
-<figcaption class="sr">Пример переписки. Гость в 19:12: Здравствуйте! Сколько стоит лазер на ноги полностью? Администратор в 22:40: 6500. Гость в 22:41: Я подумаю. Так ответила бы LIA в 19:12: Здравствуйте! Ноги полностью — 6&nbsp;500&nbsp;₽ за сеанс, курсом из шести на 10% выгоднее. Подскажите, делали лазер раньше? Подберу аппарат и окно: сегодня свободно в 20:30.</figcaption>
-<div aria-hidden="true" style="display:flex; flex-direction:column; gap:14px">
-<div style="font-size:var(--fs-small); color:#4A4A48">Переписка студии, вторник</div>
-<div style="display:flex; flex-direction:column; gap:6px; align-items:flex-start">
-<span style="font-size:var(--fs-small); color:#4A4A48">Гость, 19:12</span>
-<div style="max-width:360px; background:#FFFFFF; border:1px solid rgba(0,0,0,0.08); border-radius:20px 20px 20px 6px; padding:12px 18px; font-size:var(--fs-body); line-height:1.5">Здравствуйте! Сколько стоит лазер на ноги полностью?</div>
-</div>
-<div style="margin-left:32px; display:flex; flex-wrap:wrap; gap:8px 16px; align-items:flex-end">
-<div style="display:flex; flex-direction:column; gap:6px; align-items:flex-start">
-<span style="font-size:var(--fs-small); color:#4A4A48">Администратор, 22:40</span>
-<div style="position:relative; background:#E2E2DF; border-radius:20px 20px 20px 6px; padding:12px 22px; font-size:var(--fs-body); line-height:1.5">6500</div>
-</div>
-<div style="height:48px; display:flex; align-items:center; gap:10px; opacity:var(--anno1,1); transition:opacity .5s ease">
-<span style="flex:none; width:24px; height:1px; background:#000000"></span>
-<span style="font-size:var(--fs-small); font-weight:500">Ответ через 3 часа 28 минут</span>
-</div>
-</div>
-<div style="display:flex; flex-direction:column; gap:6px; align-items:flex-start; opacity:var(--fade,0.4); transition:opacity .6s ease">
-<span style="font-size:var(--fs-small); color:#4A4A48">Гость, 22:41</span>
-<div style="background:#FFFFFF; border:1px solid rgba(0,0,0,0.08); border-radius:20px 20px 20px 6px; padding:12px 18px; font-size:var(--fs-body); line-height:1.5">Я подумаю</div>
-</div>
-<div id="prob-lia" class="rise" style="margin-left:32px; margin-top:10px; padding-top:18px; border-top:1px dashed #C4C4C0; display:flex; flex-direction:column; gap:6px; align-items:flex-start">
-<span style="font-size:var(--fs-small); color:#4A4A48">Так ответила бы LIA, 19:12</span>
-<div id="prob-text" style="max-width:420px; background:#363636; color:#FFFFFF; border-radius:20px 20px 20px 6px; padding:12px 18px; font-size:var(--fs-body); line-height:1.5; min-height:48px">Здравствуйте! Ноги полностью — 6&nbsp;500&nbsp;₽ за сеанс, курсом из шести на 10% выгоднее. Подскажите, делали лазер раньше? Подберу аппарат и окно: сегодня свободно в 20:30.</div>
-<div style="display:flex; align-items:center; gap:10px; margin-top:6px; opacity:var(--anno2,1); transition:opacity .5s ease">
-<span style="flex:none; width:7px; height:7px; border-radius:50%; background:#000000"></span>
-<span style="flex:none; width:24px; height:1px; background:#000000"></span>
-<span style="font-size:var(--fs-small); font-weight:500">Сразу: цена курса, вопрос и следующий шаг</span>
-</div>
-</div>
-</div>
-</figure>
 </div>
 
 <div style="margin-top:clamp(32px,5vw,64px); max-width:1060px; display:flex; flex-direction:column; gap:28px">
@@ -1723,37 +1696,6 @@ html.js .ad-line{transform:scaleY(0)}
   // ===== Блок проблем: скролл по карточкам болей запускает переписку справа =====
 
   const narrow = () => window.matchMedia('(max-width: 980px)').matches;
-  const prob = document.getElementById('prob');
-  let probStage = 0;
-  let setProbStage = () => {};
-  if (prob) {
-    const lia = document.getElementById('prob-lia');
-    const txt = document.getElementById('prob-text');
-    const full = txt.textContent;
-    const set = (k, v) => prob.style.setProperty(k, v);
-    if (!reduce) {
-      set('--strike', 0); set('--anno1', 0); set('--fade', 1); set('--anno2', 0);
-      lia.hidden = true;
-    }
-    setProbStage = async (stage) => {
-      if (reduce || stage <= probStage) return;
-      const from = probStage;
-      probStage = stage;
-      if (from < 1) set('--anno1', 1);
-      if (from < 2 && stage >= 2) {
-        const me = { dead: false };
-        if (from < 1) await sleep(300);
-        set('--strike', 1);
-        await sleep(500); set('--fade', 0.4);
-        await sleep(400); txt.textContent = ''; lia.hidden = false;
-        await sleep(350); await typeInto(txt, full, 46, me);
-        await sleep(300); set('--anno2', 1);
-      }
-    };
-    // на узком экране «переписка» стоит под списком: играем, когда она в кадре
-    if (!reduce && hasIO && narrow()) onceVisible(prob, () => setProbStage(2), 0.4);
-  }
-
   const pains = Array.from(document.querySelectorAll('.pain'));
   let activePain = -2;
   function trackPains() {
@@ -1768,10 +1710,6 @@ html.js .ad-line{transform:scaleY(0)}
       p.classList.toggle('is-active', i === idx);
       p.classList.toggle('is-past', i < idx);
     });
-    if (!narrow()) {
-      if (idx >= 0) setProbStage(1);
-      if (idx >= 2) setProbStage(2);
-    }
   }
   window.addEventListener('scroll', trackPains, { passive: true });
   window.addEventListener('resize', trackPains);
