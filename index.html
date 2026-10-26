@@ -634,6 +634,34 @@ html.js .ad-line{transform:scaleY(0)}
 .ad-lbl{font-size:var(--fs-lead)}
 .pain-a{font-size:var(--fs-small)}
 }
+/* Первый экран: слева слоган, справа короткий диалог — ответ LIA и есть «что это» */
+.hero-grid{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,.8fr);gap:clamp(40px,5vw,88px);align-items:center}
+.hero-main{display:flex;flex-direction:column;gap:clamp(32px,3.4vw,48px)}
+@media (min-width:981px){.hero-main h1{font-size:clamp(40px,4.5vw,66px) !important}.hero-main h1 > span{white-space:nowrap}}
+.hero-talk{margin:0;width:100%;max-width:540px;justify-self:end;display:flex;flex-direction:column;gap:10px}
+.ht-meta{display:inline-flex;align-items:center;gap:8px;font-size:var(--fs-small);color:#4A4A48}
+.ht-live{width:8px;height:8px;border-radius:50%;background:#436DEE;box-shadow:0 0 0 4px rgba(67,109,238,.18)}
+.ht-a{display:flex;flex-direction:column;gap:22px;background:#363636;color:#FFFFFF;border-radius:30px 30px 30px 8px;padding:18px 18px clamp(24px,2.6vw,32px);box-shadow:0 34px 60px -34px rgba(0,0,0,.5)}
+.ht-quote{display:flex;gap:12px;padding:10px 14px;border-radius:14px;background:#4A4A48}
+.ht-qbar{flex:none;width:3px;border-radius:2px;background:#436DEE}
+.ht-qtext{display:flex;flex-direction:column;gap:2px;font-size:var(--fs-body);line-height:1.4}
+.ht-qtext b{font-size:var(--fs-small);font-weight:500;color:#C9D6FF}
+.ht-a p{margin:0;padding:0 clamp(6px,1vw,14px);font-size:clamp(26px,2.6vw,38px);font-weight:500;line-height:1.14;letter-spacing:-0.02em;text-wrap:balance}
+/* одно движение при загрузке: сначала цитата вопроса, потом ответ */
+html.js .hero-talk .ht-meta,html.js .ht-a{opacity:0;transform:translateY(16px)}
+html.js .ht-a p{opacity:0}
+html.js.ready .hero-talk .ht-meta,html.js.ready .ht-a{opacity:1;transform:none;transition:opacity .45s ease .7s,transform .9s var(--spring) .7s}
+html.js.ready .ht-a p{opacity:1;transition:opacity .5s ease 1.35s}
+@media (prefers-reduced-motion:reduce){html.js .hero-talk .ht-meta,html.js .ht-a,html.js .ht-a p{opacity:1;transform:none;transition:none}}
+@media (max-width:980px){
+.hero-grid{grid-template-columns:minmax(0,1fr);gap:28px}
+.hero-main{display:contents}
+.hero-main h1{order:1}
+.hero-talk{order:2;justify-self:start;max-width:none}
+.hero-main .intro-rest{order:3;margin-top:8px}
+.ht-a{gap:16px;border-radius:24px 24px 24px 6px;padding:14px 14px 22px}
+.ht-a p{font-size:26px}
+}
 </style>
 </head>
 <body>
@@ -671,20 +699,28 @@ html.js .ad-line{transform:scaleY(0)}
 <canvas data-grain="light" data-x="0.72" data-y="0.55" aria-hidden="true" style="position:absolute; top:0; left:0; width:100%; height:100%; display:block"></canvas>
 <div class="hero-in" style="position:relative; max-width:1280px; margin:0 auto; padding:clamp(40px,5vw,72px) clamp(20px,5vw,64px) clamp(64px,8vw,96px); display:flex; flex-direction:column; gap:clamp(36px,4vw,52px)">
 
-<div class="hero-head" style="display:flex; flex-direction:column; align-items:flex-start; gap:clamp(18px,2vw,26px)">
+<div class="hero-grid">
+<div class="hero-main">
 <h1 data-split style="margin:0; font-weight:300; font-size:var(--fs-display); line-height:1.04; letter-spacing:-0.03em">
 <span style="display:block">Опыт лидеров ниши.</span>
 <span style="display:block">Голос вашего бренда.</span>
 </h1>
-<p class="hero-what"><span class="hw-logo">LIA</span><span>AI-администратор для студий лазерной эпиляции на&nbsp;YCLIENTS</span></p>
-</div>
-
 <div class="intro-rest" style="display:flex; flex-direction:column; gap:32px; max-width:640px">
 <p style="margin:0; font-size:var(--fs-intro); line-height:1.55; color:#4A4A48">LIA помогали создавать предприниматели из&nbsp;сферы лазерной эпиляции. Используя их опыт, LIA научена отвечать даже на&nbsp;самые нестандартные вопросы и&nbsp;знает, как ответить, чтобы довести гостя до&nbsp;записи.</p>
 <div style="display:flex; flex-wrap:wrap; gap:14px 28px; align-items:center">
 <a href="https://t.me/lia_ai_team_bot?start=site_hero&amp;utm_source=lia_landing&amp;utm_medium=button&amp;utm_campaign=pilot&amp;utm_content=hero" target="_blank" rel="noopener" data-bot="hero" class="btn-dark" style="display:inline-flex; align-items:center; gap:12px; min-height:56px; padding:0 28px 0 30px; border-radius:999px; background:#000000; color:#FFFFFF; text-decoration:none; font-size:var(--fs-body); font-weight:500; transition:background .2s">Оставить заявку<svg aria-hidden="true" width="18" height="18" viewBox="0 0 18 18"><path d="M3 9h11M10 4.5L14.5 9 10 13.5" style="fill:none; stroke:#FFFFFF; stroke-width:1.5"></path></svg></a>
 <a href="#primery" class="hero-down">Посмотрите примеры реальных переписок<svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16"><path d="M8 2v11M3.5 8.5L8 13l4.5-4.5" style="fill:none; stroke:#000000; stroke-width:1.5"></path></svg></a>
 </div>
+</div>
+</div>
+<figure class="hero-talk">
+<figcaption class="sr">Владелец студии спрашивает: кто ответит моим гостям ночью? LIA отвечает: AI-администратор для студий лазерной эпиляции на YCLIENTS.</figcaption>
+<span class="ht-meta" aria-hidden="true"><span class="ht-live"></span>LIA, 23:47</span>
+<div class="ht-a">
+<div class="ht-quote" aria-hidden="true"><span class="ht-qbar"></span><span class="ht-qtext"><b>Владелец студии</b><span>Кто ответит моим гостям ночью?</span></span></div>
+<p>AI-администратор для&nbsp;студий лазерной эпиляции на&nbsp;YCLIENTS</p>
+</div>
+</figure>
 </div>
 </div>
 </section>
