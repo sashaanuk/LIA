@@ -511,23 +511,31 @@ html.js .msg{animation:msg-in .5s cubic-bezier(.19,1,.22,1) both}
 html.js .hero-what{opacity:0;transform:translateY(14px);transition:opacity .4s ease .45s,transform .8s var(--spring) .45s}
 html.js.ready .hero-what{opacity:1;transform:none}
 /* Примеры переписок: карусель */
-.ex{max-width:1280px;margin:0 auto;padding:var(--sec) 0;display:flex;flex-direction:column;gap:var(--gap)}
-.ex-head{padding:0 var(--pad-x);display:flex;flex-wrap:wrap;gap:16px clamp(40px,5vw,80px);align-items:flex-end;justify-content:space-between}
-.ex-track{display:flex;gap:20px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-padding-left:var(--pad-x);padding:4px var(--pad-x) 8px;scrollbar-width:none;align-items:stretch}
-.ex-track::-webkit-scrollbar{display:none}
-.ex-card{flex:0 0 min(400px,84vw);scroll-snap-align:start;margin:0;position:relative;box-sizing:border-box;background:#F6F6F4;border:1px solid #D6D6D3;border-radius:28px;padding:clamp(22px,2.6vw,32px);display:flex;flex-direction:column;gap:14px}
-.ex-card.ex-main{flex-basis:min(700px,88vw);min-height:560px}
-.ex-ch{font-size:var(--fs-small);color:#4A4A48}
+/* «Так LIA отвечает гостям»: одна лента сообщений, которая прокручивается вместе со страницей */
+.ex{max-width:1280px;margin:0 auto;padding:var(--sec) var(--pad-x)}
+.ex-pin{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:var(--gap) clamp(40px,6vw,96px);align-items:start}
+.ex-head{display:flex;flex-direction:column;gap:20px}
+.ex-win{position:relative;height:min(720px,calc(100svh - 200px));overflow-y:auto;scrollbar-width:none;background:#F6F6F4;border:1px solid #D6D6D3;border-radius:28px;-webkit-mask-image:linear-gradient(180deg,transparent 0,#000 48px,#000 calc(100% - 72px),transparent 100%);mask-image:linear-gradient(180deg,transparent 0,#000 48px,#000 calc(100% - 72px),transparent 100%)}
+.ex-win::-webkit-scrollbar{display:none}
+.ex-feed{display:flex;flex-direction:column;gap:56px;padding:48px clamp(22px,3vw,40px) 96px;will-change:transform}
+.ex-conv{display:flex;flex-direction:column;gap:14px}
 .ex-msg{display:flex;flex-direction:column;gap:6px;align-items:flex-start}
 .ex-lia{margin-left:24px}
 .ex-tr{display:block;margin-top:10px;font-size:var(--fs-small);line-height:1.45;color:#4A4A48;font-style:italic}
-.ex-note{margin:auto 0 0 24px;padding-top:6px}
-.ex-nav{padding:0 var(--pad-x);display:flex;align-items:center;gap:8px}
-.ex-dots{flex:1;display:flex;gap:6px}
-.ex-dots i{width:6px;height:6px;border-radius:50%;background:#C4C4C0;transition:background .3s,transform .3s}
-.ex-dots i.on{background:#000;transform:scale(1.3)}
-.ex-btn{flex:none;width:48px;height:48px;border-radius:50%;border:1px solid #000;background:none;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .2s}
-.ex-btn:hover{background:#000}.ex-btn:hover path{stroke:#fff !important}
+.ex-note{margin:0 0 0 24px;padding-top:6px}
+#hero-chat [data-hero="replay"]{display:none !important}
+/* с JS: блок «прилипает», а лента едет по мере прокрутки страницы */
+html.js .ex.is-scrub{padding-top:0;padding-bottom:0}
+html.js .ex.is-scrub .ex-pin{position:sticky;top:0;height:100svh;box-sizing:border-box;padding:clamp(112px,14vh,140px) 0 32px;align-content:start}
+html.js .ex.is-scrub .ex-win{overflow:hidden}
+@media (max-width:980px){
+.ex-pin{grid-template-columns:minmax(0,1fr);gap:20px}
+.ex-head{gap:12px}
+html.js .ex.is-scrub .ex-pin{display:flex;flex-direction:column;padding:96px 0 20px}
+html.js .ex.is-scrub .ex-win{flex:1 1 auto;height:auto;min-height:0}
+.ex-win{height:70svh}
+.ex-feed{gap:44px;padding:36px 18px 80px}
+}
 /* подсветки на сообщениях не наезжают на пузырь */
 .lia-anno > span:first-child{margin-left:12px !important}
 /* «Что мешает бизнесу расти»: реклама есть, записи нет */
@@ -608,7 +616,6 @@ html.js .adchain.in .ad-miss .ad-lbl{text-decoration-color:currentColor}
 html.js .ad-line{transform:scaleY(0)}
 .ad-q{left:24px;bottom:auto;top:50%;transform:translateY(-50%)}
 .ad-lbl{font-size:var(--fs-lead)}
-.ex-card.ex-main{min-height:0}
 .pain-a{font-size:var(--fs-small)}
 }
 </style>
@@ -669,16 +676,18 @@ html.js .ad-line{transform:scaleY(0)}
 <div aria-hidden="true" style="height:1px; background:#C4C4C0"><div style="max-width:1280px; margin:0 auto; padding:0 clamp(20px,5vw,64px)"><span style="display:block; width:7px; height:7px; margin:-3px 0 0 -3px; border-radius:50%; background:#000000"></span></div></div>
 
 <section id="primery" class="ex" aria-labelledby="primery-title">
+<div class="ex-pin">
 <div class="ex-head">
 <h2 id="primery-title" style="margin:0; font-weight:300; font-size:var(--fs-h2); line-height:1.04; letter-spacing:-0.03em">Так LIA отвечает гостям</h2>
 <p style="margin:0; font-size:var(--fs-intro); color:#4A4A48; max-width:30em">Сложные и нестандартные вопросы из переписок студий лазерной эпиляции.</p>
 </div>
-<div class="ex-track">
-<figure id="hero-chat" class="ex-card ex-main" style="margin:0; display:flex; flex-direction:column; justify-content:flex-start; gap:14px">
+<div class="ex-win">
+<div class="ex-feed">
+<figure id="hero-chat" class="ex-conv" style="margin:0; display:flex; flex-direction:column; justify-content:flex-start; gap:14px">
 <figcaption class="sr">Пример переписки. Гость в 23:47: Добрый вечер! Сколько стоит глубокое бикини? И это очень больно? LIA в 23:47: Добрый вечер, Анна! Глубокое бикини — 3&nbsp;200&nbsp;₽ за сеанс, курсом из шести выйдет на 10% выгоднее. Больно почти не бывает: в аппарате охлаждение, большинство гостей чувствуют лёгкое тепло. Если захотите, добавим подмышки — вместе выходит быстрее и дешевле. В четверг у Марины свободно: Четверг, 19:30 или 20:15.</figcaption>
 <!-- Пример переписки на первом экране. Реплики LIA печатаются анимацией из этого текста. -->
 <div aria-hidden="true" style="display:flex; flex-direction:column; gap:14px">
-<div style="display:flex; gap:12px; font-size:var(--fs-small); color:#4A4A48"><span>Гость, Instagram</span><span>23:47</span></div>
+<div style="display:flex; gap:12px; font-size:var(--fs-small); color:#4A4A48"><span>Гость, 23:47</span></div>
 <div data-hero="guest" class="rise" style="align-self:flex-start; max-width:400px; background:#FFFFFF; border:1px solid rgba(0,0,0,0.08); border-radius:22px 22px 22px 6px; padding:14px 20px; font-size:var(--fs-body); line-height:1.5">Добрый вечер! Сколько стоит глубокое бикини? И это очень больно?</div>
 <div data-hero="typing" class="rise" hidden style="margin-left:32px; display:flex; gap:12px; align-items:center; font-size:var(--fs-small); color:#4A4A48"><span class="dots"><i></i><i></i><i></i></span><span>LIA печатает</span></div>
 <div data-hero="reply" style="margin-left:32px; display:flex; flex-direction:column; gap:10px">
@@ -738,47 +747,38 @@ html.js .ad-line{transform:scaleY(0)}
 </div>
 <button type="button" data-hero="replay" class="rise" hidden style="align-self:flex-start; margin-left:32px; min-height:44px; padding:0; background:none; border:0; font:inherit; font-size:var(--fs-small); color:#000000; text-decoration:underline; text-underline-offset:4px; cursor:pointer">Показать ещё раз</button>
 </figure>
-<figure class="ex-card">
-<figcaption class="ex-ch">WhatsApp, вторник</figcaption>
+<div class="ex-conv">
 <div class="ex-msg"><span class="msg-time">Гость, 14:20</span><div class="b-guest">Я сделала 4 сеанса на диоде в другой студии. Можно продолжить у вас на александрите?</div></div>
 <div class="ex-msg ex-lia"><span class="msg-time">LIA, 14:20</span><div class="b-lia">Да, конечно! Перед сеансом мастер посмотрит кожу и волосы и подберёт параметры под александрит. Подскажите, когда был последний сеанс? Между процедурами нужна пауза в 4–6 недель.</div></div>
 <div class="b-note ex-note"><span class="d"></span><span class="l"></span><span>Отвечает на нестандартный вопрос</span></div>
-</figure>
-<figure class="ex-card">
-<figcaption class="ex-ch">Instagram, 01:12</figcaption>
+</div>
+<div class="ex-conv">
 <div class="ex-msg"><span class="msg-time">Гость, 01:12</span><div class="b-guest">Простите, что так поздно 🙈 Хочу подмышки до отпуска, улетаю через три недели. Успею?</div></div>
 <div class="ex-msg ex-lia"><span class="msg-time">LIA, 01:12</span><div class="b-lia">Пишите в любое время 🤍 Один сеанс точно успеем, волосы станут заметно тоньше. Загорать после процедуры можно через две недели, поэтому лучше записаться в ближайшие дни: завтра в 11:00 или в четверг в 19:30?</div></div>
 <div class="b-note ex-note"><span class="d"></span><span class="l"></span><span>Ночью отвечает так же, как днём</span></div>
-</figure>
-<figure class="ex-card">
-<figcaption class="ex-ch">Telegram, четверг</figcaption>
+</div>
+<div class="ex-conv">
 <div class="ex-msg"><span class="msg-time">Гость, 18:05</span><div class="b-guest">Я кормлю грудью, ребёнку 5 месяцев. Мне можно эпиляцию?</div></div>
 <div class="ex-msg ex-lia"><span class="msg-time">LIA, 18:05</span><div class="b-lia">Поздравляем! Во время лактации мы не проводим процедуру: гормональный фон меняется, и кожа может отреагировать непредсказуемо. Давайте я напомню вам, когда кормление закончится, и сразу подберём удобное окно 🤍</div></div>
 <div class="b-note ex-note"><span class="d"></span><span class="l"></span><span>Знает противопоказания и не теряет гостя</span></div>
-</figure>
-<figure class="ex-card">
-<figcaption class="ex-ch">Instagram, суббота</figcaption>
+</div>
+<div class="ex-conv">
 <div class="ex-msg"><span class="msg-time">Гость, 12:41</span><div class="b-guest">Почему у вас дороже, чем в студии рядом?</div></div>
 <div class="ex-msg ex-lia"><span class="msg-time">LIA, 12:41</span><div class="b-lia">Хороший вопрос! Цена складывается из аппарата и опыта мастера: у нас александрит и диод последнего поколения, поэтому сеансов обычно нужно меньше. Курсом из шести выйдет на 10% выгоднее. Посчитать для вашей зоны?</div></div>
 <div class="b-note ex-note"><span class="d"></span><span class="l"></span><span>Объясняет цену без давления</span></div>
-</figure>
-<figure class="ex-card">
-<figcaption class="ex-ch">WhatsApp, понедельник</figcaption>
+</div>
+<div class="ex-conv">
 <div class="ex-msg"><span class="msg-time">Гость, 10:17</span><div class="b-guest">А какое образование у ваших мастеров?</div></div>
 <div class="ex-msg ex-lia"><span class="msg-time">LIA, 10:17</span><div class="b-lia">У всех мастеров медицинское образование и сертификат по работе на нашем аппарате. Марина, например, работает с лазером шесть лет. Записать вас к ней?</div></div>
 <div class="b-note ex-note"><span class="d"></span><span class="l"></span><span>Знает вашу студию из брифа</span></div>
-</figure>
-<figure class="ex-card">
-<figcaption class="ex-ch">Telegram, среда</figcaption>
+</div>
+<div class="ex-conv">
 <div class="ex-msg"><span class="msg-time">Гость, 21:30</span><div class="b-guest"><span class="voice"><svg width="22" height="22" viewBox="0 0 22 22"><circle cx="11" cy="11" r="10.5" style="fill:#000000"></circle><path d="M9 7l6 4-6 4z" style="fill:#FFFFFF"></path></svg><svg width="100" height="22" viewBox="0 0 100 22"><path d="M1 9v4M7 6v10M13 3v16M19 7v8M25 4v14M31 8v6M37 2v18M43 6v10M49 9v4M55 5v12M61 3v16M67 8v6M73 6v10M79 9v4M85 4v14M91 7v8M97 10v2" style="fill:none; stroke:#000000; stroke-width:2; stroke-linecap:round"></path></svg><span>0:31</span></span><span class="ex-tr">Хотела спросить: у меня тёмная кожа после отпуска, мне вообще подойдёт лазер? И сколько тогда сеансов?</span></div></div>
 <div class="ex-msg ex-lia"><span class="msg-time">LIA, 21:30</span><div class="b-lia">Подойдёт, просто аппарат и параметры подбираются под тон кожи: для загорелой кожи безопаснее диод. Обычно нужно 6–8 сеансов. Пришлите, пожалуйста, фото зоны — мастер посмотрит и подскажет точнее.</div></div>
 <div class="b-note ex-note"><span class="d"></span><span class="l"></span><span>Расшифровала голосовое и попросила фото</span></div>
-</figure>
 </div>
-<div class="ex-nav">
-<div class="ex-dots" aria-hidden="true"></div>
-<button type="button" class="ex-btn ex-prev" aria-label="Предыдущая переписка"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 18 18"><path d="M15 9H4M8 4.5L3.5 9 8 13.5" style="fill:none; stroke:#000000; stroke-width:1.5"></path></svg></button>
-<button type="button" class="ex-btn ex-next" aria-label="Следующая переписка"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 18 18"><path d="M3 9h11M10 4.5L14.5 9 10 13.5" style="fill:none; stroke:#000000; stroke-width:1.5"></path></svg></button>
+</div>
+</div>
 </div>
 </section>
 
@@ -1647,29 +1647,29 @@ html.js .ad-line{transform:scaleY(0)}
   }
 
 
-  // ===== Примеры переписок: карусель со стрелками и точками =====
+  // ===== Примеры переписок: лента едет вверх, пока страница прокручивает блок =====
   (() => {
-    const track = document.querySelector('.ex-track');
-    if (!track) return;
-    const cards = Array.from(track.querySelectorAll('.ex-card'));
-    const dotsBox = document.querySelector('.ex-dots');
-    const dots = cards.map(() => dotsBox.appendChild(document.createElement('i')));
-    const idx = () => {
-      const x = track.scrollLeft + 1;
-      let k = 0;
-      cards.forEach((c, j) => { if (c.offsetLeft - track.offsetLeft - parseFloat(getComputedStyle(track).paddingLeft) <= x) k = j; });
-      if (track.scrollLeft + track.clientWidth >= track.scrollWidth - 4) k = cards.length - 1;
-      return k;
+    const sec = document.getElementById('primery');
+    const win = sec && sec.querySelector('.ex-win');
+    const feed = win && win.querySelector('.ex-feed');
+    if (!feed || reduce) return; // без анимаций — обычная прокрутка внутри окна
+    sec.classList.add('is-scrub');
+    const pin = sec.querySelector('.ex-pin');
+    let extra = 0;
+    const size = () => {
+      extra = Math.max(0, feed.offsetHeight - win.clientHeight);
+      sec.style.height = (pin.offsetHeight + extra) + 'px';
+      move();
     };
-    const mark = () => { const k = idx(); dots.forEach((d, j) => d.classList.toggle('on', j === k)); };
-    const go = (d) => {
-      const k = Math.max(0, Math.min(cards.length - 1, idx() + d));
-      track.scrollTo({ left: cards[k].offsetLeft - cards[0].offsetLeft, behavior: reduce ? 'auto' : 'smooth' });
+    const move = () => {
+      const top = -sec.getBoundingClientRect().top;
+      const p = extra ? Math.min(1, Math.max(0, top / extra)) : 0;
+      feed.style.transform = 'translate3d(0,' + (-p * extra).toFixed(1) + 'px,0)';
     };
-    document.querySelector('.ex-prev').addEventListener('click', () => go(-1));
-    document.querySelector('.ex-next').addEventListener('click', () => go(1));
-    track.addEventListener('scroll', mark, { passive: true });
-    mark();
+    window.addEventListener('scroll', move, { passive: true });
+    window.addEventListener('resize', size);
+    if (window.ResizeObserver) new ResizeObserver(size).observe(feed);
+    size();
   })();
 
   // ===== «Реклама → гость записался»: пунктир прорисовывается при появлении =====
