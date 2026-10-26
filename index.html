@@ -385,16 +385,13 @@ html.js .msg{animation:msg-in .5s cubic-bezier(.19,1,.22,1) both}
 /* ===== Курсор-квадратик ===== */
 /* Курсор: квадрат 12px со скруглением 4px, как на wearestokt.com, всегда одного размера.
    Цвет — кобальт из мудборда (размытые кольца, #436DEE). Единственное исключение — элемент с data-cursor:
-   над ним курсор становится плашкой с текстом и стрелкой и инвертирует цвета под собой. */
+   над ним курсор становится синей плашкой с белым текстом и стрелкой. */
 .cursor-sq{position:fixed;left:0;top:0;z-index:9999;pointer-events:none;font-family:Onest,'Helvetica Neue',Helvetica,Arial,sans-serif;opacity:0;transition:opacity .2s ease;will-change:transform}
 .cursor-sq.on{opacity:1}
 .cursor-sq .cs-in{position:absolute;left:0;top:0;display:flex;align-items:center;justify-content:center;gap:10px;box-sizing:border-box;width:12px;height:12px;padding:0;border-radius:4px;background:#436DEE;color:#0A0A0A;transform:translate(-50%,-50%);overflow:hidden;white-space:nowrap;transition:width .4s cubic-bezier(.22,1,.36,1),height .4s cubic-bezier(.22,1,.36,1),border-radius .4s cubic-bezier(.22,1,.36,1),padding .4s cubic-bezier(.22,1,.36,1)}
 .cursor-sq .cs-txt,.cursor-sq .cs-arr{flex:none;opacity:0;transition:opacity .2s ease}
 .cursor-sq .cs-txt{font-size:var(--fs-micro);line-height:15px;font-weight:500;letter-spacing:-0.01em}
-.cursor-sq.label{mix-blend-mode:difference}
-.cursor-sq.label .cs-in{padding:9px 12px;border-radius:999px;background:#B6FF3B;animation:cs-neon 3.2s linear infinite}
-@keyframes cs-neon{0%{background:#B6FF3B}33%{background:#2BF6FF}66%{background:#FF2BD6}100%{background:#B6FF3B}}
-@media (prefers-reduced-motion:reduce){.cursor-sq.label .cs-in{animation:none}}
+.cursor-sq.label .cs-in{padding:9px 12px;border-radius:999px;background:#436DEE;color:#FFFFFF}
 .cursor-sq.label .cs-txt,.cursor-sq.label .cs-arr{opacity:1;transition-delay:.08s}
 @media (hover:hover) and (pointer:fine){html.has-cursor,html.has-cursor *{cursor:none !important}}
 /* ===== Шапка: въезд сверху при загрузке, как у Jitter (только на десктопе) ===== */
