@@ -4,8 +4,23 @@
     {
       "name": "landing",
       "runtimeExecutable": "npx",
-      "runtimeArgs": ["-y", "serve@14", "-l", "8787", "--no-clipboard", "."],
+      "runtimeArgs": [
+        "-y",
+        "serve@14",
+        "-l",
+        "8787",
+        "--no-clipboard",
+        "."
+      ],
       "port": 8787
+    },
+    {
+      "name": "text-editor",
+      "runtimeExecutable": "node",
+      "runtimeArgs": [
+        "tools/text-editor.js"
+      ],
+      "port": 8788
     }
   ]
 }
