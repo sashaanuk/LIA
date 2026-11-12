@@ -72,13 +72,15 @@ ALIGN_BOTTOM = """
 """
 
 
-# Первый экран: переписка на карточке с зернистым градиентом, реплики — баблы (референс от 12.11).
+# Первый экран: весь фон — зернистый градиент, переписка в рамке из тонких линий с засечками, реплики — баблы (референс от 12.11).
 # Вопрос владельца — прозрачный бабл с белой обводкой справа, ответ LIA — белый бабл слева, под ним плашка со звездой.
 _STAR_D = re.search(r'class="lia-star" d="([^"]+)"', LOGO_THIN).group(1)
 HERO_OLD_START = '<span class="ht-meta" aria-hidden="true">'
 HERO_OLD_END = '</figure>'
 HERO_NEW = (
     '<div class="ht2" aria-hidden="true">'
+    '<span class="ht2-ln h t"></span><span class="ht2-ln h b"></span><span class="ht2-ln v l"></span><span class="ht2-ln v r"></span>'
+    '<span class="ht2-dot tl"></span><span class="ht2-dot tr"></span><span class="ht2-dot bl"></span><span class="ht2-dot br"></span>'
     '<span class="ht2-who">владелец студии</span>'
     '<div class="ht2-b ht2-out">Кто ответит моим гостям в&nbsp;нерабочее&nbsp;время?</div>'
     '<div class="ht2-b ht2-in">AI-администратор для&nbsp;студий лазерной эпиляции на&nbsp;YCLIENTS</div>'
@@ -90,32 +92,58 @@ _GRAIN = ("url(\"data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg'
           "<feColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 .6 0'/></filter>"
           "<rect width='100%' height='100%' filter='url(%23n)'/></svg>\")")
 HERO_CSS = """
-@media (min-width:981px){.hero-grid{grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr) !important}}
-.hero-talk{max-width:540px}
-.ht2{position:relative;isolation:isolate;overflow:hidden;display:flex;flex-direction:column;justify-content:center;gap:12px;
-  min-height:clamp(420px,36vw,520px);padding:clamp(28px,3vw,44px);border-radius:24px;color:#fff;
+/* Весь первый экран — зернистый градиент: светлый слева сверху (там тёмный текст), тёмно-синий справа снизу (там переписка) */
+#top>canvas[data-grain]{display:none !important}
+#top{isolation:isolate;
   background:
-    radial-gradient(90% 70% at 8% 0%,rgba(190,204,212,.95) 0%,rgba(190,204,212,0) 60%),
-    radial-gradient(70% 60% at 30% 85%,rgba(67,109,238,.55) 0%,rgba(67,109,238,0) 70%),
-    linear-gradient(118deg,#93A6B3 0%,#6A7F92 24%,#46588A 46%,#2E336E 62%,#171A33 82%,#0A0B12 100%);
-  box-shadow:0 40px 80px -40px rgba(10,12,30,.6)}
-.ht2::before{content:"";position:absolute;inset:-20%;z-index:-1;background:linear-gradient(100deg,transparent 30%,rgba(255,255,255,.18) 42%,transparent 55%),linear-gradient(100deg,transparent 52%,rgba(140,120,255,.22) 62%,transparent 72%);filter:blur(18px)}
-.ht2::after{content:"";position:absolute;inset:0;z-index:-1;background-image:GRAIN;background-size:220px;mix-blend-mode:overlay;opacity:.55;pointer-events:none}
-.ht2-who{align-self:flex-end;margin-right:6px;font:400 12px/1.2 var(--f-mono);letter-spacing:.04em;color:rgba(255,255,255,.72)}
-.ht2-b{max-width:86%;border-radius:22px;padding:11px 18px;font-size:var(--fs-body);line-height:1.4;letter-spacing:.01em}
-.ht2-out{align-self:flex-end;border:1.5px solid rgba(255,255,255,.72);background:rgba(255,255,255,.05);color:#fff;-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px)}
+    radial-gradient(60% 55% at 0% 0%,rgba(238,241,243,.95) 0%,rgba(238,241,243,0) 70%),
+    radial-gradient(45% 50% at 62% 78%,rgba(67,109,238,.45) 0%,rgba(67,109,238,0) 70%),
+    linear-gradient(104deg,transparent 46%,rgba(255,255,255,.16) 53%,transparent 60%),
+    linear-gradient(104deg,transparent 64%,rgba(140,120,255,.18) 72%,transparent 80%),
+    linear-gradient(112deg,#E9EDEF 0%,#CBD5DB 22%,#9FB0BD 40%,#6C8098 55%,#45538A 68%,#2A2F66 80%,#13152A 92%,#0A0B12 100%)}
+#top::before{content:"";position:absolute;inset:0;z-index:0;background-image:GRAIN;background-size:220px;mix-blend-mode:overlay;opacity:.6;pointer-events:none}
+#top .hero-in{z-index:1}
+/* Переписка без своей подложки: только баблы и рамка из тонких линий с засечками, как в айдентике */
+.hero-talk{max-width:500px}
+.ht2{position:relative;display:flex;flex-direction:column;justify-content:center;gap:12px;padding:clamp(28px,2.6vw,40px);color:#fff}
+.ht2-ln{position:absolute;pointer-events:none;background:rgba(255,255,255,.5)}
+.ht2-ln.h{left:-56px;right:-100vw;height:1px}
+.ht2-ln.v{top:-100vh;bottom:-100vh;width:1px}
+.ht2-ln.t{top:0}.ht2-ln.b{bottom:0}.ht2-ln.l{left:0}.ht2-ln.r{right:0}
+.ht2-dot{position:absolute;width:7px;height:7px;margin:-3px 0 0 -3px;border-radius:50%;background:#fff;pointer-events:none}
+.ht2-dot.tl{top:0;left:0}.ht2-dot.tr{top:0;left:100%}.ht2-dot.bl{top:100%;left:0}.ht2-dot.br{top:100%;left:100%}
+.ht2-who{align-self:flex-end;margin-right:6px;font:400 12px/1.2 var(--f-mono);letter-spacing:.04em;color:rgba(255,255,255,.75)}
+.ht2-b{max-width:88%;border-radius:22px;padding:11px 18px;font-size:var(--fs-body);line-height:1.4;letter-spacing:.01em}
+.ht2-out{align-self:flex-end;border:1.5px solid rgba(255,255,255,.75);background:rgba(255,255,255,.06);color:#fff;-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px)}
 .ht2-in{align-self:flex-start;background:#fff;color:#141414;padding:16px 20px;font-size:clamp(19px,1.6vw,23px);font-weight:600;line-height:1.2;letter-spacing:-0.01em;text-wrap:balance;box-shadow:0 10px 30px -12px rgba(0,0,0,.35)}
 .ht2-pill{align-self:flex-start;display:inline-flex;align-items:center;gap:10px;padding:6px 16px 6px 6px;border-radius:999px;background:#fff;color:#141414;font-size:var(--fs-small);box-shadow:0 10px 30px -12px rgba(0,0,0,.35)}
 .ht2-ico{display:flex;align-items:center;justify-content:center;width:26px;height:26px;border-radius:50%;background:#436DEE}
 .ht2-ico svg{width:18px;height:auto;fill:#fff}
-html.js .ht2>*{opacity:0;transform:translateY(14px) scale(.98)}
-html.js.ready .ht2>*{opacity:1;transform:none;transition:opacity .4s ease,transform .8s var(--spring)}
+html.js .ht2>:not(.ht2-ln):not(.ht2-dot){opacity:0;transform:translateY(14px) scale(.98)}
+html.js.ready .ht2>:not(.ht2-ln):not(.ht2-dot){opacity:1;transform:none;transition:opacity .4s ease,transform .8s var(--spring)}
+html.js .ht2-ln,html.js .ht2-dot{opacity:0}
+html.js.ready .ht2-ln,html.js.ready .ht2-dot{opacity:1;transition:opacity .8s ease .5s}
 html.js.ready .ht2-who{transition-delay:.7s}
 html.js.ready .ht2-out{transition-delay:.8s}
 html.js.ready .ht2-in{transition-delay:1.5s}
 html.js.ready .ht2-pill{transition-delay:2.1s}
-@media (prefers-reduced-motion:reduce){html.js .ht2>*{opacity:1;transform:none;transition:none}}
-@media (max-width:980px){.hero-talk{max-width:none;width:100%}.ht2{min-height:0;padding:28px 18px;border-radius:20px}.ht2-b{max-width:92%}}
+@media (prefers-reduced-motion:reduce){html.js .ht2>*{opacity:1 !important;transform:none !important;transition:none !important}}
+/* Телефон: светлый верх под заголовком, ниже темнеет — текст под перепиской белый */
+@media (max-width:980px){
+  #top{background:
+    radial-gradient(80% 40% at 0% 0%,rgba(238,241,243,.95) 0%,rgba(238,241,243,0) 80%),
+    radial-gradient(70% 30% at 40% 55%,rgba(67,109,238,.45) 0%,rgba(67,109,238,0) 70%),
+    linear-gradient(176deg,#E6EAED 0%,#C3CED6 16%,#8597AD 30%,#4A5888 44%,#2A2F66 60%,#14162B 80%,#0A0B12 100%)}
+  .hero-talk{max-width:none;width:100%}
+  .ht2{padding:28px 18px}
+  .ht2-b{max-width:92%}
+  .ht2-ln.h{left:-100vw}
+  .ht2-ln.v{top:-28px;bottom:-28px}
+  #top .intro-rest p,#top .hero-down{color:rgba(255,255,255,.86) !important}
+  #top .hero-down svg path{stroke:#fff !important}
+  #top .btn-dark{background:#fff !important;color:#000 !important}
+  #top .btn-dark svg path{stroke:#000 !important}
+}
 """.replace('GRAIN', _GRAIN)
 
 
