@@ -138,9 +138,9 @@ b,strong{font-weight:600}
 .hdr-bar{pointer-events:auto;position:relative;width:min(var(--max),100% - 48px);margin-inline:auto;display:flex;align-items:center;gap:clamp(20px,3vw,44px);min-height:68px;padding:0 10px 0 var(--pad);border-radius:999px;transition:background .4s,box-shadow .4s,transform .6s var(--expo),padding .5s var(--expo)}
 .hdr-logo{display:block;color:var(--ink);transition:opacity .3s,transform .5s var(--expo)}
 .hdr-logo svg{height:38px;width:auto}
-.hdr-nav{display:flex;gap:clamp(18px,2.6vw,40px);margin-right:auto;transition:opacity .3s,transform .5s var(--expo)}
-.hdr-nav a{text-decoration:none;padding:8px 0;position:relative}
-.hdr-nav a::after{content:'';position:absolute;left:0;right:0;bottom:2px;height:1px;background:currentColor;transform:scaleX(0);transform-origin:0 50%;transition:transform .4s var(--expo)}
+.hdr-nav{--nav-y:1px;display:flex;align-items:flex-end;align-self:center;height:38px;gap:clamp(18px,2.6vw,40px);margin-right:auto;transition:opacity .3s,transform .5s var(--expo)}
+.hdr-nav a{text-decoration:none;padding:8px 0 0;line-height:1;position:relative;transform:translateY(var(--nav-y,0px))}
+.hdr-nav a::after{content:'';position:absolute;left:0;right:0;bottom:-6px;height:1px;background:currentColor;transform:scaleX(0);transform-origin:0 50%;transition:transform .4s var(--expo)}
 .hdr-nav a:hover::after{transform:none}
 .hdr-cta{margin-left:auto}
 .burger{display:none;width:48px;height:48px;border-radius:50%;background:var(--ink);position:relative;flex:none;transition:transform .35s var(--spring)}
@@ -176,6 +176,7 @@ b,strong{font-weight:600}
 .js .hero h1 .w{opacity:0;transform:translateY(.7em) rotate(4deg);transform-origin:0 100%}
 .js .hero.go h1 .w{opacity:1;transform:none;transition:transform 1s var(--spring),opacity .4s;transition-delay:calc(var(--i)*70ms + 250ms)}
 .hero .lead{color:var(--ink);max-width:31em}
+.hero-kicker{display:none}
 .hero-act{display:flex;flex-wrap:wrap;align-items:center;gap:18px 32px;margin-top:6px}
 .hero-more{display:inline-flex;gap:10px;align-items:center}
 .hero-more i{font-style:normal;display:inline-block;animation:nudge 2.4s ease-in-out infinite}
@@ -649,7 +650,8 @@ b,strong{font-weight:600}
   .menu{right:10px;top:78px;width:calc(100% - 20px)}
 
   .hero{min-height:0}
-  .hero .gl{-webkit-mask-image:linear-gradient(#000 78%,transparent);mask-image:linear-gradient(#000 78%,transparent)}
+  /* без диалога тёмно-синий низ оказывался под текстом: градиент к низу уходит в белый, остаётся лёгкий голубой */
+  .hero .gl{-webkit-mask-image:linear-gradient(#000 30%,rgba(0,0,0,.4) 62%,transparent 92%);mask-image:linear-gradient(#000 30%,rgba(0,0,0,.4) 62%,transparent 92%)}
   .hero .wrap{width:100%;grid-template-columns:minmax(0,1fr);padding-block:104px 96px;gap:56px}
   .hero h1 .ln{white-space:normal}
   .hero-act{width:100%}
@@ -657,6 +659,9 @@ b,strong{font-weight:600}
   .frame{margin-inline:14px}
   .frame::before{inset:0 -34px}
   .hero-chat{min-height:230px}
+  /* на телефоне диалога нет: главное сказано строкой над заголовком */
+  .hero .frame{display:none}
+  .hero-kicker{display:block;margin-bottom:-6px}
 
   .stage{margin-inline:calc(var(--pad)*-1 + 8px);padding:18px 14px}
   .msg{max-width:88%}
