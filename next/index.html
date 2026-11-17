@@ -74,7 +74,7 @@
 <h1><span class="ln">Опыт лидеров ниши.</span> <span class="ln">Голос вашего бренда.</span></h1>
 <p class="lead">LIA помогали создавать предприниматели из&nbsp;сферы лазерной эпиляции. Обученная на&nbsp;их&nbsp;опыте, LIA сможет ответить даже на&nbsp;самые нестандартные вопросы гостя и&nbsp;довести его до&nbsp;записи.</p>
 <div class="hero-act">
-<a class="btn" data-bot="hero" target="_blank" rel="noopener" href="https://t.me/lia_ai_team_bot?start=site_hero&amp;utm_source=lia_landing&amp;utm_medium=button&amp;utm_campaign=pilot&amp;utm_content=hero">Оставить заявку</a>
+<a class="btn" data-bot="hero" target="_blank" rel="noopener" href="https://t.me/lia_ai_team_bot?start=site_hero&amp;utm_source=lia_landing&amp;utm_medium=button&amp;utm_campaign=pilot&amp;utm_content=hero">Подключить бизнес</a>
 <a class="link hero-more" href="#primery">Посмотрите примеры реальных переписок <i aria-hidden="true">↓</i></a>
 </div>
 </div>
@@ -426,7 +426,7 @@
 <a href="#shag-2"><span class="mono">2</span><b>Чётко</b><span>Консультирует</span></a>
 <a href="#shag-3"><span class="mono">3</span><b>Прозрачно</b><span>Называет цену так, что гость записывается</span></a>
 <a href="#shag-4"><span class="mono">4</span><b>Удобно</b><span>Записывает в&nbsp;YCLIENTS, пока гость не&nbsp;остыл</span></a>
-<a href="#shag-5"><span class="mono">5</span><b>Через несколько недель</b><span>Возвращает на&nbsp;следующий сеанс</span></a>
+<a href="#shag-5"><span class="mono">5</span><b>Ненавязчиво</b><span>Возвращает на&nbsp;следующий сеанс</span></a>
 </nav>
 
 <article class="step" id="shag-1">
@@ -673,7 +673,8 @@
 <h2>Частые вопросы</h2>
 <div>
 <div class="faq-list" data-faq>
-<div class="faq-lit" aria-hidden="true"></div>
+<!-- молния под курсором: этот холст переезжает в строку вопроса, над которой мышь -->
+<canvas class="faq-glow" data-field="glow" aria-hidden="true"></canvas>
 
 <div class="faq"><h3><button type="button" class="faq-q" aria-expanded="false">Чем LIA отличается от&nbsp;других ботов?<i></i></button></h3><div class="faq-a"><div><ul>
 <li>Обучена на&nbsp;опыте и&nbsp;кейсах реальных предпринимателей из&nbsp;ниши лазерной эпиляции.</li>
@@ -721,34 +722,27 @@
 </main>
 
 <!-- ===================== ПОДВАЛ ===================== -->
+<!-- Футер «Сетка»: та же таблица из тонких линий, что у блоков страницы; точки на пересечениях -->
 <footer class="sec ft">
 <div class="wrap">
-<div class="ft-top">
-<div class="ft-brand">
+<div class="ft-row ft-main">
+<div class="ft-cell ft-brand">
 <svg viewBox="60 14 414 276" fill="currentColor" role="img" aria-label="LIA"><use href="#logo"/></svg>
 <p>AI-администратор с&nbsp;опытом лучших сервисных студий</p>
 <a class="btn" data-bot="footer" target="_blank" rel="noopener" href="https://t.me/lia_ai_team_bot?start=site_footer&amp;utm_source=lia_landing&amp;utm_medium=button&amp;utm_campaign=pilot&amp;utm_content=footer">Оставить заявку</a>
 </div>
-<nav aria-label="Разделы">
+<nav class="ft-cell" aria-label="Разделы">
 <p class="mono lc">Разделы</p>
-<ul>
-<li><a href="#kak">Как работает</a></li>
-<li><a href="#kto">Кто мы</a></li>
-<li><a href="#voprosy">Вопросы</a></li>
-</ul>
+<ul><li><a href="#primery">Примеры</a></li><li><a href="#kak">Как работает</a></li><li><a href="#kto">Кто мы</a></li><li><a href="#voprosy">Вопросы</a></li></ul>
 </nav>
-<nav aria-label="Контакты">
+<nav class="ft-cell" aria-label="Контакты">
 <p class="mono lc">Контакты</p>
-<ul>
-<li><a href="https://t.me/lia_ai_team_bot" target="_blank" rel="noopener">Telegram</a></li>
-<li><a href="#instagram-lia">Instagram*</a></li>
-</ul>
+<ul><li><a href="https://t.me/lia_ai_team_bot" target="_blank" rel="noopener">Telegram</a></li><li><a href="#instagram-lia">Instagram*</a></li></ul>
 </nav>
 </div>
-<div class="ft-bot">
-<a href="#privacy">Политика конфиденциальности</a>
-<a href="#terms">Пользовательское соглашение</a>
-<span>* Instagram принадлежит компании Meta, признанной экстремистской организацией и&nbsp;запрещённой на&nbsp;территории&nbsp;РФ.</span>
+<div class="ft-row ft-legal">
+<div class="ft-cell mono lc"><a href="#privacy">Политика конфиденциальности</a><a href="#terms">Пользовательское соглашение</a></div>
+<p class="ft-cell">* Instagram принадлежит компании Meta, признанной экстремистской организацией и&nbsp;запрещённой на&nbsp;территории&nbsp;РФ.</p>
 </div>
 </div>
 </footer>

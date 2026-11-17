@@ -243,7 +243,7 @@ void main(){
     '#else',
     'precision mediump float;',
     '#endif',
-    'uniform vec2 u_res;uniform float u_time;uniform vec2 u_mouse;uniform float u_energy;uniform float u_dark;uniform float u_navy;uniform vec3 u_c1;uniform vec3 u_c2;uniform float u_grain;',
+    'uniform vec2 u_res;uniform float u_time;uniform vec2 u_mouse;uniform float u_energy;uniform float u_dark;uniform float u_navy;uniform vec3 u_c1;uniform vec3 u_c2;uniform float u_grain;uniform float u_add;',
     'float hs(vec2 p){p=fract(p*vec2(233.34,851.73));p+=dot(p,p+23.45);return fract(p.x*p.y);}',
     'float ns(vec2 p){vec2 i=floor(p);vec2 f=fract(p);vec2 w=f*f*(3.0-2.0*f);return mix(mix(hs(i),hs(i+vec2(1.0,0.0)),w.x),mix(hs(i+vec2(0.0,1.0)),hs(i+vec2(1.0,1.0)),w.x),w.y);}',
     'float fb(vec2 p){float v=0.0;float a=0.5;for(int i=0;i<4;i++){v+=a*ns(p);p=p*2.03+vec2(1.7,9.2);a*=0.5;}return v;}',
@@ -275,6 +275,8 @@ void main(){
     ' float e=clamp(u_energy,0.0,1.0);',
     ' float s=smoothstep(0.0,0.6,r);',
     ' vec3 tint=mix(mix(u_c2,u_c1,s),mix(u_c2,u_c2*0.45,s),u_dark);',
+    // только свет (для вопросов): синее свечение и белая молния на чёрном, дальше смешивается через screen
+    ' if(u_add>0.5){vec3 tn=mix(u_c2,u_c2*0.45,s);gl_FragColor=vec4(clamp(tn*halo*e*0.9+vec3(core*e*0.2+streak*e*0.75),0.0,1.0),1.0);return;}',
     ' col=mix(col,tint,halo*e*0.8);',
     ' col+=vec3(core*e*0.16+streak*e*0.5);',
     ' float gr=hs(mod(gl_FragCoord.xy,701.0)+floor(u_time*12.0)*1.618)-0.5;',
@@ -291,7 +293,8 @@ void main(){
   const fields = [];
   $$('canvas[data-field]').forEach((canvas) => {
     const navy = canvas.dataset.field === 'navy';
-    const dark = navy || canvas.dataset.field === 'dark';
+    const add = canvas.dataset.field === 'glow';
+    const dark = navy || add || canvas.dataset.field === 'dark';
     let gl = null;
     try { gl = canvas.getContext('webgl', { antialias: false, alpha: false }); } catch (e) { gl = null; }
     const mk = (type, src) => { const s = gl.createShader(type); gl.shaderSource(s, src); gl.compileShader(s); return gl.getShaderParameter(s, gl.COMPILE_STATUS) ? s : null; };
@@ -309,10 +312,12 @@ void main(){
     gl.enableVertexAttribArray(loc);
     gl.vertexAttribPointer(loc, 2, gl.FLOAT, false, 0, 0);
     const u = {};
-    ['u_res', 'u_time', 'u_mouse', 'u_energy', 'u_dark', 'u_navy', 'u_c1', 'u_c2', 'u_grain'].forEach((n) => { u[n] = gl.getUniformLocation(prog, n); });
+    ['u_res', 'u_time', 'u_mouse', 'u_energy', 'u_dark', 'u_navy', 'u_c1', 'u_c2', 'u_grain', 'u_add'].forEach((n) => { u[n] = gl.getUniformLocation(prog, n); });
     gl.uniform1f(u.u_navy, navy ? 1 : 0);
+    gl.uniform1f(u.u_add, add ? 1 : 0);
     const ix = parseFloat(canvas.dataset.x) || 0.5, iy = parseFloat(canvas.dataset.y) || 0.5;
-    const F = { gl, u, canvas, dark, ix, iy, mx: ix, my: iy, tx: ix, ty: iy, energy: dark ? 0 : 0.6, visible: true, hover: false, lx: null, ly: null };
+    const F = { gl, u, canvas, dark, ix, iy, mx: ix, my: iy, tx: ix, ty: iy, energy: dark ? 0 : 0.6, visible: true, hover: false, lx: null, ly: null, off: add };
+    canvas._field = F;
     fields.push(F);
     const host = canvas.parentElement;
     host.addEventListener('pointermove', (e) => {
@@ -357,7 +362,7 @@ void main(){
       const fieldTick = (now) => {
         requestAnimationFrame(fieldTick);
         const t = (now - fieldT0) / 1000;
-        fields.forEach((F) => { if (F.visible) drawField(F, t); });
+        fields.forEach((F) => { if (F.visible && !F.off) drawField(F, t); });
       };
       requestAnimationFrame(fieldTick);
     }
@@ -786,10 +791,25 @@ void main(){
     }
   }));
 
-  /* ===== Вопросы: открыт всегда один. Подсветка строки и «молния» под курсором сделаны в style.css ===== */
+  /* ===== Вопросы: открыт всегда один. Заливка строки и светлая полоса — в style.css, молния первого экрана — холст .faq-glow ===== */
   const faqList = $('[data-faq]');
   if (faqList) {
     const items = $$('.faq', faqList);
+    // молния: холст переезжает в строку под курсором, на входе вспышка, дальше светит от движения мыши
+    const glow = $('.faq-glow', faqList);
+    const G = glow && glow._field;
+    if (G && fine && !reduce) {
+      let offT = 0;
+      $$('.faq-q', faqList).forEach((q) => q.addEventListener('pointerenter', (e) => {
+        clearTimeout(offT);
+        q.prepend(glow);
+        const r = glow.getBoundingClientRect();
+        G.tx = G.mx = (e.clientX - r.left) / r.width;
+        G.ty = G.my = 1 - (e.clientY - r.top) / r.height;
+        G.energy = 1; G.off = false;
+      }));
+      faqList.addEventListener('pointerleave', () => { offT = setTimeout(() => { G.off = true; }, 400); });
+    }
     items.forEach((it) => {
       const q = $('.faq-q', it);
       q.addEventListener('click', () => {
