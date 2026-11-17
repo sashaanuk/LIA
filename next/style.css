@@ -346,13 +346,14 @@ b,strong{font-weight:600}
 .js .board:not(.in){--g:0}
 
 /* кульминация: «Круто?» */
-.peak{background:#E0654C url("img/peak-bg.webp") center / cover no-repeat;color:#fff;--line:rgba(255,255,255,.3);--dot:#fff;overflow:hidden}
+/* подложка из блока с девушками; вернуть коралловую: background:#E0654C url("img/peak-bg.webp"), color:#fff, --line:rgba(255,255,255,.3), --dot:#fff */
+.peak{background:#B4C3CF url("img/who-bg.webp") center / cover no-repeat;color:var(--ink);--line:rgba(30,30,29,.17);--dot:var(--ink);overflow:hidden}
 .peak .wrap{display:flex;flex-direction:column;gap:clamp(20px,2.4vw,32px);padding-block:clamp(88px,11vw,170px)}
 .peak .scrub{font-size:var(--fs-d);line-height:1.04;max-width:13em}
 .kruto{align-self:flex-start;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.7);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border-radius:28px 28px 28px 6px;padding:14px 28px;font-size:var(--fs-h3);font-weight:600;transform-origin:0 100%}
 .js .kruto{opacity:0;transform:scale(.3) rotate(-8deg)}
 .js .kruto.in{opacity:1;transform:none;transition:transform .7s var(--spring),opacity .2s}
-.peak-reply{align-self:flex-end;display:flex;flex-direction:column;align-items:flex-end;gap:10px;min-height:150px;max-width:min(680px,100%);--who:rgba(255,255,255,.85)}
+.peak-reply{align-self:flex-end;display:flex;flex-direction:column;align-items:flex-end;gap:10px;min-height:150px;max-width:min(680px,100%);--who:var(--ink-2)}
 .peak-reply .who{font-family:'IBM Plex Mono',monospace;font-size:var(--fs-s);letter-spacing:.06em;color:var(--who)}
 .peak-reply .msg{align-self:flex-end;max-width:100%;background:#fff;color:var(--ink);padding:20px 28px;border-radius:30px 30px 6px 30px;font-size:var(--fs-h2);font-weight:600;line-height:1.12;letter-spacing:-.01em;box-shadow:0 30px 60px -30px rgba(4,10,60,.7)}
 .peak-reply .typing{align-self:flex-end;font-size:var(--fs-s)}
@@ -390,19 +391,21 @@ b,strong{font-weight:600}
    Кто мы
    ===================================================================== */
 /* фон — картинка, которую прислала Саша: сверху и слева светло (текст тёмный), к правому нижнему углу темнеет */
-.who-sec{background:#B4C3CF url("img/who-bg.webp") center / cover no-repeat;color:var(--ink)}
-.dust{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
-.who-grid{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:40px clamp(40px,6vw,96px);align-items:start}
-.duo{display:block;position:relative;border-radius:4px;overflow:hidden;text-decoration:none}
-.duo img{width:100%;height:auto;aspect-ratio:4/5;object-fit:cover;filter:grayscale(1) contrast(1.05);transition:filter .6s,transform 1.2s var(--expo)}
-.duo:hover img{transform:scale(1.03)}
-.duo-cap{position:absolute;inset:auto 0 0 0;padding:60px 22px 20px;background:linear-gradient(transparent,rgba(6,10,36,.86));display:flex;flex-direction:column;gap:6px}
-.duo-cap .mono{color:rgba(255,255,255,.8)}
+/* «Кто мы» — белый фон без эффектов: фото со ссылками | письмо, между ними одна тонкая линия */
+.who-sec .wrap{padding-bottom:0}
+.who-grid{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);margin-inline:calc(var(--pad)*-1);border-top:1px solid var(--line);align-items:stretch}
+.who-grid > *{padding:clamp(28px,3.4vw,56px) var(--pad) clamp(40px,5vw,80px)}
+.who-grid > * + *{border-left:1px solid var(--line)}
+.duo{display:block;position:relative;text-decoration:none}
+.duo img{width:100%;height:auto;aspect-ratio:4/5;object-fit:cover;filter:grayscale(1) contrast(1.05)}
+.duo-cap{margin-top:14px;color:var(--ink-2)}
 .who-links{display:flex;flex-wrap:wrap;gap:8px 26px;margin-top:18px}
-.who-links a:hover{color:var(--accent)}
-.letter{background:#fff;color:var(--ink);border-radius:4px;padding:clamp(26px,4vw,64px);display:flex;flex-direction:column;gap:20px;box-shadow:0 2px 4px rgba(0,0,0,.2),0 30px 60px -20px rgba(0,0,0,.5)}
+.who-links a{text-decoration:underline;text-underline-offset:3px;text-decoration-thickness:1px}
+.who-links a:hover{color:var(--ink-2)}
+.letter{color:var(--ink);display:flex;flex-direction:column;gap:20px;max-width:38em}
 .letter p{color:var(--ink-2);text-wrap:pretty}
-.letter p b{color:var(--ink)}
+.letter p b{color:var(--ink);font-weight:600}
+.m-letter p:first-child{font-size:var(--fs-h3);line-height:1.4;color:var(--ink)}
 .letter .m-quote,.letter .m-more{display:none}
 .m-letter{display:flex;flex-direction:column;gap:18px}
 .sign{font-family:'Comforter','Snell Roundhand','Segoe Script',cursive;font-size:60px;line-height:1;letter-spacing:0;color:var(--accent);transform:rotate(-4deg);transform-origin:0 100%;width:max-content;margin-top:8px}
@@ -440,7 +443,8 @@ b,strong{font-weight:600}
 .flow-core i.run{animation-name:run-core}
 .flow-core i.run.r2{left:auto;right:calc(clamp(28px,4vw,64px) - 4px);animation-delay:1.2s}
 @keyframes run-core{0%{transform:translateX(-4px);opacity:0}15%{opacity:1}85%{opacity:1}100%{transform:translateX(clamp(28px,4vw,64px));opacity:0}}
-.rule{display:flex;gap:16px;align-items:baseline;padding:22px var(--pad);margin-inline:calc(var(--pad)*-1);border-block:1px solid var(--line);font-size:var(--fs-h3);line-height:1.35}
+.rule{display:flex;gap:16px;align-items:baseline;max-width:40em;font-size:var(--fs-h3);line-height:1.35}
+.steps-sec .wrap{padding-top:0}
 .rule::before{content:'';flex:none;width:9px;height:9px;border-radius:50%;background:var(--accent);transform:translateY(-2px)}
 
 .steps-nav{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));margin-inline:calc(var(--pad)*-1);border-bottom:1px solid var(--line);margin-bottom:var(--gap)}
@@ -688,7 +692,8 @@ b,strong{font-weight:600}
   .fit-grid{grid-template-columns:minmax(0,1fr)}
   .fit-col + .fit-col{border-left:0;border-top:1px solid var(--line)}
 
-  .who-links{color:#fff}   /* на телефоне градиент идёт сверху вниз, и ссылки попадают на тёмную часть */
+  .who-grid > * + *{border-left:0;border-top:1px solid var(--line)}
+  .who-grid > :first-child{padding-bottom:28px}
   /* письмо свёрнуто до ключевой фразы */
   .js .letter .m-quote{display:block;font-size:var(--fs-h2);font-weight:600;line-height:1.1;letter-spacing:-.01em;color:var(--ink)}
   .js .letter .m-more{display:inline-flex}
