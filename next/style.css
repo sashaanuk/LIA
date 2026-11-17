@@ -245,7 +245,7 @@ b,strong{font-weight:600}
 .stage{position:relative;display:flex;flex-direction:column;border-radius:clamp(20px,2.2vw,28px);padding:clamp(20px,3vw,44px);overflow:hidden}
 .stage-top{flex:none;color:rgba(255,255,255,.84);margin-bottom:10px}
 .stage > .chat{flex:1;min-height:0}
-@media (min-width:900px){
+@media all{
   /* в карточке фиксированной высоты переписка прокручивается сама: новые сообщения снизу, старые уезжают вверх и тают */
   .stage > .chat:not(.demo){overflow-y:auto;scrollbar-width:none;scroll-behavior:smooth;-webkit-mask-image:linear-gradient(transparent,#000 64px);mask-image:linear-gradient(transparent,#000 64px)}
   .stage > .chat:not(.demo)::-webkit-scrollbar{display:none}
@@ -365,9 +365,8 @@ b,strong{font-weight:600}
 .xp{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:40px clamp(40px,6vw,96px);align-items:start}
 .xp h2{position:sticky;top:120px}
 .xp-list p{margin-bottom:18px;font-size:var(--fs-h3);line-height:1.35;color:var(--ink-2)}
-.tips{margin-top:var(--gap);margin-inline:calc(var(--pad)*-1);border-block:1px solid var(--line)}
-.tips-h{padding:22px var(--pad);border-bottom:1px solid var(--line);display:flex;align-items:center;gap:12px}
-.tips-h::before{content:'';flex:none;width:7px;height:7px;border-radius:50%;background:var(--accent)}
+.tips{margin-top:var(--gap);margin-inline:calc(var(--pad)*-1);border-bottom:1px solid var(--line)}
+.tips-h{padding:0 var(--pad) clamp(20px,2.4vw,32px);border-bottom:1px solid var(--line)}
 .tips-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr))}
 .tip{padding:clamp(22px,2.6vw,36px) var(--pad) clamp(30px,4vw,56px);display:flex;flex-direction:column;gap:clamp(28px,4vw,64px)}
 .tip + .tip{border-left:1px solid var(--line)}
@@ -408,6 +407,11 @@ b,strong{font-weight:600}
 .letter p b{color:var(--ink);font-weight:600}
 .m-letter p:first-child{font-size:var(--fs-h3);line-height:1.4;color:var(--ink)}
 .letter .m-quote,.letter .m-more{display:none}
+/* письмо напечатано, как на машинке: моно одного размера, выделенное — светлой полосой, как маркером; подпись тоже печатная */
+#kto .letter{gap:22px;max-width:40em}
+#kto .letter p,#kto .m-letter p:first-child{font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:15px;line-height:1.7;letter-spacing:.01em;color:var(--ink)}
+#kto .letter p b{font-weight:600;background:linear-gradient(transparent 62%,var(--haze) 62%)}
+#kto .letter .sign{font-size:var(--fs-s);letter-spacing:.06em;line-height:1.4;transform:none}
 .m-letter{display:flex;flex-direction:column;gap:18px}
 .sign{font-family:'Comforter','Snell Roundhand','Segoe Script',cursive;font-size:60px;line-height:1;letter-spacing:0;color:var(--accent);transform:rotate(-4deg);transform-origin:0 100%;width:max-content;margin-top:8px}
 
@@ -590,6 +594,7 @@ b,strong{font-weight:600}
 .ft-main nav a:hover{background-size:100% 1px}
 .ft-legal{grid-template-columns:minmax(0,2fr) minmax(0,2fr);color:var(--ink-2);font-size:var(--fs-s);line-height:1.5}
 .ft-legal .ft-cell{padding-block:22px 26px}
+.ft-docs{display:none}
 .ft-legal .mono{display:flex;flex-wrap:wrap;gap:8px 28px}
 .ft-legal a{text-decoration:underline;text-underline-offset:4px}
 .ft-legal a:hover{color:var(--ink)}
@@ -650,8 +655,7 @@ b,strong{font-weight:600}
   .menu{right:10px;top:78px;width:calc(100% - 20px)}
 
   .hero{min-height:0}
-  /* без диалога тёмно-синий низ оказывался под текстом: градиент к низу уходит в белый, остаётся лёгкий голубой */
-  .hero .gl{-webkit-mask-image:linear-gradient(#000 30%,rgba(0,0,0,.4) 62%,transparent 92%);mask-image:linear-gradient(#000 30%,rgba(0,0,0,.4) 62%,transparent 92%)}
+  .hero .gl{-webkit-mask-image:linear-gradient(#000 78%,transparent);mask-image:linear-gradient(#000 78%,transparent)}
   .hero .wrap{width:100%;grid-template-columns:minmax(0,1fr);padding-block:104px 96px;gap:56px}
   .hero h1 .ln{white-space:normal}
   .hero-act{width:100%}
@@ -661,7 +665,8 @@ b,strong{font-weight:600}
   .hero-chat{min-height:230px}
   /* на телефоне диалога нет: главное сказано строкой над заголовком */
   .hero .frame{display:none}
-  .hero-kicker{display:block;margin-bottom:-6px}
+  .hero-kicker{display:block;align-self:flex-start;padding:9px 14px;border:1px dashed currentColor;border-radius:12px;margin-bottom:-4px}
+  .hero .lead{font-size:var(--fs-b)}
 
   .stage{margin-inline:calc(var(--pad)*-1 + 8px);padding:18px 14px}
   .msg{max-width:88%}
@@ -678,11 +683,13 @@ b,strong{font-weight:600}
   .exs-sticky{display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;padding:0 var(--pad) 8px;scrollbar-width:none}
   .exs-sticky::-webkit-scrollbar{display:none}
   .ex{flex:0 0 88%;scroll-snap-align:center;display:flex;flex-direction:column}
-  .ex-stage{flex:1;min-height:420px;margin-inline:0}
+  /* переписки высотой с экран телефона: сообщения появляются снизу и сами прокручиваются */
+  .ex-stage{flex:none;height:min(560px,72svh);min-height:0;margin-inline:0}
   .ex-cap{border-top:0;color:var(--ink);padding:0 4px 12px}
   .ex-cap::before,.ex-cap::after{display:none}
   .ex-cap .mono{width:auto;color:var(--ink-2)}
 
+  .chain{display:none}   /* цепочка «запустили рекламу → …» на телефоне не нужна: то же сказано в подзаголовке */
   .chain{grid-template-columns:minmax(0,1fr)}
   .chain li{padding:0 0 22px 24px}
   .chain li::before{left:0;top:10px;width:1px;height:100%;transform-origin:50% 0;transform:scaleY(var(--p,1))}
@@ -721,6 +728,7 @@ b,strong{font-weight:600}
   .who-grid > :first-child{padding-bottom:28px}
   /* письмо свёрнуто до ключевой фразы */
   .js .letter .m-quote{display:block;font-size:var(--fs-h2);font-weight:600;line-height:1.1;letter-spacing:-.01em;color:var(--ink)}
+  .js #kto .letter .m-quote{font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:20px;line-height:1.35;font-weight:600}
   .js .letter .m-more{display:inline-flex}
   .js .letter:not(.is-open) .m-letter{display:none}
   .js .letter.is-open .m-quote,.js .letter.is-open .m-more{display:none}
@@ -731,7 +739,16 @@ b,strong{font-weight:600}
   .steps-nav a{flex-wrap:wrap;gap:4px 12px}
   .steps-nav b{width:auto}
   .steps-nav span:last-child{flex:1 1 100%;padding-left:calc(1.2em + 12px)}
-  .step .stage{height:auto;min-height:420px}
+  .step .stage{height:min(560px,72svh);min-height:0}
+  .stage:has(> .demo){height:min(620px,78svh)}
+  .stage > .chat.demo{overflow-y:auto;scrollbar-width:none;scroll-behavior:smooth;-webkit-mask-image:linear-gradient(transparent,#000 64px);mask-image:linear-gradient(transparent,#000 64px)}
+  .stage > .chat.demo::-webkit-scrollbar{display:none}
+  .stage > .chat.demo > :first-child{margin-top:auto}
+  #kak .head .lead{display:none}   /* каналы и так перечислены на схеме */
+  .flow-out .flow-t{display:none}   /* «LIA делает:» — линия от круга сразу ведёт к действиям */
+  /* «Подойдёт / Не подойдёт»: без точек у заголовков и тире у пунктов */
+  .fit-col h2::before,.dash li::before{display:none}
+  .dash li{padding-left:0}
 
   /* «Почему не подведёт»: аккордеон */
   .why-stack{gap:10px}
@@ -772,6 +789,10 @@ b,strong{font-weight:600}
   .ft-legal .ft-cell + .ft-cell{border-left:0;padding-top:0}
   .ft-legal .ft-cell + .ft-cell::before{display:none}
   .ft-legal .mono{flex-direction:column}
+  /* телефон: вместо «Разделов» — документы; внизу остаётся только сноска */
+  .ft-sections,.ft-legal .ft-cell:first-child{display:none}
+  .ft-docs{display:block}
+  .ft-legal .ft-cell + .ft-cell{padding-top:22px}
 }
 
 /* =====================================================================
