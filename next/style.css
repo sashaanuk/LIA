@@ -276,6 +276,7 @@ b,strong{font-weight:600}
 .ex-cap::before{content:'';position:absolute;left:0;top:-1px;height:1px;width:100%;background:var(--accent);transform:scaleX(var(--p,0));transform-origin:0 50%}
 .ex-cap .mono{flex:none;width:7.5em}
 .ex-cap .h3{flex:1}
+.m-br{display:none}
 .ex-cap::after{content:'';flex:none;align-self:center;width:7px;height:7px;border-radius:50%;background:var(--accent);transform:scale(0);transition:transform .4s var(--spring)}
 .ex.is-on .ex-cap{color:var(--ink)}
 .ex.is-on .ex-cap::after{transform:none}
@@ -496,7 +497,7 @@ b,strong{font-weight:600}
 .why:nth-child(4) .why-art{--gx:12%;--gy:15%}
 .kplus{font-size:var(--fs-d);font-weight:600;line-height:1;letter-spacing:-.02em;margin-bottom:22px}
 .qs{display:flex;flex-wrap:wrap;gap:8px}
-.qs li{padding:9px 16px;border-radius:999px;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.6);font-size:var(--fs-s);line-height:1.3}
+.qs li{padding:9px 16px;border-radius:999px;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.6);font-size:var(--fs-b);line-height:1.3}
 .qs li:last-child{background:#fff;color:var(--ink);border-color:#fff;font-weight:600}
 .js .why .qs li{opacity:0;transform:translateY(8px) scale(.9)}
 .js .why.in .qs li{opacity:1;transform:none;transition:transform .6s var(--spring),opacity .3s;transition-delay:calc(var(--n)*70ms + .4s)}
@@ -693,6 +694,13 @@ b,strong{font-weight:600}
   .ex-cap{border-top:0;color:var(--ink);padding:0 4px 12px}
   .ex-cap::before,.ex-cap::after{display:none}
   .ex-cap .mono{width:auto;color:var(--ink-2)}
+  /* на телефоне все заголовки примеров в две строки — карточки начинаются на одной высоте */
+  .m-br{display:inline}
+  .ex-cap .h3{min-height:2.4em}
+  /* «Одним словом…» не крупнее главного заголовка */
+  .peak .scrub{font-size:var(--fs-h2)}
+  /* примечание под подсказками практиков — в пунктирной рамке, как строка над заголовком на первом экране */
+  .after{padding:16px 18px;border:1px dashed currentColor;border-radius:12px}
 
   .chain{display:none}   /* цепочка «запустили рекламу → …» на телефоне не нужна: то же сказано в подзаголовке */
   .chain{grid-template-columns:minmax(0,1fr)}
@@ -740,7 +748,9 @@ b,strong{font-weight:600}
 
   .chip{min-height:42px;padding:0 14px}
   .core{width:170px}
-  .rule{font-size:var(--fs-b)}
+  /* правило под схемой — в пунктирной рамке, без точки, как примечание под подсказками практиков */
+  .rule{font-size:var(--fs-b);padding:16px 18px;border:1px dashed currentColor;border-radius:12px}
+  .rule::before{display:none}
   .steps-nav a{flex-wrap:wrap;gap:4px 12px}
   .steps-nav b{width:auto}
   .steps-nav span:last-child{flex:1 1 100%;padding-left:calc(1.2em + 12px)}
