@@ -745,6 +745,16 @@ b,strong{font-weight:600}
   .js .letter .m-more{display:inline-flex}
   .js .letter:not(.is-open) .m-letter{display:none}
   .js .letter.is-open .m-quote,.js .letter.is-open .m-more{display:none}
+  /* письмо на телефоне — на светлом листе; ссылка «Instagram LIA» убрана */
+  #kto .letter{position:relative;isolation:isolate;overflow:hidden;border-radius:22px;padding:26px 18px 24px;margin:0 var(--pad) 28px;
+    background:radial-gradient(120% 70% at 0% 0%,rgba(255,255,255,.95),transparent 60%),
+               radial-gradient(90% 60% at 100% 100%,rgba(205,189,248,.55),transparent 70%),
+               linear-gradient(165deg,#F1F3F7 0%,#E4EBF8 55%,#E9E4F8 100%)}
+  /* зерно, как в градиентах блоков */
+  #kto .letter::before{content:'';position:absolute;inset:0;z-index:-1;background-image:var(--noise);mix-blend-mode:multiply;opacity:.28;pointer-events:none}
+  #kto .letter p b{background:linear-gradient(transparent 58%,rgba(255,255,255,.9) 58%)}
+  #kto .letter .m-more{background:transparent}
+  .who-links a[href="#instagram-lia"]{display:none}
 
   .chip{min-height:42px;padding:0 14px}
   .core{width:170px}
