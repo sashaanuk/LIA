@@ -656,7 +656,9 @@ b,strong{font-weight:600}
   .hdr-logo svg{height:32px}
   /* iPhone: размытие под шапкой поверх WebGL-фона рисуется кусками — вокруг лого появлялась отдельная белая «таблетка».
      На телефоне шапка без размытия, сплошная белая; лого только гаснет, без сдвига */
-  .hdr.is-up .hdr-bar{background:#fff;-webkit-backdrop-filter:none;backdrop-filter:none}
+  .hdr.is-up .hdr-bar{background:#fff;-webkit-backdrop-filter:none;backdrop-filter:none;padding-left:26px}
+  /* у лого буквы снизу, звезда сверху — оптический центр ниже геометрического, поднимаем на 3px */
+  .hdr-logo svg{transform:translateY(-3px)}
   .hdr-logo,.hdr.is-down .hdr-logo{transform:none}
   .hdr-cta{width:auto;min-height:48px;padding:0 20px}
   .menu{right:10px;top:78px;width:calc(100% - 20px)}
@@ -786,6 +788,8 @@ b,strong{font-weight:600}
 
   /* «Почему не подведёт»: аккордеон */
   .why-stack{gap:10px}
+  /* «и учится вашим правилам» на телефоне повторяет следующую карточку «Учится с каждым диалогом» */
+  .why-tail{display:none}
   .why{position:static;min-height:0;padding:0;gap:0;border-radius:24px;box-shadow:inset 0 0 0 1px var(--line)}
   .js .why{transform:none}
   .why-txt{padding:20px 20px;gap:14px}
