@@ -883,3 +883,182 @@ void main(){
     });
   })();
 })();
+
+// Серое зерно старого лендинга (блок «Кто мы»): перенесено как есть из корневого index.html
+(() => {
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const hasIO = 'IntersectionObserver' in window;
+  // ===== «Кто мы»: неравномерное зерно, как во второй версии лендинга (холст «LIA — лендинг») =====
+  // Серые крупинки с синими вкраплениями. Плотность — мягкий градиент к правому верхнему углу × «облака» шума.
+  // Под курсором зерно расступается с лёгким завихрением и подсвечивается.
+  (() => {
+    const canvas = document.querySelector('canvas[data-dust]');
+    if (!canvas || !canvas.getContext) return;
+    const ctx = canvas.getContext('2d');
+    if (!ctx) return;
+    const host = canvas.parentElement;
+    const PAL = { dust: '#A7A7A2', dot: '#86A2FF' }; // серое зерно и синие крупинки (примерно каждая четвёртая)
+    const coarse = window.matchMedia('(pointer: coarse)').matches;
+    const sw = { W: 0, H: 0, dpr: 1, G: null, grid: null, moving: new Set(), near: new Set(), ptr: { x: -1e4, y: -1e4, on: false, down: false }, raf: 0, visible: false, born: 0, shown: false };
+    const rng = (seed) => { let a = seed >>> 0; return () => { a = (a + 0x6D2B79F5) >>> 0; let t = a; t = Math.imul(t ^ (t >>> 15), t | 1); t ^= t + Math.imul(t ^ (t >>> 7), t | 61); return ((t ^ (t >>> 14)) >>> 0) / 4294967296; }; };
+
+    const toLocal = (e) => { const r = canvas.getBoundingClientRect(); sw.ptr.x = e.clientX - r.left; sw.ptr.y = e.clientY - r.top; };
+    host.addEventListener('pointermove', (e) => { if (e.pointerType !== 'mouse' && !sw.ptr.down) return; toLocal(e); sw.ptr.on = true; start(); }, { passive: true });
+    host.addEventListener('pointerdown', (e) => { sw.ptr.down = true; toLocal(e); sw.ptr.on = true; start(); }, { passive: true });
+    host.addEventListener('pointerleave', () => { sw.ptr.on = false; start(); }, { passive: true });
+    const up = (e) => { if (e.pointerType !== 'mouse') { sw.ptr.down = false; sw.ptr.on = false; start(); } };
+    window.addEventListener('pointerup', up, { passive: true });
+    window.addEventListener('pointercancel', up, { passive: true });
+
+    function layout() {
+      const W = host.clientWidth, H = host.clientHeight;
+      if (!W || !H) return;
+      sw.W = W; sw.H = H;
+      sw.dpr = Math.min(window.devicePixelRatio || 1, 2);
+      canvas.width = Math.round(W * sw.dpr);
+      canvas.height = Math.round(H * sw.dpr);
+      ctx.setTransform(sw.dpr, 0, 0, sw.dpr, 0, 0);
+      const rnd = rng(Math.imul(W, 73856093) ^ Math.imul(H, 19349663) ^ 0x51ed27);
+      const GS = 64;
+      const lat = new Float32Array(GS * GS);
+      for (let i = 0; i < lat.length; i++) lat[i] = rnd();
+      const vn = (x, y) => {
+        const xi = Math.floor(x), yi = Math.floor(y), xf = x - xi, yf = y - yi;
+        const u = xf * xf * (3 - 2 * xf), v = yf * yf * (3 - 2 * yf);
+        const ix = ((xi % GS) + GS) % GS, iy = ((yi % GS) + GS) % GS, ix1 = (ix + 1) % GS, iy1 = (iy + 1) % GS;
+        const a = lat[iy * GS + ix], b = lat[iy * GS + ix1], c = lat[iy1 * GS + ix], d = lat[iy1 * GS + ix1];
+        return a + (b - a) * u + (c - a) * v + (a - b - c + d) * u * v;
+      };
+      const fbm = (x, y) => 0.6 * vn(x / 210, y / 210) + 0.28 * vn(x / 84 + 17.3, y / 84 + 5.1) + 0.12 * vn(x / 30 + 3.7, y / 30 + 11.9);
+      const wide = W >= 900;
+      const sm = (a, b, t) => { const k = Math.min(1, Math.max(0, (t - a) / (b - a))); return k * k * (3 - 2 * k); };
+      const dens = (x, y) => {
+        const nx = x / W, ny = y / H;
+        const g = wide ? sm(0.3, 1.02, nx * 0.82 + (1 - ny) * 0.18) : sm(0.02, 1.0, (1 - ny) * 0.85 + nx * 0.15);
+        const n = fbm(x, y);
+        const mod = 0.08 + 2.1 * Math.pow(Math.max(0, n - 0.3) / 0.42, 1.5);
+        return Math.min(1, Math.pow(g, 1.25) * mod);
+      };
+      const target = Math.round(Math.min(coarse ? 7000 : 20000, W * H * 0.019));
+      const G = [];
+      let tries = 0;
+      while (G.length < target && tries++ < target * 40) {
+        const x = rnd() * W, y = rnd() * H;
+        const p = dens(x, y);
+        if (rnd() < p) {
+          const big = rnd() < 0.05;
+          G.push({ x, y, ox: 0, oy: 0, b: 0, s: big ? 1.4 + rnd() * 0.5 : 0.6 + rnd() * 0.8, a: 0.18 + rnd() * 0.55 * (0.4 + 0.6 * p), c: rnd() < 0.24 ? 1 : 0, d: rnd() });
+        }
+      }
+      sw.G = G;
+      const CS = 40, cols = Math.ceil(W / CS) + 1, rows = Math.ceil(H / CS) + 1;
+      const cells = [];
+      for (let i = 0; i < cols * rows; i++) cells.push([]);
+      for (let i = 0; i < G.length; i++) cells[((G[i].y / CS) | 0) * cols + ((G[i].x / CS) | 0)].push(i);
+      sw.grid = { CS, cols, rows, cells };
+      sw.moving.clear();
+      draw(performance.now());
+    }
+
+    function step(now) {
+      const G = sw.G;
+      if (!G) return false;
+      const busy = !!sw.born && now - sw.born < 1900;
+      const R = coarse ? 120 : 165, R2 = R * R;
+      const near = sw.near;
+      near.clear();
+      if (sw.ptr.on) {
+        const gr = sw.grid, px = sw.ptr.x, py = sw.ptr.y;
+        const c0 = Math.max(0, ((px - R) / gr.CS) | 0), c1 = Math.min(gr.cols - 1, ((px + R) / gr.CS) | 0);
+        const r0 = Math.max(0, ((py - R) / gr.CS) | 0), r1 = Math.min(gr.rows - 1, ((py + R) / gr.CS) | 0);
+        for (let r = r0; r <= r1; r++) {
+          for (let c = c0; c <= c1; c++) {
+            const cell = gr.cells[r * gr.cols + c];
+            for (let k = 0; k < cell.length; k++) {
+              const g = G[cell[k]], dx = g.x - px, dy = g.y - py;
+              if (dx * dx + dy * dy < R2) { near.add(cell[k]); sw.moving.add(cell[k]); }
+            }
+          }
+        }
+      }
+      let maxd = 0;
+      for (const i of sw.moving) {
+        const g = G[i];
+        let tx = 0, ty = 0, tb = 0;
+        if (near.has(i)) {
+          const dx = g.x - sw.ptr.x, dy = g.y - sw.ptr.y, d = Math.sqrt(dx * dx + dy * dy) || 1;
+          const f = 1 - d / R, f2 = f * f, push = f2 * 15, swirl = f2 * 7;
+          tx = (dx / d) * push - (dy / d) * swirl;
+          ty = (dy / d) * push + (dx / d) * swirl;
+          tb = f2;
+        }
+        const ex = tx - g.ox, ey = ty - g.oy, eb = tb - g.b;
+        g.ox += ex * 0.13; g.oy += ey * 0.13; g.b += eb * 0.12;
+        const m = Math.abs(ex) + Math.abs(ey) + Math.abs(eb) * 20;
+        if (m > maxd) maxd = m;
+        if (!near.has(i) && Math.abs(g.ox) < 0.04 && Math.abs(g.oy) < 0.04 && g.b < 0.01) { g.ox = 0; g.oy = 0; g.b = 0; sw.moving.delete(i); }
+      }
+      return busy || maxd > 0.05;
+    }
+
+    function draw(now) {
+      const G = sw.G;
+      if (!G) return;
+      ctx.globalAlpha = 1;
+      ctx.clearRect(0, 0, sw.W, sw.H);
+      if (!sw.shown) return; // до первого появления блока на экране зерно не рисуем, чтобы оно проявилось при прокрутке
+      const age = sw.born ? now - sw.born : 1e9;
+      const fading = age < 1900;
+      const tones = [PAL.dust, PAL.dot];
+      for (let k = 0; k < 2; k++) {
+        ctx.fillStyle = tones[k];
+        for (let i = 0; i < G.length; i++) {
+          const g = G[i];
+          if (g.c !== k) continue;
+          let m = 1;
+          if (fading) { m = (age - g.d * 1300) / 550; if (m <= 0) continue; if (m > 1) m = 1; }
+          const a = Math.min(1, g.a + g.b * 0.75) * m;
+          if (a < 0.02) continue;
+          ctx.globalAlpha = a;
+          const z = g.s * (1 + g.b * 0.6);
+          ctx.fillRect(g.x + g.ox - z / 2, g.y + g.oy - z / 2, z, z);
+        }
+      }
+      ctx.globalAlpha = 1;
+    }
+
+    const frame = (now) => {
+      sw.raf = 0;
+      if (coarse && !sw.ptr.down) { sw.ptr.x = sw.W * (0.5 + 0.38 * Math.sin(now / 4200)); sw.ptr.y = sw.H * (0.45 + 0.3 * Math.sin(now / 3100 + 1.7)); sw.ptr.on = true; }
+      const busy = step(now) || coarse;
+      draw(now);
+      if (busy && sw.visible && !document.hidden) sw.raf = requestAnimationFrame(frame);
+    };
+    function start() {
+      if (!sw.G) return;
+      if (reduce) { draw(performance.now()); return; }
+      if (!sw.raf && sw.visible && !document.hidden) sw.raf = requestAnimationFrame(frame);
+    }
+    const reveal = () => {
+      if (sw.shown) return;
+      sw.shown = true;
+      sw.born = reduce ? 0 : performance.now();
+      start();
+    };
+    if (hasIO) {
+      new IntersectionObserver((es) => { sw.visible = es[0].isIntersecting; if (sw.visible) { reveal(); start(); } }, { threshold: 0.05 }).observe(host);
+    } else {
+      sw.visible = true;
+    }
+    document.addEventListener('visibilitychange', () => { if (!document.hidden) start(); });
+    if (typeof ResizeObserver !== 'undefined') {
+      let pend = 0;
+      new ResizeObserver(() => {
+        if (pend) cancelAnimationFrame(pend);
+        pend = requestAnimationFrame(() => { pend = 0; if (host.clientWidth !== sw.W || host.clientHeight !== sw.H) { layout(); start(); } });
+      }).observe(host);
+    }
+    layout();
+    if (!hasIO) reveal();
+  })();
+})();
