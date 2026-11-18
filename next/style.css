@@ -608,6 +608,7 @@ b,strong{font-weight:600}
 .ft-legal{grid-template-columns:minmax(0,2fr) minmax(0,2fr);color:var(--ink-2);font-size:var(--fs-s);line-height:1.5}
 .ft-legal .ft-cell{padding-block:22px 26px}
 .ft-docs{display:none}
+.ft-note{display:none}
 .ft-legal .mono{display:flex;flex-wrap:wrap;gap:8px 28px}
 .ft-legal a{text-decoration:underline;text-underline-offset:4px}
 .ft-legal a:hover{color:var(--ink)}
@@ -837,6 +838,9 @@ b,strong{font-weight:600}
   .ft-sections,.ft-legal .ft-cell:first-child{display:none}
   .ft-docs{display:block}
   .ft-legal .ft-cell + .ft-cell{padding-top:22px}
+  /* сноска про Meta — совсем мелко прямо под Instagram; нижняя строка футера на телефоне не нужна */
+  .ft-main nav .ft-note{display:block;margin:14px 0 0;font-size:10px;line-height:1.4;color:var(--ink-2)}
+  .ft-legal{display:none}
 }
 
 /* =====================================================================
