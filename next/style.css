@@ -16,6 +16,7 @@
   --ink-3:#A3A6AE;
   --line:rgba(30,30,29,.17);
   --haze:#EEF2FB;
+  --dash:rgba(30,30,29,.42);  /* пунктирные рамки-примечания на телефоне */
   --night:#0B1130;
 
   --accent:#1E1E1D;        /* акцент: кнопки, строка под курсором в вопросах, точки и маркеры (тот же почти чёрный, что у логотипа) */
@@ -653,12 +654,20 @@ b,strong{font-weight:600}
   .hdr{padding-top:10px}
   .hdr-bar{width:calc(100% - 20px);min-height:60px;padding:0 6px 0 16px;gap:8px}
   .hdr-logo svg{height:32px}
+  /* iPhone: размытие под шапкой поверх WebGL-фона рисуется кусками — вокруг лого появлялась отдельная белая «таблетка».
+     На телефоне шапка без размытия, сплошная белая; лого только гаснет, без сдвига */
+  .hdr.is-up .hdr-bar{background:#fff;-webkit-backdrop-filter:none;backdrop-filter:none}
+  .hdr-logo,.hdr.is-down .hdr-logo{transform:none}
   .hdr-cta{width:auto;min-height:48px;padding:0 20px}
   .menu{right:10px;top:78px;width:calc(100% - 20px)}
 
-  .hero{min-height:0}
+  /* первый экран на всю высоту телефона: фраза и подзаголовок чуть выше центра, кнопка и ссылка внизу */
+  .hero{min-height:100svh}
   .hero .gl{-webkit-mask-image:linear-gradient(#000 78%,transparent);mask-image:linear-gradient(#000 78%,transparent)}
-  .hero .wrap{width:100%;grid-template-columns:minmax(0,1fr);padding-block:104px 96px;gap:56px}
+  .hero .wrap{width:100%;grid-template-columns:minmax(0,1fr);padding-block:104px 40px;gap:56px;min-height:100svh;align-content:stretch}
+  .hero-copy{min-height:100%}
+  .hero-kicker{margin-top:auto}
+  .hero-act{margin-top:auto;padding-top:32px}
   /* заголовок в две строки: размер подстраивается под ширину телефона, каждая фраза — одна строка */
   .hero h1{font-size:min(36px,calc((100vw - 2 * var(--pad)) / 10.8))}
   .hero h1 .ln{white-space:nowrap}
@@ -671,7 +680,7 @@ b,strong{font-weight:600}
   .hero-chat{min-height:230px}
   /* на телефоне диалога нет: главное сказано строкой над заголовком */
   .hero .frame{display:none}
-  .hero-kicker{display:block;align-self:flex-start;padding:9px 14px;border:1px dashed currentColor;border-radius:12px;margin-bottom:-4px}
+  .hero-kicker{display:block;align-self:flex-start;padding:10px 16px;border:1px dashed var(--dash);border-radius:14px;margin-bottom:-2px}
   .hero .lead{font-size:var(--fs-b)}
 
   .stage{margin-inline:calc(var(--pad)*-1 + 8px);padding:18px 14px}
@@ -700,7 +709,7 @@ b,strong{font-weight:600}
   /* «Одним словом…» не крупнее главного заголовка */
   .peak .scrub{font-size:var(--fs-h2)}
   /* примечание под подсказками практиков — в пунктирной рамке, как строка над заголовком на первом экране */
-  .after{padding:16px 18px;border:1px dashed currentColor;border-radius:12px}
+  .after{padding:16px 18px;border:1px dashed var(--dash);border-radius:14px}
 
   .chain{display:none}   /* цепочка «запустили рекламу → …» на телефоне не нужна: то же сказано в подзаголовке */
   .chain{grid-template-columns:minmax(0,1fr)}
@@ -759,7 +768,7 @@ b,strong{font-weight:600}
   .chip{min-height:42px;padding:0 14px}
   .core{width:170px}
   /* правило под схемой — в пунктирной рамке, без точки, как примечание под подсказками практиков */
-  .rule{font-size:var(--fs-b);padding:16px 18px;border:1px dashed currentColor;border-radius:12px}
+  .rule{font-size:var(--fs-b);padding:16px 18px;border:1px dashed var(--dash);border-radius:14px}
   .rule::before{display:none}
   .steps-nav a{flex-wrap:wrap;gap:4px 12px}
   .steps-nav b{width:auto}

@@ -594,7 +594,9 @@ void main(){
     scrubs.forEach((s) => {
       const r = s.el.getBoundingClientRect();
       if (r.bottom < -100 || r.top > vh + 100) return;
-      const p = clamp((vh * 0.84 - r.top) / (r.height + 60));   // слова темнеют, проходя «линию чтения» в нижней части экрана
+      // слова темнеют, проходя «линию чтения»: на десктопе в нижней части экрана, на телефоне — ближе к середине, где глаз читает
+      const line = isMobile() ? 0.6 : 0.84;
+      const p = clamp((vh * line - r.top) / (r.height + 60));
       s.words.forEach((w, i) => w.style.setProperty('--o', clamp(p * (s.n + 2) - i).toFixed(2)));
     });
   }
@@ -788,6 +790,12 @@ void main(){
       w.classList.add('is-open');
       const c = chatOf($('[data-chat]', w));
       if (c && !c.played) c.play();
+      // закрытая сверху карточка сдвигает страницу — возвращаем открытую под шапку
+      requestAnimationFrame(() => {
+        const hdr = $('.hdr');
+        const top = w.getBoundingClientRect().top + scrollY - ((hdr ? hdr.getBoundingClientRect().bottom : 70) + 12);
+        scrollTo({ top, behavior: reduce ? 'auto' : 'smooth' });
+      });
     }
   }));
 
