@@ -1,0 +1,769 @@
+<!doctype html>
+<!-- ЦВЕТ НИШИ: data-tone="laser" (кобальт). Другие варианты: malina, yantar, biryuza. Меняется всё сразу: облако, кнопки, акценты. -->
+<html lang="ru" data-tone="laser">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script>document.documentElement.classList.add('js')</script>
+<title>LIA — AI-администратор для студий лазерной эпиляции на YCLIENTS</title>
+<meta name="description" content="AI-администратор отвечает гостям студии за секунды, круглосуточно и в тоне вашего бренда: цены, сомнения, запись в YCLIENTS. Первым десяти студиям — специальные условия.">
+<!-- ЧЕРНОВИК: пока страница лежит в папке next/, поисковикам её показывать не нужно. Когда она станет главной, удалите эту строку. -->
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#ECEEF2">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="ru_RU">
+<meta property="og:site_name" content="LIA">
+<meta property="og:title" content="LIA — AI-администратор для бьюти-студий">
+<meta property="og:description" content="Отвечает гостям вовремя и правильно — голосом вашего бренда. Ведёт записи в YCLIENTS.">
+<link rel="preload" href="../fonts/Raleway.ttf" as="font" type="font/ttf" crossorigin>
+<link rel="preload" href="../fonts/IBMPlexMono-Regular.ttf" as="font" type="font/ttf" crossorigin>
+<script>
+/* Первый экран на телефоне по видимой высоте окна. В Chrome на iPhone 100svh захватывает и место
+   под нижней панелью браузера, и ссылка «Примеры переписок» пряталась под ней. Меряем при загрузке
+   и при повороте, но не при прокрутке, чтобы экран не прыгал, когда панели браузера прячутся. */
+(function () {
+  var d = document.documentElement, w = innerWidth;
+  function set() { d.style.setProperty('--hero-h', innerHeight + 'px'); }
+  set();
+  addEventListener('resize', function () { if (innerWidth !== w) { w = innerWidth; set(); } });
+})();
+</script>
+<link rel="stylesheet" href="style.css?v=1117n">
+</head>
+<body>
+
+<!-- Логотип и значки каналов: рисуются один раз здесь, дальше вставляются ссылкой -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+<symbol id="logo" overflow="visible">
+<path d="M81.03,165.55v103.99c0,2.79,2.26,5.04,5.04,5.04h72.06c2.79,0,5.04,2.26,5.04,5.04l0,0c0,2.79-2.26,5.04-5.04,5.04H72.11c-2.79,0-5.04-2.26-5.04-5.04V165.55c0-2.79,2.26-5.04,5.04-5.04h3.88C78.77,160.51,81.03,162.76,81.03,165.55z"/>
+<path d="M415.21,163.62l52.15,112.62c1.77,3.83-1.02,8.2-5.24,8.2h-2.27c-2.25,0-4.29-1.31-5.24-3.35l-14.77-31.91c-0.94-2.04-2.99-3.35-5.24-3.35h-59.35c-2.26,0-4.31,1.32-5.25,3.37l-14.58,31.86c-0.94,2.05-2.99,3.37-5.25,3.37h-1.95c-4.24,0-7.03-4.42-5.22-8.25l53.46-112.62c0.96-2.01,2.99-3.3,5.21-3.3h8.27C412.22,160.28,414.26,161.58,415.21,163.62zM429.96,227.63l-19.54-43.89c-2.02-4.53-8.44-4.58-10.52-0.07l-20.25,43.89c-1.76,3.83,1.03,8.19,5.24,8.19h39.8C428.87,235.75,431.66,231.45,429.96,227.63z"/>
+<path d="M288.6,165.15L288.6,165.15c0-2.69-2.18-4.87-4.87-4.87h-21.85h-13.96h-21.85c-2.69,0-4.87,2.18-4.87,4.87v0c0,2.69,2.18,4.87,4.87,4.87h16.98c2.69,0,4.87,2.18,4.87,4.87v94.96c0,2.69-2.18,4.87-4.87,4.87h-16.98c-2.69,0-4.87,2.18-4.87,4.87l0,0c0,2.69,2.18,4.87,4.87,4.87h21.85h13.96h21.85c2.69,0,4.87-2.18,4.87-4.87l0,0c0-2.69-2.18-4.87-4.87-4.87h-16.98c-2.69,0-4.87-2.18-4.87-4.87v-94.96c0-2.69,2.18-4.87,4.87-4.87h16.98C286.42,170.01,288.6,167.83,288.6,165.15z"/>
+<path d="M348.69,55.2c-0.43-0.04-0.86-0.07-1.28-0.11c-1.3-0.11-2.64-0.23-3.97-0.28c-2.79-0.1-5.58-0.18-8.38-0.26c-4.55-0.13-9.26-0.26-13.88-0.49c-14.47-0.72-29.04-2.94-43.32-6.58c-7.35-1.88-12.23-6.07-14.94-12.83c-1.38-3.44-2.9-6.88-4.38-10.21c-0.52-1.17-1.04-2.34-1.55-3.51c-0.09-0.2-0.18-0.39-0.29-0.58c-0.18-0.33-0.55-0.5-0.92-0.43c-0.37,0.07-0.65,0.36-0.7,0.73c-0.1,0.72-0.13,1.43-0.15,2.12c-0.02,0.48-0.04,0.95-0.08,1.43c-0.16,1.73-0.3,3.46-0.44,5.2c-0.41,4.99-0.84,10.16-1.56,15.19c-0.76,5.3-4.84,9.42-10.16,10.25c-3.74,0.58-7.36,0.79-10.77,0.62c-6.67-0.34-13.45-0.8-20.01-1.24c-5.04-0.34-10.25-0.7-15.38-0.99c-9.82-0.57-34.95-0.52-36.28,1.66c-0.11,0.19-0.12,0.39,0,0.59l0.05,0.09l0.09,0.04c0.58,0.23,1.17,0.35,1.81,0.38c2.96,0.12,5.93,0.23,8.89,0.33c5.82,0.21,11.84,0.43,17.75,0.73c14.6,0.74,29.16,2.97,43.3,6.62c7.13,1.84,11.9,5.91,14.59,12.43c1.13,2.75,2.3,5.43,3.19,7.45c0.17,0.39,0.34,0.77,0.52,1.16c0.29,0.66,0.59,1.31,0.87,1.97c0.58,1.37,1.2,2.74,1.84,4.08c0.05,0.1,0.09,0.19,0.14,0.26c0.15,0.24,0.37,0.35,0.67,0.35c0,0,0,0,0.01,0c0.3,0,0.55-0.14,0.7-0.38c0.18-0.3,0.17-0.65,0.16-0.95c0-0.09-0.01-0.18,0-0.27c0.03-0.69,0.07-1.37,0.12-2.06c0.07-0.92,0.15-1.83,0.23-2.75l0.23-2.74c0.21-2.48,0.42-5.05,0.67-7.57c0.33-3.43,0.66-6.27,1.04-8.94c0.74-5.21,4.21-8.56,9.79-9.42c3.86-0.6,7.76-0.8,11.58-0.61c4.63,0.23,9.34,0.59,13.89,0.93c6.95,0.52,14.14,1.06,21.22,1.19c8.25,0.15,16.65-0.16,24.77-0.47c3.37-0.13,6.86-0.26,10.29-0.36c0.47-0.01,0.84-0.39,0.84-0.86C349.49,55.61,349.15,55.24,348.69,55.2z"/>
+</symbol>
+<symbol id="i-wa" viewBox="0 0 24 24"><path d="M12 2.5a9.5 9.5 0 0 0-8.2 14.3L2.5 21.5l4.8-1.3A9.5 9.5 0 1 0 12 2.5z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M8.6 7.6c.3-.6.6-.6.9-.6h.6c.2 0 .4 0 .6.5l.8 1.9c.1.2.1.4 0 .6l-.5.7c-.1.2-.2.3 0 .6.4.7 1 1.4 1.6 1.9.6.5 1.2.8 1.6 1 .2.1.4.1.6-.1l.7-.9c.2-.2.4-.2.6-.1l1.8.9c.2.1.4.2.4.4 0 .5-.1 1.1-.5 1.5-.5.5-1.4.9-2.3.8-1.2-.2-2.6-.8-4-2-1.6-1.4-2.6-3-2.9-4.1-.3-1.1.1-2.1.4-2.4z" fill="currentColor"/></symbol>
+<symbol id="i-tg" viewBox="0 0 24 24"><path d="M21.3 3.6 2.9 10.8c-.8.3-.8 1.4 0 1.7l4.5 1.5 1.7 5.4c.2.7 1.1.9 1.6.4l2.5-2.4 4.6 3.4c.6.4 1.4.1 1.6-.6l3.1-15.4c.2-.8-.6-1.5-1.2-1.2z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="m7.4 14 9.6-6.4-7.3 7.6-.4 4.2" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></symbol>
+<symbol id="i-ig" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5.2" fill="none" stroke="currentColor" stroke-width="1.6"/><circle cx="12" cy="12" r="4.2" fill="none" stroke="currentColor" stroke-width="1.6"/><circle cx="17.3" cy="6.7" r="1.1" fill="currentColor"/></symbol>
+<symbol id="i-web" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9.2" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M2.8 12h18.4M12 2.8c2.6 2.6 3.8 5.6 3.8 9.2s-1.2 6.6-3.8 9.2c-2.6-2.6-3.8-5.6-3.8-9.2S9.4 5.4 12 2.8z" fill="none" stroke="currentColor" stroke-width="1.6"/></symbol>
+</svg>
+
+<div class="cur" aria-hidden="true"><span></span></div>
+
+<!-- ===================== ШАПКА ===================== -->
+<header class="hdr" id="hdr">
+<div class="hdr-bar">
+<a class="hdr-logo" href="#top" aria-label="LIA"><svg viewBox="60 14 414 276" fill="currentColor" aria-hidden="true"><use href="#logo"/></svg></a>
+<nav class="hdr-nav mono lc" aria-label="Разделы">
+<a href="#primery">Примеры</a>
+<a href="#kak">Как работает</a>
+<a href="#kto">Кто мы</a>
+<a href="#voprosy">Вопросы</a>
+</nav>
+<a class="btn btn-sm hdr-cta" data-bot="header" target="_blank" rel="noopener" href="https://t.me/lia_ai_team_bot?start=site_header&amp;utm_source=lia_landing&amp;utm_medium=button&amp;utm_campaign=pilot&amp;utm_content=header">Оставить заявку</a>
+<button class="burger" type="button" aria-label="Меню" aria-expanded="false" aria-controls="menu"><i></i><i></i></button>
+</div>
+<nav class="menu" id="menu" aria-label="Меню">
+<a href="#primery">Примеры</a>
+<a href="#kak">Как работает</a>
+<a href="#kto">Кто мы</a>
+<a href="#voprosy">Вопросы</a>
+<a class="btn" data-bot="menu" target="_blank" rel="noopener" href="https://t.me/lia_ai_team_bot?start=site_menu&amp;utm_source=lia_landing&amp;utm_medium=button&amp;utm_campaign=pilot&amp;utm_content=menu">Оставить заявку</a>
+</nav>
+</header>
+
+<main>
+
+<!-- ===================== ПЕРВЫЙ ЭКРАН ===================== -->
+<section class="sec hero" id="top">
+<canvas class="gl" data-field="light" data-x="0.72" data-y="0.55" aria-hidden="true"></canvas>
+<div class="wrap">
+<div class="hero-copy">
+<!-- только на телефоне: вместо диалога — одна строка над заголовком, шрифтом меню -->
+<p class="hero-kicker mono lc">AI-администратор для&nbsp;студий<br> лазерной эпиляции на&nbsp;YCLIENTS</p>
+<h1><span class="ln">Опыт лидеров ниши.</span> <span class="ln">Голос вашего бренда.</span></h1>
+<p class="lead">LIA помогали создавать предприниматели из&nbsp;сферы лазерной эпиляции. Обученная на&nbsp;их&nbsp;опыте, LIA сможет ответить даже на&nbsp;самые нестандартные вопросы гостя и&nbsp;довести его до&nbsp;записи.</p>
+<div class="hero-act">
+<a class="btn" data-bot="hero" target="_blank" rel="noopener" href="https://t.me/lia_ai_team_bot?start=site_hero&amp;utm_source=lia_landing&amp;utm_medium=button&amp;utm_campaign=pilot&amp;utm_content=hero">Подключить бизнес</a>
+<!-- на телефоне вместо длинной фразы показывается короткая -->
+<a class="link hero-more" href="#primery"><span class="hm-full">Посмотрите примеры реальных переписок</span><span class="hm-short">Примеры переписок</span> <i aria-hidden="true">↓</i></a>
+</div>
+</div>
+<div class="frame">
+<i></i><i></i><i></i><i></i>
+<div class="hero-chat" data-chat="hero">
+<p class="who mono">Владелец студии</p>
+<p class="q">Кто ответит моим гостям в&nbsp;нерабочее время?</p>
+<p class="who l mono">LIA, 23:47</p>
+<p class="a" data-typed>AI-администратор для&nbsp;студий лазерной эпиляции на&nbsp;YCLIENTS</p>
+</div>
+</div>
+</div>
+</section>
+
+<!-- ===================== ПРИМЕРЫ ===================== -->
+<section class="sec" id="primery">
+<div class="wrap">
+<div class="head">
+<h2>Так LIA отвечает гостям <span class="dim">на&nbsp;сложные и&nbsp;нестандартные вопросы.</span></h2>
+</div>
+
+<!-- Переписка 1, главная: справа от каждой реплики — что именно LIA сделала -->
+<div class="stage grain bg-steel" data-dark>
+<div class="chat demo" data-chat id="demo">
+<p class="who">Гость, 23:47</p>
+<p class="msg g">Добрый вечер! Сколько стоит глубокое бикини? И&nbsp;это очень больно?</p>
+<p class="who l">LIA, 23:47</p>
+<div class="row"><p class="msg l">Добрый вечер, Анна!</p><p class="tag"><i></i>Тон вашей студии</p></div>
+<div class="row"><p class="msg l">Глубокое бикини — 3&nbsp;200&nbsp;₽ за&nbsp;сеанс, курсом из&nbsp;шести процедур выйдет на&nbsp;10% выгоднее.</p><p class="tag"><i></i>Цена и&nbsp;курс из&nbsp;CRM</p></div>
+<div class="row"><p class="msg l">Больно почти не&nbsp;бывает: в&nbsp;аппарате установлена система охлаждения, большинство гостей чувствуют только лёгкое тепло.</p><p class="tag"><i></i>Нешаблонный ответ на&nbsp;сомнение гостя</p></div>
+<div class="row"><p class="msg l">Если захотите, добавим подмышки — вместе выходит быстрее и&nbsp;дешевле.</p><p class="tag"><i></i>Предложение дополнительной услуги, когда уместно</p></div>
+<div class="row"><p class="msg l">В&nbsp;четверг есть свободные окошки у&nbsp;мастера Марины&nbsp;в:</p></div>
+<div class="row"><div class="slots"><span>Чт, 19:30</span><span>Чт, 20:15</span><span>Другое время</span></div><p class="tag"><i></i>Окна из&nbsp;YCLIENTS</p></div>
+</div>
+<div class="demo-foot"><button type="button" class="btn btn-line btn-sm" data-replay="demo">Показать ещё раз</button></div>
+</div>
+
+<!-- Переписки 2–7: список слева, телефон справа; листаются вместе с прокруткой -->
+<div class="exs" data-exs>
+<div class="exs-sticky">
+
+<article class="ex is-on">
+<button type="button" class="ex-cap"><span class="h3">Отвечает даже на&nbsp;нестандартный вопрос</span></button>
+<div class="ex-stage stage grain bg-green" data-dark><div class="chat" data-chat="manual">
+<p class="who">Гость, 14:20</p>
+<p class="msg g">Я&nbsp;сделала 4&nbsp;сеанса на&nbsp;диоде в&nbsp;другой студии. Можно продолжить у&nbsp;вас на&nbsp;александрите?</p>
+<p class="who l">LIA, 14:20</p>
+<p class="msg l">Да, конечно! Перед сеансом мастер посмотрит кожу, тип волос и&nbsp;подберёт параметры под александрит.</p>
+<p class="msg l">Подскажите, когда был последний сеанс? Между процедурами рекомендована пауза в&nbsp;4–6&nbsp;недель.</p>
+</div></div>
+</article>
+
+<article class="ex">
+<button type="button" class="ex-cap"><span class="h3">Круглосуточно, вежливо, вовремя</span></button>
+<div class="ex-stage stage grain bg-terra" data-dark><div class="chat" data-chat="manual">
+<p class="who">Гость, 01:12</p>
+<p class="msg g">Простите, что так поздно 🙈 Хочу сделать подмышки до&nbsp;отпуска, улетаю через три дня. Успею?</p>
+<p class="who l">LIA, 01:12</p>
+<p class="msg l">Пишите в&nbsp;любое время 🤍 Один сеанс точно успеем, волосы станут заметно тоньше.</p>
+<p class="msg l">Так как планируется загар, рекомендуем сделать процедуру на&nbsp;аппарате DEKA MOVEO — после него можно загорать сразу без дополнительных ограничений!</p>
+<p class="msg l">Есть окошки завтра в&nbsp;11:00 или в&nbsp;четверг в&nbsp;19:30. Когда вас записать?</p>
+</div></div>
+</article>
+
+<article class="ex">
+<button type="button" class="ex-cap"><span class="h3">Знает противопоказания и&nbsp;не&nbsp;теряет гостя</span></button>
+<div class="ex-stage stage grain bg-edu" data-dark><div class="chat" data-chat="manual">
+<p class="who">Гость, 18:05</p>
+<p class="msg g">Я&nbsp;кормлю грудью, ребёнку 5&nbsp;месяцев. Мне можно эпиляцию?</p>
+<p class="who l">LIA, 18:05</p>
+<p class="msg l">Здравствуйте! Поздравляем вас с&nbsp;рождением малыша 🤍</p>
+<p class="msg l">Период лактации и&nbsp;грудного вскармливания входит в&nbsp;список противопоказаний для проведения лазерной эпиляции, поэтому во&nbsp;время кормления процедуру делать не&nbsp;рекомендуется. Это связано с&nbsp;изменениями гормонального фона и&nbsp;повышенной чувствительностью кожи.</p>
+<p class="msg l">Если у&nbsp;вас возникнут другие вопросы или вы захотите запланировать визит после завершения лактации, с&nbsp;радостью подскажу! 🤍</p>
+</div></div>
+</article>
+
+<article class="ex">
+<button type="button" class="ex-cap"><span class="h3">Объясняет цену<br class="m-br"> без давления</span></button>
+<div class="ex-stage stage grain bg-ember" data-dark><div class="chat" data-chat="manual">
+<p class="who">Гость, 12:41</p>
+<p class="msg g">Почему у&nbsp;вас дороже, чем в&nbsp;студии рядом?</p>
+<p class="who l">LIA, 12:41</p>
+<p class="msg l">Наши цены сформированы исходя из&nbsp;стоимости аппаратов: у&nbsp;нас стоят только новые лицензированные модели, за&nbsp;безопасность и&nbsp;результативность которых мы в&nbsp;ответе.</p>
+<p class="msg l">Рынок широкий: идя в&nbsp;место с&nbsp;подозрительно низким прайсом, запросите регистрационное удостоверение на&nbsp;лазер — это вопрос вашего здоровья.</p>
+<p class="msg l">Кроме этого, эпиляцию вам будет делать опытный медик, вы сможете припарковать машину бесплатно, воспользоваться массажными очками или посмотреть фильм во&nbsp;время сеанса и&nbsp;не&nbsp;только.</p>
+<p class="msg l">Посчитаю, сколько выйдет услуга с&nbsp;учётом 30% на&nbsp;первый визит?</p>
+</div></div>
+</article>
+
+<article class="ex">
+<button type="button" class="ex-cap"><span class="h3">Знает всё<br class="m-br"> о&nbsp;вашей студии</span></button>
+<div class="ex-stage stage grain bg-steel" data-dark><div class="chat" data-chat="manual">
+<p class="who">Гость, 10:17</p>
+<p class="msg g">А&nbsp;какое образование у&nbsp;ваших мастеров?</p>
+<p class="who l">LIA, 10:17</p>
+<p class="msg l">Все наши мастера имеют медицинское образование и&nbsp;необходимую квалификацию, а&nbsp;также прошли специальное обучение и&nbsp;интенсив-тренинги по&nbsp;работе с&nbsp;лазерным оборудованием 🤍</p>
+<p class="msg l">Какая зона вас интересует и&nbsp;подсказать&nbsp;ли вам варианты для визита?</p>
+</div></div>
+</article>
+
+<article class="ex">
+<button type="button" class="ex-cap"><span class="h3">Распознаёт голосовые сообщения и&nbsp;фото</span></button>
+<div class="ex-stage stage grain bg-peach" data-dark><div class="chat" data-chat="manual">
+<p class="who">Гость, 21:30</p>
+<p class="msg g voice"><span class="wave"></span><span class="mono">0:31</span></p>
+<p class="msg g">Хотела спросить: у&nbsp;меня тёмная кожа после отпуска, мне вообще подойдёт лазер? И&nbsp;сколько тогда сеансов?</p>
+<p class="who l">LIA, 21:30</p>
+<p class="msg l">При наличии загорелой или тёмной кожи процедура лазерной эпиляции возможна, однако допуск к&nbsp;ней и&nbsp;выбор подходящего аппарата зависят от&nbsp;состояния кожи и&nbsp;соблюдения временного перерыва после загара.</p>
+<p class="msg l">Перед процедурой мастер обязательно оценит состояние кожи и&nbsp;подберёт безопасный режим. Количество сеансов зависит от&nbsp;аппарата и&nbsp;индивидуальных особенностей.</p>
+<p class="msg l">Пришлите, пожалуйста, фото участка кожи с&nbsp;волосами, чтобы мастер смог дать предварительные рекомендации.</p>
+</div></div>
+</article>
+</div>
+</div>
+</div>
+</section>
+
+<!-- ===================== ЧТО МЕШАЕТ РАСТИ ===================== -->
+<section class="sec" id="boli">
+<div class="wrap">
+<div class="head">
+<h2>Что мешает бизнесу расти?</h2>
+<p class="lead">Запустили рекламу, гость написал, ответ пришёл через 20&nbsp;минут — и&nbsp;гость так и&nbsp;не&nbsp;записался.</p>
+</div>
+
+<ol class="chain mono" data-chain>
+<li><span>запустили рекламу</span></li>
+<li><span>гость написал</span></li>
+<li><span>ответ через 20&nbsp;минут</span></li>
+<li><span>гость записался</span></li>
+</ol>
+
+<ul class="pains" data-pains>
+<li class="pain"><p>Платите за&nbsp;рекламу, а&nbsp;отвечаете только через три часа?</p></li>
+<li class="pain"><p>Администратор разрывается между ресепшен и&nbsp;телефоном. Не&nbsp;хватает рук, чтобы отвечать в&nbsp;пик и&nbsp;обзванивать базу?</p></li>
+<li class="pain"><p>Гостю сухо называют цену — и&nbsp;он пропадает после «я&nbsp;подумаю»?</p></li>
+<li class="pain"><p>Администратор путает аппараты или стоимость, а&nbsp;вы узнаёте об&nbsp;этом из&nbsp;жалобы гостя?</p></li>
+<li class="pain"><p>Потерь не&nbsp;видно, пока не&nbsp;откроете переписки. А&nbsp;там брошенные диалоги и&nbsp;ответы, за&nbsp;которые стыдно.</p></li>
+<li class="pain"><p>Хотите больше записей, но&nbsp;не&nbsp;знаете, сколько обращений теряете и&nbsp;как отвечают вашим гостям?</p></li>
+<li class="pain"><p>Ставили бота, гости просили позвать человека, и&nbsp;через месяц его отключили?</p></li>
+</ul>
+<div class="pains-dots" aria-hidden="true"></div>
+
+<p class="scrub" data-scrub>Переписка приносит записи, только когда каждому гостю отвечают быстро и&nbsp;правильно — независимо от&nbsp;того, кто сегодня на&nbsp;смене.</p>
+<p class="scrub" data-scrub>Работать с&nbsp;клиентами и&nbsp;повышать их лояльность умеют лидеры ниши, а&nbsp;их опыт — внутри LIA.</p>
+</div>
+</section>
+
+<!-- ===================== ЧТО ИЗМЕНИТСЯ ===================== -->
+<section class="sec" id="chto">
+<div class="wrap">
+<div class="head">
+<h2>Что изменится с&nbsp;LIA</h2>
+</div>
+
+<div class="ben-tabs" role="tablist" aria-label="Для кого">
+<button type="button" class="ben-tab" role="tab" aria-selected="true" data-ben="0">Для владельца</button>
+<button type="button" class="ben-tab" role="tab" aria-selected="false" data-ben="1">Для администратора</button>
+</div>
+<div class="ben">
+<div class="ben-col is-on">
+<h3>Для владельца</h3>
+<ul>
+<li><b>Реклама окупается:</b> из&nbsp;того&nbsp;же количества первых обращений — больше записей и&nbsp;выше средний чек.</li>
+<li><b>Гости, которые пишут ночью,</b> утром уже записаны.</li>
+<li><b>Стандарт общения не&nbsp;уходит</b> вместе с&nbsp;опытным администратором. И&nbsp;не&nbsp;нужно заново обучать нового.</li>
+</ul>
+</div>
+<div class="ben-col">
+<h3>Для администратора</h3>
+<ul>
+<li><b>До&nbsp;вас доходят только те обращения, где нужен человек.</b> Типовые вопросы закрывает LIA.</li>
+<li><b>LIA ответит гостю мгновенно,</b> даже когда вы заняты с&nbsp;другим клиентом.</li>
+</ul>
+</div>
+</div>
+
+<div class="see">
+<div>
+<h3>Вы видите картину целиком:</h3>
+<ul class="dash">
+<li>Диалоги из&nbsp;всех каналов — в&nbsp;одном окне</li>
+<li>Аналитика: сколько обращений стали записями и&nbsp;сколько гостей вернулись</li>
+<li>Раз в&nbsp;неделю — отчёт</li>
+</ul>
+</div>
+<div class="board grain bg-ember" data-in aria-hidden="true">
+<div class="board-in">
+<ul class="board-ch">
+<li><svg><use href="#i-wa"/></svg><span>WhatsApp</span><i style="--v:54px"></i></li>
+<li><svg><use href="#i-tg"/></svg><span>Telegram</span><i style="--v:34px"></i></li>
+<li><svg><use href="#i-ig"/></svg><span>Instagram</span><i style="--v:66px"></i></li>
+<li><svg><use href="#i-web"/></svg><span>Сайт</span><i style="--v:24px"></i></li>
+</ul>
+<div class="board-m">
+<div><span>Обращения</span><i style="--v:100%"></i></div>
+<div><span>Записи</span><i style="--v:84%"></i></div>
+<div><span>Вернулись</span><i style="--v:68%"></i></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- Кульминация: «Круто?» -->
+<section class="sec peak">
+<div class="wrap">
+<p class="scrub" data-scrub>Одним словом, LIA — администратор, идентичный реальному.</p>
+<p class="kruto" id="kruto">Круто?</p>
+<div class="peak-reply" data-chat="manual" id="reply">
+<p class="who">LIA</p>
+<p class="msg l">Тогда знакомьтесь: LIA — опыт лидеров ниши, настроенный под ваш бренд!</p>
+</div>
+</div>
+</section>
+
+<!-- ===================== ЭКСПЕРТИЗА ===================== -->
+<section class="sec" id="ekspertiza">
+<div class="wrap">
+<div class="xp">
+<h2>Боты предлагают автоматизацию, LIA — экспертизу.</h2>
+<div class="xp-list">
+<p>Разрабатывая LIA, мы привлекли опытных предпринимателей из&nbsp;сферы лазерной эпиляции. Они:</p>
+<ul class="dash">
+<li>помогли составить бриф из&nbsp;нестандартных вопросов гостей</li>
+<li>поделились советами из&nbsp;своей практики</li>
+<li>выстроили логику продажи на&nbsp;опыте тысяч продаж в&nbsp;своих студиях</li>
+<li>подсказали, какой тон общения нравится гостям</li>
+<li>поделились базой диалогов, чтобы LIA научилась не&nbsp;только по&nbsp;открытым источникам</li>
+</ul>
+</div>
+</div>
+
+<div class="tips">
+<h3 class="tips-h">Подсказки практиков из&nbsp;брифа</h3>
+<div class="tips-grid">
+<div class="tip"><p class="mono lc">Акции</p><p>Рекомендуем иметь систему скидок и&nbsp;лояльности, но&nbsp;не&nbsp;использовать их как основной инструмент продаж — это размывает ценность бренда и&nbsp;делает продажи непрогнозируемыми.</p></div>
+<div class="tip"><p class="mono lc">Сомнение</p><p>На&nbsp;«я&nbsp;подумаю» спросите, что именно гостя смущает и&nbsp;когда лучше вернуться. Вот часто встречающиеся ответы на&nbsp;сомнения гостей…</p></div>
+<div class="tip"><p class="mono lc">Тон</p><p>Вместо «к&nbsp;сожалению, нет» сразу предложите, что можете: другое время или мастера.</p></div>
+</div>
+</div>
+<p class="after">Если стандарта общения ещё нет, подсказки практиков помогут выстроить его с&nbsp;нуля.</p>
+</div>
+</section>
+
+<!-- ===================== ПОДОЙДЁТ / НЕ ПОДОЙДЁТ ===================== -->
+<section class="sec fit" id="komu">
+<div class="wrap">
+<div class="fit-grid">
+<div class="fit-col">
+<h2>Подойдёт</h2>
+<p>Студиям и&nbsp;сетям лазерной эпиляции на&nbsp;YCLIENTS, регулярно получающим новые запросы от&nbsp;гостей в&nbsp;нескольких мессенджерах, на&nbsp;сайте или в&nbsp;социальных сетях.</p>
+</div>
+<div class="fit-col">
+<h2>Не&nbsp;подойдёт</h2>
+<ul class="dash">
+<li>Тем, кому нужен автоответчик за&nbsp;3&nbsp;тысячи рублей и&nbsp;всё равно, как отвечают гостям.</li>
+<li>Если гости привыкли звонить, а&nbsp;не&nbsp;писать. Голосовая версия LIA уже в&nbsp;разработке.</li>
+</ul>
+</div>
+</div>
+<p class="fit-foot">Вы из&nbsp;другой сферы или у&nbsp;вас другая CRM? <a class="link" data-bot="fit" target="_blank" rel="noopener" href="https://t.me/lia_ai_team_bot?start=site_fit&amp;utm_source=lia_landing&amp;utm_medium=button&amp;utm_campaign=pilot&amp;utm_content=fit">Напишите нам.</a></p>
+</div>
+</section>
+
+<!-- ===================== КТО МЫ ===================== -->
+<section class="sec who-sec" id="kto">
+<canvas class="kto-dust" data-dust aria-hidden="true"></canvas>
+<div class="wrap">
+<div class="head">
+<h2>Кто мы такие и&nbsp;почему нам можно доверять?</h2>
+</div>
+<div class="who-grid">
+<div>
+<!-- Ссылки на соцсети пока заглушки (#instagram-est-epil и т. п.), как на текущем сайте: подставьте настоящие адреса в href. -->
+<!-- Над левой половиной фото курсор показывает «Арина Чоботова», над правой — «Эстер Гомельская» (data-cursor-left / data-cursor-right). -->
+<a class="duo" href="#instagram-est-epil" data-cursor="" data-cursor-left="Арина Чоботова" data-cursor-right="Эстер Гомельская" aria-label="Эстер Гомельская и Арина Чоботова, Instagram EST.EPIL">
+<img src="../founders-studio.webp" alt="Эстер Гомельская и Арина Чоботова, основательницы EST.EPIL" width="1122" height="1402" loading="lazy" decoding="async">
+<span class="vh">Эстер&nbsp;Гомельская и&nbsp;Арина&nbsp;Чоботова</span>
+</a>
+<p class="duo-cap mono">EST.EPIL — три студии лазерной эпиляции в&nbsp;Москве, 10+ лет в&nbsp;бизнесе, 18&nbsp;000 визитов в&nbsp;год, 5,0 на&nbsp;Яндекс Картах</p>
+<div class="who-links">
+<a href="#est-epil">EST.EPIL</a>
+<a href="#instagram-est-epil">Instagram EST.EPIL</a>
+<a href="#instagram-lia">Instagram LIA</a>
+</div>
+</div>
+<article class="letter">
+<p class="m-quote" aria-hidden="true">За&nbsp;8&nbsp;месяцев <span data-count="84">84</span>% обращений стали записями.</p>
+<div class="m-letter">
+<p>Меня зовут Эстер&nbsp;Гомельская. Вместе с&nbsp;Ариной&nbsp;Чоботовой мы управляем EST.EPIL — сетью студий лазерной эпиляции в&nbsp;Москве.</p>
+<p>Я&nbsp;сама слежу за&nbsp;тоном каждого диалога с&nbsp;гостем, поэтому <b>готовые боты нам не&nbsp;подошли</b>: приходилось выбирать между оптимизацией и&nbsp;лояльностью — они отвечали шаблоном, и&nbsp;гости просили позвать человека. Тогда мы <b>собрали своего</b>: обучили на&nbsp;переписках наших лучших администраторов и&nbsp;регламентах сети. <b>За&nbsp;8&nbsp;месяцев <span data-count="84">84</span>% обращений стали записями.</b> Коллеги из&nbsp;других студий уже увидели его в&nbsp;работе и&nbsp;попросили такой&nbsp;же.</p>
+<p>LIA — наш живой опыт общения с&nbsp;гостями, переведённый в&nbsp;технологию. <b>Мы передаём вашей студии то, что у&nbsp;нас уже работает</b>, чтобы вы не&nbsp;теряли гостей на&nbsp;ошибках, которые мы уже прошли. Наша цель — сделать высокий стандарт коммуникации нормой индустрии.</p>
+</div>
+<button type="button" class="btn btn-line btn-sm m-more" aria-expanded="false">Читать письмо целиком</button>
+<p class="sign">Эстер Гомельская</p>
+</article>
+</div>
+</div>
+</section>
+
+<!-- ===================== КАК LIA ВЕДЁТ ГОСТЯ ===================== -->
+<section class="sec" id="kak">
+<div class="wrap">
+<div class="head">
+<h2>Как LIA ведёт гостя</h2>
+<p class="lead">Отвечает в&nbsp;WhatsApp, Telegram, Instagram и&nbsp;на&nbsp;сайте.</p>
+</div>
+
+<div class="flow">
+<div class="flow-know">
+<p class="mono flow-t">LIA знает:</p>
+<ul><li class="chip">Тон студии</li><li class="chip">Аппараты и&nbsp;противопоказания</li><li class="chip">Историю гостя</li></ul>
+</div>
+<div class="flow-in">
+<p class="mono flow-t">Гость пишет:</p>
+<ul>
+<li><span class="chip"><svg><use href="#i-wa"/></svg>WhatsApp</span></li>
+<li><span class="chip"><svg><use href="#i-tg"/></svg>Telegram</span></li>
+<li><span class="chip"><svg><use href="#i-ig"/></svg>Instagram</span></li>
+<li><span class="chip"><svg><use href="#i-web"/></svg>Сайт</span></li>
+</ul>
+</div>
+<div class="flow-core">
+<i class="run"></i>
+<div class="core grain"><svg viewBox="60 14 414 276" fill="currentColor" role="img" aria-label="LIA"><use href="#logo"/></svg><span class="mono lc">отвечает и&nbsp;записывает</span></div>
+<i class="run r2"></i>
+</div>
+<div class="flow-out">
+<p class="mono flow-t">LIA делает:</p>
+<ul>
+<li><span class="chip">Запись в&nbsp;YCLIENTS</span></li>
+<li><span class="chip">Сложное — администратору</span></li>
+<li><span class="chip">Отчёт владельцу</span></li>
+</ul>
+</div>
+</div>
+
+<p class="rule">Если LIA не&nbsp;знает ответа — не&nbsp;придумывает, а&nbsp;зовёт человека. Это правило не&nbsp;отключается.</p>
+</div>
+</section>
+
+<!-- Пять шагов: своя секция, чтобы схема не сливалась с вкладками -->
+<section class="sec steps-sec" aria-label="Пять шагов">
+<div class="wrap">
+<nav class="steps-nav" aria-label="Шаги">
+<a href="#shag-1"><span class="mono">1</span><b>Всегда</b><span>Отвечает на&nbsp;всё, что пишет гость</span></a>
+<a href="#shag-2"><span class="mono">2</span><b>Чётко</b><span>Консультирует</span></a>
+<a href="#shag-3"><span class="mono">3</span><b>Прозрачно</b><span>Называет цену так, что гость записывается</span></a>
+<a href="#shag-4"><span class="mono">4</span><b>Удобно</b><span>Записывает в&nbsp;YCLIENTS, пока гость не&nbsp;остыл</span></a>
+<a href="#shag-5"><span class="mono">5</span><b>Ненавязчиво</b><span>Возвращает на&nbsp;следующий сеанс</span></a>
+</nav>
+
+<article class="step" id="shag-1">
+<div class="step-txt">
+<p class="mono">Шаг&nbsp;1</p>
+<h3>Отвечает на&nbsp;всё, что пишет гость</h3>
+<ul class="dash">
+<li>Понимает голосовые и&nbsp;фото</li>
+<li>Отвечает на&nbsp;все вопросы, даже если их пять в&nbsp;одном сообщении</li>
+<li>Пишет в&nbsp;тоне студии: обращение, эмодзи и&nbsp;стоп-слова — по&nbsp;вашим правилам</li>
+</ul>
+</div>
+<div class="stage grain bg-steel" data-dark>
+<p class="stage-top mono">Instagram, суббота</p>
+<div class="chat" data-chat>
+<p class="who">Гость, 11:02</p>
+<p class="msg g voice"><span class="wave"></span><span class="mono">0:24</span></p>
+<p class="msg g">И&nbsp;ещё: сколько стоит бикини? Это больно? Есть окна сегодня?</p>
+<p class="note">LIA разобрала голосовое: гостья спрашивает про подмышки</p>
+<p class="who l">LIA, 11:02</p>
+<p class="msg l">Здравствуйте! Да, конечно, сейчас отвечу по&nbsp;порядку.</p>
+<p class="msg l">Стоимость зоны подмышек — 1&nbsp;900&nbsp;₽, бикини — 3&nbsp;200&nbsp;₽ за&nbsp;один сеанс.</p>
+<p class="msg l">Во&nbsp;время процедуры вы будете ощущать лёгкое тепло: в&nbsp;нашем аппарате установлена система охлаждения.</p>
+<p class="msg l">Сегодня есть свободные окошки в&nbsp;14:00 и&nbsp;17:30 — когда вам было&nbsp;бы удобнее?</p>
+</div>
+</div>
+</article>
+
+<article class="step" id="shag-2">
+<div class="step-txt">
+<p class="mono">Шаг&nbsp;2</p>
+<h3>Консультирует</h3>
+<ul class="dash">
+<li>Выясняет задачу: какие зоны, был&nbsp;ли опыт лазера, что важно гостю</li>
+<li>Подбирает аппарат и&nbsp;число сеансов — в&nbsp;том числе по&nbsp;фото</li>
+<li>Рассказывает о&nbsp;противопоказаниях и&nbsp;подготовке: гость приходит готовым, окно у&nbsp;мастера не&nbsp;пропадает</li>
+</ul>
+</div>
+<div class="stage grain bg-green" data-dark>
+<p class="stage-top mono">WhatsApp, четверг</p>
+<div class="chat" data-chat>
+<p class="who l">LIA, 15:20</p>
+<p class="msg l">Подскажите, вы уже делали лазерную эпиляцию? И&nbsp;какие зоны хотите?</p>
+<p class="who">Гость, 15:22</p>
+<p class="msg g">Первый раз. Хочу ноги полностью, вот фото</p>
+<p class="msg g photo" aria-label="Фото"></p>
+<p class="who l">LIA</p>
+<p class="msg l">Спасибо! Одну секунду, сейчас подскажу…</p>
+<p class="msg l">По&nbsp;снимку видна зона голеней: для светлой кожи и&nbsp;тёмных жёстких волос отлично подойдёт александритовый лазер Deka Moveo — он будет максимально эффективен.</p>
+<p class="msg l">Параметры процедуры и&nbsp;окончательный выбор аппарата подберёт мастер на&nbsp;месте. Пришлю памятку: как подготовиться и&nbsp;какие есть противопоказания.</p>
+<p class="note">Гость придёт подготовленным</p>
+</div>
+</div>
+</article>
+
+<article class="step" id="shag-3">
+<div class="step-txt">
+<p class="mono">Шаг&nbsp;3</p>
+<h3>Называет цену так, что гость записывается</h3>
+<ul class="dash">
+<li>Подскажет цену сеанса и&nbsp;курса по&nbsp;вашему прайсу и&nbsp;объяснит, из&nbsp;чего она складывается</li>
+<li>Спрашивает, что смущает, и&nbsp;отвечает на&nbsp;сомнения — экспертно и&nbsp;без давления</li>
+<li>Предлагает вторую зону или комплекс, когда это уместно, — растёт средний чек</li>
+</ul>
+</div>
+<div class="stage grain bg-terra" data-dark>
+<p class="stage-top mono">Telegram, понедельник</p>
+<div class="chat" data-chat>
+<p class="who">Гость, 21:05</p>
+<p class="msg g">А&nbsp;сколько это будет стоить?</p>
+<p class="who l">LIA, 21:05</p>
+<p class="msg l">Ноги полностью — 6&nbsp;500&nbsp;₽ за&nbsp;сеанс. Для достижения максимального эффекта рекомендуем курс из&nbsp;8&nbsp;сеансов — курсом выйдет на&nbsp;10% выгоднее.</p>
+<p class="who">Гость</p>
+<p class="msg g">Дороговато, я&nbsp;подумаю</p>
+<p class="who l">LIA</p>
+<p class="msg l">Понимаю. Подскажите, что смущает — сумма сразу или количество сеансов?</p>
+<p class="msg l">Курс можно оплачивать по&nbsp;одному сеансу. А&nbsp;если добавить подмышки, вместе выйдет быстрее и&nbsp;дешевле.</p>
+</div>
+</div>
+</article>
+
+<article class="step" id="shag-4">
+<div class="step-txt">
+<p class="mono">Шаг&nbsp;4</p>
+<h3>Записывает в&nbsp;YCLIENTS, пока гость не&nbsp;остыл</h3>
+<ul class="dash">
+<li>Находит окно у&nbsp;нужного мастера в&nbsp;нужном филиале, а&nbsp;если его нет — предлагает другое</li>
+<li>Записывает, переносит и&nbsp;отменяет визит, напоминает о&nbsp;нём так часто, как решит студия</li>
+<li>Последнее слово за&nbsp;вами: запись подтверждает администратор — в&nbsp;кабинете LIA или в&nbsp;YCLIENTS</li>
+</ul>
+</div>
+<div class="stage grain bg-edu" data-dark>
+<p class="stage-top mono">Instagram, среда</p>
+<div class="chat" data-chat>
+<p class="who">Гость, 22:14</p>
+<p class="msg g">Хорошо, давайте попробуем</p>
+<p class="who l">LIA, 22:14</p>
+<p class="msg l">В&nbsp;студии на&nbsp;Маяковской у&nbsp;Марины есть четверг, 19:30 и&nbsp;пятница, 11:00. Как вам удобнее?</p>
+<p class="who">Гость</p>
+<p class="msg g">Четверг</p>
+<p class="who l">LIA</p>
+<p class="msg l">Записала вас на&nbsp;четверг, 19:30. Накануне пришлю напоминание и&nbsp;памятку.</p>
+<p class="note">Запись в&nbsp;YCLIENTS ждёт подтверждения администратора</p>
+</div>
+</div>
+</article>
+
+<article class="step" id="shag-5">
+<div class="step-txt">
+<p class="mono">Шаг&nbsp;5</p>
+<h3>Возвращает на&nbsp;следующий сеанс</h3>
+<ul class="dash">
+<li>Пишет, когда подходит срок, и&nbsp;предлагает удобное окно. Гость проходит курс до&nbsp;конца, а&nbsp;не&nbsp;исчезает после двух сеансов</li>
+<li>Узнаёт постоянного гостя и&nbsp;не&nbsp;переспрашивает то, что уже помнит</li>
+</ul>
+</div>
+<div class="stage grain bg-ember" data-dark>
+<p class="stage-top mono">WhatsApp, через несколько недель</p>
+<div class="chat" data-chat>
+<p class="note">Подошёл срок второго сеанса</p>
+<p class="who l">LIA, 12:00</p>
+<p class="msg l">Анна, добрый день! Подошёл срок второго сеанса. У&nbsp;Марины свободно во&nbsp;вторник в&nbsp;18:00 — записать вас, как в&nbsp;прошлый раз, на&nbsp;ноги и&nbsp;подмышки?</p>
+<p class="who">Гость, 12:07</p>
+<p class="msg g">Да, давайте!</p>
+<p class="note">Запись в&nbsp;YCLIENTS ждёт подтверждения администратора</p>
+</div>
+</div>
+</article>
+</div>
+</section>
+
+<!-- ===================== ПОЧЕМУ НЕ ПОДВЕДЁТ ===================== -->
+<section class="sec" id="pochemu">
+<div class="wrap">
+<div class="head">
+<h2>Почему LIA не&nbsp;подведёт</h2>
+</div>
+<div class="why-stack">
+
+<article class="why is-open" style="--i:0">
+<div class="why-txt">
+<h3><button type="button" class="why-h">Знает ответы на&nbsp;1000+ вопросов гостей<span class="why-tail"> — и&nbsp;учится вашим правилам</span></button></h3>
+<p>LIA знает, что спрашивают в&nbsp;студиях лазерной эпиляции и&nbsp;как на&nbsp;это отвечать. Затем учится на&nbsp;ваших переписках и&nbsp;регламентах. Если ваше правило спорит с&nbsp;отраслевым, уточнит у&nbsp;вас.</p>
+</div>
+<div class="why-art grain bg-green" data-dark>
+<p class="kplus"><span data-count="1000">1000</span>+</p>
+<ul class="qs">
+<li style="--n:0">Это больно?</li>
+<li style="--n:1">Сколько нужно сеансов?</li>
+<li style="--n:2">Можно летом?</li>
+<li style="--n:3">Чем отличаются аппараты?</li>
+<li style="--n:4">Как подготовиться?</li>
+<li style="--n:5">Можно перейти с&nbsp;одного лазера на&nbsp;другой?</li>
+<li style="--n:6">Почему нельзя при беременности и&nbsp;лактации?</li>
+<li style="--n:7">Какое образование у&nbsp;мастеров?</li>
+<li style="--n:9">Ваши правила</li>
+</ul>
+</div>
+</article>
+
+<article class="why" style="--i:1">
+<div class="why-txt">
+<h3><button type="button" class="why-h">Не&nbsp;придумывает</button></h3>
+<p>Цены и&nbsp;акции берёт из&nbsp;CRM. Чего нет в&nbsp;базе, не&nbsp;сочиняет: пишет гостю «Уточню этот момент и&nbsp;вернусь через несколько минут!» и&nbsp;передаёт диалог администратору. Гость не&nbsp;видит, что ему отвечал AI.</p>
+<p>Медицинские вопросы всегда уходят человеку — это правило не&nbsp;отключается. Попросит гость позвать администратора — позовёт. Остальные правила передачи задаёте&nbsp;вы.</p>
+</div>
+<div class="why-art grain bg-terra" data-dark>
+<div class="chat" data-chat>
+<p class="who">Гость, 18:40</p>
+<p class="msg g">Пила антибиотики, и&nbsp;появились высыпания. Можно делать эпиляцию?</p>
+<p class="who l">LIA, 18:40</p>
+<p class="msg l">В&nbsp;некоторых случаях эпиляция разрешена. Минутку, я&nbsp;сейчас уточню этот момент у&nbsp;мастера и&nbsp;вернусь</p>
+<p class="note">Медицинский вопрос — диалог передан администратору</p>
+</div>
+</div>
+</article>
+
+<article class="why" style="--i:2">
+<div class="why-txt">
+<h3><button type="button" class="why-h">Учится с&nbsp;каждым диалогом</button></h3>
+<p>Если LIA не&nbsp;знает ответа, она передаёт диалог администратору. Вы сохраняете ответ как правило — и&nbsp;в&nbsp;следующий раз LIA ответит сама. Так она становится точнее с&nbsp;каждой неделей. У&nbsp;обычных ботов этого нет.</p>
+</div>
+<div class="why-art grain bg-edu" data-dark>
+<ol class="cycle">
+<li style="--n:0">Гость спросил то, чего LIA ещё не&nbsp;знает</li>
+<li style="--n:1">Диалог ушёл администратору</li>
+<li style="--n:2">Вы сохраняете ответ как правило</li>
+<li style="--n:3">В&nbsp;следующий раз LIA отвечает сама</li>
+</ol>
+</div>
+</article>
+
+<article class="why" style="--i:3">
+<div class="why-txt">
+<h3><button type="button" class="why-h">Настройка без программиста</button></h3>
+<p>Достаточно ответить на&nbsp;вопросы LIA при заполнении профиля, а&nbsp;к&nbsp;каждому вопросу есть подсказки практиков.</p>
+</div>
+<div class="why-art grain bg-peach" data-dark>
+<div class="profile">
+<p class="profile-top mono">Профиль студии</p>
+<div class="chat" data-chat>
+<p class="who l">LIA</p>
+<p class="msg l">Как вы обращаетесь к&nbsp;гостям: на&nbsp;«вы» или на&nbsp;«ты»?</p>
+<p class="who g">Вы</p>
+<p class="msg g">На&nbsp;«вы» и&nbsp;по&nbsp;имени</p>
+<p class="who l">LIA</p>
+<p class="msg l">Принято. Какие слова в&nbsp;переписке под запретом?</p>
+<p class="hint">Подсказка практиков: какие стоп-слова лучше добавить</p>
+</div>
+</div>
+</div>
+</article>
+
+</div>
+</div>
+</section>
+
+<!-- ===================== ПОДКЛЮЧИТЬ LIA ===================== -->
+<section class="sec cta" id="zayavka">
+<canvas class="gl" data-field="dark" data-x="0.3" data-y="0.62" aria-hidden="true"></canvas>
+<div class="wrap">
+<div class="cta-card">
+<div class="cta-head">
+<h2>Подключить LIA</h2>
+<p class="lead">Первым десяти — специальные условия.</p>
+</div>
+<ol class="cta-steps">
+<li><p class="mono">Шаг&nbsp;1</p><h3>Оставьте заявку</h3><p>Откроется Telegram-бот LIA. Ответьте на&nbsp;3&nbsp;вопроса о&nbsp;бизнесе.</p></li>
+<li><p class="mono">Шаг&nbsp;2</p><h3>Звонок-знакомство</h3><p>За&nbsp;20&nbsp;минут разберём ваш кейс и&nbsp;поймём, закроет&nbsp;ли LIA вашу задачу. Если нет — скажем на&nbsp;встрече, а&nbsp;не&nbsp;после оплаты.</p></li>
+<li><p class="mono">Шаг&nbsp;3</p><h3>Заполните бриф и&nbsp;подключите YCLIENTS</h3><p>Ответьте на&nbsp;вопросы о&nbsp;вашем бизнесе в&nbsp;диалоге с&nbsp;LIA — и&nbsp;через минуту AI уже отвечает вашим гостям.</p></li>
+</ol>
+<div class="cta-foot">
+<a class="btn btn-white" data-bot="cta" target="_blank" rel="noopener" href="https://t.me/lia_ai_team_bot?start=site_cta&amp;utm_source=lia_landing&amp;utm_medium=button&amp;utm_campaign=pilot&amp;utm_content=cta">Оставить заявку и&nbsp;узнать стоимость</a>
+<p>Цена зависит от&nbsp;числа диалогов и&nbsp;в&nbsp;несколько раз ниже ставки ещё одного администратора. Сначала убедимся, что LIA закроет именно вашу задачу.</p>
+</div>
+</div>
+</div>
+</section>
+
+<!-- ===================== ВОПРОСЫ ===================== -->
+<section class="sec" id="voprosy">
+<div class="wrap">
+<div class="faq-grid">
+<h2>Частые вопросы</h2>
+<div>
+<div class="faq-list" data-faq>
+<!-- молния под курсором: этот холст переезжает в строку вопроса, над которой мышь -->
+<canvas class="faq-glow" data-field="glow" aria-hidden="true"></canvas>
+
+<div class="faq"><h3><button type="button" class="faq-q" aria-expanded="false">Чем LIA отличается от&nbsp;других ботов?<i></i></button></h3><div class="faq-a"><div><ul>
+<li>Обучена на&nbsp;опыте и&nbsp;кейсах реальных предпринимателей из&nbsp;ниши лазерной эпиляции.</li>
+<li>Знает историю гостя и&nbsp;записывает прямо в&nbsp;диалоге.</li>
+<li>Отвечает на&nbsp;нестандартные вопросы, администратора зовёт редко.</li>
+<li>Непрерывно учится на&nbsp;работе с&nbsp;вашими гостями.</li>
+<li>Понимает голосовые и&nbsp;фото.</li>
+<li>Присылает отчёт владельцу.</li>
+</ul></div></div></div>
+
+<div class="faq"><h3><button type="button" class="faq-q" aria-expanded="false">В&nbsp;каких мессенджерах работает LIA?<i></i></button></h3><div class="faq-a"><div><p>WhatsApp, Telegram, Instagram и&nbsp;чат на&nbsp;сайте. Скоро — Max.</p></div></div></div>
+
+<div class="faq"><h3><button type="button" class="faq-q" aria-expanded="false">Сколько занимает настройка?<i></i></button></h3><div class="faq-a"><div><p>Звонок-знакомство — 20&nbsp;минут, бриф — в&nbsp;диалоге с&nbsp;LIA. После брифа LIA сразу начинает отвечать гостям.</p></div></div></div>
+
+<div class="faq"><h3><button type="button" class="faq-q" aria-expanded="false">Может&nbsp;ли LIA делать рассылки?<i></i></button></h3><div class="faq-a"><div><p>LIA напоминает о&nbsp;записи и&nbsp;сама пишет гостю, когда подходит срок следующего сеанса.</p></div></div></div>
+
+<div class="faq"><h3><button type="button" class="faq-q" aria-expanded="false">Можно&nbsp;ли поговорить с&nbsp;LIA по&nbsp;телефону?<i></i></button></h3><div class="faq-a"><div><p>Пока LIA отвечает в&nbsp;переписке. Голосовая версия уже в&nbsp;разработке.</p></div></div></div>
+
+<div class="faq"><h3><button type="button" class="faq-q" aria-expanded="false">Как отключить, если не&nbsp;понравится?<i></i></button></h3><div class="faq-a"><div><p>Напишите нам — отключим. Все записи останутся в&nbsp;YCLIENTS.</p></div></div></div>
+
+<div class="faq"><h3><button type="button" class="faq-q" aria-expanded="false">Гости поймут, что это не&nbsp;человек?<i></i></button></h3><div class="faq-a"><div><p>LIA пишет как живой администратор вашей студии и&nbsp;не&nbsp;называет себя ботом. На&nbsp;прямой вопрос отвечает: «Я&nbsp;цифровой ассистент студии&nbsp;X».</p></div></div></div>
+
+<div class="faq"><h3><button type="button" class="faq-q" aria-expanded="false">Как проверить, что LIA отвечает правильно?<i></i></button></h3><div class="faq-a"><div><p>Все диалоги — в&nbsp;кабинете, сложное уходит сотруднику, каждую запись подтверждает администратор. Раз в&nbsp;неделю присылаем отчёт.</p></div></div></div>
+
+<div class="faq"><h3><button type="button" class="faq-q" aria-expanded="false">А&nbsp;если LIA не&nbsp;знает ответа?<i></i></button></h3><div class="faq-a"><div><p>Не&nbsp;придумывает. Пишет гостю: «Мне нужно уточнить этот момент, вернусь к&nbsp;вам» — и&nbsp;передаёт диалог сотруднику.</p></div></div></div>
+
+<div class="faq"><h3><button type="button" class="faq-q" aria-expanded="false">Гость может прислать фото?<i></i></button></h3><div class="faq-a"><div><p>Да. LIA консультирует по&nbsp;фото, где может, остальное передаёт сотруднику.</p></div></div></div>
+
+<div class="faq"><h3><button type="button" class="faq-q" aria-expanded="false">Кто подтверждает запись?<i></i></button></h3><div class="faq-a"><div><p>Администратор — в&nbsp;кабинете LIA или в&nbsp;YCLIENTS.</p></div></div></div>
+
+<div class="faq"><h3><button type="button" class="faq-q" aria-expanded="false">LIA заменит администратора?<i></i></button></h3><div class="faq-a"><div><p>Нет. LIA снимает с&nbsp;команды вечерние, выходные и&nbsp;пиковые переписки. Спорное по-прежнему решает администратор.</p></div></div></div>
+
+<div class="faq"><h3><button type="button" class="faq-q" aria-expanded="false">Нужен&nbsp;ли программист?<i></i></button></h3><div class="faq-a"><div><p>Нет. Достаточно брифа в&nbsp;диалоге с&nbsp;LIA и&nbsp;звонка-знакомства — на&nbsp;нём подскажем, как всё настроить.</p></div></div></div>
+
+<div class="faq"><h3><button type="button" class="faq-q" aria-expanded="false">Сколько стоит LIA?<i></i></button></h3><div class="faq-a"><div><p>Цена зависит от&nbsp;числа диалогов и&nbsp;в&nbsp;несколько раз ниже ставки ещё одного администратора.</p></div></div></div>
+
+<div class="faq"><h3><button type="button" class="faq-q" aria-expanded="false">У&nbsp;нас не&nbsp;YCLIENTS или не&nbsp;лазер<i></i></button></h3><div class="faq-a"><div><p><a class="link" data-bot="faq" target="_blank" rel="noopener" href="https://t.me/lia_ai_team_bot?start=site_faq&amp;utm_source=lia_landing&amp;utm_medium=button&amp;utm_campaign=pilot&amp;utm_content=faq">Напишите нам</a> — подключим вашу CRM или нишу.</p></div></div></div>
+
+</div>
+</div>
+</div>
+</div>
+</section>
+
+</main>
+
+<!-- ===================== ПОДВАЛ ===================== -->
+<!-- Футер «Сетка»: та же таблица из тонких линий, что у блоков страницы; точки на пересечениях -->
+<footer class="sec ft">
+<div class="wrap">
+<div class="ft-row ft-main">
+<div class="ft-cell ft-brand">
+<svg viewBox="60 14 414 276" fill="currentColor" role="img" aria-label="LIA"><use href="#logo"/></svg>
+<p>AI-администратор с&nbsp;опытом лучших сервисных студий</p>
+<a class="btn" data-bot="footer" target="_blank" rel="noopener" href="https://t.me/lia_ai_team_bot?start=site_footer&amp;utm_source=lia_landing&amp;utm_medium=button&amp;utm_campaign=pilot&amp;utm_content=footer">Оставить заявку</a>
+</div>
+<!-- «Документы» видны только на телефоне, на их месте на десктопе — «Разделы» -->
+<nav class="ft-cell ft-docs" aria-label="Документы">
+<p class="mono lc">Документы</p>
+<ul><li><a href="privacy/">Политика конфиденциальности</a></li><li><a href="terms/">Пользовательское соглашение</a></li></ul>
+</nav>
+<nav class="ft-cell ft-sections" aria-label="Разделы">
+<p class="mono lc">Разделы</p>
+<ul><li><a href="#primery">Примеры</a></li><li><a href="#kak">Как работает</a></li><li><a href="#kto">Кто мы</a></li><li><a href="#voprosy">Вопросы</a></li></ul>
+</nav>
+<nav class="ft-cell" aria-label="Контакты">
+<p class="mono lc">Контакты</p>
+<ul><li><a href="https://t.me/lia_ai_team_bot" target="_blank" rel="noopener">Telegram</a></li><li><a href="#instagram-lia">Instagram*</a></li></ul>
+<p class="ft-note">* Instagram принадлежит компании Meta, признанной экстремистской организацией и&nbsp;запрещённой на&nbsp;территории&nbsp;РФ</p>
+</nav>
+</div>
+<div class="ft-row ft-legal">
+<div class="ft-cell mono lc"><a href="privacy/">Политика конфиденциальности</a><a href="terms/">Пользовательское соглашение</a></div>
+<p class="ft-cell">* Instagram принадлежит компании Meta, признанной экстремистской организацией и&nbsp;запрещённой на&nbsp;территории&nbsp;РФ</p>
+</div>
+</div>
+</footer>
+
+<script src="app.js?v=1117n" defer></script>
+</body>
+</html>
