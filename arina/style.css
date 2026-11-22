@@ -173,6 +173,9 @@ b,strong{font-weight:600}
 .hero .wrap::before,.hero .wrap::after{display:none}
 .hero-copy{display:flex;flex-direction:column;gap:clamp(22px,2.6vw,34px);align-items:flex-start}
 .hero h1 .ln{display:block;white-space:nowrap}
+/* вторая строка заголовка — для кого LIA: мельче первой и переносится по ширине */
+.hero h1 .ln-s{font-size:.5em;line-height:1.15;white-space:normal;margin-top:.4em;max-width:17em}
+.hero-sub{font-size:var(--fs-h3);font-weight:600;line-height:1.2;letter-spacing:-.005em}
 .hero h1 .w{display:inline-block}
 .js .hero h1 .w{opacity:0;transform:translateY(.7em) rotate(4deg);transform-origin:0 100%}
 .js .hero.go h1 .w{opacity:1;transform:none;transition:transform 1s var(--spring),opacity .4s;transition-delay:calc(var(--i)*70ms + 250ms)}
@@ -183,8 +186,8 @@ b,strong{font-weight:600}
 .hm-short{display:none}
 .hero-more i{font-style:normal;display:inline-block;animation:nudge 2.4s ease-in-out infinite}
 @keyframes nudge{50%{transform:translateY(5px)}}
-.js .hero .lead,.js .hero-act{opacity:0;transform:translateY(16px)}
-.js .hero.go .lead,.js .hero.go .hero-act{opacity:1;transform:none;transition:opacity .8s .75s,transform 1s var(--expo) .75s}
+.js .hero-sub,.js .hero .lead,.js .hero-act{opacity:0;transform:translateY(16px)}
+.js .hero.go .hero-sub,.js .hero.go .lead,.js .hero.go .hero-act{opacity:1;transform:none;transition:opacity .8s .75s,transform 1s var(--expo) .75s}
 .js .hero.go .hero-act{transition-delay:.9s}
 
 /* диалог в рамке из тонких линий с точками */
@@ -206,7 +209,7 @@ b,strong{font-weight:600}
 .hero-chat .who.l{align-self:flex-start;display:flex;align-items:center;gap:8px;margin-top:4px}
 .hero-chat .who.l::before{content:'';width:7px;height:7px;border-radius:50%;background:#fff;box-shadow:0 0 0 4px rgba(255,255,255,.25)}
 .hero-chat .q{align-self:flex-end;max-width:88%;padding:12px 18px;border-radius:22px 22px 6px 22px;border:1px solid rgba(255,255,255,.7);background:rgba(255,255,255,.12);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);font-size:var(--fs-b);line-height:1.35}
-.hero-chat .a{align-self:flex-start;padding:18px 22px;border-radius:24px 24px 24px 6px;background:#fff;color:var(--ink);font-size:var(--fs-h3);font-weight:600;line-height:1.2;letter-spacing:-.005em;box-shadow:0 20px 50px -20px rgba(8,16,70,.55)}
+.hero-chat .a{align-self:flex-start;padding:18px 22px;border-radius:24px 24px 24px 6px;background:#fff;color:var(--ink);font-size:clamp(17px,1.4vw,21px);font-weight:500;line-height:1.35;box-shadow:0 20px 50px -20px rgba(8,16,70,.55)}
 
 /* =====================================================================
    Переписки: общие детали
@@ -681,10 +684,13 @@ b,strong{font-weight:600}
   .hero .gl{-webkit-mask-image:linear-gradient(#000 76%,rgba(0,0,0,.55) 89%,transparent);mask-image:linear-gradient(#000 76%,rgba(0,0,0,.55) 89%,transparent)}
   .hero .wrap{width:100%;grid-template-columns:minmax(0,1fr);padding-block:104px 40px;gap:56px;min-height:min(100svh,var(--hero-h,100svh));align-content:stretch}
   .hero-copy{min-height:100%}
-  .hero-kicker{margin-top:auto}
+  .hero h1{margin-top:auto}
   .hero-act{margin-top:auto;padding-top:32px}
   /* заголовок в две строки: размер подстраивается под ширину телефона, каждая фраза — одна строка */
-  .hero h1{font-size:min(36px,calc((100vw - 2 * var(--pad)) / 10.8))}
+  /* «AI-администратор» — одна строка на всю ширину телефона; строка «для студий…» и «Опыт лидеров ниши» — заметно мельче */
+  .hero h1{font-size:min(46px,calc((100vw - 2 * var(--pad)) / 9.7))}
+  .hero h1 .ln.ln-s{font-size:.52em;white-space:normal}
+  .hero-sub{font-size:17px}
   .hero h1 .ln{white-space:nowrap}
   .hm-full{display:none}
   .hm-short{display:inline}
@@ -693,9 +699,8 @@ b,strong{font-weight:600}
   .frame{margin-inline:14px}
   .frame::before{inset:0 -34px}
   .hero-chat{min-height:230px}
-  /* на телефоне диалога нет: главное сказано строкой над заголовком */
+  /* на телефоне диалога нет: главное сказано в заголовке */
   .hero .frame{display:none}
-  .hero-kicker{display:block;align-self:flex-start;padding:10px 16px;border:1px dashed var(--dash);border-radius:14px;margin-bottom:-2px}
   .hero .lead{font-size:var(--fs-b)}
 
   .stage{margin-inline:calc(var(--pad)*-1 + 8px);padding:18px 14px}
@@ -849,7 +854,7 @@ b,strong{font-weight:600}
 @media (prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
   *,*::before,*::after{animation:none !important;transition:none !important}
-  .js .sec::before,.js .sec .wrap::before,.js .sec .wrap::after,.js .hero h1 .w,.js .hero .lead,.js .hero-act,.js .frame::before,.js .frame::after,.js .frame > i,.js .kruto,.js .why,.js .why .qs li{opacity:1;transform:none}
+  .js .sec::before,.js .sec .wrap::before,.js .sec .wrap::after,.js .hero h1 .w,.js .hero-sub,.js .hero .lead,.js .hero-act,.js .frame::before,.js .frame::after,.js .frame > i,.js .kruto,.js .why,.js .why .qs li{opacity:1;transform:none}
   .js .scrub .w{opacity:1}
   .js .row:not(.tag-on) .tag{opacity:1}
   .js .row:not(.tag-on) .tag::before,.js .row:not(.tag-on) .tag i{transform:none}
