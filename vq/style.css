@@ -273,6 +273,9 @@ b,strong{font-weight:600}
 .js .row:not(.tag-on) .tag::before{transform:scaleX(0)}
 .js .row:not(.tag-on) .tag i{transform:scale(0)}
 .demo-foot{display:flex;justify-content:center;margin-top:clamp(20px,3vw,36px)}
+/* одна реплика LIA и несколько пояснений к ней справа */
+.tags{flex:1 1 0;min-width:0;display:flex;flex-direction:column;gap:14px}
+.tags .tag{flex:none}
 
 /* лента: список слева, телефон прилипает справа */
 .exs{margin-top:var(--gap)}
@@ -376,8 +379,15 @@ b,strong{font-weight:600}
 .tips-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr))}
 .tip{padding:clamp(22px,2.6vw,36px) var(--pad) clamp(30px,4vw,56px);display:flex;flex-direction:column;gap:clamp(28px,4vw,64px)}
 .tip + .tip{border-left:1px solid var(--line)}
-.tip .mono{align-self:flex-start;padding:7px 14px;border-radius:999px;background:var(--haze);color:var(--accent)}
+.tip > .mono{align-self:flex-start;justify-self:start;padding:7px 14px;border-radius:999px;background:var(--haze);color:var(--accent)}
 .tip p:last-child{text-wrap:pretty}
+.tip{gap:clamp(18px,2.2vw,30px)}
+.tip-q,.tip-a{display:flex;flex-direction:column;gap:8px;text-wrap:pretty}
+.tip-q{color:var(--ink-2)}
+.tip-l{color:var(--ink-3)}
+.tip-a{padding-top:clamp(16px,1.8vw,24px);border-top:1px solid var(--line)}
+/* вопрос и подсказка в соседних карточках стоят на одной высоте */
+@supports (grid-template-rows:subgrid){.tip{display:grid;grid-row:span 3;grid-template-rows:subgrid;align-content:start}.tip-q,.tip-a{height:100%}}
 .after{margin-top:clamp(28px,3vw,44px);font-size:var(--fs-b);line-height:1.35;max-width:30em;text-wrap:pretty}
 
 /* =====================================================================
@@ -507,6 +517,8 @@ b,strong{font-weight:600}
 .why:nth-child(2) .why-art{--gx:20%;--gy:85%}
 .why:nth-child(3) .why-art{--gx:50%;--gy:0%}
 .why:nth-child(4) .why-art{--gx:12%;--gy:15%}
+.why-rest .why:nth-child(1) .why-art{--gx:50%;--gy:0%}
+.why-rest .why:nth-child(2) .why-art{--gx:12%;--gy:15%}
 .kplus{font-size:var(--fs-d);font-weight:600;line-height:1;letter-spacing:-.02em;margin-bottom:22px}
 .qs{display:flex;flex-wrap:wrap;gap:8px}
 .qs li{padding:9px 16px;border-radius:999px;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.6);font-size:var(--fs-b);line-height:1.3}
@@ -712,6 +724,8 @@ b,strong{font-weight:600}
   .tag{flex:none;max-width:88%;padding-left:6px}
   .tag::before{display:none}
   .tag i{margin-right:10px}
+  .tags{flex:none;width:100%;max-width:88%;gap:8px}
+  .tags .tag{max-width:none}
 
   /* лента примеров: свайп, без рамки телефона */
   .exs{margin-inline:calc(var(--pad)*-1)}
@@ -932,4 +946,12 @@ b,strong{font-weight:600}
   .doc-table td{display:block;border:0;padding:0 0 12px}
   .doc-table td::before{content:attr(data-label);display:block;font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:12px;letter-spacing:.06em;text-transform:lowercase;color:var(--ink-2);font-weight:400;margin-bottom:2px}
   .doc-req div{grid-template-columns:minmax(0,1fr);gap:2px}
+}
+
+/* Телефон: лёгкая отрисовка. Размытие под сообщениями гостя и наложение зерна «overlay» на каждой цветной карточке
+   сильно тормозят прокрутку и загрузку (особенно в примерах переписок), а на мягком облаке глазу они почти не видны. */
+@media (max-width:899px){
+  .msg.g,.hero-chat .q,.kruto{-webkit-backdrop-filter:none;backdrop-filter:none;background:rgba(255,255,255,.16)}
+  .grain::before{mix-blend-mode:normal;opacity:.16}
+  .msg.g.photo::after{mix-blend-mode:normal;opacity:.2}
 }

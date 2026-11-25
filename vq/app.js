@@ -143,8 +143,10 @@ void main(){
 
   // Каждый фон один раз «фотографируется» в картинку и подставляется в карточки с классом bg-<имя>.
   function bakeBackdrops() {
+    // на телефоне фоны рисуются вдвое меньше (карточки узкие, а облако мягкое), по одному за раз
+    const small = matchMedia('(max-width:899px)').matches;
     const c = document.createElement('canvas');
-    c.width = 1200; c.height = 800;
+    c.width = small ? 640 : 1200; c.height = small ? 420 : 800;
     const gl = c.getContext('webgl', { antialias: false, alpha: false, preserveDrawingBuffer: true });
     const U = gl && silk(gl);
     if (!U) return;
@@ -155,8 +157,9 @@ void main(){
     gl.uniform1f(U.uGrain, 0);
     gl.uniform1f(U.uPortrait, 0);
     const names = Object.keys(BACKDROPS);
-    let left = names.length, ok = 0;
-    names.forEach((name) => {
+    let left = names.length, ok = 0, i = 0;
+    const next = () => {
+      const name = names[i++];
       const pal = BACKDROPS[name];
       tone(gl, U, pal);
       gl.uniform1f(U.uT, pal.t);
@@ -165,15 +168,18 @@ void main(){
       const copy = document.createElement('canvas');
       copy.width = c.width; copy.height = c.height;
       copy.getContext('2d').drawImage(c, 0, 0);
-      copy.toBlob((b) => {
-        if (b) { root.style.setProperty('--bg-' + name, 'url(' + URL.createObjectURL(b) + ')'); ok++; }
+      copy.toBlob((blob) => {
+        if (blob) { root.style.setProperty('--bg-' + name, 'url(' + URL.createObjectURL(blob) + ')'); ok++; }
         if (--left === 0 && ok === names.length) root.classList.add('has-bg');
-      }, 'image/jpeg', 0.9);
-    });
-    const lose = gl.getExtension('WEBGL_lose_context');
-    if (lose) lose.loseContext();
+      }, 'image/jpeg', small ? 0.85 : 0.9);
+      if (i < names.length) setTimeout(next, 80);
+      else { const lose = gl.getExtension('WEBGL_lose_context'); if (lose) lose.loseContext(); }
+    };
+    next();
   }
-  bakeBackdrops();
+  // фоны готовятся после загрузки страницы, когда браузер свободен, а не поверх неё
+  const bakeLater = () => (window.requestIdleCallback ? requestIdleCallback(bakeBackdrops, { timeout: 3000 }) : setTimeout(bakeBackdrops, 600));
+  if (document.readyState === 'complete') bakeLater(); else addEventListener('load', bakeLater, { once: true });
 
   function cloud(canvas) {
     const mode = canvas.dataset.gl;
@@ -785,7 +791,7 @@ void main(){
   whys.forEach((w) => $('.why-h', w).addEventListener('click', () => {
     if (!isMobile()) return;
     const open = !w.classList.contains('is-open');
-    whys.forEach((x) => x.classList.remove('is-open'));
+    $$('.why', w.parentElement).forEach((x) => x.classList.remove('is-open'));
     if (open) {
       w.classList.add('is-open');
       const c = chatOf($('[data-chat]', w));
