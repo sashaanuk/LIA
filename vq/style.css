@@ -124,7 +124,7 @@ b,strong{font-weight:600}
 .cur{position:fixed;left:0;top:0;z-index:200;pointer-events:none;display:none;min-width:12px;height:12px;background:#F0F0F0;color:var(--ink);border-radius:4px;mix-blend-mode:difference;transform:translate(-50%,-50%);transition:min-width .35s var(--expo),height .35s var(--expo),padding .35s var(--expo),border-radius .35s var(--expo),opacity .2s;white-space:nowrap;overflow:hidden;font-family:'IBM Plex Mono',monospace;font-size:var(--fs-s);letter-spacing:.06em;line-height:32px;text-align:center}
 .cur span{opacity:0;transition:opacity .2s}
 .has-cur .cur{display:block}
-.has-cur,.has-cur a,.has-cur button,.has-cur summary,.has-cur [role="tab"]{cursor:none}
+.has-cur,.has-cur *{cursor:none}
 .cur.is-link{min-width:40px;height:40px;border-radius:50%}
 .cur.is-label{height:32px;padding:0 14px;border-radius:999px;background:#fff;mix-blend-mode:normal;box-shadow:0 6px 20px -8px rgba(0,0,0,.5)}
 .cur.is-label span{opacity:1}
@@ -376,18 +376,14 @@ b,strong{font-weight:600}
 .xp-list p{margin-bottom:18px;font-size:var(--fs-h3);line-height:1.35;color:var(--ink-2)}
 .tips{margin-top:var(--gap);margin-inline:calc(var(--pad)*-1);border-bottom:1px solid var(--line)}
 .tips-h{padding:0 var(--pad) clamp(20px,2.4vw,32px);border-bottom:1px solid var(--line)}
+.tips-h:has(+ .tips-lead){border-bottom:0;padding-bottom:0}
+.tips-lead{padding:clamp(18px,2vw,26px) var(--pad) clamp(20px,2.4vw,32px);color:var(--ink-2);max-width:62em;text-wrap:pretty;border-bottom:1px solid var(--line)}
 .tips-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr))}
 .tip{padding:clamp(22px,2.6vw,36px) var(--pad) clamp(30px,4vw,56px);display:flex;flex-direction:column;gap:clamp(28px,4vw,64px)}
 .tip + .tip{border-left:1px solid var(--line)}
-.tip > .mono{align-self:flex-start;justify-self:start;padding:7px 14px;border-radius:999px;background:var(--haze);color:var(--accent)}
+.tip .mono{align-self:flex-start;padding:7px 14px;border-radius:999px;background:var(--haze);color:var(--accent)}
 .tip p:last-child{text-wrap:pretty}
-.tip{gap:clamp(18px,2.2vw,30px)}
-.tip-q,.tip-a{display:flex;flex-direction:column;gap:8px;text-wrap:pretty}
-.tip-q{color:var(--ink-2)}
-.tip-l{color:var(--ink-3)}
-.tip-a{padding-top:clamp(16px,1.8vw,24px);border-top:1px solid var(--line)}
 /* вопрос и подсказка в соседних карточках стоят на одной высоте */
-@supports (grid-template-rows:subgrid){.tip{display:grid;grid-row:span 3;grid-template-rows:subgrid;align-content:start}.tip-q,.tip-a{height:100%}}
 .after{margin-top:clamp(28px,3vw,44px);font-size:var(--fs-b);line-height:1.35;max-width:30em;text-wrap:pretty}
 
 /* =====================================================================
@@ -956,4 +952,12 @@ b,strong{font-weight:600}
   .msg.g,.hero-chat .q,.kruto{-webkit-backdrop-filter:none;backdrop-filter:none;background:rgba(255,255,255,.16)}
   .grain::before{mix-blend-mode:normal;opacity:.16}
   .msg.g.photo::after{mix-blend-mode:normal;opacity:.2}
+}
+
+/* Телефон: сообщения в переписках чуть мельче и плотнее, чтобы короткие диалоги целиком влезали в карточку
+   без внутренней прокрутки (на iPhone 16 Pro при 16px не хватало 13px). */
+@media (max-width:899px){
+  .stage > .chat{font-size:14px;line-height:1.36;gap:8px}
+  .stage > .chat .msg{padding:10px 15px;border-radius:20px}
+  .stage > .chat .who{font-size:11px;margin-top:4px}
 }

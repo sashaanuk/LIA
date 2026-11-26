@@ -893,7 +893,12 @@ void main(){
       }
       label.textContent = text;
     }, { passive: true });
-    document.addEventListener('pointerleave', () => cur.classList.add('is-off'));
+    // мышь вышла из окна (на вкладки, в другое окно, за экран) — наш курсор гаснет, возвращается обычная стрелка
+    const away = () => { cur.classList.add('is-off'); root.classList.remove('has-cur'); };
+    document.addEventListener('mouseout', (e) => { if (!e.relatedTarget) away(); });
+    document.documentElement.addEventListener('mouseleave', away);
+    addEventListener('blur', away);
+    document.addEventListener('visibilitychange', () => { if (document.hidden) away(); });
     const follow = () => {
       x += (tx - x) * (reduce ? 1 : 0.32); y += (ty - y) * (reduce ? 1 : 0.32);
       cur.style.transform = `translate(${x}px,${y}px) translate(-50%,-50%)`;
