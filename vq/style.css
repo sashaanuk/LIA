@@ -683,6 +683,7 @@ b,strong{font-weight:600}
   /* iPhone: размытие под шапкой поверх WebGL-фона рисуется кусками — вокруг лого появлялась отдельная белая «таблетка».
      На телефоне шапка без размытия, сплошная белая; лого только гаснет, без сдвига */
   .hdr.is-up .hdr-bar{background:#fff;-webkit-backdrop-filter:none;backdrop-filter:none;padding-left:26px}
+  .hdr-bar{transition:background .3s,box-shadow .3s}
   /* у лого буквы снизу, звезда сверху — оптический центр ниже геометрического, поднимаем на 3px */
   .hdr-logo svg{transform:translateY(-3px)}
   .hdr-logo,.hdr.is-down .hdr-logo{transform:none}
@@ -733,7 +734,7 @@ b,strong{font-weight:600}
   .exs-sticky::-webkit-scrollbar{display:none}
   .ex{flex:0 0 88%;scroll-snap-align:center;display:flex;flex-direction:column}
   /* переписки высотой с экран телефона: сообщения появляются снизу и сами прокручиваются */
-  .ex-stage{flex:none;height:min(560px,72svh);min-height:0;margin-inline:0}
+  .ex-stage{flex:none;height:min(560px,calc(var(--hero-h,100svh)*.72));min-height:0;margin-inline:0}
   .ex-cap{border-top:0;color:var(--ink);padding:0 4px 12px}
   .ex-cap::before,.ex-cap::after{display:none}
   .ex-cap .mono{width:auto;color:var(--ink-2)}
@@ -801,8 +802,8 @@ b,strong{font-weight:600}
   .steps-nav a{flex-wrap:wrap;gap:4px 12px}
   .steps-nav b{width:auto}
   .steps-nav span:last-child{flex:1 1 100%;padding-left:calc(1.2em + 12px)}
-  .step .stage{height:min(560px,72svh);min-height:0}
-  .stage:has(> .demo){height:min(620px,78svh)}
+  .step .stage{height:min(560px,calc(var(--hero-h,100svh)*.72));min-height:0}
+  .stage:has(> .demo){height:min(620px,calc(var(--hero-h,100svh)*.78))}
   .stage > .chat.demo{overflow-y:auto;scrollbar-width:none;scroll-behavior:smooth;-webkit-mask-image:linear-gradient(transparent,#000 64px);mask-image:linear-gradient(transparent,#000 64px)}
   .stage > .chat.demo::-webkit-scrollbar{display:none}
   .stage > .chat.demo > :first-child{margin-top:auto}
@@ -842,7 +843,8 @@ b,strong{font-weight:600}
   /* футер: логотип с кнопкой сверху, разделы и контакты — две колонки, документы списком */
   .ft-main{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}
   .ft-brand{grid-column:1 / -1;border-bottom:1px solid var(--line)}
-  .ft-brand .btn{align-self:stretch}
+  .ft-brand .btn{display:none}
+  .ft-main nav > .mono{display:none}
   .ft-main .ft-cell{padding-block:32px}
   .ft-main nav.ft-cell{border-left:0}
   .ft-main nav.ft-cell::before{display:none}

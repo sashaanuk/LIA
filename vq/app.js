@@ -525,12 +525,28 @@ void main(){
   const burger = $('.burger');
   let lastY = scrollY;
   const closeMenu = () => { hdr.classList.remove('is-open'); burger.setAttribute('aria-expanded', 'false'); };
+  // на телефоне направление прокрутки «дрожит» (инерция, резинка у краёв), поэтому шапка меняется
+  // только после уверенного хода в одну сторону (48px) и не чаще раза в 450мс; на компьютере — как раньше
+  let dir = 0, acc = 0, flipAt = 0;
   function headerTick() {
-    const y = scrollY;
-    if (y < 120) hdr.classList.remove('is-down', 'is-up');
-    else if (y > lastY + 4) { hdr.classList.add('is-down'); hdr.classList.remove('is-up'); closeMenu(); }
-    else if (y < lastY - 4) { hdr.classList.remove('is-down'); hdr.classList.add('is-up'); }
+    const max = Math.max(0, document.documentElement.scrollHeight - innerHeight);
+    const y = Math.min(Math.max(scrollY, 0), max);
+    const phone = isMobile();
+    const dy = y - lastY;
     lastY = y;
+    if (y < 120) { hdr.classList.remove('is-down', 'is-up'); acc = 0; dir = 0; return; }
+    if (!dy) return;
+    const d = dy > 0 ? 1 : -1;
+    if (d !== dir) { dir = d; acc = 0; }
+    acc += dy;
+    if (Math.abs(acc) < (phone ? 48 : 4)) return;
+    if (phone && performance.now() - flipAt < 450) return;
+    const down = d > 0;
+    if (hdr.classList.contains('is-down') === down && hdr.classList.contains('is-up') !== down) return;
+    flipAt = performance.now();
+    hdr.classList.toggle('is-down', down);
+    hdr.classList.toggle('is-up', !down);
+    if (down) closeMenu();
   }
   burger.addEventListener('click', () => {
     const open = hdr.classList.toggle('is-open');
@@ -859,6 +875,10 @@ void main(){
     let x = -100, y = -100, tx = -100, ty = -100;
     addEventListener('pointermove', (e) => {
       tx = e.clientX; ty = e.clientY;
+      // у самой границы окна (≈4px, «за миллиметр до края») свой курсор исчезает, возвращается обычная стрелка
+      const edge = e.clientX < 4 || e.clientY < 4 || e.clientX > innerWidth - 4 || e.clientY > innerHeight - 4;
+      root.classList.toggle('has-cur', !edge);
+      if (edge) { cur.classList.add('is-off'); return; }
       const t = e.target instanceof Element ? e.target : null;
       if (!t) return;
       const tagged = t.closest('[data-cursor]');
