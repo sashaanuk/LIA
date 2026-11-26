@@ -472,8 +472,16 @@ void main(){
   $$('[data-chat]').forEach((el) => chats.set(el, new Chat(el)));
   const chatOf = (el) => chats.get(el);
 
+  // Лента примеров на телефоне: переписка карточки видна сразу, без «пустой карточки» и набора по буквам.
+  // Пока набирался текст, карточка после листания несколько секунд оставалась пустой, а каждая буква
+  // заставляла телефон перерисовывать полупрозрачные сообщения: это и ощущалось как тормоза.
+  const instant = (c) => isMobile() && c.el.closest('.ex');
   const armChats = () => {
-    chats.forEach((c) => { if (!c.played) { c.showAll(); c.reserve(); if (!reduce) c.hideAll(); } });
+    chats.forEach((c) => {
+      if (c.played) return;
+      if (instant(c)) { c.played = true; c.showAll(); requestAnimationFrame(() => c.bottom()); return; }
+      c.showAll(); c.reserve(); if (!reduce) c.hideAll();
+    });
   };
   (document.fonts && document.fonts.ready ? document.fonts.ready : Promise.resolve()).then(() => {
     const deep = location.hash.match(/^#shag-(\d)$/);      // ссылка вида …/#shag-3 открывает сразу третий шаг
@@ -481,8 +489,12 @@ void main(){
     armChats();
     // обычные переписки стартуют сами, когда доезжают до экрана
     onView($$('[data-chat]').filter((el) => el.dataset.chat === ''), (el) => { const c = chatOf(el); if (!c.played) c.play(); }, { threshold: 0.35 });
-    // на телефоне лента примеров играет ту карточку, которую долистали
-    onView($$('.ex'), (el) => { if (isMobile()) chatOf($('[data-chat]', el)).play(); }, { threshold: 0.6 });
+    // на телефоне карточка ленты примеров показывается целиком, как только до неё долистали (если ещё не показана)
+    onView($$('.ex'), (el) => {
+      if (!isMobile()) return;
+      const c = chatOf($('[data-chat]', el));
+      if (!c.played) { c.played = true; c.showAll(); requestAnimationFrame(() => c.bottom()); }
+    }, { threshold: 0.6 });
   });
 
   let lastW = innerWidth;
