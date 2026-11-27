@@ -314,7 +314,11 @@ b,strong{font-weight:600}
 .pain{position:relative;background:var(--paper);padding:clamp(22px,2.6vw,38px) var(--pad) clamp(40px,5vw,72px);font-size:var(--fs-b);line-height:1.3;letter-spacing:.005em;overflow:hidden;isolation:isolate}
 .pain::before{content:'';position:absolute;inset:0;z-index:-1;background:radial-gradient(340px circle at var(--x,50%) var(--y,50%),var(--sky),transparent 70%);opacity:0;transition:opacity .5s}
 .pain::after{content:'';position:absolute;inset:0;z-index:-1;background-image:var(--noise);mix-blend-mode:overlay;opacity:0;transition:opacity .5s}
-/* карточки проблем белые, без цветной подсветки под курсором */
+/* голубая подсветка под курсором — только на компьютере; на телефоне карточки белые (там «наведение» залипает после касания) */
+@media (min-width:900px){
+  .pains:hover .pain::before{opacity:.75}
+  .pains:hover .pain::after{opacity:.5}
+}
 .pain:nth-child(7){grid-column:1 / -1}
 .pain p{max-width:22em;text-wrap:pretty}
 .pains-dots{display:none}
@@ -963,4 +967,30 @@ b,strong{font-weight:600}
   .stage > .chat{font-size:14px;line-height:1.36;gap:8px}
   .stage > .chat .msg{padding:10px 15px;border-radius:20px}
   .stage > .chat .who{font-size:11px;margin-top:4px}
+}
+
+/* ===== «Подсказки практиков из брифа» =====
+   Компьютер: три светлые карточки с линиями, как раньше. Телефон: одна синяя полоса, подсказки — реплики-пузыри
+   (подпись над каждой, как автор реплики), в конце плашка с галочкой. */
+.tips-note{margin:0;color:var(--ink-2);font-size:var(--fs-b);line-height:1.35;text-wrap:pretty}
+.tips-note i{display:none}
+@media (min-width:900px){
+  .tips-note{grid-column:1 / -1;padding:clamp(20px,2.4vw,30px) var(--pad);border-top:1px solid var(--line);max-width:none}
+  /* спокойная типографика: заголовок + один стиль текста (14px, тёмный) для абзаца, подсказок и фразы внизу; подписи — простой мелкий моно-текст */
+  .tips-lead{max-width:none;padding-right:max(var(--pad),calc(100% - 44em));font-size:var(--fs-s);line-height:1.55;color:var(--ink)}
+  .tips-grid .tip > .mono{padding:0;border-radius:0;background:none;color:var(--ink-2)}
+  .tips-grid .tip > p:last-child{font-size:var(--fs-s);line-height:1.55;color:var(--ink)}
+  .tips-note{font-size:var(--fs-s);line-height:1.55;color:var(--ink)}
+  .tips-grid .tip{gap:clamp(16px,2vw,28px)}
+}
+@media (max-width:899px){
+  .tips-grid{--b0:#0A0E1C;--b1:#2A3F66;--b2:#9DB9C4;position:relative;isolation:isolate;display:flex;flex-direction:column;gap:10px;margin:4px var(--pad) var(--pad);padding:18px 14px;border-radius:24px;color:#fff;background:radial-gradient(70% 80% at 78% 12%,var(--b0),transparent 72%),radial-gradient(90% 90% at 22% 88%,var(--b2),transparent 70%),var(--b1)}
+  .tips-grid::before{content:'';position:absolute;inset:0;z-index:-1;border-radius:inherit;background-image:var(--noise);opacity:.16;pointer-events:none}
+  .tips-grid .tip{padding:0;gap:0;display:flex;flex-direction:column}
+  .tips-grid .tip + .tip{border:0}
+  .tips-grid .tip > .mono{padding:0;border-radius:0;background:none;color:rgba(255,255,255,.84);margin:6px 0 8px;align-self:flex-start}
+  .tips-grid .tip:first-child > .mono{margin-top:0}
+  .tips-grid .tip > p:last-child{align-self:flex-start;max-width:94%;margin:0;padding:12px 16px;border-radius:24px;background:#fff;color:var(--ink);font-size:16px;line-height:1.4;box-shadow:0 1px 2px rgba(0,0,0,.08),0 12px 26px -12px rgba(0,0,0,.4)}
+  .tips-note{display:flex;align-items:center;gap:12px;margin-top:10px;padding:12px 18px 12px 14px;border-radius:22px;background:#fff;color:var(--ink);font-size:15px;line-height:1.35;box-shadow:0 12px 26px -14px rgba(0,0,0,.4)}
+  .tips-note i{flex:none;display:grid;place-items:center;width:28px;height:28px;border-radius:50%;background:var(--ink);color:#fff}
 }
