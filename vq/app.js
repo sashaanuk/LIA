@@ -475,7 +475,7 @@ void main(){
   // Лента примеров на телефоне: переписка карточки видна сразу, без «пустой карточки» и набора по буквам.
   // Пока набирался текст, карточка после листания несколько секунд оставалась пустой, а каждая буква
   // заставляла телефон перерисовывать полупрозрачные сообщения: это и ощущалось как тормоза.
-  const instant = (c) => isMobile() && c.el.closest('.ex');
+  const instant = (c) => isMobile() && c.el.closest('.ex, #pochemu .why');
   const armChats = () => {
     chats.forEach((c) => {
       if (c.played) return;
@@ -817,7 +817,7 @@ void main(){
   const whys = $$('.why');
   onView(whys, (el) => el.classList.add('in'), { threshold: 0.3 });
   whys.forEach((w) => $('.why-h', w).addEventListener('click', () => {
-    if (!isMobile()) return;
+    if (!isMobile() || w.closest('#pochemu')) return;   // в «Почему не подведёт» обе карточки на телефоне всегда раскрыты
     const open = !w.classList.contains('is-open');
     $$('.why', w.parentElement).forEach((x) => x.classList.remove('is-open'));
     if (open) {

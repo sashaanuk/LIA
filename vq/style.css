@@ -314,8 +314,7 @@ b,strong{font-weight:600}
 .pain{position:relative;background:var(--paper);padding:clamp(22px,2.6vw,38px) var(--pad) clamp(40px,5vw,72px);font-size:var(--fs-b);line-height:1.3;letter-spacing:.005em;overflow:hidden;isolation:isolate}
 .pain::before{content:'';position:absolute;inset:0;z-index:-1;background:radial-gradient(340px circle at var(--x,50%) var(--y,50%),var(--sky),transparent 70%);opacity:0;transition:opacity .5s}
 .pain::after{content:'';position:absolute;inset:0;z-index:-1;background-image:var(--noise);mix-blend-mode:overlay;opacity:0;transition:opacity .5s}
-.pains:hover .pain::before{opacity:.75}
-.pains:hover .pain::after{opacity:.5}
+/* карточки проблем белые, без цветной подсветки под курсором */
 .pain:nth-child(7){grid-column:1 / -1}
 .pain p{max-width:22em;text-wrap:pretty}
 .pains-dots{display:none}
@@ -397,7 +396,8 @@ b,strong{font-weight:600}
 .fit-col h2::before{content:'';flex:none;width:7px;height:7px;border-radius:50%;background:var(--accent)}
 .fit-col + .fit-col h2::before{background:transparent;box-shadow:inset 0 0 0 1px currentColor}
 .fit-col > p,.fit-col li{font-size:var(--fs-b);line-height:1.35;letter-spacing:.005em;text-wrap:pretty;max-width:24em}
-.fit-foot{margin-inline:calc(var(--pad)*-1);padding:26px var(--pad);border-top:1px solid var(--line);font-size:var(--fs-b);line-height:1.35}
+.fit-foot{margin-inline:calc(var(--pad)*-1);padding:clamp(26px,3vw,40px) var(--pad);border-top:1px solid var(--line);font-size:var(--fs-h3);font-weight:600;line-height:1.3;letter-spacing:-.005em}
+.fit-foot .link{text-decoration-thickness:2px;text-underline-offset:6px}
 
 /* =====================================================================
    Кто мы
@@ -821,6 +821,9 @@ b,strong{font-weight:600}
   .js .why-h::after{content:'';flex:none;width:14px;height:14px;background:linear-gradient(currentColor,currentColor) center/100% 1px no-repeat,linear-gradient(currentColor,currentColor) center/1px 100% no-repeat;transition:transform .4s var(--expo)}
   .js .why.is-open .why-h::after{transform:rotate(45deg)}
   .js .why:not(.is-open) .why-txt p,.js .why:not(.is-open) .why-art{display:none}
+  /* «Почему LIA не подведёт»: обе карточки всегда раскрыты, без плюса и без переключения — ничего не схлопывается и не прыгает */
+  .js #pochemu .why-h{cursor:default}
+  .js #pochemu .why-h::after{display:none}
   .cycle{grid-template-columns:minmax(0,1fr)}
   .cycle li{min-height:0;flex-direction:row;align-items:center}
   .cycle li:nth-child(3),.cycle li:nth-child(4){order:0}
